@@ -1,0 +1,130 @@
+"""Parse Plastic_Surgery_Card_Bank_Complete.md into data/cards.json for the web game.
+
+Usage: python3 scripts/parse_cards.py [path/to/Plastic_Surgery_Card_Bank_Complete.md]
+"""
+import json
+import os
+import re
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEFAULT_SRC = os.path.expanduser(
+    "~/claude/case_bank_all_files/Plastic_Surgery_Card_Bank_Complete.md")
+OUT = os.path.join(ROOT, "data", "cards.json")
+ASSET_DIR = os.path.join(ROOT, "public", "card-assets")
+
+
+def clean(s):
+    return re.sub(r"\*\*(.+?)\*\*", r"\1", s).strip()
+
+
+def split_sections(body):
+    """Return {section_key: text} keyed by the '## ' heading prefix."""
+    parts = re.split(r"\n## ", "\n" + body)
+    out = {"_head": parts[0]}
+    for p in parts[1:]:
+        heading, _, text = p.partition("\n")
+        out[heading.strip()] = text.strip()
+    return out
+
+
+def find(sections, prefix):
+    for k, v in sections.items():
+        if k.startswith(prefix):
+            return v
+    return ""
+
+
+def table(text, ncols):
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if not line.startswith("|") or re.match(r"^\|[\s\-|:]+\|$", line):
+            continue
+        cells = [clean(c) for c in line.strip("|").split("|")]
+        rows.append(cells[:ncols] + [""] * (ncols - len(cells)))
+    return rows[1:]  # drop header row
+
+
+def bullets(text):
+    return [clean(l.lstrip("-* ").strip()) for l in text.splitlines()
+            if re.match(r"^\s*[-*]\s+", l)]
+
+
+def quote(text):
+    lines = [l.lstrip(">").strip() for l in text.splitlines() if l.strip().startswith(">")]
+    return "\n".join(l for l in lines if l) or clean(text)
+
+
+def field(text, label):
+    m = re.search(r"\*\*" + re.escape(label) + r"[^*]*:\*\*\s*(.*)", text)
+    return clean(m.group(1)) if m else ""
+
+
+def parse_card(group_no, group_name, card_no, title, body):
+    s = split_sections(body)
+    head = s["_head"]
+    plpr = find(s, "6)")
+    pl_part, _, pr_part = plpr.partition("**Problem representation")
+    sys12 = find(s, "7)")
+    chk = sys12.split("**System 2 checklist:**", 1)[-1]
+    debrief = find(s, "8)")
+    note = re.search(r"^>\s*(?:\*\*)?(?:หมายเหตุ|ข้อควรระวัง)[^*:]*:(?:\*\*)?\s*(.*)$", debrief, re.M)
+
+    image = f"G{group_no}-CARD{card_no}-portrait.jpg"
+    cid = f"G{group_no}C{card_no}"
+    return {
+        "id": cid,
+        "group": group_no,
+        "groupName": group_name,
+        "card": card_no,
+        "title": clean(title.split(":", 1)[-1]) if ":" in title else clean(title),
+        "fullTitle": clean(title),
+        "level": field(head, "Level"),
+        "bloom": field(head, "Bloom's target"),
+        "image": image if os.path.exists(os.path.join(ASSET_DIR, image)) else None,
+        "learningFocus": bullets(find(s, "Learning focus")),
+        "stem": quote(find(s, "1)")),
+        "history": [{"q": q, "a": a} for q, a in table(find(s, "2)"), 2)],
+        "exam": [{"q": q, "a": a} for q, a in table(find(s, "3)"), 2)],
+        "investigations": [{"option": o, "rationale": r, "answer": a}
+                           for o, r, a in table(find(s, "4)"), 3)],
+        "mustNotMiss": bullets(find(s, "5)")),
+        "problemList": [clean(re.sub(r"^\d+\.\s*", "", l)) for l in pl_part.splitlines()
+                        if re.match(r"^\s*\d+\.", l)],
+        "problemRepresentation": quote(pr_part.split("\n", 1)[-1]),
+        "system1Trap": field(sys12, "System 1 trap").strip('"“”'),
+        "system2Trigger": field(sys12, "System 2 trigger"),
+        "system2Checklist": bullets(chk),
+        "debrief": [{"q": q, "a": a} for q, a in table(debrief, 2)],
+        "facultyNote": clean(note.group(1)) if note else "",
+    }
+
+
+def main():
+    src = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SRC
+    text = open(src, encoding="utf-8").read()
+    cards, groups = [], []
+    for gm in re.finditer(r"^# กลุ่ม (\d+) — (.+?) \(\d+ การ์ด\)\s*$(.*?)(?=^# กลุ่ม |\Z)",
+                          text, re.M | re.S):
+        gno, gname, gbody = int(gm.group(1)), gm.group(2).strip(), gm.group(3)
+        groups.append({"no": gno, "name": gname})
+        for cm in re.finditer(r"^# CARD (\d+) — (.+?)$(.*?)(?=^# CARD |\Z)", gbody, re.M | re.S):
+            cards.append(parse_card(gno, gname, int(cm.group(1)), cm.group(2), cm.group(3)))
+
+    problems = []
+    for c in cards:
+        for k in ("stem", "history", "exam", "investigations", "mustNotMiss",
+                  "problemList", "problemRepresentation", "system2Checklist", "debrief"):
+            if not c[k]:
+                problems.append(f"{c['id']} missing {k}")
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump({"groups": groups, "cards": cards}, f, ensure_ascii=False, indent=1)
+    print(f"Parsed {len(cards)} cards in {len(groups)} groups -> {OUT}")
+    for p in problems:
+        print("WARN", p)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,20 @@
+{
+  "name": "simplastic-crg",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multiplayer web game for the Plastic Surgery Clinical Reasoning card bank (4–5 players, role-based)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "cards": "python3 scripts/parse_cards.py",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.1"
+  }
+}
