@@ -4,11 +4,14 @@
 const socket = io();
 const app = document.getElementById("app");
 const SESSION_KEY = "crg-session";
+const APP_VERSION = "0.2.0";
+const brandWordmark = () => `<span class="brand-text" style="font-size:.85rem">SimPlastic <span class="muted" style="font-weight:600">- The Clinical Reasoning Game</span> <span class="brand-version">v${APP_VERSION}</span></span>`;
 
 let S = null; // latest server view
 let clockSkew = 0;
 const ui = {
   groupFilter: 0,
+  carouselIndex: 0, // position within the (filtered) case list while browsing on the case-select screen
   pendingSel: null, // question the patient/facilitator is answering
   drafts: {}, // local-only input values keyed by element id
   micFor: null, // id of the field currently being dictated into
@@ -300,7 +303,7 @@ function send(type, payload) {
         sfx.reveal();
       } else if (type === "pickRole" && payload && payload.role) {
         sfx.coin();
-      } else if (["startGame", "submitInvest", "submitPlpr", "revealTimeout", "ticket"].includes(type)) {
+      } else if (["startGame", "submitInvest", "submitPlpr", "revealTimeout", "ticket", "toggleReady"].includes(type)) {
         sfx.confirm();
       }
       resolve(res.ok);
@@ -436,11 +439,27 @@ function viewLobby() {
     .map(([r, def]) => {
       const holder = S.players.find((p) => p.role === r);
       const mine = holder && holder.id === me.id;
-      return `<button class="role-card ${mine ? "mine" : ""}" data-role="${r}" data-act="pickRole" data-v="${r}" ${holder && !mine ? "disabled" : ""}>
+      // Minimal by default: icon + title only. The description (and a Ready toggle)
+      // only appears on the card you've picked, and collapses away once you're ready.
+      const showDesc = mine && !me.ready;
+      const pickable = !holder || mine; // a div, not a <button>, so a nested Ready button stays valid HTML
+      return `<div class="role-card ${mine ? "mine" : ""} ${showDesc ? "expanded" : ""} ${pickable ? "" : "locked"}" data-role="${r}"
+        ${pickable && !(mine && me.ready) ? `data-act="pickRole" data-v="${r}"` : ""} title="${esc(ROLE_DESC[r])}">
         <span class="title">${ROLE_ICON[r]} ${esc(def.label)}</span>
-        <span class="small muted">${esc(ROLE_DESC[r])}</span>
-        <span class="taken">${holder ? `${mine ? "✓ คุณ" : "ถูกเลือกโดย " + esc(holder.name)}` : def.required ? `<span class="tag must">จำเป็น</span>` : `<span class="tag">ไม่บังคับ</span>`}</span>
-      </button>`;
+        ${showDesc ? `<span class="small muted">${esc(ROLE_DESC[r])}</span>` : ""}
+        <span class="taken">${
+          holder
+            ? mine
+              ? me.ready
+                ? `<button type="button" class="tag ok ready-badge" data-act="toggleReady" title="กดเพื่อแก้ไขบทบาท">✓ พร้อมแล้ว</button>`
+                : "✓ คุณ"
+              : "ถูกเลือกโดย " + esc(holder.name)
+            : def.required
+              ? `<span class="tag must">จำเป็น</span>`
+              : `<span class="tag">ไม่บังคับ</span>`
+        }</span>
+        ${showDesc ? `<button type="button" class="btn sm primary ready-btn" data-act="toggleReady">✓ พร้อม</button>` : ""}
+      </div>`;
     })
     .join("");
   const slots = [];
@@ -450,6 +469,7 @@ function viewLobby() {
       p
         ? `<li class="${p.connected ? "" : "offline"}"><span class="role-dot" data-role="${p.role || ""}"></span>
             <span style="flex:1">${esc(p.name)}${p.id === S.hostId ? ' <span class="tag">host</span>' : ""}${p.id === me.id ? ' <span class="muted small">(คุณ)</span>' : ""}</span>
+            ${p.ready ? `<span class="tag ok" title="พร้อมแล้ว">✓</span>` : ""}
             ${roleChip(p.role)}
             ${isHost && p.id !== me.id ? `<button class="btn sm ghost danger" data-act="kick" data-v="${p.id}" title="นำออก">✕</button>` : ""}</li>`
         : `<li class="muted"><span class="role-dot"></span> ว่าง ${i >= S.limits.min ? "(ไม่บังคับ)" : ""}</li>`,
@@ -461,8 +481,8 @@ function viewLobby() {
     <div class="home-sound-toggle">${soundToggleBtn()}</div>
     <div class="lobby-content">
       <div class="row spread lobby-top">
-        <div class="row"><div class="brand-mark" style="width:32px;height:32px;font-size:.85rem">Rx</div>
-          <b style="color:#fff">SimPlastic Reasoning</b><span class="code-chip">${esc(S.code)}</span></div>
+        <div class="row"><img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb" />
+          <span style="color:#fff">${brandWordmark()}</span><span class="code-chip">${esc(S.code)}</span></div>
         <button class="btn sm ghost" data-act="leave" style="color:#fff;border-color:rgba(255,255,255,.4)">ออกจากห้อง</button>
       </div>
 
@@ -567,8 +587,8 @@ function viewGame() {
   <header class="topbar"><div class="wrap">
     <div class="row spread">
       <div class="row">
-        <div class="brand-mark" style="width:34px;height:34px;font-size:.9rem">Rx</div>
-        <div><b>${cv ? esc(cv.title) : "SimPlastic Reasoning"}</b>
+        <img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb" style="width:34px;height:34px" />
+        <div>${cv ? `<b>${esc(cv.title)}</b>` : brandWordmark()}
         <div class="muted small">ห้อง <span class="code">${esc(S.code)}</span> · ${roleChip(S.me.role)}</div></div>
       </div>
       <div class="row">${soundToggleBtn()}${speechOK ? `<button class="btn sm ghost" data-act="micLang" title="ภาษาที่ใช้ถอดเสียง">🎙 ${ui.micLang === "th-TH" ? "ไทย" : "EN"}</button>` : ""}<span class="timer muted small" id="timer"></span>${nav}</div>
@@ -660,23 +680,37 @@ function viewCase() {
   }
   const { groups, cards } = S.catalog;
   const shown = cards.filter((c) => !ui.groupFilter || c.group === ui.groupFilter);
+  if (ui.carouselIndex >= shown.length) ui.carouselIndex = 0;
+  if (ui.carouselIndex < 0) ui.carouselIndex = shown.length - 1;
+  const current = shown[ui.carouselIndex];
+  const picked = current && S.caseId === current.id;
   return `<div class="panel stack">
-    <div class="row spread"><h2 style="margin:0">เลือกการ์ดเคส</h2><button class="btn" data-act="selectCase" data-v="random">🎲 สุ่มการ์ด</button></div>
+    <div class="row spread"><h2 style="margin:0">เลือกการ์ดเคส</h2><button class="btn" data-act="carouselRandom">🎲 สุ่มการ์ด</button></div>
     <div class="tabs">
       <button class="btn sm ${!ui.groupFilter ? "on" : ""}" data-act="groupFilter" data-v="0">ทั้งหมด (${cards.length})</button>
       ${groups.map((g) => `<button class="btn sm ${ui.groupFilter === g.no ? "on" : ""}" data-act="groupFilter" data-v="${g.no}">${g.no}. ${esc(g.name)}</button>`).join("")}
     </div>
-    <div class="card-grid">
-      ${shown
-        .map(
-          (c) => `<button class="pick ${S.caseId === c.id ? "on" : ""}" data-act="selectCase" data-v="${c.id}">
-          ${c.image ? `<img src="card-assets/${esc(c.image)}" alt="" loading="lazy" />` : `<div class="noimg">🩹</div>`}
-          <div class="body"><div class="muted small">G${c.group} · Card ${c.card}</div><b>${esc(c.title)}</b><div>${levelTag(c.level)}</div></div>
-        </button>`,
-        )
-        .join("")}
+    ${
+      !current
+        ? `<p class="muted">ไม่มีการ์ดในกลุ่มนี้</p>`
+        : `<div class="carousel">
+      <button type="button" class="carousel-nav prev" data-act="carouselNav" data-v="-1" aria-label="การ์ดก่อนหน้า" ${shown.length < 2 ? "disabled" : ""}>‹</button>
+      <div class="carousel-card ${picked ? "picked" : ""}">
+        ${current.image ? `<img src="card-assets/${esc(current.image)}" alt="" />` : `<div class="noimg">🩹</div>`}
+        <div class="carousel-info">
+          <div class="row" style="justify-content:center">${levelTag(current.level)}<span class="tag">G${current.group} · ${esc(groups.find((g) => g.no === current.group)?.name || "")}</span></div>
+          <h3 style="margin:6px 0 0">${esc(current.title)}</h3>
+          <div class="muted small">การ์ดที่ ${ui.carouselIndex + 1} / ${shown.length}</div>
+        </div>
+      </div>
+      <button type="button" class="carousel-nav next" data-act="carouselNav" data-v="1" aria-label="การ์ดถัดไป" ${shown.length < 2 ? "disabled" : ""}>›</button>
     </div>
-    ${S.caseId ? `<p class="small">เลือกแล้ว: <b>${esc(cards.find((c) => c.id === S.caseId).title)}</b> — กด “ไป: Opening stem” ด้านบนเพื่อเริ่ม</p>` : ""}
+    <div class="carousel-dots">${shown
+      .map((c, i) => `<button type="button" class="dot ${i === ui.carouselIndex ? "on" : ""} ${S.caseId === c.id ? "picked" : ""}" data-act="carouselJump" data-v="${i}" title="${esc(c.title)}"></button>`)
+      .join("")}</div>
+    <button class="btn-huge primary" data-act="selectCase" data-v="${current.id}" style="max-width:320px;margin:0 auto">${picked ? "✓ เลือกการ์ดนี้แล้ว" : "เลือกการ์ดนี้ →"}</button>`
+    }
+    ${S.caseId && !picked ? `<p class="small muted" style="text-align:center">เลือกไว้ก่อนหน้า: <b>${esc(cards.find((c) => c.id === S.caseId)?.title || "")}</b></p>` : ""}
   </div>`;
 }
 
@@ -1141,11 +1175,31 @@ app.addEventListener("click", async (e) => {
       return send("pickRole", { role: v || null });
     case "kick":
       return send("kick", { playerId: v });
+    case "toggleReady":
+      return send("toggleReady");
     case "startGame":
       return send("startGame");
     case "groupFilter":
       ui.groupFilter = Number(v);
+      ui.carouselIndex = 0;
       return render();
+    case "carouselNav": {
+      const n = S.catalog.cards.filter((c) => !ui.groupFilter || c.group === ui.groupFilter).length;
+      ui.carouselIndex = n ? (((ui.carouselIndex + Number(v)) % n) + n) % n : 0;
+      return render();
+    }
+    case "carouselJump":
+      ui.carouselIndex = Number(v);
+      return render();
+    case "carouselRandom": {
+      const list = S.catalog.cards.filter((c) => !ui.groupFilter || c.group === ui.groupFilter);
+      if (!list.length) return;
+      let next = ui.carouselIndex;
+      if (list.length > 1) while (next === ui.carouselIndex) next = Math.floor(Math.random() * list.length);
+      ui.carouselIndex = next;
+      sfx.reveal();
+      return render();
+    }
     case "selectCase":
       return send("selectCase", { caseId: v });
     case "advance":

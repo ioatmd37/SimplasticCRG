@@ -136,7 +136,7 @@ function addPlayer(room, name) {
   const ps = Object.values(room.players);
   if (ps.length >= MAX_PLAYERS) fail(`ห้องเต็มแล้ว (${MAX_PLAYERS} คน)`);
   if (ps.some((p) => p.name === name)) fail("ชื่อนี้มีในห้องแล้ว");
-  const player = { id: crypto.randomUUID(), name, role: null, connected: true, joinedAt: Date.now() };
+  const player = { id: crypto.randomUUID(), name, role: null, ready: false, connected: true, joinedAt: Date.now() };
   room.players[player.id] = player;
   if (!room.hostId) room.hostId = player.id;
   return player;
@@ -156,6 +156,7 @@ function card(room) {
 const actions = {
   pickRole(room, p, { role }) {
     if (room.phase !== "lobby") fail("เลือกบทบาทได้เฉพาะในล็อบบี้");
+    p.ready = false;
     if (role === null) {
       p.role = null;
       return;
@@ -164,7 +165,14 @@ const actions = {
     const holder = roleHolder(room, role);
     if (holder && holder.id !== p.id) fail(`${holder.name} เลือกบทบาทนี้แล้ว`);
     p.role = role;
-    stage(room, role, "พร้อม!", "act");
+    stage(room, role, "👋 เข้าร่วม!", "act");
+  },
+
+  toggleReady(room, p) {
+    if (room.phase !== "lobby") fail("ใช้ได้เฉพาะในล็อบบี้");
+    if (!p.role) fail("เลือกบทบาทก่อน");
+    p.ready = !p.ready;
+    if (p.ready) stage(room, p.role, "✅ พร้อมแล้ว!", "act");
   },
 
   kick(room, p, { playerId }) {

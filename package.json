@@ -1,6 +1,6 @@
 {
   "name": "simplastic-crg",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Multiplayer web game for the Plastic Surgery Clinical Reasoning card bank (4–5 players, role-based)",
   "main": "server/index.js",

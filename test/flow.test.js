@@ -183,6 +183,27 @@ test("4 players: scribe carries bias-monitor duties; lobby validation", async ()
   [...socks, d2].forEach((s) => s.close());
 });
 
+test("lobby: ready toggle resets on role change and blocks with no role", async () => {
+  const { socks } = await setupRoom(["A", "B", "C", "D"], ["facilitator", "patient", "doctor", "scribe"]);
+  const [fac, , doc] = socks;
+  assert.equal((await doc.act("toggleReady")).ok, true);
+  assert.equal(doc.last.me.ready, true);
+  assert.equal(doc.last.players.find((p) => p.name === "C").ready, true);
+  // Picking a (or no) role clears readiness.
+  assert.ok((await doc.act("pickRole", { role: "doctor" })).ok);
+  assert.equal(doc.last.me.ready, false);
+  await doc.act("toggleReady");
+  assert.equal(doc.last.me.ready, true);
+  await doc.act("pickRole", { role: null });
+  assert.equal(doc.last.me.ready, false);
+  assert.equal((await doc.act("toggleReady")).ok, false, "no role picked");
+  // Only usable in the lobby.
+  await doc.act("pickRole", { role: "doctor" });
+  await fac.act("startGame");
+  assert.equal((await doc.act("toggleReady")).ok, false, "lobby only");
+  socks.forEach((s) => s.close());
+});
+
 test("card data: exam, PL and PR are medical English only", () => {
   const THAI = /[\u0E00-\u0E7F]/;
   for (const c of cards) {

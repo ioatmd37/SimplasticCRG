@@ -131,6 +131,15 @@ label.field > span { display: block; margin-bottom: 4px; }
   width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
   background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 1.2rem;
 }
+/* Retro/arcade treatment for the "Rx" badge + wordmark used in the top bars */
+.brand-mark.pixel {
+  border-radius: 6px; font-family: ui-monospace, "Courier New", monospace; font-weight: 800;
+  border: 2px solid #000; box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45); image-rendering: pixelated;
+}
+.brand-text {
+  font-family: ui-monospace, "Courier New", monospace; font-weight: 800; letter-spacing: 0.02em;
+  text-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.5);
+}
 .divider { display: flex; align-items: center; gap: 10px; color: var(--ink-2); margin: 16px 0; font-size: 0.85rem; }
 .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .howto ol { padding-left: 1.2em; margin: 0; }
@@ -193,11 +202,17 @@ label.field > span { display: block; margin-bottom: 4px; }
   text-align: left; border: 2px solid var(--line); border-radius: var(--radius); padding: 12px;
   background: var(--surface); cursor: pointer; display: flex; flex-direction: column; gap: 4px;
 }
-.role-card:hover:not(:disabled) { border-color: var(--c); }
+.role-card:hover:not(.locked) { border-color: var(--c); }
 .role-card.mine { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--surface)); }
-.role-card:disabled { cursor: not-allowed; opacity: 0.75; }
+.role-card.locked { cursor: not-allowed; opacity: 0.75; }
 .role-card .title { font-weight: 600; color: var(--c); }
 .role-card .taken { font-size: 0.8rem; }
+.role-card .ready-btn { align-self: flex-start; margin-top: 2px; }
+.ready-badge { cursor: pointer; border: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .role-card.expanded { animation: role-card-expand 0.18s ease-out; }
+}
+@keyframes role-card-expand { from { transform: scaleY(0.94); opacity: 0.7; } to { transform: scaleY(1); opacity: 1; } }
 .players li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
 .players li:last-child { border-bottom: 0; }
 .players ul { list-style: none; padding: 0; margin: 0; }
@@ -406,3 +421,36 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 }
 .sprite-frame.empty .sprite-fallback-icon { display: grid; place-items: center; width: 74%; aspect-ratio: 1; font-size: 1.3rem; filter: grayscale(1); opacity: 0.8; }
 @media (prefers-reduced-motion: reduce) { .room-sprite.sprite-enter { animation: none; } }
+
+.brand-bulb {
+  width: 32px; height: 32px; object-fit: contain; image-rendering: pixelated;
+  filter: drop-shadow(0 0 6px rgba(255, 214, 102, 0.55));
+}
+
+.brand-version { font-size: 0.68rem; opacity: 0.65; font-weight: 600; margin-left: 4px; }
+
+/* Case-select carousel */
+.carousel { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.carousel-nav {
+  flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--line);
+  background: var(--surface-2); font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--ink);
+}
+.carousel-nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.carousel-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+.carousel-card {
+  flex: 0 1 280px; text-align: center; border: 3px solid var(--line); border-radius: 16px;
+  overflow: hidden; background: var(--surface-2); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.carousel-card.picked { border-color: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
+.carousel-card img { width: 100%; aspect-ratio: 687 / 1024; object-fit: cover; display: block; }
+.carousel-card .noimg { aspect-ratio: 687 / 1024; display: grid; place-items: center; font-size: 3rem; background: var(--surface-2); }
+.carousel-info { padding: 10px 14px 14px; }
+.carousel-dots { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 480px; margin: 4px auto 0; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line); background: transparent; padding: 0; cursor: pointer; }
+.dot.on { background: var(--accent); border-color: var(--accent); transform: scale(1.3); }
+.dot.picked { border-color: var(--ok); }
+.dot.picked.on { background: var(--ok); border-color: var(--ok); }
+@media (max-width: 480px) {
+  .carousel-nav { width: 36px; height: 36px; font-size: 1.2rem; }
+  .carousel-card { flex-basis: 200px; }
+}
