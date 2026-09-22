@@ -50,10 +50,15 @@ test("5-player full flow with hidden information", async () => {
   const [fac, pat, doc, scr, bia] = socks;
   const card = cards.find((c) => c.id === "G1C1");
 
-  // 6th player is rejected
-  const extra = client();
+  // A 6th player can join as the optional Observer; a 7th is rejected
   const code = fac.last.code;
-  assert.equal((await extra.call("join", { code, name: "Six" })).ok, false);
+  const obs = client();
+  const joined = await obs.call("join", { code, name: "Six" });
+  assert.ok(joined.ok, joined.error);
+  assert.ok((await obs.call("action", { type: "pickRole", payload: { role: "observer" } })).ok);
+  assert.equal((await obs.act("advance", { to: "next" })).ok, false, "observer has no control powers");
+  const extra = client();
+  assert.equal((await extra.call("join", { code, name: "Seven" })).ok, false);
   extra.close();
 
   // Role conflicts rejected
@@ -85,7 +90,10 @@ test("5-player full flow with hidden information", async () => {
 
   await fac.act("advance", { to: "next" }); // exam
   assert.equal(doc.last.caseView.exam.length, 0);
-  await doc.act("ask", { kind: "exam", text: "ตรวจ palate" });
+  const thaiExam = await doc.act("ask", { kind: "exam", text: "ตรวจ palate" });
+  assert.equal(thaiExam.ok, false, "exam requests must be medical English");
+  assert.match(thaiExam.error, /medical English/);
+  await doc.act("ask", { kind: "exam", text: "Inspect the hard and soft palate" });
   assert.equal((await pat.act("answer", { questionId: doc.last.questions[2].id, rowIdx: 2 })).ok, false, "patient cannot reveal PE");
   assert.ok((await fac.act("answer", { questionId: doc.last.questions[2].id, rowIdx: 2 })).ok);
   assert.equal(doc.last.caseView.exam[0].a, card.exam[2].a);
@@ -102,6 +110,8 @@ test("5-player full flow with hidden information", async () => {
   await fac.act("advance", { to: "next" }); // plpr
   assert.equal((await doc.act("plpr", { pl: "x", pr: "y" })).ok, false, "only scribe writes");
   await scr.act("plpr", { pl: "1. cleft lip", pr: "ทารก 5 วัน…" });
+  assert.equal((await scr.act("submitPlpr")).ok, false, "Thai PR rejected on submit");
+  await scr.act("plpr", { pr: "A 5-day-old female neonate with isolated unilateral cleft lip…" });
   assert.equal(doc.last.plpr.pl, "1. cleft lip");
   assert.equal(doc.last.caseView.expected, null);
   assert.ok((await scr.act("submitPlpr")).ok);
@@ -125,6 +135,7 @@ test("5-player full flow with hidden information", async () => {
 
   await fac.act("advance", { to: "next" }); // exit
   assert.equal((await doc.act("ticket", { oneLiner: "a" })).ok, false, "all three fields needed");
+  assert.equal((await doc.act("ticket", { oneLiner: "ทารก", mnm: "m", trigger: "t" })).ok, false, "one-liner must be English");
   for (const s of socks) assert.ok((await s.act("ticket", { oneLiner: "one", mnm: "mnm", trigger: "trig" })).ok);
   assert.equal(doc.last.ticketCount, 5);
   assert.equal(Object.keys(doc.last.tickets).length, 1, "only own ticket before summary");
@@ -140,6 +151,8 @@ test("5-player full flow with hidden information", async () => {
   assert.ok((await fac.act("restart")).ok);
   assert.equal(doc.last.phase, "case");
   assert.equal(doc.last.questions.length, 0);
+  assert.equal(obs.last.powers.control, false);
+  obs.close();
   socks.forEach((s) => s.close());
 });
 
@@ -168,4 +181,13 @@ test("4 players: scribe carries bias-monitor duties; lobby validation", async ()
   await new Promise((r2) => setTimeout(r2, 30));
   assert.equal(d2.last.me.role, "scribe");
   [...socks, d2].forEach((s) => s.close());
+});
+
+test("card data: exam, PL and PR are medical English only", () => {
+  const THAI = /[\u0E00-\u0E7F]/;
+  for (const c of cards) {
+    const texts = [...c.exam.flatMap((r) => [r.q, r.a]), ...c.problemList, c.problemRepresentation];
+    for (const t of texts) assert.ok(!THAI.test(t), `${c.id}: ${t.slice(0, 50)}`);
+    assert.ok(c.exam.length >= 8, `${c.id} exam rows`);
+  }
 });

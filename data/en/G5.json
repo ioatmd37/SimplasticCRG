@@ -1,0 +1,88 @@
+{
+ "G5C1": {
+  "exam": [
+   {"q": "Primary survey (ABCDE)", "a": "Airway patent; clear normal voice; no stridor or hoarseness; breathing and circulation initially normal."},
+   {"q": "Burn wound characteristics (color, blistering, capillary refill)", "a": "Right anterior thigh: large blisters with moist, bright red, blanching base (suspected superficial partial-thickness). Parts of the right shin: pale white, non-blanching (suspected deep partial- to full-thickness)."},
+   {"q": "Systematic %TBSA estimation (palmar method / chart per local protocol)", "a": "Estimated approximately 12–15% TBSA across both sites; the definitive figure must be confirmed with the institutional standardized chart rather than visual estimation."},
+   {"q": "Assessment for circumferential involvement of the limb", "a": "Right shin burn involves nearly three-quarters of the limb circumference; not yet circumferential, but requires serial reassessment as edema progresses."},
+   {"q": "Distal neurovascular assessment of the burned limb", "a": "Pedal pulses palpable; normal capillary refill; sensation currently intact."},
+   {"q": "Targeted examination of the face, neck, hands, genitalia/perineum and flexural joints", "a": "No burns of the face, hands, genitalia or knee/hip flexural areas (key pertinent negative lowering the priority of special-area referral in this case)."},
+   {"q": "Examination of the oral cavity, throat and voice", "a": "No soot, no hoarseness; normal oral mucosa (helps exclude inhalation injury)."},
+   {"q": "Hydration and mental status", "a": "Fully alert; moist mucous membranes; no significant tachycardia."},
+   {"q": "Assessment for associated trauma", "a": "No evidence of blunt injury or fracture in the affected limb."},
+   {"q": "Total-body skin examination", "a": "No additional burns."}
+  ],
+  "problemList": [
+   "Acute thermal (hot oil) burn of the right thigh and shin, approximately 12–15% TBSA, of mixed partial- to full-thickness depth",
+   "Near-circumferential burn of the right lower leg with risk of evolving vascular compromise",
+   "Need for fluid resuscitation per established principles and local protocol",
+   "Comorbid diabetes mellitus potentially impairing wound healing",
+   "Tetanus immunization status unknown"
+  ],
+  "problemRepresentation": "A 35-year-old man with diabetes mellitus presenting 40 minutes after a hot-oil scald to the right thigh and shin with mixed partial- to full-thickness burns of approximately 12–15% TBSA and near-circumferential involvement of the lower leg, without inhalation injury, special-area involvement or associated trauma, requiring systematic depth and TBSA assessment, fluid resuscitation per established principles and continuous monitoring for limb circulatory compromise."
+ },
+ "G5C2": {
+  "exam": [
+   {"q": "Primary survey (ABCDE) with voice assessment", "a": "Airway currently patent but with marked hoarseness; no stridor on initial examination."},
+   {"q": "Inspection of the face, nose, mouth and neck", "a": "Soot deposits around the nares and oral commissures; partially singed eyebrows and nasal vibrissae."},
+   {"q": "Examination of facial and neck burns", "a": "Superficial erythema over the anterior neck and submental region; no blistering."},
+   {"q": "Examination of the oral cavity and oropharynx", "a": "Mild erythema and edema of the oral mucosa and posterior pharyngeal wall; limited depth of visualization without instrumentation."},
+   {"q": "Chest auscultation", "a": "Mild bilateral wheeze; air entry reasonably symmetrical."},
+   {"q": "Serial voice and airway reassessment at 10–15 minute intervals", "a": "Progressive hoarseness compared with the previous assessment with new soft inspiratory stridor on deep inspiration: a critical red-flag finding indicating evolving upper-airway edema."},
+   {"q": "Examination of the left upper limb burn", "a": "Small partial-thickness burn of approximately 2% TBSA; not circumferential."},
+   {"q": "Level of consciousness and neurological status", "a": "Alert and oriented; no focal neurological deficit."},
+   {"q": "Continuous pulse oximetry", "a": "SpO₂ stable at 96–97% (a potentially misleading pertinent negative: pulse oximetry does not reflect carbon monoxide exposure or evolving airway edema)."},
+   {"q": "Total-body skin examination", "a": "No additional burns apart from the left upper limb and anterior neck/submental erythema."}
+  ],
+  "problemList": [
+   "Evolving inhalation injury with upper-airway edema (progressive hoarseness, soot, singed nasal vibrissae, emerging stridor)",
+   "Suspected carbon monoxide and toxic smoke exposure after 8 minutes of enclosed-space smoke exposure",
+   "Minor partial-thickness burn of the left upper limb (~2% TBSA), not the principal priority",
+   "Need for serial rather than single-point airway assessment",
+   "Chronic tobacco smoking potentially reducing pulmonary reserve"
+  ],
+  "problemRepresentation": "A 50-year-old male chronic smoker rescued after approximately 8 minutes in an enclosed room with fire and dense smoke, presenting with progressive hoarseness, perioral and perinasal soot and new stridor on serial reassessment, with a minor left upper limb burn and normal SpO₂, raising concern for evolving upper-airway edema from inhalation injury requiring urgent and continuous airway assessment that takes priority over the cutaneous burn."
+ },
+ "G5C3": {
+  "exam": [
+   {"q": "Primary survey (ABCDE)", "a": "Airway and breathing normal; currently hemodynamically stable; full trauma assessment required given the associated fall."},
+   {"q": "Inspection of entry and exit wounds", "a": "Small (1–2 cm) deep circular burns on the right palm and left sole: critical finding in that the small surface wounds are disproportionate to the reported muscle pain."},
+   {"q": "ECG and cardiac monitoring", "a": "ECG and cardiac monitoring indicated per local electrical-injury protocol given loss of consciousness, palpitations and a suspected high-voltage transthoracic current pathway."},
+   {"q": "Examination of limb muscles along the suspected current pathway (swelling, tension, pain on stretch)", "a": "Right upper limb mildly more swollen and tense than the left, with increased pain on passive muscle stretch: early signs requiring surveillance for compartment syndrome."},
+   {"q": "Distal pulses, capillary refill and sensation of affected limbs", "a": "Pulses currently palpable with normal capillary refill; mildly reduced sensation in the right hand compared with the left."},
+   {"q": "Urine assessment (color, volume)", "a": "No urine passed yet; monitor color and output once voiding for suspected myoglobinuria."},
+   {"q": "Examination of the spine and fall-impact sites", "a": "Mild lumbar spinal tenderness; no neurological deficit on initial examination."},
+   {"q": "Current level of consciousness and neurological status", "a": "Fully alert and oriented; no focal deficit (pertinent negative that must not stop surveillance for cardiac and muscle injury)."},
+   {"q": "Total-body skin examination for missed burns", "a": "No additional burns apart from the right hand and left foot."}
+  ],
+  "problemList": [
+   "High-voltage electrical injury with suspected transthoracic current pathway (entry right hand, exit left foot) and initial loss of consciousness",
+   "Suspected occult deep muscle injury and rhabdomyolysis not reflected by the small cutaneous burns",
+   "Risk of cardiac arrhythmia requiring continuous monitoring",
+   "Early signs of compartment syndrome of the right upper limb requiring serial examination",
+   "Associated trauma from a fall from height"
+  ],
+  "problemRepresentation": "A 32-year-old man presenting approximately 1 hour after a high-voltage occupational electrical injury with initial loss of consciousness and a fall from height, with small cutaneous burns of the right hand and left foot but muscle pain and right upper limb swelling disproportionate to the surface wounds, raising concern for occult deep tissue injury with risk of cardiac arrhythmia, rhabdomyolysis and evolving compartment syndrome requiring close monitoring and serial reassessment despite the innocuous-appearing surface wounds."
+ },
+ "G5C4": {
+  "exam": [
+   {"q": "Inspection of the neck and shoulder scar", "a": "Hypertrophic scar band extending from the submental region to the left shoulder; firm, tight skin; no open wound or purulence."},
+   {"q": "Cervical range of motion (extension, lateral rotation)", "a": "Markedly limited neck extension to a fraction of the normal range; right lateral rotation more restricted than left: critical finding indicating a functional cross-joint contracture."},
+   {"q": "Shoulder range of motion", "a": "Mildly limited left shoulder abduction due to scar traction extending to the shoulder."},
+   {"q": "Posture assessment (sitting and standing)", "a": "Mild left head tilt at rest (compensatory posture)."},
+   {"q": "Inspection of the scar for ulceration or rapid change", "a": "No ulceration or features suspicious for malignancy within the scar (pertinent negative against Marjolin ulcer)."},
+   {"q": "Neurovascular examination of the left upper limb", "a": "Normal distal pulses, capillary refill and sensation."},
+   {"q": "Spinal alignment", "a": "No overt scoliosis on initial examination; chronic head tilt may cause long-term postural sequelae if uncorrected."},
+   {"q": "Assessment of school and social functioning", "a": "Slower handwriting due to neck posture; no current reported teasing, although parents are concerned."},
+   {"q": "Assessment of scar tension relative to growth", "a": "Increasing scar tension relative to age-appropriate growth of the neck and shoulder, consistent with growth-related contracture progression."}
+  ],
+  "problemList": [
+   "Progressive post-burn hypertrophic scar contracture of the neck and left shoulder limiting cervical extension/rotation and shoulder abduction",
+   "Growth-related progression of contracture in a skeletally immature child",
+   "Functional impairment of activities of daily living and schooling (handwriting, play)",
+   "Previously inconsistent rehabilitation and splinting with barriers to be addressed",
+   "Need to evaluate indications for referral for reconstructive surgery"
+  ],
+  "problemRepresentation": "A 6-year-old boy with a scald burn scar of the neck and left shoulder sustained 2 years ago, now with progressive hypertrophic scar contracture over the past 6–8 months markedly limiting cervical extension/rotation and shoulder abduction and impairing handwriting and play, with a history of inconsistent rehabilitation and splinting, consistent with a growth-related functional contracture requiring systematic range-of-motion assessment and referral to rehabilitation and reconstructive surgery to prevent further deterioration."
+ }
+}

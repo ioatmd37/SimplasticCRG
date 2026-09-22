@@ -39,6 +39,13 @@ To play on a LAN, have the other players open `http://<this-machine-ip>:3000`.
 
 Each phase has a suggested timer (about 55 min in total). Only the facilitator can move forward or back.
 
+## Language rule
+
+Physical examination (exam requests and findings), the problem list and the problem representation are **medical English only, with no lay terms**.
+- Card content: `data/en/G*.json` overrides the exam rows, PL and PR of all 34 cards. The Thai card bank is unchanged and is still the source for everything else, including the patient's answers, which stay in the patient's own words.
+- `npm run cards` prints a WARN if any English section contains Thai text or a banned lay term, or if its row count doesn't match the Thai source.
+- Player input: exam requests, the team's PL/PR and the exit-ticket one-liner are rejected by the server if they contain Thai. The mic in those fields always transcribes in English.
+
 ## Architecture
 
 - `scripts/parse_cards.py`: Markdown card bank → `data/cards.json`

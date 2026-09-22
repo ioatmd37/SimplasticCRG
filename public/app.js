@@ -11,15 +11,194 @@ const ui = {
   groupFilter: 0,
   pendingSel: null, // question the patient/facilitator is answering
   drafts: {}, // local-only input values keyed by element id
+  micFor: null, // id of the field currently being dictated into
+  micLang: (() => { try { return localStorage.getItem("crg-mic-lang") || "th-TH"; } catch { return "th-TH"; } })(),
+  soundOn: (() => { try { return localStorage.getItem("crg-sound") !== "off"; } catch { return true; } })(),
+  animatedRoles: new Set(), // roles whose room-stage sprite has already played its entrance
 };
 
-const ROLE_ICON = { facilitator: "🎓", patient: "🛏️", doctor: "🩺", scribe: "📝", bias: "⚖️" };
+// ---------- 8-bit sound effects (synthesized, no audio files) ----------
+// Shared AudioContext for sfx + music. Browsers require a user gesture before audio
+// can actually make sound, so this is only ever called from inside a click handler.
+let audioCtxShared = null;
+function getAudioCtx() {
+  if (!ui.soundOn) return null;
+  if (!audioCtxShared) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    audioCtxShared = new AC();
+  }
+  if (audioCtxShared.state === "suspended") audioCtxShared.resume();
+  return audioCtxShared;
+}
+
+const sfx = (() => {
+  const get = getAudioCtx;
+  // One square-wave blip: freq (Hz), start offset (s), duration (s), peak volume.
+  function blip(freq, t0, dur, vol = 0.05) {
+    const c = get();
+    if (!c) return;
+    const osc = c.createOscillator();
+    const gain = c.createGain();
+    osc.type = "square";
+    osc.frequency.setValueAtTime(freq, c.currentTime + t0);
+    gain.gain.setValueAtTime(0, c.currentTime + t0);
+    gain.gain.linearRampToValueAtTime(vol, c.currentTime + t0 + 0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + t0 + dur);
+    osc.connect(gain).connect(c.destination);
+    osc.start(c.currentTime + t0);
+    osc.stop(c.currentTime + t0 + dur + 0.02);
+  }
+  return {
+    click: () => blip(520, 0, 0.05, 0.04),
+    confirm: () => {
+      blip(660, 0, 0.06, 0.045);
+      blip(880, 0.06, 0.09, 0.045);
+    },
+    error: () => {
+      blip(220, 0, 0.09, 0.05);
+      blip(140, 0.09, 0.13, 0.05);
+    },
+    reveal: () => {
+      blip(784, 0, 0.05, 0.04);
+      blip(988, 0.05, 0.05, 0.04);
+      blip(1319, 0.1, 0.09, 0.04);
+    },
+    // Classic "got a coin" blip (B5 -> high E6) for claiming a role in the lobby.
+    coin: () => {
+      blip(987.77, 0, 0.05, 0.05);
+      blip(1318.51, 0.05, 0.22, 0.05);
+    },
+    toggle: () => {
+      ui.soundOn = !ui.soundOn;
+      try {
+        localStorage.setItem("crg-sound", ui.soundOn ? "on" : "off");
+      } catch {}
+      if (ui.soundOn) {
+        blip(660, 0, 0.07, 0.045);
+        if (!S || !S.me) music.start(); // still on the opening screen
+      } else {
+        music.stop();
+      }
+    },
+  };
+})();
+
+// Opening-screen theme: a short looping chiptune (curious, upbeat i–VI–III–VII progression),
+// scheduled with a lookahead so it loops without drift. Stops the moment a room is joined.
+const music = (() => {
+  const TEMPO = 152; // BPM
+  const LOOKAHEAD_MS = 25;
+  const SCHEDULE_AHEAD = 0.1; // seconds
+  const N = {
+    F3: 174.61, G3: 196.0, A3: 220.0, C4: 261.63,
+    F4: 349.23, G4: 392.0, A4: 440.0, B4: 493.88, C5: 523.25, D5: 587.33, E5: 659.25, G5: 783.99,
+  };
+  // 16 eighth-note steps = 2 bars. Am (i) – F (VI) – C (III) – G (VII): a classic
+  // rising, adventurous game-overworld progression that loops back to A on step 0.
+  const LEAD = [N.A4, N.C5, N.E5, N.C5, N.F4, N.A4, N.C5, N.A4, N.C5, N.E5, N.G5, N.E5, N.G4, N.B4, N.D5, N.B4];
+  const BASS = [N.A3, 0, N.A3, 0, N.F3, 0, N.F3, 0, N.C4, 0, N.C4, 0, N.G3, 0, N.G3, 0];
+
+  let step = 0;
+  let nextTime = 0;
+  let timer = null;
+  let playing = false;
+
+  function tone(type, freq, t, dur, vol) {
+    const c = getAudioCtx();
+    if (!c) return;
+    const osc = c.createOscillator();
+    const gain = c.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, t);
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(vol, t + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.connect(gain).connect(c.destination);
+    osc.start(t);
+    osc.stop(t + dur + 0.02);
+  }
+
+  function scheduleStep(i, t) {
+    const stepDur = 60 / TEMPO / 2;
+    if (LEAD[i]) tone("square", LEAD[i], t, stepDur * 0.82, 0.03);
+    if (BASS[i]) tone("triangle", BASS[i], t, stepDur * 1.7, 0.05);
+  }
+
+  function scheduler() {
+    const c = getAudioCtx();
+    if (!c) return;
+    while (nextTime < c.currentTime + SCHEDULE_AHEAD) {
+      scheduleStep(step, nextTime);
+      nextTime += 60 / TEMPO / 2;
+      step = (step + 1) % LEAD.length;
+    }
+  }
+
+  return {
+    start() {
+      if (playing) return;
+      const c = getAudioCtx();
+      if (!c) return; // sound is off, or no AudioContext support
+      playing = true;
+      step = 0;
+      nextTime = c.currentTime + 0.05;
+      timer = setInterval(scheduler, LOOKAHEAD_MS);
+    },
+    stop() {
+      playing = false;
+      if (timer) clearInterval(timer);
+      timer = null;
+    },
+    get playing() {
+      return playing;
+    },
+  };
+})();
+
+const ROLE_ICON = { facilitator: "🎓", patient: "🛏️", doctor: "🩺", scribe: "📝", bias: "⚖️", observer: "👀" };
+
+// Virtual exam room: sprite sheets are 1 row x 4 frames (idle A, idle B, talk, action) on a
+// magenta chroma-key background, dropped in public/game-assets/sprites/. Falls back to a
+// role-colored emoji tile until a file exists at that path (checked via onerror).
+const ROOM_BG = "game-assets/room-day.webp";
+const ROOM_BG_NIGHT = "game-assets/room-night.webp";
+const ROOM_POS = {
+  observer: { x: 7, y: 88, facing: "right" },
+  facilitator: { x: 21, y: 80, facing: "right" },
+  patient: { x: 49, y: 76, facing: "right" },
+  doctor: { x: 65, y: 84, facing: "left" },
+  scribe: { x: 84, y: 80, facing: "left" },
+  bias: { x: 93, y: 92, facing: "left" },
+};
+function patientSpriteKey(cv) {
+  const s = `${cv.stem || ""} ${cv.title || ""}`;
+  if (/ทารก|แรกเกิด|neonat/i.test(s)) return "baby";
+  const m = s.match(/อายุ\s*(\d+)\s*(ปี|วัน|เดือน|สัปดาห์)/);
+  if (m && m[2] !== "ปี") return "baby";
+  const n = m ? Number(m[1]) : null;
+  const female = /หญิง/.test(s) && !/ชาย/.test(s);
+  if (n != null) {
+    if (n < 13) return "child";
+    if (n >= 60) return female ? "elder-f" : "elder-m";
+  }
+  return female ? "adult-f" : "adult-m";
+}
+function spriteKey(role, cv) {
+  // Before a case is picked (lobby), nobody knows who the patient is yet.
+  if (role === "patient") return `patient-${cv ? patientSpriteKey(cv) : "mystery"}`;
+  return role;
+}
+function spriteSrc(role, cv, frame) {
+  return `game-assets/sprites/${spriteKey(role, cv)}-${frame}.png`;
+}
 const ROLE_DESC = {
   facilitator: "คุมเวลาและลำดับขั้น เลือกการ์ด เปิด PE finding / เฉลย investigation / นำ debrief",
   patient: "ถือข้อมูลลับของผู้ป่วย ตอบเฉพาะเมื่อถูกถามตรงประเด็นเท่านั้น",
   doctor: "ซักประวัติแบบ hypothesis-driven ขอตรวจร่างกายอย่างเจาะจง และสั่ง investigation",
   scribe: "จดบันทึกให้ทีม เขียน Problem list + Problem representation one-liner",
   bias: "จับ anchoring / premature closure ระหว่างเล่น และนำ diagnostic time-out (ถ้ามี 4 คน Scribe ทำหน้าที่นี้แทน)",
+  observer: "ดูเกมได้ทุกอย่างเท่ากับทีม (ไม่เห็นข้อมูลลับของผู้ป่วย/facilitator) แต่กดหรือแก้ไขอะไรไม่ได้ เหมาะกับผู้เยี่ยมชม",
 };
 
 // ---------- helpers ----------
@@ -30,6 +209,78 @@ const roleLabel = (r) => (r && S.roles[r] ? S.roles[r].label : "ยังไม�
 const roleChip = (r) => (r ? `<span class="tag role-chip" data-role="${r}">${ROLE_ICON[r]} ${esc(roleLabel(r))}</span>` : `<span class="tag">ยังไม่เลือกบทบาท</span>`);
 const levelTag = (l) => `<span class="tag ${/must/i.test(l) ? "must" : /should/i.test(l) ? "should" : ""}">${esc(l)}</span>`;
 const draft = (id, fallback = "") => (id in ui.drafts ? ui.drafts[id] : fallback);
+
+// ---------- speech to text (Web Speech API: Chrome, Edge, Safari) ----------
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+const speechOK = !!SpeechRec && window.isSecureContext;
+let rec = null;
+
+// Fields that must be medical English: exam requests, PL, PR and the exit-ticket one-liner.
+const EN_ONLY = new Set(["ask-exam", "pl", "pr", "t-one"]);
+const hasThai = (s) => /[\u0E00-\u0E7F]/.test(s || "");
+const enWarn = (id, v) => (EN_ONLY.has(id) && hasThai(v) ? `<div class="en-warn small">⚠ ช่องนี้ต้องเป็น medical English เท่านั้น — พบภาษาไทย</div>` : "");
+
+const micBtn = (id) =>
+  speechOK
+    ? `<button type="button" class="btn sm mic ${ui.micFor === id ? "on" : ""}" data-act="mic" data-v="${id}" title="${ui.micFor === id ? "หยุดฟัง" : "พูดเพื่อพิมพ์"}" aria-label="พูดเพื่อพิมพ์" aria-pressed="${ui.micFor === id}">${ui.micFor === id ? "⏹" : `<img src="game-assets/icons/mic.png" alt="" class="icon-mic" />`}</button>`
+    : "";
+const soundToggleBtn = () =>
+  `<button type="button" class="btn sm ghost" data-act="soundToggle" title="${ui.soundOn ? "ปิดเสียง" : "เปิดเสียง"}" aria-label="สลับเสียง" aria-pressed="${ui.soundOn}">${ui.soundOn ? "🔊" : "🔇"}</button>`;
+
+// discard=true drops any audio not yet transcribed (used after sending or changing phase).
+function stopMic(discard = false) {
+  if (!rec) return;
+  if (discard) {
+    rec.onresult = null;
+    rec.abort();
+  } else rec.stop();
+}
+
+function startMic(id) {
+  stopMic(true);
+  const r = new SpeechRec();
+  r.lang = EN_ONLY.has(id) ? "en-US" : ui.micLang;
+  r.continuous = true;
+  r.interimResults = true;
+  let base = null;
+  r.onresult = (e) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (base === null) base = el.value ? el.value.replace(/\s*$/, " ") : "";
+    let finalText = "";
+    let interim = "";
+    for (let i = 0; i < e.results.length; i++) {
+      const t = e.results[i][0].transcript;
+      if (e.results[i].isFinal) finalText += t;
+      else interim += t;
+    }
+    el.value = (base + finalText + interim).slice(0, el.maxLength > 0 ? el.maxLength : 4000);
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+  r.onerror = (e) => {
+    if (e.error === "not-allowed" || e.error === "service-not-allowed") toast("ไม่ได้รับอนุญาตให้ใช้ไมโครโฟน — อนุญาตในเบราว์เซอร์ก่อน");
+    else if (e.error === "no-speech") toast("ไม่ได้ยินเสียง ลองใหม่อีกครั้ง");
+    else if (e.error !== "aborted") toast("ถอดเสียงไม่สำเร็จ: " + e.error);
+  };
+  r.onend = () => {
+    if (rec === r) {
+      rec = null;
+      ui.micFor = null;
+      render();
+    }
+  };
+  rec = r;
+  ui.micFor = id;
+  try {
+    r.start();
+  } catch {
+    rec = null;
+    ui.micFor = null;
+  }
+  render();
+  const el = document.getElementById(id);
+  if (el) el.focus();
+}
 
 function toast(msg) {
   const t = document.getElementById("toast");
@@ -42,7 +293,16 @@ function toast(msg) {
 function send(type, payload) {
   return new Promise((resolve) => {
     socket.emit("action", { type, payload }, (res) => {
-      if (!res.ok) toast(res.error);
+      if (!res.ok) {
+        toast(res.error);
+        sfx.error();
+      } else if (type === "answer") {
+        sfx.reveal();
+      } else if (type === "pickRole" && payload && payload.role) {
+        sfx.coin();
+      } else if (["startGame", "submitInvest", "submitPlpr", "revealTimeout", "ticket"].includes(type)) {
+        sfx.confirm();
+      }
       resolve(res.ok);
     });
   });
@@ -66,6 +326,16 @@ function clearSession() {
   } catch {}
 }
 
+// Browsers block audio until a user gesture; this starts the opening theme on the
+// visitor's first tap/click, but only while the opening screen is still showing.
+document.addEventListener(
+  "pointerdown",
+  () => {
+    if ((!S || !S.me) && ui.soundOn && !music.playing) music.start();
+  },
+  { capture: true },
+);
+
 // ---------- socket ----------
 socket.on("connect", () => {
   const sess = loadSession();
@@ -80,10 +350,16 @@ socket.on("connect", () => {
 });
 socket.on("state", (view) => {
   const prevPhase = S && S.phase;
+  const firstStateThisSession = !S;
   S = view;
   clockSkew = view.serverNow - Date.now();
+  if (view.me) music.stop(); // safety net: never let the opening theme play once seated in a room
+  // On a fresh page load resuming an existing room, don't replay the entrance
+  // animation for players who were already there — only for ones who join afterwards.
+  if (firstStateThisSession) for (const p of view.players) if (p.role) ui.animatedRoles.add(p.role);
   if (prevPhase !== view.phase) {
     ui.pendingSel = null;
+    stopMic(true);
     window.scrollTo({ top: 0 });
   }
   render();
@@ -120,36 +396,34 @@ function viewHome() {
   const params = new URLSearchParams(location.search);
   const code = params.get("room") || "";
   return `
-  <div class="wrap home">
-    <div class="brand">
-      <div class="brand-mark">Rx</div>
-      <div><h1 style="margin:0">SimPlastic Reasoning</h1>
-      <div class="muted small">Plastic Surgery Clinical Reasoning Card Game · 34 การ์ด · 4–5 ผู้เล่น</div></div>
-    </div>
-    <div class="panel stack">
-      <label class="field"><span>ชื่อของคุณ</span>
-        <input type="text" id="name" maxlength="24" placeholder="เช่น นศพ. มิ้นท์" value="${esc(draft("name"))}" autocomplete="off" /></label>
-      ${code ? "" : `<button class="btn primary" data-act="create" style="width:100%">สร้างห้องใหม่</button>
-      <div class="divider">หรือเข้าร่วมห้องที่มีอยู่</div>`}
-      <div class="row">
-        <input type="text" id="code" maxlength="4" placeholder="รหัสห้อง 4 ตัว" value="${esc(draft("code", code))}" style="flex:1;text-transform:uppercase" class="code" autocomplete="off" />
-        <button class="btn ${code ? "primary" : ""}" data-act="join">เข้าร่วม</button>
+  <div class="home-screen" style="background-image:url(game-assets/room-night.webp)">
+    <div class="home-sound-toggle">${soundToggleBtn()}</div>
+    <div class="home-content">
+      <img src="game-assets/logo.webp" alt="SimPlastic — The Clinical Reasoning Game" class="logo-image" />
+      <p class="tagline">Plastic Surgery · 34 การ์ด · 4–6 ผู้เล่น</p>
+
+      <div class="join-card stack">
+        <input type="text" id="code" maxlength="4" inputmode="text" placeholder="รหัสห้อง" value="${esc(draft("code", code))}" class="pin-input" autocomplete="off" autocapitalize="characters" />
+        <input type="text" id="name" maxlength="24" placeholder="ชื่อของคุณ" value="${esc(draft("name"))}" class="name-input" autocomplete="off" />
+        <button class="btn-huge primary" data-act="join">เข้าร่วมห้อง →</button>
+        ${code ? "" : `<div class="home-or">หรือ</div><button class="btn-huge ghost" data-act="create">สร้างห้องใหม่ (สำหรับ Facilitator)</button>`}
       </div>
+
+      <details class="howto-collapse">
+        <summary>วิธีเล่น</summary>
+        <ol class="small">
+          <li>สร้างห้อง แชร์รหัสให้เพื่อน 4–6 คน แต่ละคนเลือกบทบาท</li>
+          <li>Facilitator เลือกการ์ดเคส ทุกคนอ่าน Opening stem</li>
+          <li>Doctor ซักประวัติ → Patient เปิดข้อมูลเฉพาะที่ถูกถามตรงประเด็น</li>
+          <li>Doctor ขอตรวจร่างกายอย่างเจาะจง → Facilitator เปิด finding</li>
+          <li>ทีมเลือก investigation พร้อมเหตุผล → เฉลย</li>
+          <li>Scribe เขียน Problem list + one-liner → เทียบกับ Expected PL/PR</li>
+          <li>Bias monitor นำ diagnostic time-out (System 1 vs 2)</li>
+          <li>Faculty debrief → Exit ticket รายบุคคล → สรุปผล</li>
+        </ol>
+      </details>
+      <p class="disclaimer">เอกสารนี้เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง รายละเอียดเชิง protocol ต้องตรวจทานกับ local guideline ก่อนใช้สอนจริง</p>
     </div>
-    <div class="panel howto">
-      <h3>ลำดับการเล่น</h3>
-      <ol class="small">
-        <li>สร้างห้อง แชร์รหัสให้เพื่อน 4–5 คน แต่ละคนเลือกบทบาท</li>
-        <li>Facilitator เลือกการ์ดเคส ทุกคนอ่าน Opening stem</li>
-        <li>Doctor ซักประวัติ → Patient เปิดข้อมูลเฉพาะที่ถูกถามตรงประเด็น</li>
-        <li>Doctor ขอตรวจร่างกายอย่างเจาะจง → Facilitator เปิด finding</li>
-        <li>ทีมเลือก investigation พร้อมเหตุผล → เฉลย</li>
-        <li>Scribe เขียน Problem list + one-liner → เทียบกับ Expected PL/PR</li>
-        <li>Bias monitor นำ diagnostic time-out (System 1 vs 2)</li>
-        <li>Faculty debrief → Exit ticket รายบุคคล → สรุปผล</li>
-      </ol>
-    </div>
-    <p class="disclaimer">เอกสารนี้เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง รายละเอียดเชิง protocol ต้องตรวจทานกับ local guideline ก่อนใช้สอนจริง</p>
   </div>`;
 }
 
@@ -165,7 +439,7 @@ function viewLobby() {
       return `<button class="role-card ${mine ? "mine" : ""}" data-role="${r}" data-act="pickRole" data-v="${r}" ${holder && !mine ? "disabled" : ""}>
         <span class="title">${ROLE_ICON[r]} ${esc(def.label)}</span>
         <span class="small muted">${esc(ROLE_DESC[r])}</span>
-        <span class="taken">${holder ? `${mine ? "✓ คุณ" : "ถูกเลือกโดย " + esc(holder.name)}` : def.required ? `<span class="tag must">จำเป็น</span>` : `<span class="tag">ไม่บังคับ (คนที่ 5)</span>`}</span>
+        <span class="taken">${holder ? `${mine ? "✓ คุณ" : "ถูกเลือกโดย " + esc(holder.name)}` : def.required ? `<span class="tag must">จำเป็น</span>` : `<span class="tag">ไม่บังคับ</span>`}</span>
       </button>`;
     })
     .join("");
@@ -183,44 +457,84 @@ function viewLobby() {
   }
   const canStart = !S.lobbyProblems.length;
   return `
-  <header class="topbar"><div class="wrap row spread">
-    <div class="row"><div class="brand-mark" style="width:34px;height:34px;font-size:.9rem">Rx</div><b>SimPlastic Reasoning</b></div>
-    <button class="btn sm ghost" data-act="leave">ออกจากห้อง</button>
-  </div></header>
-  <div class="wrap">
-    <div class="layout" style="grid-template-columns:minmax(0,1fr) 320px">
-      <main class="stack">
-        <div class="panel">
+  <div class="home-screen lobby-screen" style="background-image:url(game-assets/room-night.webp)">
+    <div class="home-sound-toggle">${soundToggleBtn()}</div>
+    <div class="lobby-content">
+      <div class="row spread lobby-top">
+        <div class="row"><div class="brand-mark" style="width:32px;height:32px;font-size:.85rem">Rx</div>
+          <b style="color:#fff">SimPlastic Reasoning</b><span class="code-chip">${esc(S.code)}</span></div>
+        <button class="btn sm ghost" data-act="leave" style="color:#fff;border-color:rgba(255,255,255,.4)">ออกจากห้อง</button>
+      </div>
+
+      ${roomStage(true, ROOM_BG_NIGHT)}
+
+      <div class="lobby-grid">
+        <div class="join-card">
           <div class="row spread">
-            <div><div class="muted small">ขั้นที่ 1 · เข้าห้อง & เลือกบทบาท</div><h2 style="margin:0">เลือกบทบาทของคุณ</h2></div>
+            <div><div class="muted small">ขั้นที่ 1 · เลือกบทบาท</div><h2 style="margin:0">เลือกบทบาทของคุณ</h2></div>
             ${me.role ? `<button class="btn sm ghost" data-act="pickRole" data-v="">ยกเลิกบทบาท</button>` : ""}
           </div>
-          <p class="muted small">แต่ละบทบาทเลือกได้ 1 คน ต้องมีครบ 4 บทบาทหลัก · ถ้ามีคนที่ 5 ให้เป็น Bias monitor</p>
+          <p class="muted small">แต่ละบทบาทเลือกได้ 1 คน ต้องมีครบ 4 บทบาทหลัก · คนที่ 5 เป็น Bias monitor และคนที่ 6 เป็น Observer ได้ (ทั้งสองไม่บังคับ)</p>
           <div class="roles">${roleCards}</div>
         </div>
-      </main>
-      <aside class="stack" style="position:static">
-        <div class="panel">
-          <div class="muted small">รหัสห้อง</div>
-          <div class="code" style="font-size:2rem">${esc(S.code)}</div>
-          <button class="btn sm" data-act="copy" data-v="${esc(link)}">คัดลอกลิงก์เชิญ</button>
+        <div class="stack">
+          <div class="join-card">
+            <div class="muted small">รหัสห้อง · แชร์ลิงก์เชิญ</div>
+            <div class="code" style="font-size:1.8rem">${esc(S.code)}</div>
+            <button class="btn sm" data-act="copy" data-v="${esc(link)}" style="width:100%">คัดลอกลิงก์เชิญ</button>
+          </div>
+          <div class="join-card players">
+            <h3>ผู้เล่น ${S.players.length}/${S.limits.max}</h3>
+            <ul>${slots.join("")}</ul>
+          </div>
+          <div class="join-card stack">
+            ${canStart ? `<p class="small" style="color:var(--ok)">✓ พร้อมเริ่มเกม</p>` : `<ul class="checklist-problems">${S.lobbyProblems.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`}
+            ${isHost || me.role === "facilitator"
+              ? `<button class="btn-huge primary" data-act="startGame" ${canStart ? "" : "disabled"}>เริ่มเกม →</button>`
+              : `<p class="muted small">รอ host หรือ Facilitator กดเริ่มเกม</p>`}
+          </div>
         </div>
-        <div class="panel players">
-          <h3>ผู้เล่น ${S.players.length}/${S.limits.max}</h3>
-          <ul>${slots.join("")}</ul>
-        </div>
-        <div class="panel stack">
-          ${canStart ? `<p class="small" style="color:var(--ok)">✓ พร้อมเริ่มเกม</p>` : `<ul class="checklist-problems">${S.lobbyProblems.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`}
-          ${isHost || me.role === "facilitator"
-            ? `<button class="btn primary" style="width:100%" data-act="startGame" ${canStart ? "" : "disabled"}>เริ่มเกม →</button>`
-            : `<p class="muted small">รอ host หรือ Facilitator กดเริ่มเกม</p>`}
-        </div>
-      </aside>
+      </div>
     </div>
   </div>`;
 }
 
 // ---------- Game shell ----------
+// showEmpty=true (lobby) also draws a dashed placeholder for roles nobody has picked
+// yet. A role's sprite gets a one-time "pop in" entrance the first time it's seen
+// filled (tracked in ui.animatedRoles), so later re-renders (chat, timers, ...) don't
+// keep replaying it.
+function roomStage(showEmpty = false, bg = ROOM_BG) {
+  const cv = S.caseView;
+  const sprites = Object.keys(ROOM_POS)
+    .map((role) => {
+      const p = S.players.find((x) => x.role === role);
+      const pos = ROOM_POS[role];
+      const posStyle = `left:${pos.x}%;top:${pos.y}%`;
+      if (!p) {
+        if (!showEmpty) return "";
+        return `<div class="room-sprite empty-slot" style="${posStyle}">
+          <div class="sprite-frame idle empty"><span class="sprite-fallback-icon">${ROLE_ICON[role]}</span></div>
+          <div class="sprite-name muted">ว่าง</div>
+        </div>`;
+      }
+      const src = spriteSrc(role, cv, 1);
+      const firstSeen = !ui.animatedRoles.has(role);
+      ui.animatedRoles.add(role);
+      return `<div class="room-sprite ${firstSeen ? "sprite-enter" : ""}" id="spr-${role}" data-role="${role}" data-facing="${pos.facing}"
+        style="${posStyle}">
+        <div class="bubble" id="bub-${role}" hidden></div>
+        <div class="sprite-frame idle" data-frame="1">
+          <img src="${src}" alt="" onerror="this.closest('.sprite-frame').classList.add('fallback')" />
+          <span class="sprite-fallback-icon">${ROLE_ICON[role]}</span>
+        </div>
+        <div class="sprite-name">${esc(p.name)}</div>
+      </div>`;
+    })
+    .join("");
+  return `<div class="room-stage" style="background-image:url(${bg})">${sprites}</div>`;
+}
+
 function viewGame() {
   const cv = S.caseView;
   const idx = S.phases.findIndex((p) => p.id === S.phase);
@@ -257,11 +571,12 @@ function viewGame() {
         <div><b>${cv ? esc(cv.title) : "SimPlastic Reasoning"}</b>
         <div class="muted small">ห้อง <span class="code">${esc(S.code)}</span> · ${roleChip(S.me.role)}</div></div>
       </div>
-      <div class="row"><span class="timer muted small" id="timer"></span>${nav}</div>
+      <div class="row">${soundToggleBtn()}${speechOK ? `<button class="btn sm ghost" data-act="micLang" title="ภาษาที่ใช้ถอดเสียง">🎙 ${ui.micLang === "th-TH" ? "ไทย" : "EN"}</button>` : ""}<span class="timer muted small" id="timer"></span>${nav}</div>
     </div>
     <div class="stepper">${stepper}</div>
   </div></header>
   <div class="wrap">
+    ${roomStage()}
     <div class="layout" ${cv ? "" : 'style="grid-template-columns:minmax(0,1fr) 300px"'}>
       ${cv ? `<aside class="case-col">${viewCaseCard(cv)}</aside>` : ""}
       <main class="stack">${roleGuide()}${main}</main>
@@ -390,10 +705,13 @@ function viewQA(kind) {
   const ask = P.doctor
     ? `<div class="panel stack">
         <h3>${isHist ? "ถามผู้ป่วย" : "ขอตรวจร่างกาย"}</h3>
+        ${isHist ? "" : `<p class="small muted" style="margin:0">ระบุการตรวจเป็น <b>medical English</b> เท่านั้น — ห้ามใช้ภาษาไทยหรือศัพท์ชาวบ้าน</p>`}
         <div class="row">
-          <input type="text" id="ask-${kind}" maxlength="300" style="flex:1" placeholder="${isHist ? "เช่น ดูดนมแล้วมีนมไหลออกทางจมูกไหม" : "เช่น ตรวจ palate ด้วยไฟฉายและไม้กดลิ้น"}" value="${esc(draft("ask-" + kind))}" />
+          <input type="text" id="ask-${kind}" maxlength="300" style="flex:1" placeholder="${isHist ? "เช่น ดูดนมแล้วมีนมไหลออกทางจมูกไหม" : "e.g. Inspect the hard and soft palate with a pen torch and tongue depressor"}" value="${esc(draft("ask-" + kind))}" />
+          ${micBtn("ask-" + kind)}
           <button class="btn primary" data-act="ask" data-v="${kind}">${isHist ? "ถาม" : "ขอตรวจ"}</button>
         </div>
+        ${isHist ? "" : `<div id="warn-ask-exam">${enWarn("ask-exam", draft("ask-exam"))}</div>`}
       </div>`
     : "";
 
@@ -464,7 +782,7 @@ function viewInvest() {
           <span>${esc(r.option)}</span></label></td>
         <td>${chosen
           ? canEdit
-            ? `<input type="text" id="inv-${r.idx}" data-sync="inv" data-v="${r.idx}" placeholder="เหตุผล: ผลนี้จะเปลี่ยน management อย่างไร" value="${esc(sel[r.idx])}" />`
+            ? `<div class="row" style="flex-wrap:nowrap"><input type="text" id="inv-${r.idx}" data-sync="inv" data-v="${r.idx}" maxlength="300" placeholder="เหตุผล: ผลนี้จะเปลี่ยน management อย่างไร" value="${esc(sel[r.idx])}" />${micBtn("inv-" + r.idx)}</div>`
             : `<span class="small">${esc(sel[r.idx]) || '<span class="muted">(ไม่ได้ระบุเหตุผล)</span>'}</span>`
           : `<span class="muted small">—</span>`}</td>
         ${r.answer != null ? `<td class="small"><div class="muted">${esc(r.rationale)}</div><b>${esc(r.answer)}</b></td>` : ""}
@@ -487,10 +805,13 @@ function viewPlpr() {
   const edit = P.scribe && !submitted;
   const exp = S.caseView.expected;
   const team = `<div class="stack">
-    <label class="field"><span>Problem list ของทีม (1–5 ข้อ)</span>
+    <p class="small muted" style="margin:0">เขียน PL/PR เป็น <b>medical English</b> เท่านั้น — ห้ามใช้ภาษาไทยหรือศัพท์ชาวบ้าน</p>
+    <label class="field"><span class="row spread">Problem list ของทีม (1–5 ข้อ) ${edit ? micBtn("pl") : ""}</span>
       <textarea id="pl" rows="6" data-sync="plpr" ${edit ? "" : "readonly"} placeholder="1. …">${esc(pl)}</textarea></label>
-    <label class="field"><span>Problem representation (one-liner)</span>
-      <textarea id="pr" rows="4" data-sync="plpr" ${edit ? "" : "readonly"} placeholder="อายุ/เพศ, time course, mechanism, key +/−, clinical concern">${esc(pr)}</textarea></label>
+    <div id="warn-pl">${enWarn("pl", pl)}</div>
+    <label class="field"><span class="row spread">Problem representation (one-liner) ${edit ? micBtn("pr") : ""}</span>
+      <textarea id="pr" rows="4" data-sync="plpr" ${edit ? "" : "readonly"} placeholder="Age/sex, time course, mechanism, key positives/negatives, main clinical concern">${esc(pr)}</textarea></label>
+    <div id="warn-pr">${enWarn("pr", pr)}</div>
     ${edit ? `<button class="btn primary" data-act="submitPlpr">ส่ง PL/PR ของทีม</button>` : ""}
     ${!P.scribe && !submitted ? `<p class="muted small">Scribe กำลังเขียน — เสนอความเห็นผ่านแชทได้</p>` : ""}
   </div>`;
@@ -525,7 +846,7 @@ function viewTimeout() {
     <h2>Diagnostic time-out — System 1 vs System 2</h2>
     <p class="muted small">หยุดคิดช้าลง: ทีมไล่ตอบ checklist ทีละข้อ ก่อนสรุป</p>
     <ul class="rows" style="list-style:none">${checklist}</ul>
-    <label class="field"><span>Must-not-miss ของทีม (เรียงจากอันตรายที่สุด)</span>
+    <label class="field"><span class="row spread">Must-not-miss ของทีม (เรียงจากอันตรายที่สุด) ${(P.bias || P.scribe) && !t.revealed ? micBtn("mnm") : ""}</span>
       <textarea id="mnm" rows="4" data-sync="mnm" ${(P.bias || P.scribe) && !t.revealed ? "" : "readonly"} placeholder="1. …">${esc(t.mnm)}</textarea></label>
     ${S.flags.length ? `<div><b>Bias flags ระหว่างเคส (${S.flags.length})</b>${S.flags.map(flagHtml).join("")}</div>` : `<p class="muted small">ไม่มี bias flag ระหว่างเคส</p>`}
   </div>
@@ -565,10 +886,11 @@ function viewDebrief() {
 function viewExit() {
   const mine = S.tickets[S.me.id];
   const f = (id, label, ph, v) =>
-    `<label class="field"><span>${label}</span><textarea id="${id}" rows="${id === "t-one" ? 3 : 2}" placeholder="${ph}">${esc(draft(id, v || ""))}</textarea></label>`;
+    `<label class="field"><span class="row spread">${label} ${micBtn(id)}</span><textarea id="${id}" rows="${id === "t-one" ? 3 : 2}" placeholder="${ph}">${esc(draft(id, v || ""))}</textarea></label>`;
   return `<div class="panel stack">
     <div class="row spread"><h2 style="margin:0">Exit ticket (รายบุคคล)</h2><span class="tag">${S.ticketCount}/${S.players.length} ส่งแล้ว</span></div>
-    ${f("t-one", "1. One-liner สุดท้ายของคุณ", "Problem representation หลังจบ debrief", mine && mine.oneLiner)}
+    ${f("t-one", "1. One-liner สุดท้ายของคุณ (medical English)", "Final problem representation in medical English", mine && mine.oneLiner)}
+    <div id="warn-t-one">${enWarn("t-one", draft("t-one", mine && mine.oneLiner))}</div>
     ${f("t-mnm", "2. Must-not-miss ที่สำคัญที่สุด 1 ข้อ", "", mine && mine.mnm)}
     ${f("t-trig", "3. Trigger ของคุณเองที่ทำให้เปลี่ยนจาก System 1 → System 2", "", mine && mine.trigger)}
     <button class="btn primary" data-act="ticket">${mine ? "อัปเดต exit ticket" : "ส่ง exit ticket"}</button>
@@ -647,26 +969,59 @@ function viewSide() {
     .map((p) => `<li class="${p.connected ? "" : "offline"}"><span class="role-dot" data-role="${p.role}"></span><span style="flex:1">${esc(p.name)}${p.id === S.me.id ? " (คุณ)" : ""}</span><span class="small muted">${ROLE_ICON[p.role] || ""}</span></li>`)
     .join("")}</ul></div>`;
   const notes = inCase
-    ? `<div class="panel stack"><h3 style="margin:0">📝 บันทึกของทีม</h3>
+    ? `<div class="panel stack"><div class="row spread"><h3 style="margin:0">📝 บันทึกของทีม</h3>${P.scribe ? micBtn("notes") : ""}</div>
         <textarea id="notes" rows="6" data-sync="notes" ${P.scribe ? "" : "readonly"} placeholder="${P.scribe ? "จด hypothesis, ข้อมูลสำคัญ, pertinent negative…" : "Scribe จะจดที่นี่"}">${esc(S.notes)}</textarea></div>`
     : "";
   const flags = inCase
     ? `<div class="panel stack"><h3 style="margin:0">⚖️ Bias flags</h3>
         ${P.bias
           ? `<select id="flag-bias">${S.biases.map((b) => `<option ${draft("flag-bias") === b ? "selected" : ""}>${esc(b)}</option>`).join("")}</select>
-             <input type="text" id="flag-note" maxlength="300" placeholder="เกิดอะไรขึ้น" value="${esc(draft("flag-note"))}" />
+             <div class="row" style="flex-wrap:nowrap"><input type="text" id="flag-note" maxlength="300" placeholder="เกิดอะไรขึ้น" value="${esc(draft("flag-note"))}" />${micBtn("flag-note")}</div>
              <button class="btn sm" data-act="flag">ติด flag</button>`
           : ""}
         ${S.flags.length ? S.flags.slice(-5).reverse().map(flagHtml).join("") : `<p class="muted small">ยังไม่มี</p>`}</div>`
     : "";
   const chat = `<div class="panel stack"><h3 style="margin:0">💬 แชท</h3>
     <div class="chat">${S.chat.map((m) => { const p = player(m.by); return `<div><span class="role-dot" data-role="${p.role}"></span> <b>${esc(p.name)}</b>: ${esc(m.text)}</div>`; }).join("") || '<span class="muted small">ยังไม่มีข้อความ</span>'}</div>
-    <div class="row"><input type="text" id="chat" maxlength="300" style="flex:1" placeholder="พิมพ์ข้อความ" value="${esc(draft("chat"))}" /><button class="btn sm" data-act="chat">ส่ง</button></div></div>`;
+    <div class="row"><input type="text" id="chat" maxlength="300" style="flex:1" placeholder="พิมพ์ข้อความ" value="${esc(draft("chat"))}" />${micBtn("chat")}<button class="btn sm" data-act="chat">ส่ง</button></div></div>`;
   return players + notes + flags + chat;
 }
 
 // ---------- Timer ----------
+function poseRoom() {
+  if (!S || !S.stage) return;
+  const now = Date.now() + clockSkew;
+  const cv = S.caseView;
+  for (const role of Object.keys(ROOM_POS)) {
+    const spr = document.getElementById("spr-" + role);
+    if (!spr) continue;
+    const frame = spr.querySelector(".sprite-frame");
+    const img = frame.querySelector("img");
+    const bubble = document.getElementById("bub-" + role);
+    const ev = S.stage[role];
+    const recent = ev && now - ev.t < 3500;
+    // Frames: 1/2 = idle bob (alternate every ~900ms), 3 = talk, 4 = action.
+    const n = recent && ev.pose === "talk" ? 3 : recent && ev.pose === "act" ? 4 : 1 + (Math.floor(now / 900) % 2);
+    if (frame.dataset.frame !== String(n)) {
+      frame.dataset.frame = String(n);
+      img.src = spriteSrc(role, cv, n);
+      if (n >= 3) {
+        frame.classList.remove("pop");
+        void frame.offsetWidth; // restart the CSS animation
+        frame.classList.add("pop");
+      }
+    }
+    if (recent && ev.text) {
+      bubble.textContent = ev.text.length > 60 ? ev.text.slice(0, 57) + "…" : ev.text;
+      bubble.hidden = false;
+    } else {
+      bubble.hidden = true;
+    }
+  }
+}
+
 function tick() {
+  poseRoom();
   const el = document.getElementById("timer");
   if (!el || !S) return;
   const ph = S.phases.find((p) => p.id === S.phase);
@@ -689,6 +1044,8 @@ function debounced(key, fn, ms = 350) {
 app.addEventListener("input", (e) => {
   const el = e.target;
   if (!el.id) return;
+  const warn = document.getElementById("warn-" + el.id);
+  if (warn) warn.innerHTML = enWarn(el.id, el.value);
   const sync = el.dataset.sync;
   if (!sync) {
     ui.drafts[el.id] = el.value;
@@ -727,8 +1084,12 @@ app.addEventListener("click", async (e) => {
   if (!el || el.disabled) return;
   const act = el.dataset.act;
   const v = el.dataset.v;
+  if (act !== "soundToggle") sfx.click();
 
   switch (act) {
+    case "soundToggle":
+      sfx.toggle();
+      return render();
     case "create":
     case "join": {
       const name = take("name") || (document.getElementById("name") || {}).value || "";
@@ -737,6 +1098,8 @@ app.addEventListener("click", async (e) => {
       if (act === "join" && !code) return toast("กรุณาใส่รหัสห้อง");
       socket.emit(act, { name, code }, (res) => {
         if (!res.ok) return toast(res.error);
+        music.stop();
+        ui.animatedRoles.clear();
         saveSession(res.code, res.playerId);
         history.replaceState(null, "", `?room=${res.code}`);
       });
@@ -758,6 +1121,22 @@ app.addEventListener("click", async (e) => {
         toast(v);
       }
       return;
+    case "mic":
+      if (ui.micFor === v) {
+        stopMic();
+        return;
+      }
+      startMic(v);
+      return;
+    case "micLang":
+      ui.micLang = ui.micLang === "th-TH" ? "en-US" : "th-TH";
+      try {
+        localStorage.setItem("crg-mic-lang", ui.micLang);
+      } catch {}
+      if (ui.micFor) startMic(ui.micFor);
+      else render();
+      toast(ui.micLang === "th-TH" ? "ถอดเสียงเป็นภาษาไทย" : "Speech-to-text: English");
+      return;
     case "pickRole":
       return send("pickRole", { role: v || null });
     case "kick":
@@ -775,6 +1154,8 @@ app.addEventListener("click", async (e) => {
       const id = "ask-" + v;
       const text = take(id);
       if (!text) return toast("พิมพ์คำถามก่อน");
+      if (EN_ONLY.has(id) && hasThai(text)) return toast("คำขอตรวจร่างกายต้องเป็น medical English เท่านั้น");
+      if (ui.micFor === id) stopMic(true);
       if (await send("ask", { kind: v, text })) {
         clearDraft(id);
         render();
@@ -824,6 +1205,7 @@ app.addEventListener("click", async (e) => {
     case "chat": {
       const text = take("chat");
       if (!text) return;
+      if (ui.micFor === "chat") stopMic(true);
       if (await send("chat", { text })) {
         clearDraft("chat");
         render();

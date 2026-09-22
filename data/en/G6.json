@@ -1,0 +1,68 @@
+{
+ "G6C1": {
+  "exam": [
+   {"q": "General appearance and communication", "a": "Well-proportioned; communicates appropriately; no overt acute anxiety or depressive features during this consultation."},
+   {"q": "Nasal airway assessment", "a": "Bilateral nasal airflow patent; no clinically obstructive septal deviation."},
+   {"q": "Nasal skin and soft-tissue envelope quality", "a": "Moderately thick nasal skin; no scarring or inflammation."},
+   {"q": "Facial proportions and symmetry", "a": "Reasonably symmetrical facial proportions; no apparent craniofacial anomaly."},
+   {"q": "Screening examination of the nasal septum and tip", "a": "No septal perforation or palpable mass."},
+   {"q": "Screening of wound-healing risk (smoking)", "a": "No chronic wounds or delayed healing at present; active smoking is a significant modifiable risk factor."},
+   {"q": "Vital signs and cardiopulmonary screen", "a": "Within normal limits; no initial contraindication to general anesthesia."},
+   {"q": "Behavioral observation during history (mirror checking, photographing, reassurance-seeking)", "a": "Repeated mirror checking during the consultation and repeated reassurance-seeking about how abnormal her nose appears."},
+   {"q": "Pertinent negative: bleeding diathesis or airway red flags", "a": "No history suggestive of a bleeding diathesis; no recurrent or prolonged epistaxis."},
+   {"q": "Pertinent negative: severe depression or suicidal ideation today", "a": "Denies suicidal ideation and severe depressive symptoms on direct, sensitive questioning."}
+  ],
+  "problemList": [
+   "Aesthetic consultation for rhinoplasty with clearly articulated, self-directed motivation and no external coercion",
+   "Features warranting evaluation for possible body dysmorphic disorder (preoccupation, repetitive mirror checking/photographing, expectation of global life change)",
+   "Modifiable medical and anesthetic risk from active tobacco smoking",
+   "Potentially unrealistic outcome expectations shaped by media imagery",
+   "Need for a comprehensive informed consent process before any surgical scheduling"
+  ],
+  "problemRepresentation": "A healthy 24-year-old woman self-referred for rhinoplasty with clearly articulated motivation but with appearance-related preoccupation, unrealistically high outcome expectations and ongoing tobacco smoking, requiring evaluation for possible body dysmorphic disorder, realistic expectation setting, modification of risk factors and a structured informed consent process before any surgical decision."
+ },
+ "G6C2": {
+  "exam": [
+   {"q": "Obtaining consent and explaining the rationale before every examination", "a": "Patient agrees to examination when the purpose is explained in advance and feels able to decline or stop at any time."},
+   {"q": "General appearance and mental status screen", "a": "Alert; communicates clearly; no acute anxiety or distress."},
+   {"q": "Vital signs and cardiopulmonary screen", "a": "Within normal limits; no initial contraindication to perioperative risk assessment."},
+   {"q": "Examination of the chest / area relevant to the requested procedure (only when appropriate and with explicit consent)", "a": "Simulated findings are used only as needed for discussion in this session; an intimate physical examination is not required for this reasoning exercise."},
+   {"q": "Screening of wound-healing risk", "a": "No chronic wounds or known healing problems; non-smoker (favorable factor for wound healing)."},
+   {"q": "Assessment of psychosocial readiness during the conversation (not a gatekeeping test)", "a": "Demonstrates consistent goals, understands outcome uncertainty, and has an established psychological support system."},
+   {"q": "Observation of response to inadvertent misnaming or misgendering (teaching point, not a test)", "a": "If it occurs, the patient becomes quieter and visibly tense, signaling the need for a brief apology and immediate correction without undue emphasis."},
+   {"q": "Pertinent negative: acute self-harm risk or crisis today", "a": "Denies suicidal ideation and acute psychological crisis on direct, sensitive questioning."},
+   {"q": "Pertinent negative: coercion by others to seek treatment", "a": "Clearly affirms a self-directed decision to seek consultation without coercion."}
+  ],
+  "problemList": [
+   "Gender-affirming care consultation for a transmasculine patient (name: Palm; pronouns: he/him) presenting voluntarily with clearly defined personal goals",
+   "Prior adverse healthcare experiences (misgendering, intrusive questioning) requiring a culturally humble approach to maintain safe continuity of care",
+   "Ongoing testosterone therapy under endocrine supervision requiring coordination before procedural planning",
+   "Procedure-specific medical and anesthetic risk still to be assessed per local protocol",
+   "Need for multidisciplinary referral (endocrinology, psychiatry, psychology) where beyond the current scope of service or clinically indicated"
+  ],
+  "problemRepresentation": "A 29-year-old transmasculine patient (Palm, he/him) presenting voluntarily to discuss masculinizing chest surgery with clearly defined personal goals, on supervised testosterone therapy, with prior adverse healthcare experiences and an established psychological support system, requiring identity-affirming shared decision-making, procedure-specific risk assessment, consented coordination with the endocrine team and multidisciplinary referral as appropriate to the scope of service, without pathologizing the patient's gender identity."
+ },
+ "G6C3": {
+  "exam": [
+   {"q": "Vital signs and BMI", "a": "Within normal limits; BMI in the upper-normal to mildly overweight range; no systemic abnormality."},
+   {"q": "Breast examination", "a": "Bilateral, relatively symmetrical macromastia with moderate ptosis; no palpable mass."},
+   {"q": "Inspection for bra-strap grooving", "a": "Deep bilateral shoulder grooving from bra straps, consistent with the reported functional symptoms."},
+   {"q": "Inspection of the inframammary skin", "a": "Mild erythema and irritation consistent with chronic intertrigo."},
+   {"q": "Posture assessment", "a": "Mild postural kyphosis; no overt scoliosis."},
+   {"q": "Nipple–areola sensation", "a": "Normal bilaterally."},
+   {"q": "Assessment for nipple discharge", "a": "None."},
+   {"q": "Axillary lymph node examination", "a": "Normal; no palpable lymphadenopathy."},
+   {"q": "Respiratory examination", "a": "Normal; no restriction attributable to breast weight."},
+   {"q": "Inspection for striae of the chest and back", "a": "Scattered striae distensae consistent with rapid tissue expansion."}
+  ],
+  "problemList": [
+   "Symptomatic macromastia with significant physical sequelae (chronic back/neck pain, shoulder grooving, inframammary intertrigo)",
+   "Psychosocial impact related to body image",
+   "Breast growth apparently stabilized but requiring confirmation",
+   "No palpable breast mass or nipple discharge on examination",
+   "Family disagreement regarding the appropriateness of surgery at this age",
+   "Psychological readiness not yet formally assessed"
+  ],
+  "problemRepresentation": "An 18-year-old woman with symptomatic macromastia since early adolescence, with chronic back and neck pain, bra-strap shoulder grooving and inframammary intertrigo indicating a clear medical functional indication beyond aesthetic concern alone, and no palpable breast mass, requiring confirmation of growth completion, assessment of psychological readiness and a comprehensive informed consent process before treatment planning."
+ }
+}

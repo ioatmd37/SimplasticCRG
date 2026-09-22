@@ -1,0 +1,90 @@
+{
+ "G3C1": {
+  "exam": [
+   {"q": "Inspection of the lesion under adequate lighting", "a": "1.2 cm lesion on the left nasal sidewall/dorsum with a pearly rolled border, marginal telangiectasia and a central shallow ulceration with partial crusting."},
+   {"q": "Palpation of the lesion base", "a": "Indurated base adherent to the overlying skin but mobile over the underlying nasal bone and cartilage; no deep fixation."},
+   {"q": "Assessment of lesion extent relative to adjacent structures (nasal ala, medial canthus)", "a": "Lesion margin approximately 5 mm from the alar rim; no clinical extension into adjacent structures."},
+   {"q": "Full skin survey", "a": "Multiple actinic keratoses on the face and dorsa of both hands; no other lesion of comparable concern."},
+   {"q": "Palpation of preauricular and cervical lymph nodes", "a": "No palpable lymphadenopathy bilaterally (pertinent negative)."},
+   {"q": "Sensory examination around the lesion", "a": "Normal sensation; no paresthesia or anesthesia (pertinent negative for perineural invasion)."},
+   {"q": "Screening eye examination", "a": "Normal visual acuity bilaterally; no conjunctival or eyelid margin abnormality."},
+   {"q": "Mouth opening and oral mucosa", "a": "Normal; no concurrent oral lesion."},
+   {"q": "Assessment for acute infection (erythema, warmth, swelling, purulence)", "a": "No cellulitis or acute purulence; dry wound without significant malodor."},
+   {"q": "Assessment of adjacent functional structures (nasal airway, eyelid closure)", "a": "Bilateral nasal airflow patent; complete eyelid closure."}
+  ],
+  "problemList": [
+   "Chronic non-healing lesion of the left nasal sidewall with pearly rolled border and induration, suspicious for non-melanoma skin cancer (basal cell carcinoma favored)",
+   "Chronic cumulative ultraviolet exposure with multiple actinic keratoses",
+   "Diagnostic delay due to repeated empirical treatment",
+   "No clinical evidence of regional nodal disease or deep invasion at presentation",
+   "Comorbid type 2 diabetes mellitus potentially impairing post-procedural wound healing"
+  ],
+  "problemRepresentation": "A 68-year-old male farmer with chronic cumulative sun exposure presenting with a 5-month non-healing, recurrent pearly rolled-border lesion of the left nasal sidewall unresponsive to repeated empirical treatment for skin infection, without regional lymphadenopathy or sensory deficit, suspicious for non-melanoma skin cancer requiring histological diagnosis before definitive treatment selection."
+ },
+ "G3C2": {
+  "exam": [
+   {"q": "Inspection of the nail plate and subungual lesion under adequate lighting", "a": "Longitudinal brown-black melanonychia approximately 8 mm wide involving nearly half of the nail plate, with irregular borders and variegated pigmentation."},
+   {"q": "Assessment for Hutchinson sign (periungual / hyponychial pigment extension)", "a": "Pigment extension onto the proximal nail fold and hyponychium: a critical finding indicating high risk of subungual melanoma."},
+   {"q": "ABCDE assessment of the lesion", "a": "Marked asymmetry, irregular border, color variegation, diameter greater than 6 mm, and evolution (progressive enlargement over 10 months)."},
+   {"q": "Palpation of the nail bed and periungual tissue", "a": "Soft nail bed; no fluctuant mass; no ulceration or purulence."},
+   {"q": "Assessment of nail plate elevation or dystrophy", "a": "Mild onycholysis with nail plate dystrophy overlying the pigmented band."},
+   {"q": "Full skin survey including palms and soles", "a": "Multiple small, uniform melanocytic nevi; no other lesion with atypical ABCDE features."},
+   {"q": "Palpation of ipsilateral inguinal lymph nodes", "a": "No palpable lymphadenopathy (pertinent negative)."},
+   {"q": "Digital perfusion and capillary refill of the toe", "a": "Good perfusion; normal capillary refill; no vascular compromise."},
+   {"q": "Gait and footwear assessment", "a": "Normal gait; no significant frictional trauma from current footwear."},
+   {"q": "Inspection of other toes and both soles", "a": "No additional suspicious lesions on the toes or soles bilaterally."}
+  ],
+  "problemList": [
+   "Progressively enlarging longitudinal melanonychia of the left hallux over 10 months with positive Hutchinson sign, suspicious for acral lentiginous (subungual) melanoma",
+   "Markedly abnormal ABCDE features (asymmetry, irregular border, color variegation, diameter >6 mm, evolution)",
+   "Delayed presentation due to misattribution to subungual hematoma, verruca or corn",
+   "Prior nail trimming/filing of the lesion without awareness of risk",
+   "No clinical evidence of regional nodal disease at presentation"
+  ],
+  "problemRepresentation": "A 54-year-old woman with a 10-month progressively enlarging, variegated, irregularly bordered longitudinal melanonychia of the left hallux with a positive Hutchinson sign and no regional lymphadenopathy, previously misattributed to footwear-related subungual hematoma, highly suspicious for subungual melanoma requiring urgent histological diagnosis."
+ },
+ "G3C3": {
+  "exam": [
+   {"q": "Inspection of the ulcer and its margins", "a": "4.5 cm ulcer within a pre-existing burn scar with rolled, everted and indurated margins; friable granulation tissue base with contact bleeding."},
+   {"q": "Assessment of exudate and odor", "a": "Small volume of seropurulent exudate with mild malodor; no features of acute purulent cellulitis."},
+   {"q": "Assessment of the scar and surrounding tissue", "a": "Chronic hypertrophic burn scar with poor tissue quality and mild contracture across the knee joint."},
+   {"q": "Palpation of the ulcer base for fixation to deep structures", "a": "Base partially fixed to subcutaneous tissue; osseous fixation cannot be determined on clinical examination alone."},
+   {"q": "Palpation of ipsilateral inguinal lymph nodes", "a": "Firm, non-tender, approximately 1.5 cm right inguinal lymph node (critical finding)."},
+   {"q": "Assessment for acute periwound infection (erythema, warmth, spreading edema)", "a": "No spreading cellulitis or fever (pertinent negative helping to distinguish this from simple acute infection)."},
+   {"q": "Distal pulses and limb perfusion", "a": "Palpable pedal pulses; good perfusion; no acute limb ischemia."},
+   {"q": "Sensory examination around the ulcer and limb", "a": "Mild hypoesthesia confined to the scar, consistent with scar tissue; no new sensory deficit extending beyond the scar."},
+   {"q": "Knee range of motion", "a": "Flexion limited by pre-existing scar contracture; no new acute restriction attributable to the ulcer."},
+   {"q": "Inspection of other skin and burn scars", "a": "No other burn scars; no additional suspicious lesions."}
+  ],
+  "problemList": [
+   "New chronic ulceration within a longstanding right pretibial burn scar with induration, everted margins and contact bleeding, suspicious for Marjolin ulcer (squamous cell carcinoma)",
+   "Palpable right inguinal lymphadenopathy requiring evaluation for regional metastasis",
+   "Repeated empirical antibiotic courses without histological confirmation",
+   "Unintentional weight loss of 3 kg over 3 months, possibly reflecting advanced disease",
+   "Pre-existing burn scar contracture with poor tissue quality and restricted knee range of motion"
+  ],
+  "problemRepresentation": "A 55-year-old man with a 35-year-old right pretibial burn scar presenting with a 6-month non-healing ulcer with indurated everted margins and contact bleeding, palpable ipsilateral inguinal lymphadenopathy and unintentional weight loss, refractory to repeated antibiotic courses, suspicious for Marjolin ulcer requiring urgent histological diagnosis."
+ },
+ "G3C4": {
+  "exam": [
+   {"q": "Inspection of the oral cavity and tongue under adequate lighting", "a": "3 cm indurated ulcer on the right lateral border of the tongue with irregular margins and a friable base with contact bleeding."},
+   {"q": "Palpation of the tongue for induration and fixation", "a": "Base markedly firmer than surrounding tissue; mildly reduced tongue mobility compared with the left side."},
+   {"q": "Inspection of the floor of mouth and oropharynx", "a": "No additional lesion on the floor of mouth; oropharyngeal mucosa normal as far as visualized."},
+   {"q": "Mouth opening", "a": "Near-full mouth opening; no significant trismus."},
+   {"q": "Cervical lymph node examination (levels I–V)", "a": "Firm, non-tender, relatively fixed 2.5 cm right level II lymph node (critical finding)."},
+   {"q": "Screening airway assessment (voice, breathing, stridor)", "a": "No stridor or respiratory distress; mildly muffled voice with preserved communication (pertinent negative for current airway emergency)."},
+   {"q": "Screening swallowing assessment", "a": "Swallows water without aspiration; marked odynophagia with solid food."},
+   {"q": "General nutritional assessment (BMI, muscle bulk, skin)", "a": "Appears underweight for build; no marked dehydration; ambulant and conversing normally."},
+   {"q": "Dental examination and oral hygiene", "a": "Heavy calculus and multiple carious teeth; no sharp fractured tooth adjacent to the ulcer."},
+   {"q": "Inspection of the neck and facial skin for other masses or skin changes", "a": "No other masses or cutaneous abnormalities apart from the cervical lymph node."}
+  ],
+  "problemList": [
+   "7-week non-healing indurated ulcer of the right lateral tongue with irregular margins and contact bleeding, suspicious for oral squamous cell carcinoma",
+   "Firm, fixed right level II cervical lymphadenopathy requiring evaluation for regional metastasis",
+   "High-risk exposures: long-term tobacco smoking, alcohol use and betel quid chewing",
+   "Unintentional weight loss of 5 kg over 2 months due to odynophagia and reduced oral intake",
+   "No current airway compromise; requires ongoing airway surveillance"
+  ],
+  "problemRepresentation": "A 63-year-old man with decades of tobacco, alcohol and betel quid use presenting with a 7-week non-healing indurated ulcer of the right lateral tongue with irregular margins, a firm fixed ipsilateral level II cervical lymph node and 5 kg weight loss, without current airway compromise, highly suspicious for oral squamous cell carcinoma requiring urgent diagnosis and referral."
+ }
+}

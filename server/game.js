@@ -13,6 +13,7 @@ const ROLES = {
   doctor: { label: "Doctor / Examiner", required: true },
   scribe: { label: "Scribe / ผู้บันทึก", required: true },
   bias: { label: "Bias monitor", required: false },
+  observer: { label: "Observer / ผู้สังเกตการณ์", required: false },
 };
 
 // Suggested minutes per phase (45–60 min session in the card bank's "วิธีใช้").
@@ -42,8 +43,14 @@ const BIASES = [
   "Diagnosis momentum",
 ];
 
+// Physical examination, problem list and problem representation are medical English only.
+const THAI = /[\u0E00-\u0E7F]/;
+const requireEnglish = (text, what) => {
+  if (THAI.test(text)) fail(`${what} ต้องเป็น medical English เท่านั้น (ห้ามมีภาษาไทย)`);
+};
+
 const MIN_PLAYERS = 4;
-const MAX_PLAYERS = 5;
+const MAX_PLAYERS = 6;
 
 class GameError extends Error {}
 const fail = (msg) => {
@@ -51,6 +58,12 @@ const fail = (msg) => {
 };
 
 const rooms = new Map();
+
+// Last visible action per role, drawn as speech bubbles / poses in the virtual exam room.
+function stage(room, role, text, pose = "talk") {
+  if (!role) return;
+  room.stage[role] = { t: Date.now(), text: String(text || "").slice(0, 80), pose };
+}
 
 function newCode() {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -79,6 +92,7 @@ function createRoom() {
     debrief: { shown: 0 },
     tickets: {}, // playerId -> { oneLiner, mnm, trigger }
     chat: [],
+    stage: {}, // role -> { t, text, pose }
     touchedAt: Date.now(),
   };
   rooms.set(room.code, room);
@@ -150,6 +164,7 @@ const actions = {
     const holder = roleHolder(room, role);
     if (holder && holder.id !== p.id) fail(`${holder.name} เลือกบทบาทนี้แล้ว`);
     p.role = role;
+    stage(room, role, "พร้อม!", "act");
   },
 
   kick(room, p, { playerId }) {
@@ -185,6 +200,7 @@ const actions = {
     if (!target || target === "lobby") fail("ไปขั้นนั้นไม่ได้");
     if (room.phase === "case" && to !== "back" && !room.caseId) fail("ยังไม่ได้เลือกการ์ด");
     setPhase(room, target);
+    stage(room, "facilitator", "▶ " + PHASES.find((x) => x.id === target).label, "act");
   },
 
   ask(room, p, { text, kind }) {
@@ -193,7 +209,9 @@ const actions = {
     if (!hasPower(room, p, "doctor")) fail("เฉพาะ Doctor เป็นผู้ถาม/ขอตรวจ (ทีมส่งคำแนะนำทางแชทได้)");
     text = String(text || "").trim().slice(0, 300);
     if (!text) fail("พิมพ์คำถามก่อน");
+    if (k === "exam") requireEnglish(text, "คำขอตรวจร่างกาย");
     room.questions.push({ id: crypto.randomUUID(), kind: k, by: p.id, text, status: "pending", rowIdx: null, t: Date.now() });
+    stage(room, "doctor", text, "talk");
   },
 
   answer(room, p, { questionId, rowIdx, noInfo }) {
@@ -205,6 +223,7 @@ const actions = {
     if (noInfo) {
       q.status = "noinfo";
       q.rowIdx = null;
+      stage(room, owner, q.kind === "history" ? "ไม่แน่ใจเหมือนกัน…" : "No further finding", "talk");
       return;
     }
     rowIdx = Number(rowIdx);
@@ -213,6 +232,7 @@ const actions = {
     q.rowIdx = rowIdx;
     const list = room.revealed[q.kind];
     if (!list.includes(rowIdx)) list.push(rowIdx);
+    stage(room, owner, q.kind === "history" ? rows[rowIdx].a : "✨ " + rows[rowIdx].q, q.kind === "history" ? "talk" : "act");
   },
 
   toggleInvest(room, p, { idx, reason }) {
@@ -230,11 +250,13 @@ const actions = {
     if (!hasPower(room, p, "doctor")) fail("เฉพาะ Doctor เป็นผู้ยืนยันคำสั่ง");
     if (!Object.keys(room.invest.selected).length) fail("เลือกอย่างน้อย 1 ตัวเลือก");
     room.invest.submitted = true;
+    stage(room, "doctor", "🧪 ยืนยันคำสั่ง investigation", "act");
   },
 
   notes(room, p, { text }) {
     if (!hasPower(room, p, "scribe")) fail("เฉพาะ Scribe แก้ไขบันทึก");
     room.notes = String(text || "").slice(0, 4000);
+    stage(room, p.role, "✍️", "act");
   },
 
   plpr(room, p, { pl, pr }) {
@@ -243,13 +265,17 @@ const actions = {
     if (room.plpr.submitted) fail("ส่งแล้ว");
     room.plpr.pl = String(pl ?? room.plpr.pl).slice(0, 3000);
     room.plpr.pr = String(pr ?? room.plpr.pr).slice(0, 1500);
+    stage(room, "scribe", "✍️", "act");
   },
 
   submitPlpr(room, p) {
     if (room.phase !== "plpr") fail("ไม่ใช่ขั้น PL/PR");
     if (!hasPower(room, p, "scribe")) fail("เฉพาะ Scribe ส่ง PL/PR");
     if (!room.plpr.pl.trim() || !room.plpr.pr.trim()) fail("เขียนทั้ง Problem list และ one-liner ก่อนส่ง");
+    requireEnglish(room.plpr.pl, "Problem list");
+    requireEnglish(room.plpr.pr, "Problem representation");
     room.plpr.submitted = true;
+    stage(room, "scribe", "📋 ส่ง PL/PR แล้ว!", "act");
   },
 
   ratePlpr(room, p, { rating }) {
@@ -264,6 +290,7 @@ const actions = {
     if (!hasPower(room, p, "bias")) fail("เฉพาะ Bias monitor");
     if (["lobby", "case", "summary"].includes(room.phase)) fail("ยังไม่อยู่ในช่วงเล่นเคส");
     if (!BIASES.includes(bias)) fail("เลือกชนิด bias");
+    stage(room, p.role === "bias" ? "bias" : p.role, "🚩 " + bias, "act");
     room.flags.push({ id: crypto.randomUUID(), by: p.id, bias, note: String(note || "").slice(0, 300), phase: room.phase, t: Date.now() });
   },
 
@@ -285,12 +312,14 @@ const actions = {
     if (room.phase !== "timeout") fail("ไม่ใช่ขั้น time-out");
     if (p.role !== "facilitator") fail("เฉพาะ facilitator");
     room.timeout.revealed = true;
+    stage(room, "facilitator", "🔓 เฉลย System 1 / System 2", "act");
   },
 
   debriefNext(room, p) {
     if (room.phase !== "debrief") fail("ไม่ใช่ขั้น debrief");
     if (p.role !== "facilitator") fail("เฉพาะ facilitator");
     room.debrief.shown = Math.min(room.debrief.shown + 1, card(room).debrief.length);
+    stage(room, "facilitator", card(room).debrief[room.debrief.shown - 1].q, "talk");
   },
 
   ticket(room, p, { oneLiner, mnm, trigger }) {
@@ -298,6 +327,7 @@ const actions = {
     const clip = (s, n) => String(s || "").trim().slice(0, n);
     const t = { oneLiner: clip(oneLiner, 600), mnm: clip(mnm, 300), trigger: clip(trigger, 300), t: Date.now() };
     if (!t.oneLiner || !t.mnm || !t.trigger) fail("กรอกให้ครบทั้ง 3 ข้อ");
+    requireEnglish(t.oneLiner, "One-liner (problem representation)");
     room.tickets[p.id] = t;
   },
 
@@ -305,6 +335,7 @@ const actions = {
     text = String(text || "").trim().slice(0, 300);
     if (!text) return;
     room.chat.push({ by: p.id, text, t: Date.now() });
+    stage(room, p.role, text, "talk");
     if (room.chat.length > 200) room.chat.shift();
   },
 
@@ -321,6 +352,7 @@ const actions = {
       timeout: { checks: {}, mnm: "", revealed: false },
       debrief: { shown: 0 },
       tickets: {},
+      stage: {},
     });
     setPhase(room, "case");
   },
@@ -440,6 +472,7 @@ function viewFor(room, playerId) {
     questions: room.questions,
     invest: room.invest,
     notes: room.notes,
+    stage: room.stage,
     plpr: room.plpr,
     flags: room.flags,
     timeout: room.timeout,

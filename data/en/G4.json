@@ -1,0 +1,195 @@
+{
+ "G4C1": {
+  "exam": [
+   {"q": "Primary survey (ABCDE)", "a": "Airway patent; normal breathing; alert; GCS 15."},
+   {"q": "Visual inspection of the wound before palpation", "a": "Large gaping laceration approximately 12 cm long with a partially avulsed skin flap, exposing subcutaneous fat and part of the underlying muscle."},
+   {"q": "Assessment of contamination", "a": "Engine oil and small metallic fragments embedded in the wound; irregular, crushed wound edges."},
+   {"q": "Assessment of skin flap viability", "a": "Flap tip mildly dusky with delayed capillary refill compared with adjacent normal skin."},
+   {"q": "Distal limb perfusion", "a": "Dorsalis pedis and posterior tibial pulses clearly palpable; normal capillary refill in the toes."},
+   {"q": "Assessment of wound depth and dead space", "a": "Undermining extends laterally beyond the visible wound margin with a palpable subcutaneous pocket."},
+   {"q": "Motor testing of the involved muscle groups", "a": "Hip flexion and knee extension present but mildly weak compared with the contralateral limb; pain on exertion."},
+   {"q": "Sensory testing around the wound and foot", "a": "Reduced light-touch sensation along the lateral wound margin; normal sensation in the foot."},
+   {"q": "Bleeding on release of pressure dressing", "a": "Continuous oozing from the wound edges; no pulsatile arterial bleeding."},
+   {"q": "Assessment of the thigh compartments", "a": "Soft compartments; no pain out of proportion (pertinent negative)."}
+  ],
+  "problemList": [
+   "Acute contaminated traumatic laceration of the left thigh with large tissue defect and skin flap of uncertain viability",
+   "Suspected deep-space involvement (undermining) with possible muscle or nerve injury",
+   "Periwound sensory deficit requiring serial reassessment",
+   "Tetanus immunization status unconfirmed",
+   "Currently intact distal perfusion requiring ongoing monitoring"
+  ],
+  "problemRepresentation": "A 33-year-old man presenting 40 minutes after an industrial machinery injury to the proximal left thigh with a large contaminated laceration, an avulsed skin flap of uncertain viability, subcutaneous dead space and periwound sensory deficit, with intact distal perfusion, raising concern for tissue non-viability, deep structure injury and contamination that must be addressed before any decision on wound closure."
+ },
+ "G4C2": {
+  "exam": [
+   {"q": "General assessment and sepsis screen", "a": "Low-grade fever and mild tachycardia; no hypotension."},
+   {"q": "Detailed wound inspection", "a": "4 × 3 cm dorsal foot ulcer with soft margins, mixed yellow slough and red granulation tissue, seropurulent exudate and mild malodor."},
+   {"q": "Assessment of wound depth (probe)", "a": "Probe reaches a firm bony structure at the base of the third metatarsophalangeal region (positive probe-to-bone test)."},
+   {"q": "Periwound skin", "a": "Erythema extending approximately 2 cm beyond the wound margin with increased local warmth."},
+   {"q": "Peripheral neuropathy assessment", "a": "Marked loss of protective sensation on monofilament testing of both feet."},
+   {"q": "Vascular examination", "a": "Dorsalis pedis pulse absent; posterior tibial pulse barely palpable; left foot markedly cooler than the proximal limb; delayed digital capillary refill."},
+   {"q": "Foot deformity and pressure points", "a": "Bony prominence with thick callus at the base of the third toe corresponding to the ulcer site."},
+   {"q": "Assessment for crepitus / rapidly spreading infection", "a": "No palpable crepitus (pertinent negative despite high risk)."},
+   {"q": "Ankle and toe range of motion", "a": "Normal range of motion; no clinical joint involvement."},
+   {"q": "Systemic examination", "a": "Normal cardiorespiratory examination; no other apparent source of infection."}
+  ],
+  "problemList": [
+   "Chronic diabetic foot ulcer with clinical signs of deep and spreading infection (positive probe-to-bone test)",
+   "Suspected significant peripheral arterial disease (absent/diminished pedal pulses, cool limb)",
+   "Poor glycemic control impairing wound healing",
+   "Peripheral neuropathy masking pain and disease severity",
+   "Continued weight-bearing without off-loading as an ongoing aggravating factor"
+  ],
+  "problemRepresentation": "A 58-year-old woman with poorly controlled diabetes mellitus and a 5-week chronic left dorsal foot ulcer with a positive probe-to-bone test, spreading cellulitis, low-grade fever and tachycardia, with absent pedal pulses and a cool foot indicating ischemia and continued weight-bearing on the ulcer, raising concern for limb-threatening infection with osteomyelitis and critical limb ischemia requiring urgent assessment and referral rather than dressing selection alone."
+ },
+ "G4C3": {
+  "exam": [
+   {"q": "Lesion morphology", "a": "Firm, raised, dusky-pink, smooth shiny nodule extending well beyond the original acne scar margins in all directions."},
+   {"q": "Extent relative to the original injury", "a": "Claw-like extensions invading the surrounding normal skin; not confined to the original wound boundary."},
+   {"q": "Palpation of consistency and texture", "a": "Markedly firmer than normal skin; mildly tender; no fluctuance."},
+   {"q": "Assessment for acute inflammation", "a": "No marked erythema, warmth or purulent discharge (pertinent negative: not an infective process)."},
+   {"q": "Inspection of other scars on the back", "a": "Similar smaller lesions present, confirming a predisposition to keloid formation."},
+   {"q": "Range of motion of adjacent joints", "a": "No contracture or restriction of shoulder or upper limb movement, as the lesion does not cross a joint."},
+   {"q": "Brief total-body skin examination", "a": "No similar lesions elsewhere at present."},
+   {"q": "Assessment of perilesional pigmentation", "a": "Mild hyperpigmentation relative to surrounding skin; no ulceration or rapid change to suggest an alternative diagnosis."}
+  ],
+  "problemList": [
+   "Keloid scar of the chest extending beyond the original wound margins, without spontaneous regression over 2 years",
+   "Recurrence after previous treatment (regrowth following intralesional injection)",
+   "Symptomatic lesion (pruritus, lancinating pain, tightness) affecting quality of life",
+   "Psychosocial impact with embarrassment and social avoidance",
+   "Predisposition to keloid formation (family history and lesions at other sites)"
+  ],
+  "problemRepresentation": "A 22-year-old man with a 2-year firm, raised chest lesion extending well beyond the original acne scar margins without spontaneous regression, associated with pruritus and lancinating pain, recurrence after prior intralesional injection and significant psychosocial impact, consistent with a keloid that must be differentiated from a hypertrophic scar and managed with a multimodal treatment plan and explicit counseling on recurrence risk."
+ },
+ "G4C4": {
+  "exam": [
+   {"q": "Scar morphology", "a": "Raised scar with fading erythema and a relatively smooth surface, confined to the original burn wound boundary without extension into normal skin."},
+   {"q": "Comparison with the original wound margins", "a": "No extension beyond the original burn margins in any direction."},
+   {"q": "Active and passive elbow range of motion", "a": "Elbow extension limited by approximately one-third of the normal arc compared with the contralateral side."},
+   {"q": "Assessment for contracture band", "a": "Palpable tight scar band crossing the antecubital fossa."},
+   {"q": "Distal neurovascular assessment", "a": "Normal hand perfusion and sensation."},
+   {"q": "Periscar skin examination", "a": "No signs of acute inflammation; no new open wound."},
+   {"q": "Assessment of limb growth", "a": "Upper limb lengths currently comparable; requires surveillance with ongoing growth."},
+   {"q": "Inspection of other scars", "a": "No similar scars elsewhere at present."}
+  ],
+  "problemList": [
+   "Hypertrophic burn scar of the left antecubital fossa confined to the original wound margins, with partial maturation over time",
+   "Progressive elbow extension contracture with functional impairment",
+   "Inconsistent adherence to silicone therapy and pressure garments",
+   "Risk of contracture progression with skeletal growth in a growing child",
+   "Impact on the child's physical and sporting activities"
+  ],
+  "problemRepresentation": "A 10-year-old boy with a raised scar of the left antecubital fossa 8 months after a scald burn, confined to the original wound margins and partially softening over time, but with a progressive elbow extension contracture causing functional impairment and inconsistent pressure garment adherence, consistent with a hypertrophic scar that must be differentiated from a keloid, requiring active assessment of cross-joint contracture risk in a growing child."
+ },
+ "G4C5": {
+  "exam": [
+   {"q": "Inspection of the lesion", "a": "Ill-defined, smooth, dusky red to violaceous patch/mass measuring approximately 6 × 5 cm on the left upper arm."},
+   {"q": "Palpation for local warmth", "a": "Markedly warmer than the adjacent normal skin."},
+   {"q": "Palpation for pulsatility", "a": "Clearly palpable pulsation over the lesion (critical red-flag finding)."},
+   {"q": "Palpation for thrill", "a": "Continuous palpable thrill (critical red-flag finding)."},
+   {"q": "Auscultation", "a": "Continuous bruit over the lesion (critical red-flag finding)."},
+   {"q": "Compressibility", "a": "Partially compressible with very rapid refilling on release, unlike a simple venous malformation."},
+   {"q": "Assessment for fluctuance (to exclude abscess)", "a": "No fluctuance to suggest an abscess cavity (key pertinent negative distinguishing this from an abscess)."},
+   {"q": "Assessment for local infection (to exclude abscess)", "a": "Afebrile; no acute cellulitic erythema or warmth; no regional lymphadenopathy (pertinent negative)."},
+   {"q": "Distal neurovascular status", "a": "Normal radial and digital pulses; normal hand motor function and sensation."},
+   {"q": "Screening for high-output cardiac failure", "a": "Normal heart rate; no signs of high-output cardiac failure."}
+  ],
+  "problemList": [
+   "Suspected high-flow arteriovenous malformation of the left upper arm with accelerated growth over 8 months",
+   "History of severe hemorrhage following unplanned needle puncture",
+   "Pulsatility, thrill and bruit confirming high-flow physiology",
+   "No clinical features supporting hemangioma or abscess",
+   "No current high-output cardiac effect or distal neurovascular compromise"
+  ],
+  "problemRepresentation": "A 26-year-old woman with a dusky red vascular lesion of the left upper arm present since childhood with accelerated growth over 8 months, with palpable pulsation, thrill and continuous bruit and a history of severe hemorrhage after home needle puncture, without features of abscess or hemangioma, consistent with a high-flow arteriovenous malformation at high risk of major hemorrhage, requiring avoidance of needle aspiration or biopsy and urgent specialist referral."
+ },
+ "G4C6": {
+  "exam": [
+   {"q": "Primary survey (ABCDE)", "a": "Airway patent; normal breathing with mild chest tightness requiring further assessment; alert; tachycardic but responsive."},
+   {"q": "Limb inspection", "a": "Open tibial fracture with exposed bone, gross contamination with soil and road debris, and an extensive soft-tissue defect around the fracture site."},
+   {"q": "Assessment of soft-tissue stripping", "a": "Periosteal stripping with partial muscle avulsion from the bone within the wound."},
+   {"q": "Hemorrhage control and perfusion", "a": "Bleeding controlled with pressure dressing; dorsalis pedis pulse palpable but weaker than before; delayed capillary refill compared with the right foot."},
+   {"q": "Distal motor and sensory examination", "a": "Minimal active toe movement; reduced plantar sensation; pain out of proportion to the injury (critical finding)."},
+   {"q": "Compartment assessment (tension, pain on passive stretch)", "a": "Markedly tense lower-leg compartments with increased pain on passive toe stretch (critical red-flag finding for compartment syndrome)."},
+   {"q": "Examination of the right wrist and chest", "a": "Wrist tenderness without obvious deformity; mild chest wall tenderness without paradoxical movement."},
+   {"q": "Assessment of wound margins", "a": "Irregular margins with areas of devitalized tissue requiring specialist assessment."},
+   {"q": "Bilateral pulse comparison", "a": "Left lower-limb pulses markedly weaker than the right (pulses not absent at present, but require close monitoring)."}
+  ],
+  "problemList": [
+   "Open tibial fracture with extensive soft-tissue defect and gross contamination",
+   "Evolving acute compartment syndrome (pain out of proportion, tense compartments, pain on passive stretch)",
+   "Diminished distal perfusion requiring surveillance for vascular injury",
+   "Associated injuries (right wrist, chest wall) requiring concurrent evaluation",
+   "Need for early orthoplastic team involvement"
+  ],
+  "problemRepresentation": "A 27-year-old man presenting 50 minutes after a high-energy motorcycle collision with an open tibial fracture, an extensive grossly contaminated soft-tissue defect, pain out of proportion, tense compartments and diminished distal perfusion compared with the contralateral limb, with associated wrist and chest wall injuries, raising concern for compartment syndrome and vascular compromise requiring immediate escalation to an orthoplastic pathway rather than management as a simple open fracture."
+ },
+ "G4C7": {
+  "exam": [
+   {"q": "General assessment and sepsis screen", "a": "Febrile and tachycardic with borderline-low blood pressure; more drowsy than baseline."},
+   {"q": "Detailed wound inspection", "a": "Deep left trochanteric/hip pressure ulcer extending to subcutaneous fat and muscle with slough and partial necrosis, undermining wider than the visible opening, and malodorous seropurulent exudate."},
+   {"q": "Assessment of depth and probe-to-bone", "a": "Probe reaches a firm bony structure over the ischial/sacral prominence (positive probe-to-bone test)."},
+   {"q": "Periwound skin", "a": "Maceration from persistent moisture with erythema extending beyond parts of the wound margin."},
+   {"q": "Inspection of other at-risk pressure points", "a": "Early non-blanching erythema over both heels and the scapular prominences, indicating a generalized off-loading failure rather than a single site."},
+   {"q": "Nutritional and hydration screen", "a": "Cachectic appearance with mild dehydration and thin, fragile skin."},
+   {"q": "Cognitive and communication status", "a": "Limited communication; history largely dependent on the caregiver."},
+   {"q": "Sensory neurological status", "a": "Reduced sensation over the hips secondary to pre-existing spinal cord injury, abolishing early pain from pressure."}
+  ],
+  "problemList": [
+   "Deep pressure injury of the left hip with signs of systemic infection and concern for sepsis",
+   "Positive probe-to-bone test indicating risk of osteomyelitis",
+   "Malnutrition and dehydration impairing wound healing",
+   "Inadequate caregiver capacity for regular repositioning, off-loading and hygiene",
+   "Multiple evolving pressure injuries indicating a system-level failure of care"
+  ],
+  "problemRepresentation": "A 71-year-old bedbound man with paraplegia presenting with a deep left hip pressure injury extending to muscle with a positive probe-to-bone test and malodorous purulent exudate, fever, tachycardia and borderline hypotension, in the context of a sole elderly spouse caregiver unable to provide adequate repositioning and concurrent malnutrition and dehydration, raising concern for sepsis and osteomyelitis requiring urgent escalation alongside system-level interventions for off-loading, nutrition and caregiver support rather than dressing selection alone."
+ },
+ "G4C8": {
+  "exam": [
+   {"q": "General appearance and primary survey (ABC)", "a": "Alert and coherent; no signs of hypovolemic shock."},
+   {"q": "Inspection of the thumb stump", "a": "Relatively sharp, well-defined wound edges consistent with a sharp mechanism, with exposed bone end, tendon stumps and part of the neurovascular bundles; no extensive crush component."},
+   {"q": "Neurovascular examination of the stump", "a": "Normal capillary refill of the surrounding tissue; sensation proximal to the amputation level intact."},
+   {"q": "Examination of the amputated part", "a": "Skin in direct contact with ice pale and firm with mild frost-like change; remainder of the part pink."},
+   {"q": "Examination of the remaining hand and digits", "a": "No additional wounds or deformity; normal movement of the other digits."},
+   {"q": "Ipsilateral wrist and elbow range of motion", "a": "Normal; no restriction."},
+   {"q": "Assessment of pain control", "a": "Moderate to severe pain persisting after initial analgesia; not yet adequately controlled."},
+   {"q": "Assessment of wound contamination", "a": "Small amount of meat and fat debris at the wound edges; no gross soil contamination."},
+   {"q": "Repeat vital signs after initial wound care", "a": "Stable; no trend toward deterioration."},
+   {"q": "Psychological state and understanding of the situation", "a": "Highly distressed; repeatedly asks whether the thumb can be replanted."}
+  ],
+  "problemList": [
+   "Complete right thumb amputation at the proximal phalanx level from a sharp mechanism approximately 40 minutes ago",
+   "Inappropriate preservation of the amputated part with direct ice contact, risking additional cold injury",
+   "Heavy tobacco smoking adversely affecting microvascular anastomotic patency",
+   "Dominant hand injury with high occupational demand for fine motor function",
+   "Tetanus immunization status unconfirmed",
+   "High psychological distress and expectations requiring appropriate communication"
+  ],
+  "problemRepresentation": "A 34-year-old right-hand-dominant male chef presenting approximately 40 minutes after a complete thumb amputation at the proximal phalanx from a meat slicer, with the amputated part preserved in direct contact with ice risking cold injury, heavy smoking and high occupational functional demand, requiring immediate correction of part preservation and urgent contact with a replantation center without delay for non-essential investigations."
+ },
+ "G4C9": {
+  "exam": [
+   {"q": "General appearance", "a": "Non-toxic appearance; alert and oriented; no confusion."},
+   {"q": "Repeat vital signs", "a": "Stable as documented at presentation; no trend toward deterioration."},
+   {"q": "Skin inspection of the left lower limb", "a": "Erythema with relatively defined but irregular margins consistent with underlying lymphedema; warm, edematous and tender; no bullae or necrotic patches."},
+   {"q": "Palpation for crepitus", "a": "No subcutaneous crepitus."},
+   {"q": "Assessment of pain on passive movement", "a": "Pain proportionate to the inflammation; no pain out of proportion."},
+   {"q": "Comparison with contralateral limb and baseline lymphedema", "a": "Swelling exceeds baseline lymphedema, with increased pitting edema localized to the inflamed area."},
+   {"q": "Inspection of the skin abrasion", "a": "Superficial excoriation over the mid-anterior shin without purulent discharge or surrounding necrosis."},
+   {"q": "Inguinal lymph node examination", "a": "Mild tenderness; no fluctuance."},
+   {"q": "Sensory examination of the inflamed skin", "a": "Normal sensation; no anesthesia or hypoesthesia."},
+   {"q": "Distal neurovascular status", "a": "Normal palpable pulses and capillary refill."}
+  ],
+  "problemList": [
+   "Acute cellulitis of the left lower limb superimposed on chronic lymphedema, gradually progressive over 2 days, without current red flags for necrotizing soft-tissue infection",
+   "Portal of entry via a superficial abrasion over the shin",
+   "Chronic secondary lymphedema following pelvic lymphadenectomy and radiotherapy for endometrial carcinoma",
+   "Previous episodes of cellulitis indicating the need for a long-term prophylaxis plan",
+   "Moderately controlled diabetes mellitus potentially impairing healing and increasing infection risk",
+   "Anxiety regarding cancer recurrence requiring psychological support"
+  ],
+  "problemRepresentation": "A 58-year-old woman with chronic secondary left lower-limb lymphedema after surgery and radiotherapy for endometrial carcinoma presenting with 2 days of gradually progressive cellulitis originating from a shin abrasion with low-grade fever, without pain out of proportion, bullae, crepitus or cutaneous anesthesia (key pertinent negatives against necrotizing fasciitis at present), requiring prompt treatment of cellulitis with close serial reassessment given her lymphedema, diabetes mellitus and post-radiotherapy background, so that progression to necrotizing infection is not missed."
+ }
+}

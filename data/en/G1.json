@@ -1,0 +1,146 @@
+{
+ "G1C1": {
+  "exam": [
+   {"q": "General appearance and work of breathing", "a": "Alert and active; no respiratory distress; no chest-wall retraction."},
+   {"q": "Inspection of the lip and nose", "a": "Unilateral left-sided cleft lip involving the vermilion and extending minimally into the nostril sill; left alar base mildly flattened compared with the right."},
+   {"q": "Oral cavity: hard and soft palate", "a": "Hard and soft palate intact and continuous; no overt cleft palate, no notch at the posterior hard palate, no bifid uvula."},
+   {"q": "Observation of suck and feeding during examination", "a": "Near-complete lip seal around the nipple/teat with minor air leak at the left oral commissure; rhythmic suck–swallow coordination; no nasal regurgitation."},
+   {"q": "Hydration status and growth", "a": "Moist mucous membranes; capillary refill time normal; weight loss within the expected physiological range for a neonate."},
+   {"q": "Cardiovascular examination", "a": "No significant murmur; good peripheral perfusion."},
+   {"q": "Ear examination", "a": "Both auricles structurally normal; no visible anomaly."},
+   {"q": "Full dysmorphology and limb screen", "a": "No syndactyly, polydactyly or other craniofacial anomaly on screening examination."},
+   {"q": "Airway assessment in the supine position", "a": "No stertor and no oxygen desaturation when supine (key pertinent negative distinguishing this from Pierre Robin sequence)."}
+  ],
+  "problemList": [
+   "Congenital unilateral cleft lip without cleft palate on initial examination",
+   "Near-normal feeding with minor milk leakage at the oral commissure; no nasal regurgitation",
+   "Weight loss within the physiological neonatal range; requires ongoing growth monitoring",
+   "Incomplete screening for associated anomalies and hearing",
+   "Significant parental aesthetic and psychosocial distress requiring support"
+  ],
+  "problemRepresentation": "A 5-day-old female neonate with a congenital isolated unilateral cleft lip, without cleft palate or airway/feeding red flags on initial examination, with adequate feeding and physiological weight loss but high parental aesthetic distress, requiring exclusion of occult associated anomalies, feeding/growth surveillance, and referral to the multidisciplinary cleft team for age-appropriate surgical planning."
+ },
+ "G1C2": {
+  "exam": [
+   {"q": "General appearance and work of breathing", "a": "Alert and active; no respiratory distress in any position."},
+   {"q": "Inspection of the oral cavity and palate", "a": "Complete cleft of the soft and hard palate; no associated cleft lip."},
+   {"q": "Mandibular assessment", "a": "Normal mandibular size; no micrognathia (critical in distinguishing this from Pierre Robin sequence)."},
+   {"q": "Tongue position", "a": "Normal tongue position; no glossoptosis."},
+   {"q": "Positional airway observation (supine vs prone vs upright)", "a": "No stertor, desaturation or retraction in any tested position (key pertinent negative distinguishing this from Pierre Robin sequence, Card 6)."},
+   {"q": "Feeding observation with a specialized cleft feeder", "a": "Mild nasal regurgitation of milk during sucking, with preserved rhythmic swallowing."},
+   {"q": "Hydration status and growth", "a": "Moist mucous membranes; weight gain below the expected trajectory but not yet critical."},
+   {"q": "Otoscopic examination", "a": "Both tympanic membranes mildly dull, suggestive of early bilateral middle-ear effusion; no otalgia or fever."},
+   {"q": "Full dysmorphology and limb screen", "a": "No syndactyly, craniofacial anomaly or other limb anomaly."},
+   {"q": "Cardiovascular examination", "a": "No significant murmur; good peripheral perfusion."}
+  ],
+  "problemList": [
+   "Isolated complete cleft of the soft and hard palate without micrognathia or glossoptosis",
+   "Feeding inefficiency with nasal regurgitation, without positional airway compromise",
+   "Suboptimal weight gain requiring monitoring and modification of feeding technique",
+   "Suspected early bilateral middle-ear effusion requiring audiological confirmation",
+   "Not yet enrolled in a multidisciplinary cleft pathway for speech, hearing and surgical planning"
+  ],
+  "problemRepresentation": "A 3-week-old male infant with an isolated complete cleft palate, without micrognathia or glossoptosis and with a normal positional airway assessment, presenting with feeding inefficiency, nasal regurgitation, suboptimal weight gain and suspected early middle-ear effusion, requiring feeding optimization, audiological/ENT evaluation to protect speech-language development, and multidisciplinary cleft team referral, with no current indication of an airway emergency."
+ },
+ "G1C3": {
+  "exam": [
+   {"q": "Inspection of both hands and feet", "a": "Complete cutaneous syndactyly of the left ring and little fingers extending from the web space to near the nail fold; right hand and both feet normal."},
+   {"q": "Assessment of the nail complex", "a": "Two separate nail plates; no synonychia."},
+   {"q": "Assessment of digit length", "a": "Mild length discrepancy between the ring and little fingers, suggestive of a developing tethering effect with growth."},
+   {"q": "Active and passive range of motion", "a": "Mild flexion deformity and lateral deviation of the distal digits on full extension due to tethering; near-full flexion preserved."},
+   {"q": "Neurovascular assessment", "a": "Capillary refill and sensation grossly intact in both digits."},
+   {"q": "Palpation for osseous fusion", "a": "No palpable abnormal bony prominence; radiographs still required to exclude osseous involvement."},
+   {"q": "Functional task observation (pencil grip, simulated scissor use)", "a": "Slow task performance with a compensatory grip due to restricted independent digit abduction."},
+   {"q": "Screening for syndromic features (craniofacial, other digits, cardiac)", "a": "No craniofacial anomaly, polydactyly or other limb anomaly on screening examination (pertinent negative)."}
+  ],
+  "problemList": [
+   "Congenital complete cutaneous syndactyly of the left ring and little fingers",
+   "Mild growth-related tethering deformity due to digit length discrepancy",
+   "Functional impairment of fine-motor tasks affecting school performance",
+   "Simple versus complex (osseous) syndactyly not yet differentiated radiographically",
+   "No syndromic features on screening examination; comprehensive evaluation incomplete"
+  ],
+  "problemRepresentation": "A 6-year-old boy with congenital complete cutaneous syndactyly of the left ring and little fingers, complicated by mild growth-related tethering deformity and progressive fine-motor functional impairment, without syndromic features on screening examination, requiring radiographic differentiation of simple versus complex syndactyly, assessment of functional and growth implications, and referral to hand/plastic surgery for age-appropriate management planning."
+ },
+ "G1C4": {
+  "exam": [
+   {"q": "Head shape (vertex, frontal and lateral views)", "a": "Turribrachycephalic pattern with bilateral frontal bossing; symmetric but progressively abnormal contour, not the asymmetric occipital flattening of positional plagiocephaly."},
+   {"q": "Palpation of cranial sutures", "a": "Palpable ridging along both coronal sutures."},
+   {"q": "Anterior fontanelle", "a": "Anterior fontanelle closing earlier than expected for age."},
+   {"q": "Head circumference trend", "a": "Occipitofrontal circumference crossing percentiles upward over the last two visits."},
+   {"q": "Neurological and developmental examination", "a": "Grossly age-appropriate on screening assessment (key pertinent negative)."},
+   {"q": "Eye examination (proptosis, sunset sign, red reflex)", "a": "No proptosis or sunsetting on this examination; formal ophthalmological assessment not yet performed."},
+   {"q": "Irritability and level of consciousness", "a": "Alert and interactive; no lethargy or high-pitched cry."},
+   {"q": "Full dysmorphology and limb examination", "a": "No overt syndromic features on screening examination."}
+  ],
+  "problemList": [
+   "Progressive cranial deformity since 2 months of age, unresponsive to repositioning",
+   "Bilateral palpable coronal suture ridging with premature anterior fontanelle closure",
+   "Abnormal head circumference trajectory crossing percentiles",
+   "No overt signs of raised intracranial pressure or visual compromise; formal assessment pending",
+   "No syndromic features on screening examination"
+  ],
+  "problemRepresentation": "A 5-month-old female infant with progressive cranial deformity since 2 months of age unresponsive to repositioning, with bilateral palpable coronal suture ridging, premature anterior fontanelle closure and an abnormal head circumference trajectory, without overt signs of raised intracranial pressure or visual compromise, most consistent with craniosynostosis rather than positional plagiocephaly, requiring prompt craniofacial/neurosurgical referral for diagnostic confirmation and systematic ICP and visual assessment."
+ },
+ "G1C5": {
+  "exam": [
+   {"q": "Inspection of the right external ear", "a": "Grade III microtia: severely hypoplastic, malformed auricle with rudimentary remnants only."},
+   {"q": "Right external auditory canal", "a": "Suspected external auditory canal atresia (no visible patent canal); requires specialist confirmation."},
+   {"q": "Contralateral (left) ear", "a": "Auricle and canal grossly normal on examination (pertinent negative; audiological confirmation still required as true hearing thresholds are unknown)."},
+   {"q": "Facial symmetry and mandible", "a": "Suspected mild right mandibular hypoplasia with subtle facial asymmetry; requires further evaluation."},
+   {"q": "Bedside response to sound", "a": "Clearly better orienting response to sound presented on the left than on the right."},
+   {"q": "Screening of speech and language interaction", "a": "Expressive vocabulary below the expected level for a 3-year-old."},
+   {"q": "Cranial nerves and facial movement", "a": "No observable facial nerve weakness."},
+   {"q": "Full dysmorphology and limb screen", "a": "No overt vertebral, cardiac or limb anomaly on screening examination."}
+  ],
+  "problemList": [
+   "Right grade III microtia with suspected external auditory canal atresia",
+   "Lost to follow-up after newborn hearing screening; bilateral hearing status unconfirmed",
+   "Expressive speech-language delay for age",
+   "Suspected mild right mandibular hypoplasia and facial asymmetry requiring evaluation",
+   "Psychosocial concerns for the child and family related to appearance and teasing"
+  ],
+  "problemRepresentation": "A 3-year-old boy with right grade III microtia and suspected external auditory canal atresia, lost to follow-up after newborn hearing screening, now presenting with expressive speech-language delay and suspected mild right mandibular hypoplasia, requiring urgent formal bilateral audiological assessment, multidisciplinary ENT/craniofacial referral for hearing rehabilitation and staged reconstruction planning, and developmental and psychosocial support."
+ },
+ "G1C6": {
+  "exam": [
+   {"q": "General appearance, work of breathing and airway", "a": "Alert but fatigues with crying; intermittent stertor clearly audible; no persistent stridor when held upright."},
+   {"q": "Positional observation (supine vs prone vs upright)", "a": "Marked suprasternal and subcostal retraction when supine with SpO₂ falling to 90–91%; immediate improvement in saturation with appropriate positioning under supervision (critical positional finding)."},
+   {"q": "Mandibular assessment", "a": "Marked micrognathia with retrognathic mandible relative to the midface."},
+   {"q": "Tongue position and glossoptosis", "a": "Evident glossoptosis with posterior tongue displacement causing airway obstruction, particularly when supine."},
+   {"q": "Oral cavity and palate", "a": "Associated U-shaped cleft palate; no cleft lip."},
+   {"q": "Hydration status and growth", "a": "Weight loss of approximately 9–10% from birth weight; mildly dry mucous membranes."},
+   {"q": "Chest examination", "a": "Good bilateral air entry; no focal crackles."},
+   {"q": "Cardiovascular examination", "a": "No significant murmur; good peripheral perfusion."},
+   {"q": "Full congenital and syndromic examination", "a": "No overt limb anomaly on initial examination; syndromic associations (e.g. Stickler syndrome) should be considered in context."}
+  ],
+  "problemList": [
+   "Micrognathia, glossoptosis and cleft palate consistent with Pierre Robin sequence",
+   "Positional upper-airway obstruction with supine desaturation, improving with positioning",
+   "Feeding failure with approximately 9–10% weight loss from birth weight",
+   "Incomplete screening for associated syndromic conditions",
+   "Family distress requiring a safe interim airway and feeding plan pending multidisciplinary evaluation"
+  ],
+  "problemRepresentation": "A 6-day-old male neonate with micrognathia, glossoptosis and cleft palate consistent with Pierre Robin sequence, with positional upper-airway obstruction confirmed by supine desaturation that improves with positioning, complicated by feeding failure and 9–10% weight loss from birth weight, representing a neonatal airway emergency that requires urgent assessment of airway, hydration and feeding safety, in contrast to isolated cleft palate without airway compromise."
+ },
+ "G1C7": {
+  "exam": [
+   {"q": "General inspection and developmental observation", "a": "Well-appearing, cheerful child; developmental milestones age-appropriate on observation."},
+   {"q": "Measurement and morphology of the facial lesion", "a": "Well-demarcated dark brown to black pigmented plaque approximately 6 cm in diameter involving the left cheek and temple, with mildly thickened leathery texture and coarse terminal hair; no ulceration or bleeding."},
+   {"q": "Detailed assessment of color and surface", "a": "Homogeneous pigmentation throughout; no nodules, focal darkening or regression/depigmentation."},
+   {"q": "Total-body skin examination", "a": "Three to four smaller satellite melanocytic nevi on the trunk and back with similar morphology."},
+   {"q": "Head and neck lymph node examination", "a": "No lymphadenopathy."},
+   {"q": "Examination of the eyes and eyelids", "a": "Lesion does not involve the eyelid margin or impair vision; no ocular melanosis."},
+   {"q": "Assessment of facial functional structures", "a": "No involvement of the oral commissure, eyelid closure or facial movement."},
+   {"q": "Screening neurological examination", "a": "Normal; no focal neurological deficit; head circumference appropriate for age."}
+  ],
+  "problemList": [
+   "Large congenital melanocytic nevus of the left face, present since birth with proportional growth",
+   "Multiple satellite nevi on the trunk and back, conferring increased risk of neurocutaneous melanosis requiring further evaluation",
+   "No current features of malignant transformation (no ulceration, new nodularity, atypical pigment change or disproportionate growth)",
+   "Emerging psychosocial impact from peer attention to the facial lesion",
+   "No established surveillance or specialist referral plan for long-term care"
+  ],
+  "problemRepresentation": "A 3-year-old girl with a large congenital melanocytic nevus of the left face present since birth with proportional growth and multiple truncal satellite nevi conferring increased risk of neurocutaneous melanosis, without current features of malignant transformation but with emerging psychosocial impact, requiring referral to pediatric dermatology/plastic surgery for risk-stratified screening and long-term physical and psychosocial management planning."
+ }
+}

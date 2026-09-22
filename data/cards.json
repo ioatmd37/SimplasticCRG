@@ -99,40 +99,40 @@
    ],
    "exam": [
     {
-     "q": "General appearance, work of breathing",
-     "a": "Alert, active, ไม่มี respiratory distress, ไม่มี retraction"
+     "q": "General appearance and work of breathing",
+     "a": "Alert and active; no respiratory distress; no chest-wall retraction."
     },
     {
-     "q": "Inspection ริมฝีปากและจมูก",
-     "a": "Unilateral left-sided cleft lip involving vermilion และ nostril sill เล็กน้อย มี nasal ala แบนกว่าฝั่งขวาเล็กน้อย"
+     "q": "Inspection of the lip and nose",
+     "a": "Unilateral left-sided cleft lip involving the vermilion and extending minimally into the nostril sill; left alar base mildly flattened compared with the right."
     },
     {
-     "q": "Oral cavity/hard-soft palate",
-     "a": "Palate ตรวจดูต่อเนื่องเป็นแนวเรียบ ไม่พบ cleft palate หรือ notch ที่ posterior hard palate หรือ bifid uvula"
+     "q": "Oral cavity: hard and soft palate",
+     "a": "Hard and soft palate intact and continuous; no overt cleft palate, no notch at the posterior hard palate, no bifid uvula."
     },
     {
-     "q": "Suck/feeding observation ขณะตรวจ",
-     "a": "ปากสามารถ seal รอบหัวนม/จุกนมได้เกือบสมบูรณ์ มีลมรั่วเล็กน้อยที่มุมปากซ้าย แต่ดูดกลืนได้เป็นจังหวะ ไม่มี nasal regurgitation"
+     "q": "Observation of suck and feeding during examination",
+     "a": "Near-complete lip seal around the nipple/teat with minor air leak at the left oral commissure; rhythmic suck–swallow coordination; no nasal regurgitation."
     },
     {
-     "q": "Hydration/growth",
-     "a": "Mucosa ชื้นดี capillary refill ปกติ น้ำหนักอยู่ในช่วงลดตามปกติของทารกแรกเกิด"
+     "q": "Hydration status and growth",
+     "a": "Moist mucous membranes; capillary refill time normal; weight loss within the expected physiological range for a neonate."
     },
     {
      "q": "Cardiovascular examination",
-     "a": "ไม่มี murmur เด่นชัด, perfusion ปลายมือปลายเท้าดี"
+     "a": "No significant murmur; good peripheral perfusion."
     },
     {
      "q": "Ear examination",
-     "a": "Pinna ทั้งสองข้างปกติ ไม่มี anomaly ที่สังเกตได้"
+     "a": "Both auricles structurally normal; no visible anomaly."
     },
     {
-     "q": "Full dysmorphology/limb screen",
-     "a": "ไม่พบ syndactyly, polydactyly หรือ craniofacial anomaly อื่นในการตรวจคร่าว ๆ"
+     "q": "Full dysmorphology and limb screen",
+     "a": "No syndactyly, polydactyly or other craniofacial anomaly on screening examination."
     },
     {
-     "q": "Airway assessment ขณะนอนหงาย",
-     "a": "ไม่มี stertor, ไม่มี desaturation ขณะนอนหงาย (pertinent negative สำคัญที่แยกจาก Pierre Robin sequence)"
+     "q": "Airway assessment in the supine position",
+     "a": "No stertor and no oxygen desaturation when supine (key pertinent negative distinguishing this from Pierre Robin sequence)."
     }
    ],
    "investigations": [
@@ -181,13 +181,13 @@
     "ความคาดหวังที่ไม่ตรงกับความเป็นจริงเรื่องระยะเวลาการผ่าตัดและผลลัพธ์"
    ],
    "problemList": [
-    "Unilateral cleft lip แต่กำเนิด โดยไม่พบ cleft palate จากการตรวจเบื้องต้น",
-    "Feeding ทำได้เกือบปกติ มี minor milk leakage ที่มุมปาก ไม่มี nasal regurgitation",
-    "Weight loss อยู่ในช่วงปกติของทารกแรกเกิด ต้องติดตามต่อเนื่อง",
-    "ยังไม่ได้คัดกรอง associated anomaly/hearing อย่างครบถ้วน",
-    "ครอบครัวมีความเครียดด้าน aesthetic/psychosocial ที่ต้องการการสนับสนุน"
+    "Congenital unilateral cleft lip without cleft palate on initial examination",
+    "Near-normal feeding with minor milk leakage at the oral commissure; no nasal regurgitation",
+    "Weight loss within the physiological neonatal range; requires ongoing growth monitoring",
+    "Incomplete screening for associated anomalies and hearing",
+    "Significant parental aesthetic and psychosocial distress requiring support"
    ],
-   "problemRepresentation": "ทารกหญิงอายุ 5 วัน มี isolated unilateral cleft lip แต่กำเนิดโดยไม่พบ cleft palate หรือ airway/feeding red flag จากการตรวจเบื้องต้น feeding ทำได้ค่อนข้างดีและน้ำหนักอยู่ในเกณฑ์ปกติ แต่ครอบครัวมีความเครียดด้าน aesthetic สูง จึงต้องยืนยันว่าไม่มี associated anomaly ซ่อนอยู่ วางแผนติดตาม feeding/growth และประสานทีม multidisciplinary cleft เพื่อวางแผนผ่าตัดตามช่วงอายุที่เหมาะสมในระยะยาว",
+   "problemRepresentation": "A 5-day-old female neonate with a congenital isolated unilateral cleft lip, without cleft palate or airway/feeding red flags on initial examination, with adequate feeding and physiological weight loss but high parental aesthetic distress, requiring exclusion of occult associated anomalies, feeding/growth surveillance, and referral to the multidisciplinary cleft team for age-appropriate surgical planning.",
    "system1Trap": "เห็นปากแหว่งชัดเจนแล้ว จบ ก็แค่รอผ่าตัดตามอายุที่เหมาะสม",
    "system2Trigger": "เมื่อพบ cleft lip แต่กำเนิด ต้องหยุดคิดช้าลงทุกครั้งเพื่อยืนยันว่าไม่มี cleft palate ร่วม ไม่มี feeding/growth compromise และไม่มี associated anomaly ก่อนวางกรอบว่าเป็น \"isolated\" case",
    "system2Checklist": [
@@ -294,44 +294,44 @@
    ],
    "exam": [
     {
-     "q": "General appearance, work of breathing",
-     "a": "Alert, active, ไม่มี respiratory distress ในทุกท่า"
+     "q": "General appearance and work of breathing",
+     "a": "Alert and active; no respiratory distress in any position."
     },
     {
-     "q": "Oral cavity/palate inspection",
-     "a": "Complete cleft of soft และ hard palate ต่อเนื่อง ไม่มี cleft lip ร่วม"
+     "q": "Inspection of the oral cavity and palate",
+     "a": "Complete cleft of the soft and hard palate; no associated cleft lip."
     },
     {
-     "q": "Jaw/mandible assessment",
-     "a": "ขนาดขากรรไกรล่างปกติ ไม่มี micrognathia (สำคัญมากในการแยกจาก Pierre Robin sequence)"
+     "q": "Mandibular assessment",
+     "a": "Normal mandibular size; no micrognathia (critical in distinguishing this from Pierre Robin sequence)."
     },
     {
      "q": "Tongue position",
-     "a": "ลิ้นอยู่ในตำแหน่งปกติ ไม่มี glossoptosis หรือลิ้นตกไปด้านหลัง"
+     "a": "Normal tongue position; no glossoptosis."
     },
     {
-     "q": "Positional airway observation (นอนหงาย vs คว่ำ vs อุ้มตัวตรง)",
-     "a": "ไม่มี stertor, ไม่มี desaturation หรือ retraction ในทุกท่าที่ทดสอบ (pertinent negative สำคัญที่แยกจาก CARD 6)"
+     "q": "Positional airway observation (supine vs prone vs upright)",
+     "a": "No stertor, desaturation or retraction in any tested position (key pertinent negative distinguishing this from Pierre Robin sequence, Card 6)."
     },
     {
-     "q": "Feeding observation ด้วยขวดปรับพิเศษ",
-     "a": "เห็นนมไหลย้อนเล็กน้อยออกทางรูจมูกขณะดูด แต่ยังกลืนต่อเนื่องได้เป็นจังหวะ"
+     "q": "Feeding observation with a specialized cleft feeder",
+     "a": "Mild nasal regurgitation of milk during sucking, with preserved rhythmic swallowing."
     },
     {
-     "q": "Hydration/growth",
-     "a": "Mucosa ชื้นดี น้ำหนักขึ้นช้ากว่าค่าเฉลี่ยแต่ยังไม่วิกฤต"
+     "q": "Hydration status and growth",
+     "a": "Moist mucous membranes; weight gain below the expected trajectory but not yet critical."
     },
     {
-     "q": "Ear examination (otoscopy)",
-     "a": "Tympanic membrane ทั้งสองข้างดูทึบเล็กน้อย สงสัย middle-ear effusion เริ่มต้น แต่ไม่มีอาการปวดหรือไข้"
+     "q": "Otoscopic examination",
+     "a": "Both tympanic membranes mildly dull, suggestive of early bilateral middle-ear effusion; no otalgia or fever."
     },
     {
-     "q": "Full dysmorphology/limb screen",
-     "a": "ไม่พบ syndactyly, craniofacial anomaly หรือ limb anomaly อื่น"
+     "q": "Full dysmorphology and limb screen",
+     "a": "No syndactyly, craniofacial anomaly or other limb anomaly."
     },
     {
      "q": "Cardiovascular examination",
-     "a": "ไม่มี murmur เด่นชัด perfusion ปลายดี"
+     "a": "No significant murmur; good peripheral perfusion."
     }
    ],
    "investigations": [
@@ -380,13 +380,13 @@
     "Parental anxiety/ความเข้าใจผิดเรื่อง timeline การผ่าตัดและพัฒนาการพูด"
    ],
    "problemList": [
-    "Isolated complete cleft of soft and hard palate โดยไม่มี micrognathia หรือ glossoptosis",
-    "Feeding inefficiency พร้อม nasal regurgitation ขณะดูดนม โดยไม่มี airway/positional compromise",
-    "น้ำหนักขึ้นช้ากว่าเกณฑ์ ต้องติดตามและปรับเทคนิคการให้นม",
-    "สงสัย early middle-ear effusion จากการตรวจหู ต้องยืนยันด้วย audiology",
-    "ยังไม่ได้เข้าสู่ multidisciplinary cleft pathway สำหรับ speech/hearing/surgical planning"
+    "Isolated complete cleft of the soft and hard palate without micrognathia or glossoptosis",
+    "Feeding inefficiency with nasal regurgitation, without positional airway compromise",
+    "Suboptimal weight gain requiring monitoring and modification of feeding technique",
+    "Suspected early bilateral middle-ear effusion requiring audiological confirmation",
+    "Not yet enrolled in a multidisciplinary cleft pathway for speech, hearing and surgical planning"
    ],
-   "problemRepresentation": "ทารกชายอายุ 3 สัปดาห์ มี isolated complete cleft palate โดยไม่พบ micrognathia หรือ glossoptosis และ positional airway observation ปกติในทุกท่า มี feeding inefficiency กับ nasal regurgitation ร่วมกับน้ำหนักขึ้นช้า และตรวจพบสงสัย early middle-ear effusion จึงต้องให้ความสำคัญกับ feeding optimization, audiology/ENT evaluation เพื่อป้องกันผลกระทบต่อ speech-language development และประสานทีม multidisciplinary cleft สำหรับวางแผนระยะยาว โดยไม่มีข้อบ่งชี้ airway emergency ในขณะนี้",
+   "problemRepresentation": "A 3-week-old male infant with an isolated complete cleft palate, without micrognathia or glossoptosis and with a normal positional airway assessment, presenting with feeding inefficiency, nasal regurgitation, suboptimal weight gain and suspected early middle-ear effusion, requiring feeding optimization, audiological/ENT evaluation to protect speech-language development, and multidisciplinary cleft team referral, with no current indication of an airway emergency.",
    "system1Trap": "เห็น cleft palate ต้องคิดถึง Pierre Robin sequence และ airway emergency ทันที",
    "system2Trigger": "เมื่อพบ cleft palate ต้องหยุดตรวจ mandible size และ tongue position/positional breathing ก่อนตัดสินว่าเป็น isolated case หรือมี airway-threatening sequence ร่วม",
    "system2Checklist": [
@@ -481,36 +481,36 @@
    ],
    "exam": [
     {
-     "q": "Inspect both hands and feet",
-     "a": "Complete cutaneous syndactyly ระหว่าง left ring/little finger ตั้งแต่ web space ถึงใกล้ nail fold; มือขวาและเท้าปกติ"
+     "q": "Inspection of both hands and feet",
+     "a": "Complete cutaneous syndactyly of the left ring and little fingers extending from the web space to near the nail fold; right hand and both feet normal."
     },
     {
-     "q": "Assess nail complex",
-     "a": "Nail plate แยกกันเป็นสองแผ่นชัดเจน ไม่มี synonychia (nail ร่วมแผ่นเดียว)"
+     "q": "Assessment of the nail complex",
+     "a": "Two separate nail plates; no synonychia."
     },
     {
-     "q": "Assess length ของนิ้วที่เกี่ยวข้อง",
-     "a": "นิ้วนางและนิ้วก้อยยาวไม่เท่ากันเล็กน้อย สงสัยเกิด tethering effect เมื่อโตขึ้น"
+     "q": "Assessment of digit length",
+     "a": "Mild length discrepancy between the ring and little fingers, suggestive of a developing tethering effect with growth."
     },
     {
-     "q": "Active/passive range of motion",
-     "a": "เหยียดนิ้วสุดพบ mild flexion deformity/lateral deviation ที่ปลายนิ้ว จาก tethering; งอนิ้วทำได้เกือบเต็มช่วง"
+     "q": "Active and passive range of motion",
+     "a": "Mild flexion deformity and lateral deviation of the distal digits on full extension due to tethering; near-full flexion preserved."
     },
     {
      "q": "Neurovascular assessment",
-     "a": "Capillary refill, sensation grossly intact ทั้งสองนิ้ว"
+     "a": "Capillary refill and sensation grossly intact in both digits."
     },
     {
-     "q": "Palpate สำหรับ bony fusion",
-     "a": "ไม่คลำ bony prominence ผิดปกติชัดเจน แต่ยังต้องพิจารณาภาพรังสีเพื่อยืนยัน osseous involvement"
+     "q": "Palpation for osseous fusion",
+     "a": "No palpable abnormal bony prominence; radiographs still required to exclude osseous involvement."
     },
     {
-     "q": "Functional task observation (จับดินสอ/ใช้กรรไกรจำลอง)",
-     "a": "ทำได้ช้าและใช้ compensatory grip จากการที่นิ้วสองนิ้วติดกันจำกัดการแยกนิ้ว"
+     "q": "Functional task observation (pencil grip, simulated scissor use)",
+     "a": "Slow task performance with a compensatory grip due to restricted independent digit abduction."
     },
     {
-     "q": "Look for syndromic features (craniofacial, other digits, cardiac screen คร่าว ๆ)",
-     "a": "ไม่พบ craniofacial anomaly, polydactyly หรือ limb anomaly อื่นชัดเจนในการตรวจคร่าว ๆ (pertinent negative)"
+     "q": "Screening for syndromic features (craniofacial, other digits, cardiac)",
+     "a": "No craniofacial anomaly, polydactyly or other limb anomaly on screening examination (pertinent negative)."
     }
    ],
    "investigations": [
@@ -554,13 +554,13 @@
     "ความล่าช้าในการส่งต่อที่ทำให้ผลลัพธ์ด้าน function และจิตสังคมแย่ลง"
    ],
    "problemList": [
-    "Complete cutaneous syndactyly ระหว่างนิ้วนางและนิ้วก้อยมือซ้ายมาแต่กำเนิด",
-    "Mild growth-related tethering deformity จากความยาวนิ้วที่ไม่เท่ากัน",
-    "Functional impact ต่อ fine-motor task และการเรียนที่ครูสังเกตเห็น",
-    "ยังไม่ได้ตรวจแยก simple versus complex (osseous) syndactyly ด้วยภาพรังสี",
-    "ไม่พบ syndromic feature อื่นจากการตรวจคร่าว ๆ แต่ยังไม่ได้ประเมินอย่างละเอียดครบถ้วน"
+    "Congenital complete cutaneous syndactyly of the left ring and little fingers",
+    "Mild growth-related tethering deformity due to digit length discrepancy",
+    "Functional impairment of fine-motor tasks affecting school performance",
+    "Simple versus complex (osseous) syndactyly not yet differentiated radiographically",
+    "No syndromic features on screening examination; comprehensive evaluation incomplete"
    ],
-   "problemRepresentation": "เด็กชายอายุ 6 ปี มี complete cutaneous syndactyly ระหว่างนิ้วนางและนิ้วก้อยมือซ้ายมาแต่กำเนิด ร่วมกับ mild growth-related tethering deformity และ functional impact ต่อ fine-motor skill ที่ครูและผู้ปกครองสังเกตเห็นชัดขึ้นเมื่อเด็กโตขึ้น โดยยังไม่พบ syndromic feature อื่นจากการตรวจเบื้องต้น จึงต้องจำแนก simple versus complex syndactyly ด้วยภาพรังสี ประเมิน functional/growth implication และส่งต่อทีม hand/plastic surgery เพื่อวางแผนการดูแลที่เหมาะสมกับช่วงอายุ",
+   "problemRepresentation": "A 6-year-old boy with congenital complete cutaneous syndactyly of the left ring and little fingers, complicated by mild growth-related tethering deformity and progressive fine-motor functional impairment, without syndromic features on screening examination, requiring radiographic differentiation of simple versus complex syndactyly, assessment of functional and growth implications, and referral to hand/plastic surgery for age-appropriate management planning.",
    "system1Trap": "นิ้วติดกันมานานแล้วไม่เจ็บ ไม่เปลี่ยนแปลง จึงไม่รีบส่งต่อก็ได้",
    "system2Trigger": "เมื่อพบ congenital syndactyly ในเด็กที่กำลังเติบโต ต้องหยุดคิดช้าลงเพื่อประเมิน growth-related tethering effect และแยก simple/complex ก่อนสรุปว่าเป็นเรื่องที่รอได้อย่างไม่จำกัดเวลา",
    "system2Checklist": [
@@ -659,36 +659,36 @@
    ],
    "exam": [
     {
-     "q": "Head shape จากด้านบน/หน้า/ข้าง",
-     "a": "Turribrachycephaly-like pattern with bilateral frontal bossing; รูปร่างดูสมมาตรแต่ผิดปกติต่อเนื่อง ไม่ใช่ asymmetric flattening แบบ positional"
+     "q": "Head shape (vertex, frontal and lateral views)",
+     "a": "Turribrachycephalic pattern with bilateral frontal bossing; symmetric but progressively abnormal contour, not the asymmetric occipital flattening of positional plagiocephaly."
     },
     {
-     "q": "Palpate sutures",
-     "a": "คลำได้ ridge ที่ coronal suture ทั้งสองข้างชัดเจน"
+     "q": "Palpation of cranial sutures",
+     "a": "Palpable ridging along both coronal sutures."
     },
     {
-     "q": "Fontanelle",
-     "a": "Anterior fontanelle ปิดเร็วกว่าที่คาดสำหรับวัยนี้"
+     "q": "Anterior fontanelle",
+     "a": "Anterior fontanelle closing earlier than expected for age."
     },
     {
      "q": "Head circumference trend",
-     "a": "เส้นรอบศีรษะข้ามเส้น percentile ขึ้นเร็วกว่าที่ควรในช่วง 2 นัดล่าสุด"
+     "a": "Occipitofrontal circumference crossing percentiles upward over the last two visits."
     },
     {
-     "q": "Neurological/developmental exam",
-     "a": "Grossly age appropriate ในการประเมินคร่าว ๆ (pertinent negative สำคัญ)"
+     "q": "Neurological and developmental examination",
+     "a": "Grossly age-appropriate on screening assessment (key pertinent negative)."
     },
     {
      "q": "Eye examination (proptosis, sunset sign, red reflex)",
-     "a": "ไม่พบ proptosis หรือ sunset eye sign ชัดเจนในการตรวจนี้ แต่ formal ophthalmic assessment ยังไม่เคยทำ"
+     "a": "No proptosis or sunsetting on this examination; formal ophthalmological assessment not yet performed."
     },
     {
-     "q": "Irritability/level of consciousness",
-     "a": "Alert, interactive, ไม่มี lethargy หรือ high-pitched cry"
+     "q": "Irritability and level of consciousness",
+     "a": "Alert and interactive; no lethargy or high-pitched cry."
     },
     {
-     "q": "Full dysmorphology/limb exam",
-     "a": "ไม่มี syndromic feature ที่สังเกตเห็นชัดในการตรวจคร่าว ๆ"
+     "q": "Full dysmorphology and limb examination",
+     "a": "No overt syndromic features on screening examination."
     }
    ],
    "investigations": [
@@ -731,13 +731,13 @@
     "ความล่าช้าในการส่งต่อที่ทำให้ผลลัพธ์ด้าน neurodevelopment และ craniofacial growth แย่ลง"
    ],
    "problemList": [
-    "Progressive abnormal head shape ตั้งแต่อายุ 2 เดือน ไม่ตอบสนองต่อการปรับท่านอน",
-    "Palpable suture ridge ที่ coronal suture ทั้งสองข้างร่วมกับ fontanelle ปิดเร็ว",
-    "Head circumference trend ข้าม percentile เร็วกว่าที่คาด",
-    "ยังไม่พบ raised ICP/visual sign ชัดเจนจากการตรวจเบื้องต้น แต่ยังไม่ได้ประเมินอย่างเป็นทางการ",
-    "ไม่พบ syndromic feature อื่นในการตรวจคร่าว ๆ"
+    "Progressive cranial deformity since 2 months of age, unresponsive to repositioning",
+    "Bilateral palpable coronal suture ridging with premature anterior fontanelle closure",
+    "Abnormal head circumference trajectory crossing percentiles",
+    "No overt signs of raised intracranial pressure or visual compromise; formal assessment pending",
+    "No syndromic features on screening examination"
    ],
-   "problemRepresentation": "ทารกหญิงอายุ 5 เดือน มี progressive abnormal head shape ตั้งแต่อายุ 2 เดือนที่ไม่ตอบสนองต่อการปรับท่านอน ร่วมกับ palpable coronal suture ridge, fontanelle ปิดเร็ว และ head circumference trend ผิดปกติ โดยยังไม่พบสัญญาณ raised ICP หรือ visual compromise ชัดเจนจากการตรวจเบื้องต้น จึงสงสัย craniosynostosis มากกว่า positional plagiocephaly และต้องส่งต่อทีม craniofacial/neurosurgery อย่างไม่ชักช้าเพื่อยืนยันการวินิจฉัยและประเมิน ICP/visual status อย่างเป็นระบบ",
+   "problemRepresentation": "A 5-month-old female infant with progressive cranial deformity since 2 months of age unresponsive to repositioning, with bilateral palpable coronal suture ridging, premature anterior fontanelle closure and an abnormal head circumference trajectory, without overt signs of raised intracranial pressure or visual compromise, most consistent with craniosynostosis rather than positional plagiocephaly, requiring prompt craniofacial/neurosurgical referral for diagnostic confirmation and systematic ICP and visual assessment.",
    "system1Trap": "ศีรษะเด็กผิดรูปทุกคนเป็นเพราะนอนท่าเดียว ปรับท่านอนก็หายเอง",
    "system2Trigger": "เมื่อพบรูปศีรษะผิดปกติที่ progressive และไม่ตอบสนองต่อการปรับท่านอน ต้องหยุดคิดช้าลงเพื่อคลำ suture ridge และประเมิน ICP/visual sign ก่อนสรุปว่าเป็น positional cause",
    "system2Checklist": [
@@ -832,36 +832,36 @@
    ],
    "exam": [
     {
-     "q": "External ear inspection ข้างขวา",
-     "a": "Grade III microtia ลักษณะใบหูเล็กผิดรูปมาก มี rudimentary structure เท่านั้น"
+     "q": "Inspection of the right external ear",
+     "a": "Grade III microtia: severely hypoplastic, malformed auricle with rudimentary remnants only."
     },
     {
-     "q": "External auditory canal ข้างขวา",
-     "a": "สงสัย canal atresia (ไม่เห็นช่องหูปกติ) ต้องยืนยันด้วยผู้เชี่ยวชาญ"
+     "q": "Right external auditory canal",
+     "a": "Suspected external auditory canal atresia (no visible patent canal); requires specialist confirmation."
     },
     {
-     "q": "Contralateral ear (ซ้าย)",
-     "a": "Pinna และ canal ดูปกติในการตรวจคร่าว ๆ (pertinent negative สำคัญที่ต้องยืนยันด้วย audiology เพราะยังไม่รู้ hearing level จริง)"
+     "q": "Contralateral (left) ear",
+     "a": "Auricle and canal grossly normal on examination (pertinent negative; audiological confirmation still required as true hearing thresholds are unknown)."
     },
     {
-     "q": "Facial symmetry/mandible",
-     "a": "สงสัย mild right mandibular hypoplasia และ facial asymmetry เล็กน้อย ต้องประเมินเพิ่มเติม"
+     "q": "Facial symmetry and mandible",
+     "a": "Suspected mild right mandibular hypoplasia with subtle facial asymmetry; requires further evaluation."
     },
     {
-     "q": "Response to sound (bedside)",
-     "a": "ตอบสนองต่อเสียงเรียกจากด้านซ้ายได้ดีกว่าด้านขวาอย่างชัดเจนในการสังเกตนี้"
+     "q": "Bedside response to sound",
+     "a": "Clearly better orienting response to sound presented on the left than on the right."
     },
     {
-     "q": "Speech/language interaction คร่าว ๆ",
-     "a": "ใช้คำศัพท์น้อยกว่าเกณฑ์ที่คาดสำหรับวัย 3 ปี"
+     "q": "Screening of speech and language interaction",
+     "a": "Expressive vocabulary below the expected level for a 3-year-old."
     },
     {
-     "q": "Cranial nerve/facial movement",
-     "a": "ไม่มี facial nerve weakness ที่สังเกตได้"
+     "q": "Cranial nerves and facial movement",
+     "a": "No observable facial nerve weakness."
     },
     {
-     "q": "Full dysmorphology/limb screen",
-     "a": "ไม่มี vertebral, cardiac หรือ limb anomaly ที่สังเกตเห็นชัดในการตรวจคร่าว ๆ"
+     "q": "Full dysmorphology and limb screen",
+     "a": "No overt vertebral, cardiac or limb anomaly on screening examination."
     }
    ],
    "investigations": [
@@ -905,13 +905,13 @@
     "ความล่าช้าในการติดตาม newborn hearing screen ที่ขาดช่วงไปตั้งแต่แรกเกิด"
    ],
    "problemList": [
-    "Right grade III microtia ร่วมกับสงสัย external auditory canal atresia",
-    "Delayed newborn hearing screen follow-up ตั้งแต่แรกเกิด ยังไม่ได้ยืนยัน hearing status ทั้งสองข้าง",
-    "Delayed speech-language development เทียบกับเกณฑ์วัย 3 ปี",
-    "สงสัย mild right mandibular hypoplasia/facial asymmetry ที่ต้องประเมินเพิ่มเติม",
-    "ความกังวลด้าน psychosocial ของเด็กและครอบครัวจากรูปลักษณ์และการถูกล้อ"
+    "Right grade III microtia with suspected external auditory canal atresia",
+    "Lost to follow-up after newborn hearing screening; bilateral hearing status unconfirmed",
+    "Expressive speech-language delay for age",
+    "Suspected mild right mandibular hypoplasia and facial asymmetry requiring evaluation",
+    "Psychosocial concerns for the child and family related to appearance and teasing"
    ],
-   "problemRepresentation": "เด็กชายอายุ 3 ปี มี right grade III microtia ร่วมกับสงสัย external auditory canal atresia และ delayed newborn hearing screen follow-up ที่ขาดช่วงมาตั้งแต่แรกเกิด ปัจจุบันมี delayed speech-language development และสงสัย mild right mandibular hypoplasia ร่วมด้วย จึงต้องประเมิน formal audiology ทั้งสองข้างอย่างเร่งด่วน ส่งต่อทีม ENT/craniofacial multidisciplinary เพื่อวางแผน hearing pathway และ staged reconstruction พร้อมสนับสนุนพัฒนาการภาษาและจิตสังคมของครอบครัว",
+   "problemRepresentation": "A 3-year-old boy with right grade III microtia and suspected external auditory canal atresia, lost to follow-up after newborn hearing screening, now presenting with expressive speech-language delay and suspected mild right mandibular hypoplasia, requiring urgent formal bilateral audiological assessment, multidisciplinary ENT/craniofacial referral for hearing rehabilitation and staged reconstruction planning, and developmental and psychosocial support.",
    "system1Trap": "ใบหูเล็กผิดรูปเป็นเรื่องความสวยงาม ค่อยผ่าตัดทำหูตอนโต",
    "system2Trigger": "เมื่อพบ microtia ต้องหยุดคิดช้าลงเพื่อยืนยัน hearing status ของทั้งสองข้างและตรวจสอบพัฒนาการภาษา ก่อนตัดสินว่าเป็นเพียงปัญหาด้าน appearance",
    "system2Checklist": [
@@ -1014,40 +1014,40 @@
    ],
    "exam": [
     {
-     "q": "General appearance, work of breathing, airway",
-     "a": "Alert แต่ดูเหนื่อยเวลาร้อง มี intermittent stertor ชัดเจน; ไม่มี stridor ต่อเนื่องขณะอุ้มตัวตรง"
+     "q": "General appearance, work of breathing and airway",
+     "a": "Alert but fatigues with crying; intermittent stertor clearly audible; no persistent stridor when held upright."
     },
     {
-     "q": "Positional observation (นอนหงาย vs คว่ำ vs อุ้มตัวตรง)",
-     "a": "นอนหงายมี suprasternal/subcostal retraction ชัดเจนและ SpO₂ ลดเหลือ 90-91%; จัดท่าเหมาะสมภายใต้การดูแลแล้ว saturation ดีขึ้นทันที (critical positional finding)"
+     "q": "Positional observation (supine vs prone vs upright)",
+     "a": "Marked suprasternal and subcostal retraction when supine with SpO₂ falling to 90–91%; immediate improvement in saturation with appropriate positioning under supervision (critical positional finding)."
     },
     {
-     "q": "Jaw/mandible assessment",
-     "a": "Micrognathia ชัดเจน ขากรรไกรล่างเล็กและถอยไปด้านหลังเมื่อเทียบกับใบหน้าส่วนบน"
+     "q": "Mandibular assessment",
+     "a": "Marked micrognathia with retrognathic mandible relative to the midface."
     },
     {
-     "q": "Tongue/glossoptosis assessment",
-     "a": "สงสัย glossoptosis ชัดเจนจากลิ้นตกไปด้านหลังอุดกั้นทางเดินหายใจโดยเฉพาะในท่านอนหงาย"
+     "q": "Tongue position and glossoptosis",
+     "a": "Evident glossoptosis with posterior tongue displacement causing airway obstruction, particularly when supine."
     },
     {
-     "q": "Oral cavity/palate",
-     "a": "Cleft palate ร่วมด้วย (U-shaped) โดยไม่มี cleft lip ที่เด่นชัด"
+     "q": "Oral cavity and palate",
+     "a": "Associated U-shaped cleft palate; no cleft lip."
     },
     {
-     "q": "Hydration and growth",
-     "a": "น้ำหนักลดจากน้ำหนักแรกเกิดประมาณ 9-10%; mucosa ค่อนข้างแห้งเล็กน้อย"
+     "q": "Hydration status and growth",
+     "a": "Weight loss of approximately 9–10% from birth weight; mildly dry mucous membranes."
     },
     {
      "q": "Chest examination",
-     "a": "Air entry สองข้างดี ไม่มี focal crepitation"
+     "a": "Good bilateral air entry; no focal crackles."
     },
     {
      "q": "Cardiovascular examination",
-     "a": "ไม่มี murmur เด่นชัด; perfusion ปลายดี"
+     "a": "No significant murmur; good peripheral perfusion."
     },
     {
-     "q": "Full congenital/syndromic examination",
-     "a": "ไม่พบ limb anomaly ชัดเจนในการตรวจครั้งแรก แต่ต้องพิจารณา syndromic association ตามบริบท (เช่น Stickler syndrome)"
+     "q": "Full congenital and syndromic examination",
+     "a": "No overt limb anomaly on initial examination; syndromic associations (e.g. Stickler syndrome) should be considered in context."
     }
    ],
    "investigations": [
@@ -1096,13 +1096,13 @@
     "Family distress และความจำเป็นของ safe feeding/airway plan ระหว่างรอทีมสหสาขา"
    ],
    "problemList": [
-    "Micrognathia, glossoptosis และ cleft palate ร่วมกัน เข้าได้กับ Pierre Robin sequence",
-    "Positional upper-airway obstruction ที่ยืนยันด้วย desaturation ในท่านอนหงายและดีขึ้นเมื่อจัดท่า",
-    "Feeding failure ร่วมกับ weight loss ประมาณ 9-10% จากน้ำหนักแรกเกิด",
-    "ยังไม่ได้คัดกรอง associated syndromic condition อย่างครบถ้วน",
-    "Family distress ที่ต้องการ safe feeding/airway plan ระหว่างรอ multidisciplinary evaluation"
+    "Micrognathia, glossoptosis and cleft palate consistent with Pierre Robin sequence",
+    "Positional upper-airway obstruction with supine desaturation, improving with positioning",
+    "Feeding failure with approximately 9–10% weight loss from birth weight",
+    "Incomplete screening for associated syndromic conditions",
+    "Family distress requiring a safe interim airway and feeding plan pending multidisciplinary evaluation"
    ],
-   "problemRepresentation": "ทารกชายอายุ 6 วัน มี micrognathia, glossoptosis และ cleft palate ร่วมกันเข้าได้กับ Pierre Robin sequence โดยมี positional upper-airway obstruction ที่ยืนยันด้วย oxygen desaturation ขณะนอนหงายซึ่งดีขึ้นเมื่อจัดท่า ร่วมกับ feeding failure และน้ำหนักลด 9-10% จากน้ำหนักแรกเกิด จึงเป็น neonatal airway emergency ที่ต้องประเมิน airway, hydration และ feeding safety อย่างเร่งด่วนก่อนวางแผนการรักษาระยะยาว ซึ่งแตกต่างจาก isolated cleft palate ที่ไม่มี airway compromise ชัดเจน",
+   "problemRepresentation": "A 6-day-old male neonate with micrognathia, glossoptosis and cleft palate consistent with Pierre Robin sequence, with positional upper-airway obstruction confirmed by supine desaturation that improves with positioning, complicated by feeding failure and 9–10% weight loss from birth weight, representing a neonatal airway emergency that requires urgent assessment of airway, hydration and feeding safety, in contrast to isolated cleft palate without airway compromise.",
    "system1Trap": "เห็น cleft palate ในทารกแล้ว จบ ก็แค่ isolated cleft palate รอผ่าตัดตามช่วงอายุ",
    "system2Trigger": "ทารกที่มี cleft palate ร่วมกับ micrognathia และ noisy breathing ที่เปลี่ยนตามท่านอน ต้องหยุดคิดช้าลงทันทีเพื่อประเมิน airway และ feeding safety ก่อนวางกรอบว่าเป็น isolated case ธรรมดา",
    "system2Checklist": [
@@ -1145,7 +1145,7 @@
    "fullTitle": "Congenital: Congenital melanocytic nevus (large, facial) presenting at age 3",
    "level": "Should know",
    "bloom": "Understand / Apply / Analyze",
-   "image": null,
+   "image": "G1-CARD7-portrait.jpg",
    "learningFocus": [
     "ฝึกประเมิน congenital melanocytic nevus (CMN) อย่างเป็นระบบ: ขนาด, ตำแหน่ง, satellite lesion และสัญญาณเปลี่ยนแปลงที่น่ากังวล แทนการมองว่า \"ปานแต่กำเนิดเป็นเรื่องปกติเสมอ\"",
     "ฝึกรู้จักความเสี่ยง neurocutaneous melanosis ในเด็กที่มี CMN ขนาดใหญ่ร่วมกับ satellite lesion โดยไม่ต้องตัดสินใจ investigation ขั้นสุดท้ายด้วยตนเอง",
@@ -1213,36 +1213,36 @@
    ],
    "exam": [
     {
-     "q": "Inspection ทั่วไป/พัฒนาการที่ห้องตรวจ",
-     "a": "เด็กดูแข็งแรงดี ร่าเริง พัฒนาการสมวัยตามที่สังเกตได้ในห้องตรวจ"
+     "q": "General inspection and developmental observation",
+     "a": "Well-appearing, cheerful child; developmental milestones age-appropriate on observation."
     },
     {
-     "q": "ตรวจวัดขนาดและลักษณะรอยโรคที่ใบหน้า",
-     "a": "รอยโรคสีน้ำตาลเข้มถึงดำ ขอบเขตชัดเจน ขนาดเส้นผ่านศูนย์กลางประมาณ 6 ซม. ครอบคลุมบริเวณแก้มถึงขมับซ้าย ผิวค่อนข้างหนาเล็กน้อยคล้ายหนัง มีขนหยาบขึ้นในรอยโรค ไม่พบแผลหรือเลือดออก"
+     "q": "Measurement and morphology of the facial lesion",
+     "a": "Well-demarcated dark brown to black pigmented plaque approximately 6 cm in diameter involving the left cheek and temple, with mildly thickened leathery texture and coarse terminal hair; no ulceration or bleeding."
     },
     {
-     "q": "ตรวจสีและพื้นผิวอย่างละเอียด",
-     "a": "สีสม่ำเสมอทั่วทั้งรอยโรค ไม่พบก้อนนูน สีเข้มผิดปกติ หรือบริเวณสีซีดจางเฉพาะจุด"
+     "q": "Detailed assessment of color and surface",
+     "a": "Homogeneous pigmentation throughout; no nodules, focal darkening or regression/depigmentation."
     },
     {
-     "q": "ตรวจผิวหนังทั่วร่างกาย",
-     "a": "พบรอยปานสีน้ำตาลขนาดเล็กกว่า (แต่ละจุดเล็กกว่ารอยที่ใบหน้าชัดเจน) กระจายอยู่ 3-4 ตำแหน่งที่ลำตัวและหลัง ลักษณะคล้ายกัน"
+     "q": "Total-body skin examination",
+     "a": "Three to four smaller satellite melanocytic nevi on the trunk and back with similar morphology."
     },
     {
-     "q": "ตรวจต่อมน้ำเหลืองบริเวณศีรษะ/คอ",
-     "a": "ไม่พบต่อมน้ำเหลืองโต"
+     "q": "Head and neck lymph node examination",
+     "a": "No lymphadenopathy."
     },
     {
-     "q": "ตรวจตาและเปลือกตา",
-     "a": "รอยโรคไม่ลามเข้าขอบเปลือกตาหรือรบกวนการมองเห็น ไม่พบ ocular melanosis"
+     "q": "Examination of the eyes and eyelids",
+     "a": "Lesion does not involve the eyelid margin or impair vision; no ocular melanosis."
     },
     {
-     "q": "ตรวจการทำงานของใบหน้า (functional structures)",
-     "a": "ไม่มีผลกระทบต่อมุมปาก การหลับตา หรือการเคลื่อนไหวของใบหน้า"
+     "q": "Assessment of facial functional structures",
+     "a": "No involvement of the oral commissure, eyelid closure or facial movement."
     },
     {
-     "q": "Neurological screening exam เบื้องต้น",
-     "a": "ปกติ ไม่พบ focal deficit เส้นรอบศีรษะเหมาะสมตามอายุ"
+     "q": "Screening neurological examination",
+     "a": "Normal; no focal neurological deficit; head circumference appropriate for age."
     }
    ],
    "investigations": [
@@ -1291,13 +1291,13 @@
     "การตัดสินใจผ่าตัดหรือไม่ผ่าตัดโดยไม่ผ่านการประเมินจากทีมเฉพาะทาง"
    ],
    "problemList": [
-    "Congenital melanocytic nevus ขนาดใหญ่บริเวณใบหน้าซีกซ้าย มีมาตั้งแต่แรกเกิด โตตามสัดส่วนร่างกาย",
-    "พบ satellite nevi หลายตำแหน่งที่ลำตัวและหลัง ซึ่งเพิ่มความเสี่ยงต่อ neurocutaneous melanosis ที่ควรได้รับการประเมินเพิ่มเติม",
-    "ไม่พบสัญญาณของ malignant transformation ในขณะนี้ (ไม่มี ulceration, ก้อนนูนใหม่, การเปลี่ยนสีผิดปกติ หรือโตเร็วผิดสัดส่วน)",
-    "เริ่มมีผลกระทบทางจิตใจ/สังคมจากการถูกเพื่อนถามเรื่องรอยโรคที่ใบหน้า",
-    "ยังไม่มีแผนติดตามหรือส่งต่อผู้เชี่ยวชาญที่ชัดเจนสำหรับการดูแลระยะยาว"
+    "Large congenital melanocytic nevus of the left face, present since birth with proportional growth",
+    "Multiple satellite nevi on the trunk and back, conferring increased risk of neurocutaneous melanosis requiring further evaluation",
+    "No current features of malignant transformation (no ulceration, new nodularity, atypical pigment change or disproportionate growth)",
+    "Emerging psychosocial impact from peer attention to the facial lesion",
+    "No established surveillance or specialist referral plan for long-term care"
    ],
-   "problemRepresentation": "เด็กหญิงไทยอายุ 3 ปี มี congenital melanocytic nevus ขนาดใหญ่ที่ใบหน้าซีกซ้ายตั้งแต่แรกเกิด โตตามสัดส่วนร่างกายมาโดยตลอด ตรวจพบ satellite nevi หลายตำแหน่งที่ลำตัวซึ่งเพิ่มความเสี่ยงต่อ neurocutaneous melanosis ปัจจุบันยังไม่มีสัญญาณ malignant transformation ชัดเจน แต่เริ่มมีผลกระทบด้านจิตใจจากรอยโรคที่ใบหน้า จึงต้องส่งต่อทีม pediatric dermatology/plastic surgery เพื่อประเมินความจำเป็นในการคัดกรองเพิ่มเติมและวางแผนดูแลระยะยาวทั้งด้านร่างกายและจิตใจ",
+   "problemRepresentation": "A 3-year-old girl with a large congenital melanocytic nevus of the left face present since birth with proportional growth and multiple truncal satellite nevi conferring increased risk of neurocutaneous melanosis, without current features of malignant transformation but with emerging psychosocial impact, requiring referral to pediatric dermatology/plastic surgery for risk-stratified screening and long-term physical and psychosocial management planning.",
    "system1Trap": "ปานแต่กำเนิดเป็นเรื่องปกติของเด็กอยู่แล้ว ไม่ต้องตรวจอะไรเพิ่มเติม รอดูไปก่อนได้เสมอ",
    "system2Trigger": "เมื่อพบ congenital pigmented lesion ขนาดใหญ่หรือมีลักษณะที่อาจเข้าเกณฑ์เสี่ยง ต้องหยุดคิดช้าลงเพื่อประเมินขนาด ตำแหน่ง satellite lesion และสัญญาณเปลี่ยนแปลงอย่างเป็นระบบ ก่อนให้คำแนะนำแบบ reassurance เพียงอย่างเดียวหรือรีบตัดสินใจผ่าตัดทันที",
    "system2Checklist": [
@@ -1404,44 +1404,44 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/general",
-     "a": "Alert, airway patent, hemodynamically stable"
+     "q": "Primary survey (ABCDE) and general assessment",
+     "a": "Alert; airway patent; hemodynamically stable."
     },
     {
-     "q": "ตรวจภายนอกจมูก (inspection)",
-     "a": "บวมช้ำทั่วสันจมูกและรอบตาทั้งสองข้างเล็กน้อย ประเมิน deviation จากภายนอกได้ยากเพราะบวมบัง"
+     "q": "External nasal inspection",
+     "a": "Diffuse swelling and ecchymosis over the nasal dorsum with mild bilateral periorbital ecchymosis; external deviation difficult to assess due to edema."
     },
     {
-     "q": "คลำสันจมูก (palpation)",
-     "a": "กดเจ็บชัดเจนบริเวณกระดูกจมูก ไม่คลำ crepitus ชัดเจนในเคสนี้"
+     "q": "Palpation of the nasal dorsum",
+     "a": "Marked tenderness over the nasal bones; no palpable crepitus."
     },
     {
-     "q": "Intranasal examination (critical/red-flag)",
-     "a": "พบ boggy bluish-purple swelling ที่ผนังกั้นจมูกทั้งสองข้างบริเวณ anterior septum ทำให้ทางเดินอากาศแคบลงทั้งสองรูจมูก"
+     "q": "Anterior rhinoscopy / intranasal examination (critical)",
+     "a": "Bilateral boggy, bluish-purple fluctuant swelling of the anterior nasal septum causing bilateral narrowing of the nasal airway."
     },
     {
-     "q": "ตรวจหา active bleeding ในโพรงจมูกขณะตรวจ",
-     "a": "ไม่มี active bleeding ขณะตรวจ"
+     "q": "Assessment for active intranasal bleeding",
+     "a": "No active bleeding at the time of examination."
     },
     {
-     "q": "ตรวจ CSF leak (halo sign/paper test ตาม local protocol)",
-     "a": "ไม่พบลักษณะน้ำใสไหลหรือ halo sign ชัดเจนในสถานการณ์นี้"
+     "q": "Assessment for CSF rhinorrhea (halo sign / per local protocol)",
+     "a": "No clear rhinorrhea and no halo sign."
     },
     {
-     "q": "ตรวจตา/EOM/visual acuity (pertinent negative)",
-     "a": "Visual acuity ปกติ pupils ปกติ EOM เต็มช่วงไม่มี diplopia"
+     "q": "Visual acuity, pupils and extraocular movements (pertinent negative)",
+     "a": "Normal visual acuity; pupils equal and reactive; full extraocular movements without diplopia."
     },
     {
-     "q": "คลำ orbital rim และ zygoma (pertinent negative)",
-     "a": "ไม่มี step deformity หรือกดเจ็บที่ orbital rim/zygoma"
+     "q": "Palpation of the orbital rims and zygoma (pertinent negative)",
+     "a": "No step deformity or tenderness at the orbital rims or zygoma."
     },
     {
-     "q": "ตรวจสบฟัน/ trismus (pertinent negative)",
-     "a": "สบฟันปกติ อ้าปากได้เต็มที่ไม่มี trismus"
+     "q": "Occlusion and mouth opening (pertinent negative)",
+     "a": "Normal occlusion; full mouth opening without trismus."
     },
     {
-     "q": "ตรวจ mental status/GCS",
-     "a": "GCS 15 ตลอดการประเมิน"
+     "q": "Mental status / GCS",
+     "a": "GCS 15 throughout assessment."
     }
    ],
    "investigations": [
@@ -1490,13 +1490,13 @@
     "Delayed recognition จากการที่ผู้ปกครองมองว่า \"เลือดหยุดแล้วไม่มีอะไร\""
    ],
    "problemList": [
-    "สงสัย septal hematoma จาก bilateral boggy septal swelling ร่วมกับ nasal obstruction ที่แย่ลง",
-    "Nasal bone injury/possible fracture จาก direct blunt trauma",
-    "ต้อง exclude associated orbital/midface injury (ปัจจุบันเป็น pertinent negative)",
-    "ต้อง exclude CSF leak/skull base injury (ปัจจุบันเป็น pertinent negative)",
-    "Tetanus status ที่ยังไม่ชัดเจนต้องทบทวน"
+    "Suspected bilateral septal hematoma with progressive nasal obstruction",
+    "Nasal bone injury with possible fracture from direct blunt trauma",
+    "Associated orbital/midface injury to be excluded (currently a pertinent negative)",
+    "CSF leak / skull base injury to be excluded (currently a pertinent negative)",
+    "Tetanus immunization status unconfirmed"
    ],
-   "problemRepresentation": "เด็กชายอายุ 14 ปี มาด้วย blunt nasal trauma 4 ชั่วโมงก่อน มี progressive bilateral nasal obstruction และ intranasal examination พบ bilateral boggy bluish septal swelling โดยไม่มี visual, EOM หรือ CSF leak abnormality จึงสงสัย septal hematoma ที่ต้องได้รับการประเมินและระบายอย่างทันท่วงทีเพื่อป้องกัน septal necrosis",
+   "problemRepresentation": "A 14-year-old boy presenting 4 hours after blunt nasal trauma with progressive bilateral nasal obstruction and bilateral boggy bluish septal swelling on intranasal examination, without visual, extraocular movement or CSF leak abnormalities, consistent with a septal hematoma requiring prompt evaluation and drainage to prevent septal cartilage necrosis.",
    "system1Trap": "เลือดกำเดาหยุดแล้ว บวมธรรมดาจากจมูกหัก รอดูอาการที่บ้านได้",
    "system2Trigger": "เมื่อผู้ป่วย nasal trauma มี nasal obstruction ที่แย่ลงหรือเป็นสองข้าง ต้องหยุดคิดช้าลงและตรวจ intranasal ทุกครั้งก่อนสรุปว่าเป็นแค่ swelling ธรรมดา",
    "system2Checklist": [
@@ -1599,48 +1599,48 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/general",
-     "a": "Alert, airway patent, hemodynamically stable"
+     "q": "Primary survey (ABCDE) and general assessment",
+     "a": "Alert; airway patent; hemodynamically stable."
     },
     {
-     "q": "Visual acuity แต่ละข้าง (critical)",
-     "a": "ตาซ้ายมองเห็นลดลงเล็กน้อยเมื่อเทียบกับขวา ยังนับนิ้วและอ่านตัวอักษรใหญ่ได้"
+     "q": "Visual acuity of each eye (critical)",
+     "a": "Mildly reduced visual acuity in the left eye compared with the right; able to count fingers and read large print."
     },
     {
-     "q": "Pupils/RAPD (critical)",
-     "a": "Pupils equal, reactive, ไม่พบ relative afferent pupillary defect ในสถานการณ์จำลองนี้"
+     "q": "Pupillary examination / RAPD (critical)",
+     "a": "Pupils equal and reactive; no relative afferent pupillary defect."
     },
     {
-     "q": "EOM assessment (critical/red-flag)",
-     "a": "จำกัดการเหลือบมองขึ้นบนอย่างชัดเจนฝั่งซ้าย ร่วมกับปวดเวลาพยายามขยับ สงสัย entrapment ของ inferior rectus/orbital tissue"
+     "q": "Extraocular movements (critical)",
+     "a": "Marked restriction of left upgaze with pain on attempted elevation, suggestive of inferior rectus / orbital soft-tissue entrapment."
     },
     {
-     "q": "Globe inspection (red-flag)",
-     "a": "ไม่พบลักษณะ open globe ชัดเจน (ไม่มี irregular pupil, extruded content) แต่ต้องระวังและประเมินอย่างระมัดระวังไม่กดตา"
+     "q": "Globe inspection (red flag)",
+     "a": "No clinical signs of open globe injury (no irregular pupil or extruded contents); examine without pressure on the globe."
     },
     {
-     "q": "Enophthalmos/globe position",
-     "a": "สังเกตเห็น globe ฝั่งซ้ายดูจมลงเล็กน้อยเมื่อเทียบกับขวา"
+     "q": "Globe position / enophthalmos",
+     "a": "Mild left enophthalmos compared with the right."
     },
     {
-     "q": "Periorbital/lid inspection",
-     "a": "บวมช้ำรอบตาซ้ายชัดเจน ไม่มีแผลเปิดทะลุเปลือกตา"
+     "q": "Periorbital and eyelid inspection",
+     "a": "Marked left periorbital edema and ecchymosis; no full-thickness eyelid laceration."
     },
     {
-     "q": "Infraorbital (V2) sensation",
-     "a": "ลดลงเล็กน้อยบริเวณเปลือกตาล่างและแก้มซ้าย"
+     "q": "Infraorbital nerve (V2) sensation",
+     "a": "Mild hypoesthesia of the left lower eyelid and cheek."
     },
     {
-     "q": "คลำ orbital rim (pertinent negative สำหรับ ZMC)",
-     "a": "ไม่คลำ step deformity ที่ infraorbital rim หรือ zygomatic arch"
+     "q": "Palpation of the orbital rim (pertinent negative for ZMC fracture)",
+     "a": "No step deformity at the infraorbital rim or zygomatic arch."
     },
     {
-     "q": "สบฟัน/trismus (pertinent negative สำหรับ ZMC)",
-     "a": "สบฟันปกติ อ้าปากได้เต็มที่ ไม่มี malar flattening"
+     "q": "Occlusion and mouth opening (pertinent negative for ZMC fracture)",
+     "a": "Normal occlusion; full mouth opening; no malar flattening."
     },
     {
-     "q": "Intraocular pressure/tense globe (ถ้ามี local protocol)",
-     "a": "ไม่มีลักษณะ tense proptotic globe ที่บ่งชี้ retrobulbar hemorrhage ในเคสนี้"
+     "q": "Intraocular pressure / tense globe (per local protocol)",
+     "a": "No tense proptotic globe to suggest retrobulbar hemorrhage."
     }
    ],
    "investigations": [
@@ -1689,13 +1689,13 @@
     "Associated intracranial injury หากมีอาการทางระบบประสาทเพิ่มขึ้น"
    ],
    "problemList": [
-    "สงสัย orbital blowout fracture ร่วมกับ extraocular muscle entrapment จาก restricted upgaze และ diplopia",
-    "Mild visual acuity reduction ที่ต้อง monitor ว่าเป็น vision-threatening หรือไม่",
-    "Infraorbital (V2) sensory deficit",
-    "Enophthalmos สงสัยจาก orbital volume change",
-    "ไม่มีหลักฐาน ZMC involvement หรือ open globe ในขณะนี้ (pertinent negative ที่ต้องบันทึก)"
+    "Suspected left orbital floor blowout fracture with extraocular muscle entrapment (restricted upgaze and diplopia)",
+    "Mildly reduced visual acuity requiring monitoring for vision-threatening injury",
+    "Left infraorbital (V2) nerve hypoesthesia",
+    "Suspected enophthalmos secondary to increased orbital volume",
+    "No evidence of ZMC fracture or open globe injury (documented pertinent negatives)"
    ],
-   "problemRepresentation": "ชายอายุ 27 ปี หลังถูกลูกกอล์ฟกระแทกตาซ้ายโดยตรง 3 ชั่วโมงก่อน มี restricted upgaze, diplopia, mild visual acuity reduction และ infraorbital hypoesthesia โดยไม่มี step deformity ที่ orbital rim หรือ malocclusion จึงสงสัย orbital blowout fracture ที่มี extraocular muscle entrapment ซึ่งต้องได้รับการประเมิน ophthalmology อย่างเร่งด่วนก่อนวางแผน imaging และ referral",
+   "problemRepresentation": "A 27-year-old man presenting 3 hours after direct blunt trauma to the left eye from a golf ball, with restricted upgaze, diplopia, mildly reduced visual acuity and infraorbital hypoesthesia, without orbital rim step deformity or malocclusion, consistent with an orbital floor blowout fracture with extraocular muscle entrapment requiring urgent ophthalmological assessment before imaging and referral.",
    "system1Trap": "ตาบวมช้ำจากถูกของกระแทก รอบวมยุบเองก็หายภาพซ้อน",
    "system2Trigger": "เมื่อผู้ป่วยมี diplopia ร่วมกับ EOM limitation หลัง orbital trauma ต้องหยุดคิดช้าลงและประเมิน vision/globe/entrapment ทันที ก่อนอธิบายว่าเป็นเพียงบวมช้ำ",
    "system2Checklist": [
@@ -1794,48 +1794,48 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/general",
-     "a": "Alert, airway patent, hemodynamically stable"
+     "q": "Primary survey (ABCDE) and general assessment",
+     "a": "Alert; airway patent; hemodynamically stable."
     },
     {
-     "q": "Facial inspection แบบเปรียบเทียบสองข้าง",
-     "a": "บวมช้ำแก้มขวาชัดเจน เมื่อบวมลดลงจะเห็น malar flattening ฝั่งขวาเทียบกับซ้าย"
+     "q": "Comparative facial inspection",
+     "a": "Marked right malar swelling and ecchymosis; right malar flattening evident relative to the left as edema subsides."
     },
     {
-     "q": "คลำ infraorbital rim/zygomatic buttress (critical)",
-     "a": "คลำได้ step deformity ชัดเจนที่ infraorbital rim ขวาและ zygomaticofrontal suture area"
+     "q": "Palpation of the infraorbital rim and zygomatic buttresses (critical)",
+     "a": "Palpable step deformity at the right infraorbital rim and the zygomaticofrontal suture region."
     },
     {
-     "q": "คลำ zygomatic arch ผ่าน intraoral/temporal approach (critical)",
-     "a": "กดเจ็บและสงสัย depression ของ zygomatic arch ขวา"
+     "q": "Palpation of the zygomatic arch, intraoral and temporal (critical)",
+     "a": "Tenderness with suspected depression of the right zygomatic arch."
     },
     {
-     "q": "การอ้าปาก/trismus assessment (critical)",
-     "a": "อ้าปากได้จำกัดประมาณครึ่งหนึ่งของช่วงปกติ เจ็บเมื่อพยายามอ้ากว้างขึ้น"
+     "q": "Mouth opening / trismus assessment (critical)",
+     "a": "Interincisal opening limited to approximately half of normal, with pain on attempted wider opening."
     },
     {
-     "q": "Infraorbital (V2) sensation",
-     "a": "ลดลงชัดเจนบริเวณแก้มขวา ริมฝีปากบนขวา และปีกจมูกขวา"
+     "q": "Infraorbital nerve (V2) sensation",
+     "a": "Marked hypoesthesia of the right cheek, right upper lip and right nasal ala."
     },
     {
-     "q": "Visual acuity/pupils/EOM (pertinent negative สำหรับ orbit-only)",
-     "a": "Visual acuity ปกติทั้งสองข้าง pupils ปกติ EOM เกือบเต็มช่วงมีจำกัดเล็กน้อยที่ extreme lateral gaze เท่านั้น ไม่มี restriction ชัดเจนแบบ entrapment"
+     "q": "Visual acuity, pupils and extraocular movements",
+     "a": "Normal visual acuity bilaterally; pupils normal; near-full extraocular movements with mild limitation only at extreme lateral gaze; no entrapment-pattern restriction."
     },
     {
-     "q": "Globe position/enophthalmos",
-     "a": "ไม่พบ enophthalmos ชัดเจนในสถานการณ์นี้"
+     "q": "Globe position / enophthalmos",
+     "a": "No clinically apparent enophthalmos."
     },
     {
-     "q": "สบฟัน/dental exam",
-     "a": "สบฟันเกือบปกติ ไม่มีฟันโยกหรือ step ที่แนวฟัน"
+     "q": "Occlusion and dental examination",
+     "a": "Near-normal occlusion; no mobile teeth or step in the dental arch."
     },
     {
      "q": "Subconjunctival hemorrhage",
-     "a": "พบ subconjunctival hemorrhage ฝั่งขวาที่ lateral quadrant ซึ่งพบร่วมได้บ่อยใน ZMC fracture"
+     "a": "Right lateral subconjunctival hemorrhage, commonly associated with ZMC fracture."
     },
     {
-     "q": "ตรวจจมูกภายใน (pertinent negative)",
-     "a": "ไม่พบ septal hematoma"
+     "q": "Intranasal examination (pertinent negative)",
+     "a": "No septal hematoma."
     }
    ],
    "investigations": [
@@ -1884,13 +1884,13 @@
     "Sinus involvement (maxillary sinus wall fracture) ที่อาจสัมพันธ์กับ ZMC"
    ],
    "problemList": [
-    "สงสัย ZMC fracture ขวาจาก step deformity ที่ infraorbital rim/zygomatic arch ร่วมกับ malar flattening",
-    "Trismus จากสงสัย zygomatic arch depression กดทับ mechanism การเคี้ยว",
-    "Infraorbital (V2) nerve sensory deficit",
-    "Diplopia เป็นอาการรองที่ต้อง monitor แต่ EOM เกือบปกติในขณะนี้ (ไม่ใช่ primary orbital entrapment)",
-    "Occlusion ปกติในขณะนี้ (pertinent negative ที่ต้องบันทึกเทียบกับ mandible fracture)"
+    "Suspected right zygomaticomaxillary complex (ZMC) fracture: infraorbital rim / zygomatic arch step deformity with malar flattening",
+    "Trismus secondary to suspected zygomatic arch depression impinging on the coronoid process / temporalis",
+    "Right infraorbital (V2) nerve hypoesthesia",
+    "Mild diplopia at extreme gaze requiring monitoring; near-normal extraocular movements (no primary orbital entrapment)",
+    "Normal occlusion (documented pertinent negative against mandibular fracture)"
    ],
-   "problemRepresentation": "ชายอายุ 35 ปี หลังถูกชกที่แก้มขวา 6 ชั่วโมงก่อน มี malar flattening, palpable step ที่ infraorbital rim, trismus และ infraorbital hypoesthesia โดยมี diplopia เพียงเล็กน้อยที่ extreme gaze และ visual acuity/EOM เกือบปกติ จึงสงสัย ZMC fracture ที่ต้องแยกจาก isolated orbital injury และประเมิน imaging/maxillofacial referral ต่อไป",
+   "problemRepresentation": "A 35-year-old man presenting 6 hours after a closed-fist assault to the right malar region with malar flattening, a palpable infraorbital rim step, trismus and infraorbital hypoesthesia, with only mild diplopia at extreme gaze and near-normal visual acuity and extraocular movements, consistent with a right ZMC fracture that must be differentiated from isolated orbital injury, requiring imaging and maxillofacial referral.",
    "system1Trap": "แก้มบวมจากถูกต่อย ให้ประคบเย็นแล้วนัดดูอาการ",
    "system2Trigger": "เมื่อผู้ป่วยมี trismus ร่วมกับ infraorbital sensory loss หลังถูกกระแทกที่แก้ม ต้องหยุดคิดช้าลงและคลำหา step deformity ของ zygomatic complex อย่างจงใจ ไม่ใช่ตัดสินจากความบวมภายนอกอย่างเดียว",
    "system2Checklist": [
@@ -1997,44 +1997,44 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/Airway assessment (critical/red-flag)",
-     "a": "Alert, พูดได้แต่เสียงอู้อี้; เมื่อจัดให้นอนหงายสังเกตมี posterior tongue displacement เล็กน้อยร่วมกับเสียงหายใจผิดปกติเป็นครั้งคราว บ่งชี้ความเสี่ยง airway compromise จาก bilateral mandible instability"
+     "q": "Primary survey with airway assessment (critical)",
+     "a": "Alert; speech muffled; when supine, mild posterior tongue displacement with intermittent noisy breathing, indicating risk of airway compromise from bilateral mandibular instability."
     },
     {
-     "q": "การสบฟัน/occlusion (critical)",
-     "a": "Malocclusion ชัดเจน anterior open bite เล็กน้อย ฟันบนล่างกัดกันไม่สนิท"
+     "q": "Occlusion (critical)",
+     "a": "Marked malocclusion with mild anterior open bite."
     },
     {
-     "q": "คลำแนวขากรรไกรล่างทั้งแนว (bimanual palpation)",
-     "a": "กดเจ็บและสงสัย step/mobility ที่บริเวณ parasymphysis และมุมขากรรไกรทั้งสองข้าง"
+     "q": "Bimanual palpation of the entire mandible",
+     "a": "Tenderness with suspected step and mobility at the parasymphysis and both mandibular angles."
     },
     {
      "q": "Intraoral inspection",
-     "a": "Sublingual hematoma พบบริเวณพื้นปาก, เหงือกฉีกขาดเล็กน้อยบริเวณฟันหน้าล่าง"
+     "a": "Sublingual hematoma of the floor of the mouth; minor gingival laceration at the lower anterior teeth."
     },
     {
-     "q": "ฟัน/dental exam",
-     "a": "ฟันหน้าล่างโยกสองซี่ ไม่มีฟันหลุดหายไปในขณะนี้"
+     "q": "Dental examination",
+     "a": "Two mobile lower incisors; no avulsed teeth."
     },
     {
-     "q": "Inferior alveolar/mental nerve sensation (critical)",
-     "a": "ชาบริเวณริมฝีปากล่างและคางทั้งสองข้าง สอดคล้องกับตำแหน่งกระดูกที่สงสัยหัก"
+     "q": "Inferior alveolar / mental nerve sensation (critical)",
+     "a": "Bilateral hypoesthesia of the lower lip and chin, corresponding to the suspected fracture sites."
     },
     {
-     "q": "Tongue mobility/blade test",
-     "a": "ลิ้นขยับได้แต่ผู้ป่วยรู้สึกไม่มั่นคงเมื่อนอนหงาย"
+     "q": "Tongue mobility / tongue-blade bite test",
+     "a": "Tongue mobile, but patient reports instability when supine."
     },
     {
-     "q": "Facial nerve motor exam (pertinent negative)",
-     "a": "ยิ้ม ยักคิ้ว ปิดตาได้สมมาตรทั้งสองข้าง ไม่มี facial nerve weakness"
+     "q": "Facial nerve motor examination (pertinent negative)",
+     "a": "Symmetrical smile, brow elevation and eye closure; no facial nerve weakness."
     },
     {
-     "q": "Visual acuity/EOM (pertinent negative)",
-     "a": "ปกติทั้งสองข้าง ไม่มีปัญหาการมองเห็นหรือ diplopia"
+     "q": "Visual acuity and extraocular movements (pertinent negative)",
+     "a": "Normal bilaterally; no diplopia."
     },
     {
-     "q": "ตรวจคอ/cervical spine tenderness",
-     "a": "กดเจ็บเล็กน้อยกลางคอ ต้องประเมินตาม trauma pathway ก่อนขยับคอมาก"
+     "q": "Cervical spine palpation",
+     "a": "Mild midline cervical tenderness; requires assessment per trauma pathway with spinal precautions."
     }
    ],
    "investigations": [
@@ -2084,13 +2084,13 @@
     "Tetanus prophylaxis ที่ต้องทบทวนจากแผลปนเปื้อนในช่องปาก"
    ],
    "problemList": [
-    "สงสัย bilateral mandible fracture (parasymphyseal + angle) จาก malocclusion และ palpable step สองตำแหน่ง ที่มีความเสี่ยง airway obstruction เมื่อนอนหงาย",
-    "Airway risk จาก posterior tongue displacement ต้องจัดการก่อนสิ่งอื่น",
-    "Dental injury (mobile lower incisors, gingival laceration)",
-    "Bilateral inferior alveolar/mental nerve sensory deficit",
-    "Associated cervical spine tenderness ที่ต้อง exclude ตาม trauma pathway"
+    "Suspected bilateral mandibular fracture (parasymphyseal and angle) with malocclusion and two palpable steps, with risk of supine airway obstruction",
+    "Airway risk from posterior tongue displacement requiring priority management",
+    "Dental injury: mobile lower incisors and gingival laceration",
+    "Bilateral inferior alveolar / mental nerve hypoesthesia",
+    "Midline cervical spine tenderness requiring exclusion of cervical spine injury per trauma pathway"
    ],
-   "problemRepresentation": "ชายอายุ 22 ปี หลังอุบัติเหตุจักรยานยนต์คางกระแทกพื้น 2 ชั่วโมงก่อน มี malocclusion, palpable mobility ที่ parasymphysis และมุมขากรรไกรทั้งสองข้าง, bilateral lower lip/chin hypoesthesia และมีสัญญาณ posterior tongue displacement เมื่อนอนหงาย จึงสงสัย bilateral mandible fracture ที่มีความเสี่ยง airway compromise ต้องจัดการทางเดินหายใจและจัดท่าอย่างเหมาะสมก่อนประเมินและส่งต่อภาวะกระดูกหักโดยละเอียด",
+   "problemRepresentation": "A 22-year-old man presenting 2 hours after a motorcycle collision with chin impact, with malocclusion, palpable mobility at the parasymphysis and both mandibular angles, bilateral lower lip and chin hypoesthesia, and posterior tongue displacement when supine, consistent with a bilateral mandibular fracture with risk of airway compromise requiring immediate airway management and positioning before detailed fracture assessment and referral.",
    "system1Trap": "ขากรรไกรบวมช้ำจากอุบัติเหตุ เดี๋ยวรอ imaging แล้วส่งทันตกรรม",
    "system2Trigger": "เมื่อผู้ป่วย mandible trauma มี malocclusion ร่วมกับสงสัย bilateral fracture ต้องหยุดคิดช้าลงและประเมิน airway/tongue position ทันที โดยเฉพาะเมื่อจัดท่านอนหงาย",
    "system2Checklist": [
@@ -2177,44 +2177,44 @@
    ],
    "exam": [
     {
-     "q": "Primary survey (Airway/Breathing) (critical/red-flag)",
-     "a": "Airway เสี่ยงจากเลือด/เสมหะปนเลือดในปาก หายใจมีเสียงครืดคราด ต้องจัดการทางเดินหายใจร่วมกับ suction/positioning ตาม local protocol ก่อนสิ่งอื่น"
+     "q": "Primary survey: airway and breathing (critical)",
+     "a": "Airway at risk from blood and blood-stained secretions in the oral cavity; gurgling respirations; requires immediate suction and positioning per local protocol."
     },
     {
-     "q": "Circulation/hemorrhage assessment (critical/red-flag)",
-     "a": "Tachycardic, borderline hypotension, ยังมี active bleeding จากจมูก/ปากต่อเนื่อง สงสัยภาวะเสียเลือดจาก facial/midface injury ร่วม"
+     "q": "Circulation and hemorrhage assessment (critical)",
+     "a": "Tachycardic with borderline hypotension; ongoing active bleeding from the nose and mouth, suggestive of significant hemorrhage from midface injury."
     },
     {
-     "q": "Cervical spine precaution/palpation",
-     "a": "กดเจ็บกลางคอ ต้องคง spinal precaution ระหว่างการประเมินทั้งหมด"
+     "q": "Cervical spine precautions and palpation",
+     "a": "Midline cervical tenderness; spinal precautions must be maintained throughout assessment."
     },
     {
-     "q": "GCS/neurologic assessment",
-     "a": "GCS ประมาณ 12-13 ผันผวน ต้อง reassess ต่อเนื่องและคิดถึง associated traumatic brain injury"
+     "q": "GCS and neurological assessment",
+     "a": "Fluctuating GCS of approximately 12–13; requires serial reassessment and consideration of associated traumatic brain injury."
     },
     {
-     "q": "Midface mobility test โดยผู้มีประสบการณ์ (critical)",
-     "a": "เมื่อจับที่ maxilla ส่วนบนอย่างระมัดระวังพบ mobility ของ midface แยกจาก skull base สงสัย LeFort-type fracture ระดับสูง"
+     "q": "Midface mobility test by an experienced clinician (critical)",
+     "a": "Gentle manipulation of the maxilla demonstrates midface mobility separate from the skull base, suggestive of a high-level Le Fort-type fracture."
     },
     {
-     "q": "Facial inspection แบบรวม",
-     "a": "บวมมากทั่วใบหน้าทั้งสองข้าง ecchymosis รอบตาสองข้าง (raccoon eyes pattern)"
+     "q": "Global facial inspection",
+     "a": "Marked bilateral facial edema with bilateral periorbital ecchymosis (raccoon eyes)."
     },
     {
-     "q": "Oral cavity/occlusion",
-     "a": "Malocclusion ชัดเจน มีเลือดและชิ้นฟันหลุดปนในช่องปาก"
+     "q": "Oral cavity and occlusion",
+     "a": "Marked malocclusion; blood and dental fragments in the oral cavity."
     },
     {
-     "q": "ตรวจหา CSF leak/battle sign (pertinent negative หากไม่พบ)",
-     "a": "ยังไม่พบ battle sign ชัดเจนในการประเมินครั้งแรก แต่ยังต้องเฝ้าระวังต่อเนื่อง"
+     "q": "Assessment for CSF leak / Battle sign",
+     "a": "No Battle sign on initial assessment; requires ongoing surveillance."
     },
     {
-     "q": "Visual assessment เท่าที่ทำได้",
-     "a": "ประเมินได้จำกัดเนื่องจากบวมมากและระดับความรู้สึกตัวไม่คงที่ ต้อง reassess เมื่อผู้ป่วยคงที่ขึ้น"
+     "q": "Visual assessment as feasible",
+     "a": "Limited by severe periorbital edema and altered consciousness; reassess once stabilized."
     },
     {
-     "q": "Chest/abdomen/extremities screen",
-     "a": "ยังไม่พบ deformity ชัดเจนจากการตรวจเบื้องต้น แต่ high-energy mechanism ต้องประเมิน full trauma survey ต่อเนื่อง"
+     "q": "Screening of chest, abdomen and extremities",
+     "a": "No obvious deformity on initial screening; high-energy mechanism mandates a complete secondary survey."
     }
    ],
    "investigations": [
@@ -2264,13 +2264,13 @@
     "Associated globe/vision injury ที่ประเมินได้จำกัดในช่วงแรก"
    ],
    "problemList": [
-    "Airway compromise จากเลือด/เสมหะและ midface instability ที่ต้องจัดการทันที",
-    "Hemorrhagic shock physiology (tachycardia, borderline hypotension) จาก ongoing facial bleeding",
-    "Suspected panfacial/LeFort-pattern fracture จาก palpable midface mobility",
-    "Fluctuating consciousness ที่ต้อง exclude traumatic brain injury",
-    "Cervical spine injury risk จาก high-energy mechanism ที่ยังไม่ถูก clear"
+    "Airway compromise from hemorrhage, secretions and midface instability requiring immediate management",
+    "Hemorrhagic shock physiology (tachycardia, borderline hypotension) from ongoing facial bleeding",
+    "Suspected panfacial / Le Fort-pattern fracture with palpable midface mobility",
+    "Fluctuating level of consciousness; traumatic brain injury to be excluded",
+    "Uncleared cervical spine following high-energy mechanism"
    ],
-   "problemRepresentation": "ชายอายุ 41 ปี หลังอุบัติเหตุรถชนความเร็วสูงไม่คาดเข็มขัดนิรภัย มาด้วย airway compromise จากเลือด/เสมหะในช่องปาก, vital signs เข้าได้กับภาวะเสียเลือด, fluctuating consciousness และ palpable midface mobility จึงสงสัย panfacial/LeFort-type fracture ร่วมกับความเสี่ยง traumatic brain injury และ cervical spine injury ซึ่งต้องได้รับการทำ ABCDE resuscitation และควบคุมเลือดออกก่อนการจำแนกชนิดกระดูกหักโดยละเอียด",
+   "problemRepresentation": "A 41-year-old unrestrained man after a high-speed motor vehicle collision presenting with airway compromise from intraoral blood and secretions, hemodynamic signs of hemorrhage, fluctuating consciousness and palpable midface mobility, consistent with a panfacial/Le Fort-type fracture with risk of concomitant traumatic brain injury and cervical spine injury, requiring ABCDE resuscitation and hemorrhage control before detailed fracture classification.",
    "system1Trap": "ต้องรีบบอกให้ได้ว่าเป็น LeFort I, II หรือ III ก่อน",
    "system2Trigger": "เมื่อผู้ป่วย high-energy facial trauma มีเลือดในทางเดินหายใจร่วมกับ altered consciousness ต้องหยุดคิดช้าลงและทำ ABCDE/hemorrhage control ก่อนพยายามจำแนกชนิดกระดูกหักเสมอ",
    "system2Checklist": [
@@ -2369,44 +2369,44 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/general",
-     "a": "Alert, airway patent, hemodynamically stable"
+     "q": "Primary survey (ABCDE) and general assessment",
+     "a": "Alert; airway patent; hemodynamically stable."
     },
     {
-     "q": "Facial motor exam ก่อนฉีดยาชา (critical/red-flag)",
-     "a": "ยกคิ้วได้สมมาตร ปิดตาได้แน่นทั้งสองข้าง (เกี่ยวข้องกับ temporal/zygomatic branch ปกติ) แต่ยิ้มเห็นมุมปากขวายกได้น้อยกว่าซ้ายชัดเจน สงสัย buccal branch involvement"
+     "q": "Facial nerve motor examination before local anesthesia (critical)",
+     "a": "Symmetrical brow elevation and forceful eye closure (temporal and zygomatic branches intact); marked reduction in right oral commissure elevation on smiling, suggestive of buccal branch injury."
     },
     {
      "q": "Wound inspection",
-     "a": "แผลฉีกขาดลึกประมาณ 4 ซม. กลางแก้มขวา ขอบแผลไม่เรียบ มองเห็นชั้นไขมันใต้ผิวหนัง"
+     "a": "Irregular 4 cm deep laceration of the right mid-cheek with exposed subcutaneous fat."
     },
     {
-     "q": "Wound exploration หลัง analgesia ที่เหมาะสม (โดยระวังไม่กระทบการประเมิน motor function ซ้ำ)",
-     "a": "ความลึกแผลถึงระดับ subcutaneous fat และสงสัย involve บริเวณ parotid gland/duct tract"
+     "q": "Wound exploration after appropriate analgesia (without compromising repeat motor assessment)",
+     "a": "Depth extends to subcutaneous fat with suspected involvement of the parotid gland / duct region."
     },
     {
      "q": "Parotid duct assessment (critical)",
-     "a": "ตำแหน่งแผลอยู่ในแนวเส้นสมมติจากติ่งหูถึงกึ่งกลางริมฝีปากบน (Stensen duct line) ต้องพิจารณา duct injury ร่วม"
+     "a": "Wound lies along the line from the tragus to the midpoint of the upper lip (Stensen duct course); concomitant duct injury must be considered."
     },
     {
-     "q": "น้ำลาย/saliva leakage จากแผล",
-     "a": "สังเกตเห็นของเหลวใสคล้ายน้ำลายซึมจากแผลเพิ่มขึ้นเมื่อกระตุ้นด้วยรสเปรี้ยว"
+     "q": "Assessment for salivary leakage from the wound",
+     "a": "Clear saliva-like fluid seeping from the wound, increasing with gustatory (sialogogue) stimulation."
     },
     {
-     "q": "Sensory exam บริเวณรอบแผล",
-     "a": "รู้สึกสัมผัสได้เกือบปกติ ลดลงเล็กน้อยเฉพาะขอบแผล"
+     "q": "Sensory examination around the wound",
+     "a": "Near-normal sensation with mild hypoesthesia confined to the wound edges."
     },
     {
-     "q": "Visual acuity/EOM (pertinent negative)",
-     "a": "ปกติทั้งสองข้าง ไม่มี diplopia"
+     "q": "Visual acuity and extraocular movements (pertinent negative)",
+     "a": "Normal bilaterally; no diplopia."
     },
     {
-     "q": "สบฟัน/trismus (pertinent negative)",
-     "a": "สบฟันปกติ อ้าปากได้เต็มที่ ไม่มีกระดูกใบหน้าส่วนอื่นสงสัยหัก"
+     "q": "Occlusion and mouth opening (pertinent negative)",
+     "a": "Normal occlusion; full mouth opening; no clinical evidence of facial fracture."
     },
     {
-     "q": "Active bleeding/vessel injury",
-     "a": "ไม่มี active arterial bleeding ขณะตรวจ"
+     "q": "Assessment for active bleeding / vascular injury",
+     "a": "No active arterial bleeding."
     }
    ],
    "investigations": [
@@ -2455,13 +2455,13 @@
     "Tetanus prophylaxis ที่ต้องทบทวนตาม local protocol"
    ],
    "problemList": [
-    "สงสัย facial nerve buccal branch injury จาก asymmetric smile ที่ต้องบันทึกก่อน anesthesia/closure",
-    "สงสัย parotid (Stensen) duct injury จากตำแหน่งแผลตรงแนว duct ร่วมกับ saliva leakage",
-    "Deep facial laceration ที่อาจ involve parotid gland tissue",
-    "Retained foreign body risk จากกลไกของมีคม",
-    "Tetanus status ที่ยังไม่ชัดเจนต้องทบทวน"
+    "Suspected right facial nerve buccal branch injury (asymmetric smile), to be documented before anesthesia and closure",
+    "Suspected parotid (Stensen) duct injury: wound along the duct course with salivary leakage",
+    "Deep facial laceration with possible parotid gland involvement",
+    "Risk of retained foreign body from sharp-object mechanism",
+    "Tetanus immunization status unconfirmed"
    ],
-   "problemRepresentation": "หญิงอายุ 30 ปี มีแผลฉีกขาดลึก 4 ซม. กลางแก้มขวาจากของมีคม 1 ชั่วโมงก่อน ตรวจพบ asymmetric smile บ่งชี้ facial nerve buccal branch weakness และตำแหน่งแผลตรงแนว parotid duct ร่วมกับ saliva leakage ที่สงสัย จึงต้องบันทึก motor function โดยละเอียดก่อนฉีดยาชา และประเมิน duct injury ก่อนตัดสินใจปิดแผล",
+   "problemRepresentation": "A 30-year-old woman presenting 1 hour after a sharp-object injury with a 4 cm deep laceration of the right mid-cheek, asymmetric smile indicating facial nerve buccal branch weakness, and a wound along the parotid duct course with suspected salivary leakage, requiring detailed facial motor documentation before local anesthesia and evaluation for parotid duct injury before wound closure.",
    "system1Trap": "แผลฉีกขาดที่แก้ม ฉีดยาชาแล้วเย็บให้เรียบร้อยก่อน",
    "system2Trigger": "เมื่อพบแผลฉีกขาดบริเวณใบหน้าโดยเฉพาะแนว parotid/facial nerve ต้องหยุดคิดช้าลงและตรวจ/บันทึก facial motor function ให้ครบทุกสาขาก่อนฉีดยาชาเสมอ",
    "system2Checklist": [
@@ -2544,40 +2544,40 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/Circulation assessment (critical/red-flag)",
-     "a": "Tachycardic, hypotensive, ซีด, capillary refill ช้า สอดคล้องกับภาวะเสียเลือดปริมาณมากจาก facial/midface source"
+     "q": "Primary survey: circulation assessment (critical)",
+     "a": "Tachycardic, hypotensive and pale with delayed capillary refill, consistent with major hemorrhage from a facial/midface source."
     },
     {
-     "q": "Airway assessment ร่วมกับเลือดในทางเดินหายใจ (critical/red-flag)",
-     "a": "มีเลือดคั่งในช่องปาก/คอหอยเป็นระยะ เสี่ยง airway compromise ควบคู่กับภาวะเสียเลือด"
+     "q": "Airway assessment with blood in the airway (critical)",
+     "a": "Intermittent pooling of blood in the oropharynx with risk of airway compromise concurrent with hemorrhage."
     },
     {
-     "q": "แหล่งเลือดออก (source identification)",
-     "a": "เลือดออกจากทั้งโพรงจมูกสองข้างและช่องปาก สงสัย posterior nasal bleeding ร่วมกับ midface injury เป็นแหล่งหลัก ไม่ใช่ anterior septal bleed ธรรมดา"
+     "q": "Identification of bleeding source",
+     "a": "Bleeding from both nasal cavities and the oral cavity, suggestive of posterior epistaxis associated with midface injury rather than simple anterior septal bleeding."
     },
     {
-     "q": "Facial skeleton palpation (เท่าที่ทำได้ระหว่าง resuscitation)",
-     "a": "สงสัย midface instability ร่วม แต่การประเมินละเอียดต้องรอหลัง initial stabilization"
+     "q": "Palpation of the facial skeleton (as feasible during resuscitation)",
+     "a": "Suspected midface instability; detailed assessment deferred until after initial stabilization."
     },
     {
-     "q": "Level of consciousness/GCS",
-     "a": "ซึมลงตามลำดับเวลา GCS ประมาณ 13 และมีแนวโน้มเปลี่ยนแปลง ต้อง reassess ต่อเนื่อง"
+     "q": "Level of consciousness / GCS",
+     "a": "Progressive drowsiness with GCS approximately 13 and a changing trend; requires serial reassessment."
     },
     {
-     "q": "Pulse/skin perfusion",
-     "a": "ชีพจรเบาเร็ว ผิวซีดเย็น ปลายมือเท้าเริ่ม cool"
+     "q": "Pulse and peripheral perfusion",
+     "a": "Weak, rapid pulse; pale, cool skin with cool peripheries."
     },
     {
-     "q": "Visual/eye assessment (ประเมินได้จำกัดในช่วง resuscitation)",
-     "a": "ยังประเมินโดยละเอียดไม่ได้เนื่องจากต้องเน้น resuscitation ก่อน ต้อง reassess ทันทีที่ทำได้"
+     "q": "Eye assessment (limited during resuscitation)",
+     "a": "Detailed assessment not feasible during resuscitation; reassess as soon as possible."
     },
     {
-     "q": "ตรวจแหล่งเลือดออกอื่นร่วม (chest/abdomen/pelvis/long bone)",
-     "a": "ยังไม่พบแหล่งเลือดออกชัดเจนอื่นจากการตรวจเบื้องต้น แต่ high-energy mechanism ต้องประเมินครบถ้วนตาม trauma pathway"
+     "q": "Assessment for other hemorrhage sources (chest, abdomen, pelvis, long bones)",
+     "a": "No other obvious source on initial assessment; high-energy mechanism mandates complete evaluation per trauma pathway."
     },
     {
-     "q": "ตรวจ simple anterior epistaxis pattern (pertinent negative)",
-     "a": "ลักษณะเลือดออกไม่ใช่ anterior septal bleed ธรรมดาที่มักหยุดง่ายด้วยการบีบจมูก แต่เป็น ongoing major hemorrhage ที่ตอบสนองไม่ดีต่อการกดห้ามเลือดทั่วไป"
+     "q": "Assessment for a simple anterior epistaxis pattern (pertinent negative)",
+     "a": "Not a simple anterior septal bleed amenable to digital compression; ongoing major hemorrhage refractory to standard compression."
     }
    ],
    "investigations": [
@@ -2626,13 +2626,13 @@
     "Delayed recognition จากการเข้าใจผิดว่าเป็น simple epistaxis ทั่วไป"
    ],
    "problemList": [
-    "Hemorrhagic shock จาก ongoing major facial/nasal/oral bleeding ที่ต้องควบคุมทันที",
-    "Airway compromise risk จากเลือดคั่งในช่องปาก/คอหอย",
-    "สงสัย severe midface injury เป็นแหล่งเลือดออกหลัก ซึ่งต้องประเมินหลัง stabilize",
-    "Fluctuating level of consciousness ที่ต้อง exclude traumatic brain injury ร่วม",
-    "Coagulation/medication status ที่ยังไม่ทราบและอาจส่งผลต่อการควบคุมเลือดออก"
+    "Hemorrhagic shock from ongoing major facial, nasal and oral bleeding requiring immediate control",
+    "Risk of airway compromise from blood pooling in the oropharynx",
+    "Suspected severe midface injury as the principal bleeding source, to be assessed after stabilization",
+    "Fluctuating level of consciousness; concomitant traumatic brain injury to be excluded",
+    "Unknown coagulation status and anticoagulant/antiplatelet use potentially affecting hemostasis"
    ],
-   "problemRepresentation": "ชายอายุ 45 ปี หลังอุบัติเหตุจักรยานยนต์ชนแผงเหล็กกั้นถนน 20 นาทีก่อน มาด้วย ongoing major bleeding จากจมูกและช่องปากร่วมกับ tachycardia, hypotension และระดับความรู้สึกตัวลดลง ซึ่งแตกต่างจาก simple epistaxis อย่างชัดเจน จึงสงสัย hemorrhagic shock จาก severe facial/midface injury ที่ต้องได้รับการควบคุมเลือดออกและ resuscitation ตาม ABCDE ทันทีก่อนประเมินและวินิจฉัยแหล่งบาดเจ็บโดยละเอียด",
+   "problemRepresentation": "A 45-year-old man presenting 20 minutes after a motorcycle collision with a roadside barrier with ongoing major hemorrhage from the nose and mouth, tachycardia, hypotension and declining consciousness, clearly distinct from simple epistaxis, consistent with hemorrhagic shock from severe facial/midface injury requiring immediate hemorrhage control and ABCDE resuscitation before detailed assessment of the injury source.",
    "system1Trap": "เลือดกำเดาไหลจากอุบัติเหตุ บีบจมูกให้แน่นแล้วรอดูอาการ",
    "system2Trigger": "เมื่อผู้ป่วย facial bleeding หลัง trauma มี vital signs ผิดปกติหรือระดับความรู้สึกตัวเปลี่ยนแปลง ต้องหยุดคิดช้าลงและจัดการเป็น major hemorrhage/ABCDE priority ทันที ไม่ใช่รักษาแบบ simple epistaxis",
    "system2Checklist": [
@@ -2743,44 +2743,44 @@
    ],
    "exam": [
     {
-     "q": "ตรวจลักษณะรอยโรคด้วยแสงสว่างเพียงพอ",
-     "a": "รอยโรคขนาด 1.2 ซม. ที่สันจมูกซ้าย ขอบนูนมันวาวคล้ายไข่มุก (pearly rolled border) มี telangiectasia บนขอบ ตรงกลางบุ๋มเป็นแผลตื้น มีสะเก็ดบางส่วน"
+     "q": "Inspection of the lesion under adequate lighting",
+     "a": "1.2 cm lesion on the left nasal sidewall/dorsum with a pearly rolled border, marginal telangiectasia and a central shallow ulceration with partial crusting."
     },
     {
-     "q": "คลำฐานรอยโรค",
-     "a": "ฐานแข็ง (indurated) ยึดกับผิวหนังชั้นบนแต่ยังขยับจากกระดูก/กระดูกอ่อนจมูกได้ ไม่มีการยึดติดลึก"
+     "q": "Palpation of the lesion base",
+     "a": "Indurated base adherent to the overlying skin but mobile over the underlying nasal bone and cartilage; no deep fixation."
     },
     {
-     "q": "ตรวจขอบเขตรอยโรคเทียบกับโครงสร้างข้างเคียง (ปีกจมูก, inner canthus)",
-     "a": "ขอบรอยโรคห่างจาก ala nasi ประมาณ 5 มม. ยังไม่ลุกลามชัดเจนเข้าโครงสร้างข้างเคียงในการตรวจวันนี้"
+     "q": "Assessment of lesion extent relative to adjacent structures (nasal ala, medial canthus)",
+     "a": "Lesion margin approximately 5 mm from the alar rim; no clinical extension into adjacent structures."
     },
     {
-     "q": "ตรวจผิวหนังทั่วร่างกาย (full skin survey)",
-     "a": "พบ actinic keratosis หลายจุดที่ใบหน้าและหลังมือ 2 ข้าง ไม่พบรอยโรคอื่นที่ดูน่ากังวลเทียบเท่าจุดหลัก"
+     "q": "Full skin survey",
+     "a": "Multiple actinic keratoses on the face and dorsa of both hands; no other lesion of comparable concern."
     },
     {
-     "q": "คลำต่อมน้ำเหลือง preauricular และ cervical",
-     "a": "ไม่คลำได้ต่อมน้ำเหลืองโตทั้งสองข้าง (pertinent negative)"
+     "q": "Palpation of preauricular and cervical lymph nodes",
+     "a": "No palpable lymphadenopathy bilaterally (pertinent negative)."
     },
     {
-     "q": "ตรวจ sensation บริเวณรอบรอยโรค",
-     "a": "รู้สึกสัมผัสปกติ ไม่มีอาการชา (pertinent negative สำหรับ perineural invasion)"
+     "q": "Sensory examination around the lesion",
+     "a": "Normal sensation; no paresthesia or anesthesia (pertinent negative for perineural invasion)."
     },
     {
-     "q": "ตรวจตา/การมองเห็นเบื้องต้น",
-     "a": "Visual acuity ปกติทั้งสองข้าง ไม่มีเยื่อบุตาอักเสบหรือขอบตาผิดปกติ"
+     "q": "Screening eye examination",
+     "a": "Normal visual acuity bilaterally; no conjunctival or eyelid margin abnormality."
     },
     {
-     "q": "ตรวจการอ้าปาก/เยื่อบุช่องปาก",
-     "a": "ปกติ ไม่มีรอยโรคร่วมในช่องปาก"
+     "q": "Mouth opening and oral mucosa",
+     "a": "Normal; no concurrent oral lesion."
     },
     {
-     "q": "ดูสัญญาณของการติดเชื้อเฉียบพลัน (แดง ร้อน บวม หนอง)",
-     "a": "ไม่พบลักษณะ cellulitis หรือหนองเฉียบพลัน แผลแห้ง ไม่มีกลิ่นเหม็นชัดเจน"
+     "q": "Assessment for acute infection (erythema, warmth, swelling, purulence)",
+     "a": "No cellulitis or acute purulence; dry wound without significant malodor."
     },
     {
-     "q": "ประเมิน functional structure ใกล้เคียง (nasal airway, eyelid closure)",
-     "a": "หายใจทางจมูกทั้งสองข้างปกติ หนังตาปิดเปิดได้สมบูรณ์"
+     "q": "Assessment of adjacent functional structures (nasal airway, eyelid closure)",
+     "a": "Bilateral nasal airflow patent; complete eyelid closure."
     }
    ],
    "investigations": [
@@ -2830,13 +2830,13 @@
     "Actinic keratosis หรือรอยโรคที่สองที่อาจพัฒนาเป็นมะเร็งในอนาคต ต้องเฝ้าระวังทั้งผิวหนัง ไม่ใช่ดูเฉพาะจุดหลัก"
    ],
    "problemList": [
-    "รอยโรคเรื้อรังไม่หายที่สันจมูกซ้าย ลักษณะ pearly border/indurated ต้องแยกจาก non-melanoma skin cancer",
-    "ประวัติสัมผัสแดดสะสมระยะยาวและมี actinic damage ร่วมหลายจุด",
-    "การวินิจฉัยล่าช้าจากการรักษาตนเองแบบ empirical",
-    "ยังไม่มีหลักฐานทางคลินิกของ regional nodal disease หรือ deep invasion ในวันนี้",
-    "โรคเบาหวานร่วมที่อาจมีผลต่อการหายของแผลหลังหัตถการ"
+    "Chronic non-healing lesion of the left nasal sidewall with pearly rolled border and induration, suspicious for non-melanoma skin cancer (basal cell carcinoma favored)",
+    "Chronic cumulative ultraviolet exposure with multiple actinic keratoses",
+    "Diagnostic delay due to repeated empirical treatment",
+    "No clinical evidence of regional nodal disease or deep invasion at presentation",
+    "Comorbid type 2 diabetes mellitus potentially impairing post-procedural wound healing"
    ],
-   "problemRepresentation": "ชายอายุ 68 ปี เกษตรกรที่สัมผัสแดดสะสมมานาน มีรอยโรคขอบนูนมันวาวที่สันจมูกซ้ายซึ่งไม่หายและกลับเป็นซ้ำมา 5 เดือนแม้รักษาแบบติดเชื้อผิวหนังหลายครั้ง โดยไม่มีต่อมน้ำเหลืองโตหรืออาการชาในวันนี้ ซึ่งน่ากังวลว่าเป็น non-melanoma skin cancer ที่ต้องได้รับการวินิจฉัยทางเนื้อเยื่อก่อนเลือกวิธีรักษา",
+   "problemRepresentation": "A 68-year-old male farmer with chronic cumulative sun exposure presenting with a 5-month non-healing, recurrent pearly rolled-border lesion of the left nasal sidewall unresponsive to repeated empirical treatment for skin infection, without regional lymphadenopathy or sensory deficit, suspicious for non-melanoma skin cancer requiring histological diagnosis before definitive treatment selection.",
    "system1Trap": "แผลเรื้อรังที่ไม่หาย มีสะเก็ด เลือดออกง่าย = การติดเชื้อราหรือแบคทีเรียธรรมดาที่รักษาไม่ต่อเนื่อง",
    "system2Trigger": "เมื่อรอยโรคบน sun-exposed area ในผู้สูงอายุไม่ตอบสนองต่อการรักษาการติดเชื้อซ้ำๆ และมีลักษณะขอบนูนแข็งหรือมันวาว ต้องหยุดคิดแบบรูปแบบเดิมและพิจารณาการวินิจฉัยทางเนื้อเยื่อก่อนเสมอ",
    "system2Checklist": [
@@ -2951,44 +2951,44 @@
    ],
    "exam": [
     {
-     "q": "ตรวจแผ่นเล็บและรอยโรคใต้เล็บด้วยแสงสว่างเพียงพอ",
-     "a": "เห็นเส้นสีน้ำตาลดำ (melanonychia) กว้างประมาณ 8 มม. ครอบคลุมเกือบครึ่งแผ่นเล็บ ขอบไม่สม่ำเสมอ สีไม่สม่ำเสมอทั้งเข้มและอ่อนปนกัน"
+     "q": "Inspection of the nail plate and subungual lesion under adequate lighting",
+     "a": "Longitudinal brown-black melanonychia approximately 8 mm wide involving nearly half of the nail plate, with irregular borders and variegated pigmentation."
     },
     {
-     "q": "ตรวจ Hutchinson sign (การลามของสีเข้มไปยังผิวหนังรอบเล็บ/hyponychium)",
-     "a": "พบเม็ดสีคล้ำลามออกมาที่ผิวหนังรอบโคนเล็บและปลายนิ้วเล็กน้อย ซึ่งเป็น critical finding ที่บ่งชี้ความเสี่ยงสูงต่อ subungual melanoma"
+     "q": "Assessment for Hutchinson sign (periungual / hyponychial pigment extension)",
+     "a": "Pigment extension onto the proximal nail fold and hyponychium: a critical finding indicating high risk of subungual melanoma."
     },
     {
-     "q": "ประเมิน ABCDE ของรอยโรค",
-     "a": "Asymmetry ชัดเจน, Border ไม่เรียบ, Color ไม่สม่ำเสมอ, Diameter มากกว่า 6 มม., Evolving (ขยายตัวต่อเนื่องใน 10 เดือน)"
+     "q": "ABCDE assessment of the lesion",
+     "a": "Marked asymmetry, irregular border, color variegation, diameter greater than 6 mm, and evolution (progressive enlargement over 10 months)."
     },
     {
-     "q": "คลำเนื้อเยื่อใต้เล็บและ periungual tissue",
-     "a": "คลำได้เนื้อนุ่มใต้เล็บ ไม่มี fluctuant mass ชัดเจน ไม่มีแผลเปิดหรือหนอง"
+     "q": "Palpation of the nail bed and periungual tissue",
+     "a": "Soft nail bed; no fluctuant mass; no ulceration or purulence."
     },
     {
-     "q": "ตรวจแผ่นเล็บว่ามีการยกตัว/ผิดรูปหรือไม่",
-     "a": "เล็บยกตัวเล็กน้อยจากพื้นเล็บ (nail plate dystrophy) บริเวณตรงกับรอยดำ"
+     "q": "Assessment of nail plate elevation or dystrophy",
+     "a": "Mild onycholysis with nail plate dystrophy overlying the pigmented band."
     },
     {
-     "q": "ตรวจผิวหนังทั่วร่างกาย (full skin survey รวมฝ่ามือ/ฝ่าเท้า)",
-     "a": "พบไฝกระจายทั่วตัวขนาดเล็กสม่ำเสมอ ไม่มีรอยโรคอื่นที่มีลักษณะ ABCDE ผิดปกติ"
+     "q": "Full skin survey including palms and soles",
+     "a": "Multiple small, uniform melanocytic nevi; no other lesion with atypical ABCDE features."
     },
     {
-     "q": "คลำต่อมน้ำเหลืองบริเวณขาหนีบข้างเดียวกัน",
-     "a": "ไม่คลำได้ต่อมน้ำเหลืองโต (pertinent negative)"
+     "q": "Palpation of ipsilateral inguinal lymph nodes",
+     "a": "No palpable lymphadenopathy (pertinent negative)."
     },
     {
-     "q": "ตรวจ perfusion และ capillary refill ของนิ้วเท้า",
-     "a": "Perfusion ดี capillary refill ปกติ ไม่มีสัญญาณ vascular compromise"
+     "q": "Digital perfusion and capillary refill of the toe",
+     "a": "Good perfusion; normal capillary refill; no vascular compromise."
     },
     {
-     "q": "ตรวจการเดิน/รองเท้าที่ใช้",
-     "a": "เดินได้ปกติ ไม่มีการเสียดสีรุนแรงจากรองเท้าที่ใช้ในปัจจุบัน"
+     "q": "Gait and footwear assessment",
+     "a": "Normal gait; no significant frictional trauma from current footwear."
     },
     {
-     "q": "ตรวจดูรอยโรคอื่นที่นิ้วเท้า/ฝ่าเท้าข้างเดียวกันและข้างตรงข้าม",
-     "a": "ไม่พบรอยโรคที่สงสัยเพิ่มเติมบนนิ้วหรือฝ่าเท้าทั้งสองข้าง"
+     "q": "Inspection of other toes and both soles",
+     "a": "No additional suspicious lesions on the toes or soles bilaterally."
     }
    ],
    "investigations": [
@@ -3037,13 +3037,13 @@
     "การมองข้ามรอยโรคเพราะไม่เจ็บไม่คัน ทำให้ผู้ป่วยไม่รีบมาพบแพทย์"
    ],
    "problemList": [
-    "Longitudinal melanonychia ที่ขยายตัวต่อเนื่อง 10 เดือน ร่วมกับ Hutchinson sign ที่นิ้วหัวแม่เท้าซ้าย น่ากังวลว่าเป็น acral lentiginous/subungual melanoma",
-    "ABCDE ผิดปกติชัดเจน (asymmetry, border ไม่เรียบ, color ไม่สม่ำเสมอ, diameter >6 มม., evolving)",
-    "ประวัติความเข้าใจผิดว่าเป็นรอยช้ำ/หูด/ตาปลา ทำให้มาพบแพทย์ช้า",
-    "เคยมีการกรอ/ตัดแต่งเล็บบริเวณรอยโรคโดยไม่ทราบว่าเสี่ยง",
-    "ยังไม่มีหลักฐานทางคลินิกของ regional nodal disease ในวันนี้"
+    "Progressively enlarging longitudinal melanonychia of the left hallux over 10 months with positive Hutchinson sign, suspicious for acral lentiginous (subungual) melanoma",
+    "Markedly abnormal ABCDE features (asymmetry, irregular border, color variegation, diameter >6 mm, evolution)",
+    "Delayed presentation due to misattribution to subungual hematoma, verruca or corn",
+    "Prior nail trimming/filing of the lesion without awareness of risk",
+    "No clinical evidence of regional nodal disease at presentation"
    ],
-   "problemRepresentation": "หญิงอายุ 54 ปี มีเส้นสีน้ำตาลดำใต้เล็บหัวแม่เท้าซ้ายที่ขยายตัวต่อเนื่องมา 10 เดือน สีไม่สม่ำเสมอ ขอบไม่เรียบ ร่วมกับ Hutchinson sign โดยไม่มีต่อมน้ำเหลืองโตในวันนี้ ซึ่งเคยถูกเข้าใจผิดว่าเป็นรอยช้ำจากรองเท้า น่ากังวลอย่างสูงว่าเป็น subungual melanoma ที่ต้องได้รับการวินิจฉัยทางเนื้อเยื่อโดยเร่งด่วน",
+   "problemRepresentation": "A 54-year-old woman with a 10-month progressively enlarging, variegated, irregularly bordered longitudinal melanonychia of the left hallux with a positive Hutchinson sign and no regional lymphadenopathy, previously misattributed to footwear-related subungual hematoma, highly suspicious for subungual melanoma requiring urgent histological diagnosis.",
    "system1Trap": "รอยดำใต้เล็บเท้า = เลือดคั่งจากรองเท้าคับ หรือหูด/ตาปลาจากการเสียดสี",
    "system2Trigger": "เมื่อรอยดำใต้เล็บไม่จางหายภายในระยะเวลาที่เลือดคั่งควรหาย และมีลักษณะขยายตัว สีไม่สม่ำเสมอ หรือลามออกนอกแผ่นเล็บ (Hutchinson sign) ต้องหยุดคิดแบบรอยช้ำธรรมดาและพิจารณา melanoma จนกว่าจะพิสูจน์ได้ว่าไม่ใช่",
    "system2Checklist": [
@@ -3154,44 +3154,44 @@
    ],
    "exam": [
     {
-     "q": "ตรวจลักษณะแผลและขอบแผล",
-     "a": "แผลเปิดขนาด 4.5 ซม. อยู่กลางแผลเป็นไฟไหม้เดิม ขอบแผลยกนูนแข็ง (everted, indurated edge) พื้นแผลมี friable granulation tissue เลือดออกง่ายเมื่อสัมผัส"
+     "q": "Inspection of the ulcer and its margins",
+     "a": "4.5 cm ulcer within a pre-existing burn scar with rolled, everted and indurated margins; friable granulation tissue base with contact bleeding."
     },
     {
-     "q": "ตรวจสิ่งคัดหลั่งและกลิ่น",
-     "a": "มีน้ำเหลืองปนหนองเล็กน้อย มีกลิ่นเหม็นอ่อนๆ ไม่มีลักษณะหนองเขียวหรือกลิ่นรุนแรงแบบ acute cellulitis"
+     "q": "Assessment of exudate and odor",
+     "a": "Small volume of seropurulent exudate with mild malodor; no features of acute purulent cellulitis."
     },
     {
-     "q": "ตรวจแผลเป็นและเนื้อเยื่อรอบข้าง",
-     "a": "แผลเป็นหดรั้งเดิมคุณภาพเนื้อเยื่อไม่ดี (poor tissue quality) มี contracture ข้ามข้อเข่าเล็กน้อย"
+     "q": "Assessment of the scar and surrounding tissue",
+     "a": "Chronic hypertrophic burn scar with poor tissue quality and mild contracture across the knee joint."
     },
     {
-     "q": "คลำฐานแผลว่ายึดติดกับโครงสร้างลึกหรือไม่",
-     "a": "ฐานแผลรู้สึกยึดติดกับเนื้อเยื่อใต้ผิวหนังบางส่วน ยังไม่สามารถบอกได้ชัดเจนว่าติดกระดูกหรือไม่จากการตรวจร่างกายอย่างเดียว"
+     "q": "Palpation of the ulcer base for fixation to deep structures",
+     "a": "Base partially fixed to subcutaneous tissue; osseous fixation cannot be determined on clinical examination alone."
     },
     {
-     "q": "คลำต่อมน้ำเหลืองบริเวณขาหนีบข้างเดียวกัน",
-     "a": "คลำได้ต่อมน้ำเหลืองแข็ง ขนาดประมาณ 1.5 ซม. ที่ขาหนีบขวา ไม่เจ็บ (critical finding)"
+     "q": "Palpation of ipsilateral inguinal lymph nodes",
+     "a": "Firm, non-tender, approximately 1.5 cm right inguinal lymph node (critical finding)."
     },
     {
-     "q": "ตรวจสัญญาณการติดเชื้อเฉียบพลันรอบแผล (แดง ร้อน บวมลาม)",
-     "a": "ไม่พบลักษณะ spreading cellulitis หรือไข้ร่วมชัดเจนในวันตรวจ (pertinent negative ที่ช่วยแยกจาก acute infection ธรรมดา)"
+     "q": "Assessment for acute periwound infection (erythema, warmth, spreading edema)",
+     "a": "No spreading cellulitis or fever (pertinent negative helping to distinguish this from simple acute infection)."
     },
     {
-     "q": "ตรวจ distal pulses และ perfusion ของขา",
-     "a": "คลำชีพจรปลายเท้าได้ชัดเจน perfusion ดี ไม่มีภาวะขาดเลือดเฉียบพลัน"
+     "q": "Distal pulses and limb perfusion",
+     "a": "Palpable pedal pulses; good perfusion; no acute limb ischemia."
     },
     {
-     "q": "ตรวจ sensation รอบแผลและขา",
-     "a": "รู้สึกสัมผัสลดลงเล็กน้อยบริเวณแผลเป็นเดิม (เข้าได้กับ scar tissue) แต่ไม่มีอาการชาใหม่ที่ลามออกนอกแผลเป็น"
+     "q": "Sensory examination around the ulcer and limb",
+     "a": "Mild hypoesthesia confined to the scar, consistent with scar tissue; no new sensory deficit extending beyond the scar."
     },
     {
-     "q": "ประเมิน range of motion ข้อเข่า",
-     "a": "งอเข่าได้จำกัดจาก contracture เดิม ไม่มีการจำกัดเพิ่มเติมเฉียบพลันจากแผลใหม่"
+     "q": "Knee range of motion",
+     "a": "Flexion limited by pre-existing scar contracture; no new acute restriction attributable to the ulcer."
     },
     {
-     "q": "ตรวจผิวหนังส่วนอื่นและแผลเป็นจากไฟไหม้จุดอื่น (ถ้ามี)",
-     "a": "ไม่มีแผลเป็นไฟไหม้บริเวณอื่นในร่างกาย ไม่พบรอยโรคที่สงสัยเพิ่มเติม"
+     "q": "Inspection of other skin and burn scars",
+     "a": "No other burn scars; no additional suspicious lesions."
     }
    ],
    "investigations": [
@@ -3240,13 +3240,13 @@
     "การมองข้ามว่าแผลเป็น \"แผลเป็นเก่าติดเชื้อซ้ำ\" ทั้งที่มีลักษณะเปลี่ยนแปลงใหม่ชัดเจน"
    ],
    "problemList": [
-    "แผลเปิดใหม่ในแผลเป็นไฟไหม้เดิมที่หน้าแข้งขวา มี induration, everted edge และเลือดออกง่าย น่ากังวลว่าเป็น Marjolin ulcer",
-    "ต่อมน้ำเหลืองขาหนีบขวาที่คลำได้ ต้องประเมินเพิ่มเติมว่าเป็น regional metastasis หรือไม่",
-    "ประวัติรักษาด้วยยาปฏิชีวนะซ้ำหลายครั้งโดยไม่มีการวินิจฉัยยืนยันชิ้นเนื้อ",
-    "น้ำหนักลด 3 กิโลกรัมใน 3 เดือน ที่อาจสัมพันธ์กับโรคลุกลาม",
-    "แผลเป็นหดรั้งเดิมที่มีคุณภาพเนื้อเยื่อไม่ดีและมีข้อจำกัดการเคลื่อนไหวข้อเข่าร่วม"
+    "New chronic ulceration within a longstanding right pretibial burn scar with induration, everted margins and contact bleeding, suspicious for Marjolin ulcer (squamous cell carcinoma)",
+    "Palpable right inguinal lymphadenopathy requiring evaluation for regional metastasis",
+    "Repeated empirical antibiotic courses without histological confirmation",
+    "Unintentional weight loss of 3 kg over 3 months, possibly reflecting advanced disease",
+    "Pre-existing burn scar contracture with poor tissue quality and restricted knee range of motion"
    ],
-   "problemRepresentation": "ชายอายุ 55 ปี มีแผลเป็นไฟไหม้เก่าที่หน้าแข้งขวามานาน 35 ปี ปัจจุบันมีแผลเปิดใหม่ 6 เดือน ขอบยกนูนแข็ง เลือดออกง่าย ร่วมกับต่อมน้ำเหลืองขาหนีบขวาที่คลำได้และน้ำหนักลด แม้รักษาด้วยยาปฏิชีวนะซ้ำหลายครั้งแล้วไม่ดีขึ้นถาวร ซึ่งน่ากังวลว่าเป็น Marjolin ulcer ที่ต้องได้รับการวินิจฉัยทางเนื้อเยื่อโดยเร่งด่วน",
+   "problemRepresentation": "A 55-year-old man with a 35-year-old right pretibial burn scar presenting with a 6-month non-healing ulcer with indurated everted margins and contact bleeding, palpable ipsilateral inguinal lymphadenopathy and unintentional weight loss, refractory to repeated antibiotic courses, suspicious for Marjolin ulcer requiring urgent histological diagnosis.",
    "system1Trap": "แผลในแผลเป็นเก่าที่มีหนองและกลิ่นเหม็น = การติดเชื้อเรื้อรังของแผลเป็นธรรมดา",
    "system2Trigger": "เมื่อแผลเป็นที่มั่นคงมานานหลายปีเกิดแผลเปิดใหม่ที่มีขอบยกนูนแข็ง เลือดออกง่าย หรือมีต่อมน้ำเหลืองร่วม ต้องหยุดคิดแบบการติดเชื้อธรรมดาและพิจารณา malignant transformation (Marjolin ulcer) จนกว่าจะพิสูจน์ได้ว่าไม่ใช่",
    "system2Checklist": [
@@ -3361,44 +3361,44 @@
    ],
    "exam": [
     {
-     "q": "ตรวจช่องปากและลิ้นด้วยแสงสว่างเพียงพอ",
-     "a": "แผลขนาด 3 ซม. ที่ข้างลิ้นขวา ขอบไม่เรียบและแข็ง (indurated ulcer) พื้นแผลมีเนื้อเยื่อเปราะเลือดออกง่าย"
+     "q": "Inspection of the oral cavity and tongue under adequate lighting",
+     "a": "3 cm indurated ulcer on the right lateral border of the tongue with irregular margins and a friable base with contact bleeding."
     },
     {
-     "q": "คลำลิ้นเพื่อประเมิน induration/fixation",
-     "a": "คลำได้ฐานแผลแข็งกว่าเนื้อเยื่อรอบข้างชัดเจน ลิ้นขยับได้จำกัดเล็กน้อยเมื่อเทียบกับด้านซ้าย"
+     "q": "Palpation of the tongue for induration and fixation",
+     "a": "Base markedly firmer than surrounding tissue; mildly reduced tongue mobility compared with the left side."
     },
     {
-     "q": "ตรวจพื้นช่องปากและ oropharynx",
-     "a": "ไม่พบรอยโรคเพิ่มเติมที่พื้นช่องปาก เยื่อบุ oropharynx ดูปกติในการตรวจที่ทำได้"
+     "q": "Inspection of the floor of mouth and oropharynx",
+     "a": "No additional lesion on the floor of mouth; oropharyngeal mucosa normal as far as visualized."
     },
     {
-     "q": "ตรวจการเปิดปาก (mouth opening)",
-     "a": "เปิดปากได้เกือบเต็มที่ ยังไม่มี trismus ชัดเจน"
+     "q": "Mouth opening",
+     "a": "Near-full mouth opening; no significant trismus."
     },
     {
-     "q": "ตรวจต่อมน้ำเหลืองบริเวณคอ (level I-V)",
-     "a": "คลำได้ต่อมน้ำเหลืองแข็ง ขนาดประมาณ 2.5 ซม. ที่ level II ด้านขวา ไม่เจ็บ ค่อนข้างติดแน่น (critical finding)"
+     "q": "Cervical lymph node examination (levels I–V)",
+     "a": "Firm, non-tender, relatively fixed 2.5 cm right level II lymph node (critical finding)."
     },
     {
-     "q": "ประเมินทางเดินหายใจเบื้องต้น (เสียง, การหายใจ, stridor)",
-     "a": "ไม่มี stridor หรือหายใจลำบากในขณะตรวจ เสียงพูดขุ่นเล็กน้อยแต่สื่อสารได้ปกติ (pertinent negative สำหรับ airway emergency ขณะนี้)"
+     "q": "Screening airway assessment (voice, breathing, stridor)",
+     "a": "No stridor or respiratory distress; mildly muffled voice with preserved communication (pertinent negative for current airway emergency)."
     },
     {
-     "q": "ประเมินการกลืนเบื้องต้น",
-     "a": "กลืนน้ำได้โดยไม่สำลัก แต่บอกเจ็บชัดเจนเวลากลืนอาหารแข็ง"
+     "q": "Screening swallowing assessment",
+     "a": "Swallows water without aspiration; marked odynophagia with solid food."
     },
     {
-     "q": "ตรวจสภาพโภชนาการทั่วไป (BMI, กล้ามเนื้อ, ผิวหนัง)",
-     "a": "ดูผอมกว่าค่าเฉลี่ยตามรูปร่าง ผิวหนังไม่แห้งมาก ยังพูดคุยและเดินได้แข็งแรง"
+     "q": "General nutritional assessment (BMI, muscle bulk, skin)",
+     "a": "Appears underweight for build; no marked dehydration; ambulant and conversing normally."
     },
     {
-     "q": "ตรวจฟันและสุขอนามัยช่องปาก",
-     "a": "มีคราบหินปูนและฟันผุหลายซี่ ไม่มีฟันแตกคมที่ตำแหน่งตรงกับแผล"
+     "q": "Dental examination and oral hygiene",
+     "a": "Heavy calculus and multiple carious teeth; no sharp fractured tooth adjacent to the ulcer."
     },
     {
-     "q": "ตรวจผิวหนังบริเวณคอ/ใบหน้าว่ามีก้อนอื่นหรือผิวหนังเปลี่ยนแปลงหรือไม่",
-     "a": "ไม่พบก้อนอื่นหรือผิวหนังผิดปกติเพิ่มเติมนอกจากต่อมน้ำเหลืองที่คอ"
+     "q": "Inspection of the neck and facial skin for other masses or skin changes",
+     "a": "No other masses or cutaneous abnormalities apart from the cervical lymph node."
     }
    ],
    "investigations": [
@@ -3447,13 +3447,13 @@
     "Trismus หรือข้อจำกัดการเคลื่อนไหวลิ้น/ขากรรไกรที่อาจบ่งชี้การลุกลามลึก"
    ],
    "problemList": [
-    "แผลข้างลิ้นขวาไม่หายมา 7 สัปดาห์ ขอบแข็งไม่เรียบ เลือดออกง่าย น่ากังวลว่าเป็น oral squamous cell carcinoma",
-    "ต่อมน้ำเหลืองคอ level II ขวาที่คลำได้ แข็งและติดแน่น ต้องประเมิน regional metastasis",
-    "ปัจจัยเสี่ยงสูงจากบุหรี่ แอลกอฮอล์ และการเคี้ยวหมากต่อเนื่องหลายสิบปี",
-    "น้ำหนักลด 5 กิโลกรัมใน 2 เดือนจากการรับประทานอาหารได้น้อยลงเพราะเจ็บ",
-    "ยังไม่มี airway compromise ในวันนี้ แต่ต้องเฝ้าระวังต่อเนื่อง"
+    "7-week non-healing indurated ulcer of the right lateral tongue with irregular margins and contact bleeding, suspicious for oral squamous cell carcinoma",
+    "Firm, fixed right level II cervical lymphadenopathy requiring evaluation for regional metastasis",
+    "High-risk exposures: long-term tobacco smoking, alcohol use and betel quid chewing",
+    "Unintentional weight loss of 5 kg over 2 months due to odynophagia and reduced oral intake",
+    "No current airway compromise; requires ongoing airway surveillance"
    ],
-   "problemRepresentation": "ชายอายุ 63 ปี มีปัจจัยเสี่ยงสูบบุหรี่ ดื่มแอลกอฮอล์ และเคี้ยวหมากต่อเนื่องหลายสิบปี มาด้วยแผลข้างลิ้นขวาที่ไม่หายมา 7 สัปดาห์ ขอบแข็งไม่เรียบ ร่วมกับต่อมน้ำเหลืองคอขวาที่คลำได้และน้ำหนักลด 5 กิโลกรัม โดยยังไม่มี airway compromise ในวันนี้ ซึ่งน่ากังวลอย่างสูงว่าเป็นมะเร็งช่องปากที่ต้องได้รับการวินิจฉัยและส่งต่อโดยเร่งด่วน",
+   "problemRepresentation": "A 63-year-old man with decades of tobacco, alcohol and betel quid use presenting with a 7-week non-healing indurated ulcer of the right lateral tongue with irregular margins, a firm fixed ipsilateral level II cervical lymph node and 5 kg weight loss, without current airway compromise, highly suspicious for oral squamous cell carcinoma requiring urgent diagnosis and referral.",
    "system1Trap": "แผลในช่องปากที่เจ็บ = ร้อนในหรือแผลจากการกัดลิ้น/ฟันบาดที่จะหายเองใน 1-2 สัปดาห์",
    "system2Trigger": "เมื่อแผลในช่องปากไม่หายเกินระยะเวลาปกติของแผลร้อนใน (ประมาณ 2-3 สัปดาห์) โดยเฉพาะในผู้ที่มีปัจจัยเสี่ยงบุหรี่/แอลกอฮอล์/หมาก และมีต่อมน้ำเหลืองคอร่วม ต้องหยุดคิดแบบแผลไม่ร้ายแรงและพิจารณามะเร็งช่องปากจนกว่าจะพิสูจน์ได้ว่าไม่ใช่",
    "system2Checklist": [
@@ -3559,44 +3559,44 @@
    ],
    "exam": [
     {
-     "q": "ABCDE เบื้องต้น",
-     "a": "Airway patent, breathing ปกติ, alert, GCS 15"
+     "q": "Primary survey (ABCDE)",
+     "a": "Airway patent; normal breathing; alert; GCS 15."
     },
     {
-     "q": "ตรวจแผลด้วยสายตา (inspection) ก่อนสัมผัส",
-     "a": "แผลฉีกขาดขนาดใหญ่ยาวประมาณ 12 ซม. กว้างเปิด มี skin flap หลุดลอกบางส่วน (avulsion) เห็นชั้นไขมันใต้ผิวและกล้ามเนื้อบางส่วนโผล่"
+     "q": "Visual inspection of the wound before palpation",
+     "a": "Large gaping laceration approximately 12 cm long with a partially avulsed skin flap, exposing subcutaneous fat and part of the underlying muscle."
     },
     {
-     "q": "ประเมิน contamination",
-     "a": "มีเศษน้ำมันเครื่องและเศษโลหะเล็กติดอยู่ในแผล ขอบแผลไม่เรียบ (irregular/crushed edge)"
+     "q": "Assessment of contamination",
+     "a": "Engine oil and small metallic fragments embedded in the wound; irregular, crushed wound edges."
     },
     {
-     "q": "ประเมิน tissue viability ของ skin flap",
-     "a": "ปลาย flap สีคล้ำกว่าปกติเล็กน้อย capillary refill ที่ปลาย flap ช้ากว่าผิวปกติข้างเคียง"
+     "q": "Assessment of skin flap viability",
+     "a": "Flap tip mildly dusky with delayed capillary refill compared with adjacent normal skin."
     },
     {
-     "q": "ประเมิน perfusion ปลายแขนขา",
-     "a": "Dorsalis pedis และ posterior tibial คลำได้ชัดเจน capillary refill ปลายเท้าปกติ"
+     "q": "Distal limb perfusion",
+     "a": "Dorsalis pedis and posterior tibial pulses clearly palpable; normal capillary refill in the toes."
     },
     {
-     "q": "ประเมิน dead space/ความลึกของแผล",
-     "a": "แผลมี undermining เข้าไปด้านข้างมากกว่าที่เห็นจากปากแผล คลำได้ pocket ใต้ผิวหนังรอบแผล"
+     "q": "Assessment of wound depth and dead space",
+     "a": "Undermining extends laterally beyond the visible wound margin with a palpable subcutaneous pocket."
     },
     {
-     "q": "Motor testing กล้ามเนื้อบริเวณเกี่ยวข้อง",
-     "a": "Hip flexion/knee extension ทำได้แต่กำลังลดลงเล็กน้อยเทียบขาอีกข้าง เจ็บเวลาออกแรง"
+     "q": "Motor testing of the involved muscle groups",
+     "a": "Hip flexion and knee extension present but mildly weak compared with the contralateral limb; pain on exertion."
     },
     {
-     "q": "Sensory testing รอบแผลและปลายเท้า",
-     "a": "ลดความรู้สึกสัมผัสเบาบริเวณผิวรอบขอบแผลด้านนอก ปลายเท้ารู้สึกปกติ"
+     "q": "Sensory testing around the wound and foot",
+     "a": "Reduced light-touch sensation along the lateral wound margin; normal sensation in the foot."
     },
     {
-     "q": "Active/passive bleeding เมื่อคลายผ้ากด",
-     "a": "มี oozing ต่อเนื่องจากขอบแผล ไม่มี pulsatile spurting bleeding ในสถานการณ์นี้"
+     "q": "Bleeding on release of pressure dressing",
+     "a": "Continuous oozing from the wound edges; no pulsatile arterial bleeding."
     },
     {
-     "q": "ตรวจ compartment ของกล้ามเนื้อบริเวณขา",
-     "a": "กล้ามเนื้อรอบแผลนิ่ม ไม่ตึงแข็งผิดปกติ ไม่มี pain out of proportion ในสถานการณ์นี้ (pertinent negative)"
+     "q": "Assessment of the thigh compartments",
+     "a": "Soft compartments; no pain out of proportion (pertinent negative)."
     }
    ],
    "investigations": [
@@ -3645,13 +3645,13 @@
     "Tetanus risk จากแผลปนเปื้อนที่ไม่ทราบสถานะภูมิคุ้มกัน"
    ],
    "problemList": [
-    "Acute contaminated traumatic laceration with large tissue defect/skin flap of uncertain viability",
-    "Suspected deep-space involvement (undermining) with possible muscle/nerve injury",
-    "Sensory deficit บริเวณรอบแผลที่ต้องตรวจซ้ำ",
-    "Tetanus status ไม่แน่ชัด",
-    "Distal perfusion ปกติในขณะนี้ แต่ต้องเฝ้าระวังซ้ำ"
+    "Acute contaminated traumatic laceration of the left thigh with large tissue defect and skin flap of uncertain viability",
+    "Suspected deep-space involvement (undermining) with possible muscle or nerve injury",
+    "Periwound sensory deficit requiring serial reassessment",
+    "Tetanus immunization status unconfirmed",
+    "Currently intact distal perfusion requiring ongoing monitoring"
    ],
-   "problemRepresentation": "ชายอายุ 33 ปี ได้รับบาดเจ็บจากเครื่องจักรอุตสาหกรรมที่โคนขาซ้าย 40 นาทีก่อน มีแผลฉีกขาดขนาดใหญ่ปนเปื้อนร่วมกับ skin flap ที่ viability ไม่แน่ชัด, dead space ใต้ผิวหนัง และ sensory deficit บริเวณรอบแผล โดย distal perfusion ยังปกติ จึงกังวล tissue viability, deep structure injury และ contamination ที่ต้องประเมินก่อนตัดสินใจปิดแผล",
+   "problemRepresentation": "A 33-year-old man presenting 40 minutes after an industrial machinery injury to the proximal left thigh with a large contaminated laceration, an avulsed skin flap of uncertain viability, subcutaneous dead space and periwound sensory deficit, with intact distal perfusion, raising concern for tissue non-viability, deep structure injury and contamination that must be addressed before any decision on wound closure.",
    "system1Trap": "แผลฉีกขาด เลือดไม่ออกมาก ก็แค่ล้างแผลแล้วเย็บปิดได้เลย",
    "system2Trigger": "เมื่อพบ tissue defect ขนาดใหญ่ ขอบแผลไม่เรียบ หรือ viability ของเนื้อเยื่อไม่แน่ชัด ต้องหยุดคิดช้าลงก่อนตัดสินใจปิดแผลทันที",
    "system2Checklist": [
@@ -3757,44 +3757,44 @@
    ],
    "exam": [
     {
-     "q": "General/sepsis screen",
-     "a": "ไข้ต่ำ ชีพจรเร็วกว่าปกติเล็กน้อย ไม่มี hypotension ในสถานการณ์นี้"
+     "q": "General assessment and sepsis screen",
+     "a": "Low-grade fever and mild tachycardia; no hypotension."
     },
     {
-     "q": "ตรวจแผลโดยละเอียด",
-     "a": "แผลบริเวณหลังเท้าขนาด 4x3 ซม. ขอบแผลนุ่ม มีเนื้อตายสีเหลืองปนกับเนื้อแดงบางส่วน มีน้ำเหลืองปนหนองซึม กลิ่นเหม็นอ่อนๆ"
+     "q": "Detailed wound inspection",
+     "a": "4 × 3 cm dorsal foot ulcer with soft margins, mixed yellow slough and red granulation tissue, seropurulent exudate and mild malodor."
     },
     {
-     "q": "ประเมินความลึกของแผล",
-     "a": "คลำ probe ถึง firm structure คล้ายกระดูกบริเวณโคนนิ้วกลาง (probe-to-bone positive)"
+     "q": "Assessment of wound depth (probe)",
+     "a": "Probe reaches a firm bony structure at the base of the third metatarsophalangeal region (positive probe-to-bone test)."
     },
     {
-     "q": "ผิวหนังรอบแผล",
-     "a": "มีผื่นแดงลามออกจากขอบแผลประมาณ 2 ซม. ผิวรอบแผลอุ่นกว่าปกติ"
+     "q": "Periwound skin",
+     "a": "Erythema extending approximately 2 cm beyond the wound margin with increased local warmth."
     },
     {
-     "q": "Neuropathy assessment",
-     "a": "ลด protective sensation อย่างชัดเจนเมื่อทดสอบ monofilament simulation ทั้งสองเท้า"
+     "q": "Peripheral neuropathy assessment",
+     "a": "Marked loss of protective sensation on monofilament testing of both feet."
     },
     {
-     "q": "Perfusion/vascular exam",
-     "a": "Dorsalis pedis คลำไม่ได้ posterior tibial คลำได้จางมาก เท้าซ้ายเย็นกว่าขาส่วนบนอย่างชัดเจน capillary refill ปลายนิ้วช้า"
+     "q": "Vascular examination",
+     "a": "Dorsalis pedis pulse absent; posterior tibial pulse barely palpable; left foot markedly cooler than the proximal limb; delayed digital capillary refill."
     },
     {
-     "q": "Deformity/pressure point",
-     "a": "มี bony prominence และ callus หนาบริเวณโคนนิ้วกลางที่ตรงกับตำแหน่งแผล"
+     "q": "Foot deformity and pressure points",
+     "a": "Bony prominence with thick callus at the base of the third toe corresponding to the ulcer site."
     },
     {
-     "q": "Crepitus/rapid spreading infection sign",
-     "a": "ไม่มี crepitus คลำได้ในสถานการณ์นี้ (pertinent negative แม้มีความเสี่ยงสูง)"
+     "q": "Assessment for crepitus / rapidly spreading infection",
+     "a": "No palpable crepitus (pertinent negative despite high risk)."
     },
     {
-     "q": "Range of motion ข้อเท้า/นิ้วเท้า",
-     "a": "ขยับได้ปกติ ไม่มี joint involvement ชัดเจนในการตรวจนี้"
+     "q": "Ankle and toe range of motion",
+     "a": "Normal range of motion; no clinical joint involvement."
     },
     {
-     "q": "Systemic exam อื่น",
-     "a": "หัวใจ/ปอดปกติ ไม่มี distant source of infection ชัดเจนอื่น"
+     "q": "Systemic examination",
+     "a": "Normal cardiorespiratory examination; no other apparent source of infection."
     }
    ],
    "investigations": [
@@ -3843,13 +3843,13 @@
     "ควบคุมเบาหวานไม่ดีที่เป็นอุปสรรคต่อการหายของแผลในระยะยาว"
    ],
    "problemList": [
-    "Chronic diabetic foot ulcer with clinical signs of deep/spreading infection (probe-to-bone positive)",
-    "Suspected significant peripheral arterial disease (absent/diminished pulses, cool limb)",
-    "Poor glycemic control ที่กระทบการหายของแผล",
-    "Peripheral neuropathy ที่บดบังอาการเจ็บและความรุนแรง",
-    "Continued weight-bearing without off-loading เป็นปัจจัยกระตุ้นต่อเนื่อง"
+    "Chronic diabetic foot ulcer with clinical signs of deep and spreading infection (positive probe-to-bone test)",
+    "Suspected significant peripheral arterial disease (absent/diminished pedal pulses, cool limb)",
+    "Poor glycemic control impairing wound healing",
+    "Peripheral neuropathy masking pain and disease severity",
+    "Continued weight-bearing without off-loading as an ongoing aggravating factor"
    ],
-   "problemRepresentation": "หญิงอายุ 58 ปีเบาหวานควบคุมไม่ดี มีแผลหลังเท้าซ้ายเรื้อรัง 5 สัปดาห์ที่มี probe-to-bone positive, cellulitis ลาม, ไข้ต่ำและชีพจรเร็ว ร่วมกับ pulse ที่คลำไม่ได้และเท้าเย็นบ่งชี้ ischemia ขณะยังลงน้ำหนักทับแผลต่อเนื่อง จึงกังวล limb-threatening infection ร่วมกับ osteomyelitis และ critical ischemia ที่ต้องประเมินและส่งต่อเร่งด่วน ไม่ใช่ปัญหาการเลือก dressing เพียงอย่างเดียว",
+   "problemRepresentation": "A 58-year-old woman with poorly controlled diabetes mellitus and a 5-week chronic left dorsal foot ulcer with a positive probe-to-bone test, spreading cellulitis, low-grade fever and tachycardia, with absent pedal pulses and a cool foot indicating ischemia and continued weight-bearing on the ulcer, raising concern for limb-threatening infection with osteomyelitis and critical limb ischemia requiring urgent assessment and referral rather than dressing selection alone.",
    "system1Trap": "แผลเบาหวานเรื้อรัง เลือก dressing ที่เหมาะแล้วนัดทำแผลต่อ",
    "system2Trigger": "เมื่อแผลเรื้อรังในผู้ป่วยเบาหวานมี systemic sign, probe-to-bone positive หรือ pulse ที่คลำไม่ได้ ต้องหยุดคิดช้าลงและประเมิน infection/perfusion อย่างเป็นระบบก่อนวางแผน dressing",
    "system2Checklist": [
@@ -3951,36 +3951,36 @@
    ],
    "exam": [
     {
-     "q": "ตรวจลักษณะก้อน (morphology)",
-     "a": "ก้อนนูนแข็ง สีชมพูคล้ำ ผิวเรียบมัน ขยายออกเกินขอบรอยสิวเดิมอย่างชัดเจนในทุกทิศทาง"
+     "q": "Lesion morphology",
+     "a": "Firm, raised, dusky-pink, smooth shiny nodule extending well beyond the original acne scar margins in all directions."
     },
     {
-     "q": "ขอบเขตเทียบกับตำแหน่งบาดเจ็บเดิม",
-     "a": "Claw-like extension ยื่นออกไปในผิวหนังปกติรอบๆ ไม่จำกัดอยู่ในขอบเดิม"
+     "q": "Extent relative to the original injury",
+     "a": "Claw-like extensions invading the surrounding normal skin; not confined to the original wound boundary."
     },
     {
-     "q": "คลำความแข็ง/ผิวสัมผัส",
-     "a": "แข็งกว่าผิวหนังปกติชัดเจน กดเจ็บเล็กน้อย ไม่มี fluctuation"
+     "q": "Palpation of consistency and texture",
+     "a": "Markedly firmer than normal skin; mildly tender; no fluctuance."
     },
     {
-     "q": "ตรวจสัญญาณการอักเสบเฉียบพลัน",
-     "a": "ไม่มี ผื่นแดงร้อนจัด หรือหนองไหลในขณะตรวจ (pertinent negative — ไม่ใช่ภาวะติดเชื้อ)"
+     "q": "Assessment for acute inflammation",
+     "a": "No marked erythema, warmth or purulent discharge (pertinent negative: not an infective process)."
     },
     {
-     "q": "ตรวจรอยแผลเป็นที่หลัง (ตำแหน่งอื่น)",
-     "a": "มีก้อนคล้ายกันขนาดเล็กกว่า ยืนยัน tendency ต่อ keloid formation"
+     "q": "Inspection of other scars on the back",
+     "a": "Similar smaller lesions present, confirming a predisposition to keloid formation."
     },
     {
-     "q": "Range of motion บริเวณใกล้เคียง",
-     "a": "ไม่มี contracture หรือจำกัดการเคลื่อนไหวไหล่/แขน เนื่องจากตำแหน่งไม่ข้ามข้อ"
+     "q": "Range of motion of adjacent joints",
+     "a": "No contracture or restriction of shoulder or upper limb movement, as the lesion does not cross a joint."
     },
     {
-     "q": "ตรวจผิวหนังทั่วตัวโดยสังเขป",
-     "a": "ไม่พบก้อนลักษณะคล้ายกันในตำแหน่งอื่นในขณะนี้"
+     "q": "Brief total-body skin examination",
+     "a": "No similar lesions elsewhere at present."
     },
     {
-     "q": "ประเมิน pigmentation รอบก้อน",
-     "a": "มีสีคล้ำกว่าผิวรอบข้างเล็กน้อย ไม่มีลักษณะ ulceration หรือการเปลี่ยนแปลงเร็วผิดปกติที่ชวนคิดถึงโรคอื่น"
+     "q": "Assessment of perilesional pigmentation",
+     "a": "Mild hyperpigmentation relative to surrounding skin; no ulceration or rapid change to suggest an alternative diagnosis."
     }
    ],
    "investigations": [
@@ -4023,13 +4023,13 @@
     "Recurrence risk สูงหลังการตัดโดยไม่มี adjuvant therapy ตามแผนผู้เชี่ยวชาญ"
    ],
    "problemList": [
-    "Keloid scar ที่ขยายเกินขอบรอยแผลเดิมชัดเจน ไม่ยุบเองแม้เวลาผ่านไป 2 ปี",
-    "Recurrence หลังการรักษาก่อนหน้า (ฉีดยาแล้วกลับมาโตใหม่)",
-    "Symptomatic (คัน, เจ็บจี๊ด, ตึง) ที่กระทบคุณภาพชีวิต",
-    "Psychosocial impact จากความอาย/หลีกเลี่ยงสังคม",
-    "Predisposition ต่อ keloid formation (ครอบครัว/ตำแหน่งอื่น)"
+    "Keloid scar of the chest extending beyond the original wound margins, without spontaneous regression over 2 years",
+    "Recurrence after previous treatment (regrowth following intralesional injection)",
+    "Symptomatic lesion (pruritus, lancinating pain, tightness) affecting quality of life",
+    "Psychosocial impact with embarrassment and social avoidance",
+    "Predisposition to keloid formation (family history and lesions at other sites)"
    ],
-   "problemRepresentation": "ชายอายุ 22 ปีมีก้อนนูนแข็งบริเวณหน้าอกที่ขยายเกินขอบรอยสิวเดิมอย่างชัดเจนมา 2 ปี ไม่ยุบเอง มีอาการคันและเจ็บจี๊ด เคยฉีดยาแล้วกลับมาโตใหม่ ร่วมกับผลกระทบทางจิตสังคมชัดเจน เข้าได้กับ keloid ที่ต้องแยกจาก hypertrophic scar และวางแผน multimodal treatment พร้อม expectation management เรื่อง recurrence",
+   "problemRepresentation": "A 22-year-old man with a 2-year firm, raised chest lesion extending well beyond the original acne scar margins without spontaneous regression, associated with pruritus and lancinating pain, recurrence after prior intralesional injection and significant psychosocial impact, consistent with a keloid that must be differentiated from a hypertrophic scar and managed with a multimodal treatment plan and explicit counseling on recurrence risk.",
    "system1Trap": "แผลเป็นนูนก็คือ keloid หรือ hypertrophic scar เหมือนกัน ตัดออกก็หาย",
    "system2Trigger": "เมื่อก้อนแผลเป็นขยายออกเกินขอบรอยแผลเดิมและไม่ยุบเองตามเวลา ต้องหยุดคิดช้าลงเพื่อแยกจาก hypertrophic scar และวางแผน expectation ก่อนเสนอการรักษาใดๆ",
    "system2Checklist": [
@@ -4127,36 +4127,36 @@
    ],
    "exam": [
     {
-     "q": "ตรวจลักษณะแผลเป็น (morphology)",
-     "a": "แผลเป็นนูนแดงจางลง ผิวค่อนข้างเรียบ ขอบเขตจำกัดอยู่ในตำแหน่งแผลไฟไหม้เดิม ไม่ล้ำออกไปผิวหนังปกติ"
+     "q": "Scar morphology",
+     "a": "Raised scar with fading erythema and a relatively smooth surface, confined to the original burn wound boundary without extension into normal skin."
     },
     {
-     "q": "เปรียบเทียบกับขอบแผลเดิม",
-     "a": "ไม่มีการขยายออกนอกขอบแผลไฟไหม้เดิมในทุกทิศทาง"
+     "q": "Comparison with the original wound margins",
+     "a": "No extension beyond the original burn margins in any direction."
     },
     {
-     "q": "Range of motion ข้อศอก (active/passive)",
-     "a": "Extension ข้อศอกจำกัดประมาณหนึ่งในสามของช่วงการเคลื่อนไหวปกติเมื่อเทียบกับข้างตรงข้าม"
+     "q": "Active and passive elbow range of motion",
+     "a": "Elbow extension limited by approximately one-third of the normal arc compared with the contralateral side."
     },
     {
-     "q": "ตรวจ contracture band",
-     "a": "คลำได้ scar band ตึงข้ามข้อพับศอกด้านใน"
+     "q": "Assessment for contracture band",
+     "a": "Palpable tight scar band crossing the antecubital fossa."
     },
     {
-     "q": "Neurovascular assessment ปลายแขน",
-     "a": "Perfusion และความรู้สึกปลายมือปกติ"
+     "q": "Distal neurovascular assessment",
+     "a": "Normal hand perfusion and sensation."
     },
     {
-     "q": "ตรวจผิวหนังรอบแผลเป็น",
-     "a": "ไม่มีสัญญาณอักเสบเฉียบพลัน ไม่มีแผลเปิดใหม่"
+     "q": "Periscar skin examination",
+     "a": "No signs of acute inflammation; no new open wound."
     },
     {
-     "q": "ประเมินการเจริญเติบโตของแขน",
-     "a": "ความยาวแขนสองข้างยังใกล้เคียงกัน แต่ต้องเฝ้าระวังเมื่อเด็กโตต่อ"
+     "q": "Assessment of limb growth",
+     "a": "Upper limb lengths currently comparable; requires surveillance with ongoing growth."
     },
     {
-     "q": "ตรวจแผลเป็นตำแหน่งอื่นถ้ามี",
-     "a": "ไม่มีแผลเป็นชนิดเดียวกันที่ตำแหน่งอื่นในขณะนี้"
+     "q": "Inspection of other scars",
+     "a": "No similar scars elsewhere at present."
     }
    ],
    "investigations": [
@@ -4199,13 +4199,13 @@
     "ความไม่สม่ำเสมอของการใช้ pressure garment/splint ที่เป็นอุปสรรคต่อผลลัพธ์"
    ],
    "problemList": [
-    "Hypertrophic scar ที่จำกัดอยู่ในขอบแผลไฟไหม้เดิม พร้อมแนวโน้มยุบลงบางส่วนตามเวลา",
-    "Progressive elbow extension contracture ที่กระทบ function",
-    "การใช้ silicone/pressure garment ไม่สม่ำเสมอ",
-    "ความเสี่ยง contracture แย่ลงตามการเจริญเติบโต (growing child)",
-    "ผลกระทบต่อกิจกรรม/กีฬาของเด็ก"
+    "Hypertrophic burn scar of the left antecubital fossa confined to the original wound margins, with partial maturation over time",
+    "Progressive elbow extension contracture with functional impairment",
+    "Inconsistent adherence to silicone therapy and pressure garments",
+    "Risk of contracture progression with skeletal growth in a growing child",
+    "Impact on the child's physical and sporting activities"
    ],
-   "problemRepresentation": "เด็กชายอายุ 10 ปี มีแผลเป็นนูนที่ข้อพับข้อศอกซ้ายหลังไฟไหม้น้ำร้อน 8 เดือน ซึ่งจำกัดอยู่ในขอบแผลเดิมและนุ่มลงบางส่วนตามเวลา แต่มี elbow extension contracture ที่ลุกลามขึ้นและกระทบ function ร่วมกับการใช้ pressure garment ไม่สม่ำเสมอ เข้าได้กับ hypertrophic scar ที่ต้องแยกจาก keloid และประเมิน contracture risk ข้ามข้อในเด็กที่กำลังเติบโตอย่างจริงจัง",
+   "problemRepresentation": "A 10-year-old boy with a raised scar of the left antecubital fossa 8 months after a scald burn, confined to the original wound margins and partially softening over time, but with a progressive elbow extension contracture causing functional impairment and inconsistent pressure garment adherence, consistent with a hypertrophic scar that must be differentiated from a keloid, requiring active assessment of cross-joint contracture risk in a growing child.",
    "system1Trap": "แผลเป็นนูนหลังไฟไหม้ นุ่มลงแล้วก็คงดีขึ้นเอง ไม่ต้องรีบทำอะไร",
    "system2Trigger": "เมื่อแผลเป็นข้ามข้อในเด็กที่กำลังเติบโตและ ROM ลดลงต่อเนื่อง ต้องหยุดคิดช้าลงเพื่อประเมิน contracture risk ก่อนปล่อยให้ \"รอดูไปเรื่อยๆ\"",
    "system2Checklist": [
@@ -4299,44 +4299,44 @@
    ],
    "exam": [
     {
-     "q": "Inspection ก้อน",
-     "a": "ปื้น/ก้อนสีแดงคล้ำถึงม่วง ผิวเรียบ ขอบไม่ชัดเจน ขนาดประมาณ 6x5 ซม. ที่ต้นแขนซ้าย"
+     "q": "Inspection of the lesion",
+     "a": "Ill-defined, smooth, dusky red to violaceous patch/mass measuring approximately 6 × 5 cm on the left upper arm."
     },
     {
-     "q": "Palpation ความอุ่น",
-     "a": "อุ่นกว่าผิวหนังปกติข้างเคียงอย่างชัดเจน"
+     "q": "Palpation for local warmth",
+     "a": "Markedly warmer than the adjacent normal skin."
     },
     {
-     "q": "Pulsation",
-     "a": "คลำได้ pulsation ชัดเจนที่ก้อน (critical/red-flag finding)"
+     "q": "Palpation for pulsatility",
+     "a": "Clearly palpable pulsation over the lesion (critical red-flag finding)."
     },
     {
-     "q": "Thrill",
-     "a": "คลำได้ thrill ต่อเนื่อง (critical/red-flag finding)"
+     "q": "Palpation for thrill",
+     "a": "Continuous palpable thrill (critical red-flag finding)."
     },
     {
      "q": "Auscultation",
-     "a": "ฟังได้ continuous bruit เหนือก้อน (critical/red-flag finding)"
+     "a": "Continuous bruit over the lesion (critical red-flag finding)."
     },
     {
      "q": "Compressibility",
-     "a": "กดแล้วยุบลงได้บางส่วนแต่กลับมาเต่งเร็วมากเมื่อปล่อย ไม่เหมือน simple venous malformation"
+     "a": "Partially compressible with very rapid refilling on release, unlike a simple venous malformation."
     },
     {
-     "q": "Fluctuation (สำหรับแยกจาก abscess)",
-     "a": "ไม่มี fluctuation แบบ abscess ที่มีหนองสะสม (pertinent negative สำคัญที่แยกจาก abscess)"
+     "q": "Assessment for fluctuance (to exclude abscess)",
+     "a": "No fluctuance to suggest an abscess cavity (key pertinent negative distinguishing this from an abscess)."
     },
     {
-     "q": "Signs of local infection (สำหรับแยกจาก abscess)",
-     "a": "ไม่มีไข้ ไม่มีผิวแดงร้อนแบบ cellulitis เฉียบพลัน ไม่มีต่อมน้ำเหลืองโตบริเวณใกล้เคียง (pertinent negative)"
+     "q": "Assessment for local infection (to exclude abscess)",
+     "a": "Afebrile; no acute cellulitic erythema or warmth; no regional lymphadenopathy (pertinent negative)."
     },
     {
      "q": "Distal neurovascular status",
-     "a": "คลำ pulse ปลายแขน/มือได้ปกติ การเคลื่อนไหวและความรู้สึกปลายมือปกติ"
+     "a": "Normal radial and digital pulses; normal hand motor function and sensation."
     },
     {
-     "q": "ประเมิน high-output cardiac sign เบื้องต้น",
-     "a": "Heart rate ปกติ ไม่มีสัญญาณ high-output failure ในสถานการณ์นี้"
+     "q": "Screening for high-output cardiac failure",
+     "a": "Normal heart rate; no signs of high-output cardiac failure."
     }
    ],
    "investigations": [
@@ -4379,13 +4379,13 @@
     "ความล่าช้าในการส่งต่อผู้เชี่ยวชาญที่อาจทำให้เกิดภาวะเลือดออกฉุกเฉินซ้ำ"
    ],
    "problemList": [
-    "Suspected high-flow arteriovenous malformation ที่ต้นแขนซ้าย โตเร็วขึ้นในช่วง 8 เดือน",
-    "ประวัติเลือดออกรุนแรงหลังการเจาะโดยไม่ได้เตรียมพร้อม",
-    "Pulsation, thrill และ bruit ที่ยืนยัน high-flow physiology",
-    "ไม่มีลักษณะสนับสนุน hemangioma หรือ abscess",
-    "ยังไม่มี high-output cardiac effect หรือ neurovascular compromise ในขณะนี้"
+    "Suspected high-flow arteriovenous malformation of the left upper arm with accelerated growth over 8 months",
+    "History of severe hemorrhage following unplanned needle puncture",
+    "Pulsatility, thrill and bruit confirming high-flow physiology",
+    "No clinical features supporting hemangioma or abscess",
+    "No current high-output cardiac effect or distal neurovascular compromise"
    ],
-   "problemRepresentation": "หญิงอายุ 26 ปี มีก้อนแดงคล้ำที่ต้นแขนซ้ายที่มีมาตั้งแต่เด็กแต่โตเร็วขึ้นใน 8 เดือน ร่วมกับ pulsation, thrill และ bruit ชัดเจน และมีประวัติเลือดออกรุนแรงหลังถูกเจาะที่บ้าน โดยไม่มีลักษณะของ abscess หรือ hemangioma เข้าได้กับ high-flow arteriovenous malformation ที่มีความเสี่ยงเลือดออกรุนแรงสูง ต้องหลีกเลี่ยงการเจาะ/ตัดชิ้นเนื้อโดยไม่ระวังและส่งต่อผู้เชี่ยวชาญด่วน",
+   "problemRepresentation": "A 26-year-old woman with a dusky red vascular lesion of the left upper arm present since childhood with accelerated growth over 8 months, with palpable pulsation, thrill and continuous bruit and a history of severe hemorrhage after home needle puncture, without features of abscess or hemangioma, consistent with a high-flow arteriovenous malformation at high risk of major hemorrhage, requiring avoidance of needle aspiration or biopsy and urgent specialist referral.",
    "system1Trap": "ก้อนแดงบวมอุ่นๆ แบบนี้คือฝี เจาะระบายหนองได้เลย",
    "system2Trigger": "เมื่อพบก้อนที่มี pulsation, thrill หรือ bruit ต้องหยุดคิดช้าลงทันทีและห้ามเจาะ/ตัดชิ้นเนื้อจนกว่าจะแยก high-flow vascular lesion ออกไปก่อน",
    "system2Checklist": [
@@ -4479,40 +4479,40 @@
    ],
    "exam": [
     {
-     "q": "ABCDE",
-     "a": "Airway patent, breathing ปกติ (แน่นหน้าอกเล็กน้อยต้องตรวจเพิ่ม), alert, tachycardic แต่ตอบสนองได้"
+     "q": "Primary survey (ABCDE)",
+     "a": "Airway patent; normal breathing with mild chest tightness requiring further assessment; alert; tachycardic but responsive."
     },
     {
      "q": "Limb inspection",
-     "a": "Open tibial fracture ชัดเจน มีกระดูกโผล่ ปนเปื้อนดินและเศษถนนมาก soft-tissue defect กว้างรอบตำแหน่งกระดูกหัก"
+     "a": "Open tibial fracture with exposed bone, gross contamination with soil and road debris, and an extensive soft-tissue defect around the fracture site."
     },
     {
-     "q": "ประเมิน soft-tissue stripping",
-     "a": "Periosteal stripping และกล้ามเนื้อบางส่วนหลุดลอกจากกระดูกในบริเวณแผล"
+     "q": "Assessment of soft-tissue stripping",
+     "a": "Periosteal stripping with partial muscle avulsion from the bone within the wound."
     },
     {
-     "q": "Hemorrhage/perfusion",
-     "a": "เลือดควบคุมได้ด้วยผ้ากด dorsalis pedis คลำได้แต่จางกว่าเดิม capillary refill ปลายเท้าช้ากว่าข้างขวา"
+     "q": "Hemorrhage control and perfusion",
+     "a": "Bleeding controlled with pressure dressing; dorsalis pedis pulse palpable but weaker than before; delayed capillary refill compared with the right foot."
     },
     {
-     "q": "Motor/sensory ปลายเท้า",
-     "a": "ขยับนิ้วเท้าได้เล็กน้อย ความรู้สึกลดลงบริเวณฝ่าเท้า (พบ pain out of proportion ร่วมด้วย — critical finding)"
+     "q": "Distal motor and sensory examination",
+     "a": "Minimal active toe movement; reduced plantar sensation; pain out of proportion to the injury (critical finding)."
     },
     {
-     "q": "ตรวจ compartment (tension, pain on passive stretch)",
-     "a": "กล้ามเนื้อบริเวณขาส่วนล่างตึงแข็งกว่าปกติชัดเจน ปวดมากขึ้นเมื่อยืดนิ้วเท้าแบบ passive (critical/red-flag finding ของ compartment syndrome)"
+     "q": "Compartment assessment (tension, pain on passive stretch)",
+     "a": "Markedly tense lower-leg compartments with increased pain on passive toe stretch (critical red-flag finding for compartment syndrome)."
     },
     {
-     "q": "ตรวจข้อมือขวาและหน้าอก",
-     "a": "Wrist tenderness ไม่มี deformity ชัดเจน หน้าอกกดเจ็บเล็กน้อยไม่มี paradoxical movement"
+     "q": "Examination of the right wrist and chest",
+     "a": "Wrist tenderness without obvious deformity; mild chest wall tenderness without paradoxical movement."
     },
     {
-     "q": "Skin/wound margin ประเมินความสะอาด",
-     "a": "ขอบแผลไม่เรียบ มี devitalized tissue บางส่วนที่ต้องได้รับการประเมินโดยทีมผู้เชี่ยวชาญ"
+     "q": "Assessment of wound margins",
+     "a": "Irregular margins with areas of devitalized tissue requiring specialist assessment."
     },
     {
-     "q": "Pulses เปรียบเทียบสองข้าง",
-     "a": "ขาซ้ายชีพจรจางกว่าขาขวาอย่างชัดเจน (pertinent negative ที่สำคัญคือไม่มี absent pulse โดยสิ้นเชิงในขณะนี้ แต่ต้องเฝ้าระวัง)"
+     "q": "Bilateral pulse comparison",
+     "a": "Left lower-limb pulses markedly weaker than the right (pulses not absent at present, but require close monitoring)."
     }
    ],
    "investigations": [
@@ -4562,12 +4562,12 @@
    ],
    "problemList": [
     "Open tibial fracture with extensive soft-tissue defect and gross contamination",
-    "สัญญาณเตือน compartment syndrome ที่กำลังพัฒนา (pain out of proportion, tense compartment)",
-    "Diminished distal perfusion ที่ต้องเฝ้าระวัง vascular injury",
-    "Associated injury (wrist, chest) ที่ต้องประเมินร่วม ไม่ใช่มองเฉพาะขา",
-    "ความจำเป็นของ orthoplastic team involvement ตั้งแต่ระยะแรก"
+    "Evolving acute compartment syndrome (pain out of proportion, tense compartments, pain on passive stretch)",
+    "Diminished distal perfusion requiring surveillance for vascular injury",
+    "Associated injuries (right wrist, chest wall) requiring concurrent evaluation",
+    "Need for early orthoplastic team involvement"
    ],
-   "problemRepresentation": "ชายอายุ 27 ปี หลังอุบัติเหตุมอเตอร์ไซค์พลังงานสูง 50 นาทีก่อน มี open tibial fracture ร่วมกับ soft-tissue defect ขนาดใหญ่และปนเปื้อนมาก ร่วมกับ pain out of proportion, tense compartment และ perfusion ปลายเท้าที่จางกว่าข้างตรงข้าม พร้อม associated injury ที่ข้อมือและหน้าอก จึงกังวล compartment syndrome, vascular compromise และความจำเป็นของ orthoplastic pathway ที่ต้อง escalate ทันที ไม่ใช่มองเป็นแค่กระดูกหักเปิดธรรมดา",
+   "problemRepresentation": "A 27-year-old man presenting 50 minutes after a high-energy motorcycle collision with an open tibial fracture, an extensive grossly contaminated soft-tissue defect, pain out of proportion, tense compartments and diminished distal perfusion compared with the contralateral limb, with associated wrist and chest wall injuries, raising concern for compartment syndrome and vascular compromise requiring immediate escalation to an orthoplastic pathway rather than management as a simple open fracture.",
    "system1Trap": "กระดูกโผล่ = เรียกออร์โธและส่ง X-ray ก็เพียงพอแล้ว",
    "system2Trigger": "เมื่อพบ open fracture ร่วมกับ soft-tissue defect ขนาดใหญ่ หรือ pain out of proportion ต้องหยุดคิดช้าลงเพื่อประเมิน compartment syndrome และ vascular status อย่างเป็นระบบ ไม่ใช่รอผลภาพรังสีอย่างเดียว",
    "system2Checklist": [
@@ -4661,36 +4661,36 @@
    ],
    "exam": [
     {
-     "q": "General/sepsis screen",
-     "a": "ไข้ ชีพจรเร็ว ความดันค่อนไปทางต่ำกว่าปกติเล็กน้อย ดูซึมกว่าปกติ"
+     "q": "General assessment and sepsis screen",
+     "a": "Febrile and tachycardic with borderline-low blood pressure; more drowsy than baseline."
     },
     {
-     "q": "ตรวจแผลโดยละเอียด",
-     "a": "แผลกดทับที่สะโพกซ้ายลึกถึงชั้นไขมัน/กล้ามเนื้อ มี slough และเนื้อตายบางส่วน ขอบแผล undermining กว้างกว่าปากแผลที่เห็น มีน้ำเหลืองปนหนองกลิ่นเหม็นชัดเจน"
+     "q": "Detailed wound inspection",
+     "a": "Deep left trochanteric/hip pressure ulcer extending to subcutaneous fat and muscle with slough and partial necrosis, undermining wider than the visible opening, and malodorous seropurulent exudate."
     },
     {
-     "q": "ประเมินความลึกและ probe-to-bone",
-     "a": "คลำ probe ถึง firm structure คล้ายกระดูกบริเวณ ischial/sacral prominence"
+     "q": "Assessment of depth and probe-to-bone",
+     "a": "Probe reaches a firm bony structure over the ischial/sacral prominence (positive probe-to-bone test)."
     },
     {
-     "q": "ผิวหนังรอบแผล",
-     "a": "Maceration จากความเปียกชื้นต่อเนื่อง ผื่นแดงลามออกจากขอบแผลบางส่วน"
+     "q": "Periwound skin",
+     "a": "Maceration from persistent moisture with erythema extending beyond parts of the wound margin."
     },
     {
-     "q": "ตรวจ pressure point อื่นที่มีความเสี่ยง",
-     "a": "มีรอยแดงเริ่มต้นที่ส้นเท้าทั้งสองข้างและปุ่มกระดูกสะบัก บ่งชี้ปัญหา off-loading ทั่วร่างกาย ไม่ใช่จุดเดียว"
+     "q": "Inspection of other at-risk pressure points",
+     "a": "Early non-blanching erythema over both heels and the scapular prominences, indicating a generalized off-loading failure rather than a single site."
     },
     {
-     "q": "Nutrition/hydration screen",
-     "a": "ดูผอมแห้ง มีลักษณะ dehydration เล็กน้อย ผิวหนังบางลง"
+     "q": "Nutritional and hydration screen",
+     "a": "Cachectic appearance with mild dehydration and thin, fragile skin."
     },
     {
-     "q": "Cognitive/communication status",
-     "a": "สื่อสารได้จำกัด ต้องพึ่งข้อมูลจากผู้ดูแลเป็นหลัก"
+     "q": "Cognitive and communication status",
+     "a": "Limited communication; history largely dependent on the caregiver."
     },
     {
-     "q": "Neurologic status ที่เกี่ยวกับการรับความรู้สึก",
-     "a": "Sensation บริเวณสะโพกลดลงจาก spinal cord injury เดิม ทำให้ไม่รู้สึกเจ็บจากการกดทับตั้งแต่ระยะแรก"
+     "q": "Sensory neurological status",
+     "a": "Reduced sensation over the hips secondary to pre-existing spinal cord injury, abolishing early pain from pressure."
     }
    ],
    "investigations": [
@@ -4739,13 +4739,13 @@
     "ความเสี่ยง safeguarding/การดูแลที่ไม่เพียงพอในบริบทครอบครัวที่มีทรัพยากรจำกัด"
    ],
    "problemList": [
-    "Deep pressure ulcer ที่สะโพกซ้ายพร้อมสัญญาณ systemic infection/sepsis concern",
-    "Probe-to-bone positive บ่งชี้ความเสี่ยง osteomyelitis",
-    "Malnutrition และ dehydration ที่กระทบการหายของแผล",
-    "Caregiver capacity ไม่เพียงพอต่อการพลิกตัว/off-loading/ดูแลความสะอาดสม่ำเสมอ",
-    "Multiple pressure points ที่กำลังก่อตัวทั่วร่างกาย บ่งชี้ปัญหาระบบการดูแลในภาพรวม"
+    "Deep pressure injury of the left hip with signs of systemic infection and concern for sepsis",
+    "Positive probe-to-bone test indicating risk of osteomyelitis",
+    "Malnutrition and dehydration impairing wound healing",
+    "Inadequate caregiver capacity for regular repositioning, off-loading and hygiene",
+    "Multiple evolving pressure injuries indicating a system-level failure of care"
    ],
-   "problemRepresentation": "ชายอายุ 71 ปี อัมพาตครึ่งล่างนอนติดเตียง มีแผลกดทับสะโพกซ้ายลึกถึงชั้นกล้ามเนื้อพร้อม probe-to-bone positive และหนองกลิ่นเหม็น ร่วมกับไข้ ชีพจรเร็วและความดันค่อนต่ำ อยู่ในบริบทที่ผู้ดูแลหลักเป็นภรรยาสูงอายุคนเดียวที่พลิกตัวให้ไม่เพียงพอและมีภาวะขาดอาหาร/ขาดน้ำร่วมด้วย จึงกังวล sepsis และ osteomyelitis ที่ต้อง escalate ด่วน ควบคู่กับการแก้ปัญหาเชิงระบบด้าน off-loading, nutrition และ caregiver capacity ไม่ใช่ปัญหาการเลือก dressing เพียงอย่างเดียว",
+   "problemRepresentation": "A 71-year-old bedbound man with paraplegia presenting with a deep left hip pressure injury extending to muscle with a positive probe-to-bone test and malodorous purulent exudate, fever, tachycardia and borderline hypotension, in the context of a sole elderly spouse caregiver unable to provide adequate repositioning and concurrent malnutrition and dehydration, raising concern for sepsis and osteomyelitis requiring urgent escalation alongside system-level interventions for off-loading, nutrition and caregiver support rather than dressing selection alone.",
    "system1Trap": "แผลกดทับ = ระบุ stage แล้วเลือก dressing ที่เหมาะ จบ",
    "system2Trigger": "เมื่อแผลกดทับมีสัญญาณ systemic infection, probe-to-bone positive หรือมีปัจจัยเชิงระบบ (caregiver, nutrition, off-loading) ที่ยังไม่ถูกแก้ไข ต้องหยุดคิดช้าลงและมองปัญหาทั้งตัวผู้ป่วยและระบบดูแลร่วมกัน",
    "system2Checklist": [
@@ -4788,7 +4788,7 @@
    "fullTitle": "Wound: Finger/thumb amputation and replantation (พ่อครัวมือขาดจากเครื่องหั่นเนื้อ)",
    "level": "Must know",
    "bloom": "Apply / Analyze / Evaluate",
-   "image": null,
+   "image": "G4-CARD8-portrait.jpg",
    "learningFocus": [
     "ฝึกประเมิน digit/thumb amputation แบบ time-critical: mechanism (sharp/crush/avulsion), ischemia time, และการดูแลชิ้นส่วนที่ขาดอย่างถูกวิธี",
     "ฝึกไม่ delay การส่งต่อศูนย์ replantation เพื่อรอผลตรวจที่ไม่จำเป็น",
@@ -4856,44 +4856,44 @@
    ],
    "exam": [
     {
-     "q": "General appearance, ABC",
-     "a": "Alert, พูดคุยรู้เรื่อง, ไม่มีสัญญาณ hypovolemic shock"
+     "q": "General appearance and primary survey (ABC)",
+     "a": "Alert and coherent; no signs of hypovolemic shock."
     },
     {
-     "q": "Inspection ตอนิ้วหัวแม่มือ",
-     "a": "ขอบแผลค่อนข้างเรียบสอดคล้องกับ sharp mechanism, เห็น bone end, tendon stump และ neurovascular bundle บางส่วน ไม่มี extensive crush"
+     "q": "Inspection of the thumb stump",
+     "a": "Relatively sharp, well-defined wound edges consistent with a sharp mechanism, with exposed bone end, tendon stumps and part of the neurovascular bundles; no extensive crush component."
     },
     {
-     "q": "Neurovascular exam ของตอ",
-     "a": "Capillary refill ของเนื้อเยื่อรอบตอปกติ, sensation proximal ต่อระดับตัดขาดยังปกติ"
+     "q": "Neurovascular examination of the stump",
+     "a": "Normal capillary refill of the surrounding tissue; sensation proximal to the amputation level intact."
     },
     {
-     "q": "ตรวจชิ้นส่วนนิ้วที่ขาด",
-     "a": "ผิวหนังบริเวณที่สัมผัสน้ำแข็งโดยตรงมีลักษณะซีดแข็งคล้าย frost-like change เล็กน้อย ส่วนอื่นของชิ้นส่วนยังดูมีสีชมพูปกติ"
+     "q": "Examination of the amputated part",
+     "a": "Skin in direct contact with ice pale and firm with mild frost-like change; remainder of the part pink."
     },
     {
-     "q": "ตรวจมือ/นิ้วอื่นที่เหลือ",
-     "a": "ไม่พบบาดแผลหรือ deformity เพิ่มเติม, การเคลื่อนไหวนิ้วอื่นปกติ"
+     "q": "Examination of the remaining hand and digits",
+     "a": "No additional wounds or deformity; normal movement of the other digits."
     },
     {
-     "q": "Range of motion ข้อมือ/ข้อศอกข้างเดียวกัน",
-     "a": "ปกติ ไม่มีข้อจำกัด"
+     "q": "Ipsilateral wrist and elbow range of motion",
+     "a": "Normal; no restriction."
     },
     {
-     "q": "ประเมิน pain control",
-     "a": "ปวดระดับปานกลางถึงมากหลัง initial analgesia ยังไม่คุมได้เต็มที่"
+     "q": "Assessment of pain control",
+     "a": "Moderate to severe pain persisting after initial analgesia; not yet adequately controlled."
     },
     {
-     "q": "ตรวจ contamination ที่แผล",
-     "a": "มีเศษเนื้อ/ไขมันติดเล็กน้อยที่ขอบแผล ไม่มีดินทรายปนเปื้อนชัดเจน"
+     "q": "Assessment of wound contamination",
+     "a": "Small amount of meat and fat debris at the wound edges; no gross soil contamination."
     },
     {
-     "q": "Vitals ซ้ำหลังทำแผลเบื้องต้น",
-     "a": "คงที่ ไม่มีแนวโน้ม deterioration"
+     "q": "Repeat vital signs after initial wound care",
+     "a": "Stable; no trend toward deterioration."
     },
     {
-     "q": "สภาพจิตใจ/ความเข้าใจสถานการณ์",
-     "a": "มีความเครียดสูง ถามซ้ำๆ ว่าจะต่อนิ้วได้ไหม"
+     "q": "Psychological state and understanding of the situation",
+     "a": "Highly distressed; repeatedly asks whether the thumb can be replanted."
     }
    ],
    "investigations": [
@@ -4943,14 +4943,14 @@
     "ความคาดหวังของผู้ป่วยที่อาจไม่ตรงกับความเป็นจริงทางการแพทย์"
    ],
    "problemList": [
-    "Complete right thumb amputation ที่ระดับ proximal phalanx จาก sharp mechanism ประมาณ 40 นาทีก่อน",
-    "ชิ้นส่วนที่ขาดถูกเก็บรักษาด้วยวิธีที่มีการสัมผัสน้ำแข็งโดยตรง เสี่ยงต่อ cold injury เพิ่มเติม",
-    "ผู้ป่วยสูบบุหรี่จัด เป็นปัจจัยเสี่ยงที่มีผลต่อ vessel patency หลัง microsurgery",
-    "เป็นมือข้างถนัดและอาชีพต้องใช้มือละเอียด ทำให้ functional stake สูง",
-    "Tetanus status ไม่ชัดเจน",
-    "ผู้ป่วยมีความเครียดสูงและความคาดหวังที่ต้องได้รับการสื่อสารอย่างเหมาะสม"
+    "Complete right thumb amputation at the proximal phalanx level from a sharp mechanism approximately 40 minutes ago",
+    "Inappropriate preservation of the amputated part with direct ice contact, risking additional cold injury",
+    "Heavy tobacco smoking adversely affecting microvascular anastomotic patency",
+    "Dominant hand injury with high occupational demand for fine motor function",
+    "Tetanus immunization status unconfirmed",
+    "High psychological distress and expectations requiring appropriate communication"
    ],
-   "problemRepresentation": "ชายไทยอายุ 34 ปี พ่อครัว มือขวาถนัด มี complete thumb amputation ที่ proximal phalanx จากเครื่องหั่นเนื้อประมาณ 40 นาทีก่อน โดยชิ้นส่วนที่ขาดถูกเก็บรักษาด้วยวิธีที่มีการสัมผัสน้ำแข็งโดยตรงซึ่งอาจเพิ่ม cold injury ผู้ป่วยสูบบุหรี่จัดและมี functional stake สูงจากอาชีพ ทำให้ต้องแก้ไขวิธีเก็บรักษาชิ้นส่วนทันทีและติดต่อศูนย์ replantation อย่างเร่งด่วนโดยไม่ชักช้าเพื่อรอผลตรวจที่ไม่จำเป็น",
+   "problemRepresentation": "A 34-year-old right-hand-dominant male chef presenting approximately 40 minutes after a complete thumb amputation at the proximal phalanx from a meat slicer, with the amputated part preserved in direct contact with ice risking cold injury, heavy smoking and high occupational functional demand, requiring immediate correction of part preservation and urgent contact with a replantation center without delay for non-essential investigations.",
    "system1Trap": "นิ้วขาดแล้ว เดี๋ยวศัลยแพทย์มือมาต่อให้เอง เราแค่รอเฉยๆ ได้",
    "system2Trigger": "เมื่อพบ digit/thumb amputation ต้องหยุดคิดทันทีว่าการเก็บรักษาชิ้นส่วนถูกวิธีหรือไม่ และทุกนาทีที่ผ่านไปโดยไม่ติดต่อศูนย์ replantation คือการลดโอกาสของผู้ป่วย ไม่ใช่สถานการณ์ที่รอดูอาการได้",
    "system2Checklist": [
@@ -4993,7 +4993,7 @@
    "fullTitle": "Wound: Lower-limb lymphedema with cellulitis after gynecologic cancer treatment (ยังไม่ใช่ necrotizing fasciitis)",
    "level": "Must know",
    "bloom": "Apply / Analyze / Evaluate",
-   "image": null,
+   "image": "G4-CARD9-portrait.jpg",
    "learningFocus": [
     "ฝึกแยก uncomplicated cellulitis บนขาที่มี lymphedema จาก early necrotizing fasciitis โดยใช้ clinical red flag ไม่ใช่รอผล lab",
     "ฝึกเข้าใจว่า lymphedema หลังการรักษามะเร็งนรีเวช (lymph node dissection/radiation) เป็นปัจจัยเสี่ยงสำคัญของ recurrent cellulitis",
@@ -5062,43 +5062,43 @@
    "exam": [
     {
      "q": "General appearance",
-     "a": "ดูไม่ toxic พูดคุยรู้เรื่องดี ไม่มีสับสน"
+     "a": "Non-toxic appearance; alert and oriented; no confusion."
     },
     {
-     "q": "Vitals ซ้ำ",
-     "a": "คงที่ตามที่ระบุใน opening stem ไม่มีแนวโน้ม deterioration"
+     "q": "Repeat vital signs",
+     "a": "Stable as documented at presentation; no trend toward deterioration."
     },
     {
-     "q": "Skin inspection ขาซ้าย",
-     "a": "Erythema ขอบค่อนข้างชัดแต่ไม่สม่ำเสมอตามลักษณะ lymphedema, ผิวร้อน บวม กดเจ็บ ไม่พบ bullae หรือ necrotic patch"
+     "q": "Skin inspection of the left lower limb",
+     "a": "Erythema with relatively defined but irregular margins consistent with underlying lymphedema; warm, edematous and tender; no bullae or necrotic patches."
     },
     {
-     "q": "ตรวจหา crepitus",
-     "a": "ไม่พบ crepitus ใต้ผิวหนัง"
+     "q": "Palpation for crepitus",
+     "a": "No subcutaneous crepitus."
     },
     {
-     "q": "ประเมิน pain on passive movement",
-     "a": "ปวดตามระดับที่คาดจากการอักเสบ ไม่ pain out of proportion"
+     "q": "Assessment of pain on passive movement",
+     "a": "Pain proportionate to the inflammation; no pain out of proportion."
     },
     {
-     "q": "เปรียบเทียบกับขาข้างปกติ/บวมพื้นฐาน",
-     "a": "บวมมากกว่าปกติของ baseline lymphedema เดิม ลักษณะ pitting เพิ่มขึ้นเฉพาะจุดที่อักเสบ"
+     "q": "Comparison with contralateral limb and baseline lymphedema",
+     "a": "Swelling exceeds baseline lymphedema, with increased pitting edema localized to the inflamed area."
     },
     {
-     "q": "ตรวจจุดรอยขีดข่วน",
-     "a": "พบรอยขีดข่วนตื้นๆ ที่กลางหน้าแข้ง ไม่มีหนองไหล ไม่มี necrosis รอบแผล"
+     "q": "Inspection of the skin abrasion",
+     "a": "Superficial excoriation over the mid-anterior shin without purulent discharge or surrounding necrosis."
     },
     {
-     "q": "ตรวจต่อมน้ำเหลืองขาหนีบ",
-     "a": "เจ็บเล็กน้อย ไม่พบ fluctuance"
+     "q": "Inguinal lymph node examination",
+     "a": "Mild tenderness; no fluctuance."
     },
     {
-     "q": "ตรวจ sensation บริเวณผิวหนังที่อักเสบ",
-     "a": "ปกติ ไม่มี anesthesia หรือ hypoesthesia"
+     "q": "Sensory examination of the inflamed skin",
+     "a": "Normal sensation; no anesthesia or hypoesthesia."
     },
     {
      "q": "Distal neurovascular status",
-     "a": "Pulse คลำได้ปกติ, capillary refill ปกติ"
+     "a": "Normal palpable pulses and capillary refill."
     }
    ],
    "investigations": [
@@ -5147,14 +5147,14 @@
     "ผลกระทบของเบาหวานที่ควบคุมไม่เต็มที่ต่อการหายของแผลและความเสี่ยง infection"
    ],
    "problemList": [
-    "Acute cellulitis บนขาซ้ายที่มี chronic lymphedema เดิม ลุกลามแบบค่อยเป็นค่อยไปใน 2 วัน ยังไม่มี red flag ของ necrotizing infection ขณะนี้",
-    "Portal of entry จากรอยขีดข่วนผิวหนังที่หน้าแข้ง",
-    "ประวัติ pelvic lymphadenectomy และฉายรังสีหลังมะเร็งเยื่อบุโพรงมดลูก เป็นสาเหตุของ lymphedema เรื้อรัง",
-    "Recurrent cellulitis episode ก่อนหน้า บ่งชี้ความจำเป็นของแผนป้องกันระยะยาว",
-    "เบาหวานที่ควบคุมได้ปานกลาง อาจกระทบการหายของแผลและความเสี่ยง infection",
-    "ความวิตกกังวลเรื่องมะเร็งกลับเป็นซ้ำที่ต้องได้รับการดูแลด้านจิตใจ"
+    "Acute cellulitis of the left lower limb superimposed on chronic lymphedema, gradually progressive over 2 days, without current red flags for necrotizing soft-tissue infection",
+    "Portal of entry via a superficial abrasion over the shin",
+    "Chronic secondary lymphedema following pelvic lymphadenectomy and radiotherapy for endometrial carcinoma",
+    "Previous episodes of cellulitis indicating the need for a long-term prophylaxis plan",
+    "Moderately controlled diabetes mellitus potentially impairing healing and increasing infection risk",
+    "Anxiety regarding cancer recurrence requiring psychological support"
    ],
-   "problemRepresentation": "หญิงไทยอายุ 58 ปี มี chronic left lower-limb lymphedema หลังผ่าตัดและฉายรังสีมะเร็งเยื่อบุโพรงมดลูก มาด้วย acute cellulitis ที่ลุกลามค่อยเป็นค่อยไปใน 2 วันจากรอยขีดข่วนที่ขา ร่วมไข้ต่ำ โดยไม่พบ pain out of proportion, bullae, crepitus หรือ skin anesthesia ซึ่งเป็น pertinent negative สำคัญที่บ่งชี้ว่ายังไม่ใช่ necrotizing fasciitis ในขณะนี้ แต่ด้วยประวัติ lymphedema, เบาหวาน และภูมิหลังหลังฉายรังสี จึงต้องเริ่มรักษา cellulitis ทันทีพร้อมวางแผน reassessment ใกล้ชิดเพื่อไม่พลาดการลุกลามเป็น necrotizing infection",
+   "problemRepresentation": "A 58-year-old woman with chronic secondary left lower-limb lymphedema after surgery and radiotherapy for endometrial carcinoma presenting with 2 days of gradually progressive cellulitis originating from a shin abrasion with low-grade fever, without pain out of proportion, bullae, crepitus or cutaneous anesthesia (key pertinent negatives against necrotizing fasciitis at present), requiring prompt treatment of cellulitis with close serial reassessment given her lymphedema, diabetes mellitus and post-radiotherapy background, so that progression to necrotizing infection is not missed.",
    "system1Trap": "คนไข้มะเร็งขาบวมแดง คงเป็น lymphedema flare ธรรมดา ให้ยาฆ่าเชื้อกลับบ้านได้เลย",
    "system2Trigger": "ทุกครั้งที่ตรวจ cellulitis บนขาที่มี lymphedema หรือภูมิคุ้มกันต่ำจากการรักษามะเร็ง ต้อง active คิดหา red flag ของ necrotizing infection ทุกครั้ง และวางแผน reassess ซ้ำอย่างใกล้ชิดเสมอ ไม่ใช่ปล่อยกลับโดยไม่มีแผนติดตาม",
    "system2Checklist": [
@@ -5257,44 +5257,44 @@
    ],
    "exam": [
     {
-     "q": "Primary survey/ABCDE",
-     "a": "Airway patent, พูดเสียงปกติชัดเจน ไม่มี stridor/hoarseness, breathing และ circulation ปกติในเบื้องต้น"
+     "q": "Primary survey (ABCDE)",
+     "a": "Airway patent; clear normal voice; no stridor or hoarseness; breathing and circulation initially normal."
     },
     {
-     "q": "ตรวจลักษณะแผลไหม้ (สี, bleb, capillary refill ของแผล)",
-     "a": "ต้นขาหน้าขวามี blister ใหญ่ ผิวชื้นแดงจัด กด blanch ได้ (สงสัย superficial partial-thickness); หน้าแข้งขวาบางส่วนผิวขาวซีดไม่ blanch ชัดเจน (สงสัย deep partial- ถึง full-thickness)"
+     "q": "Burn wound characteristics (color, blistering, capillary refill)",
+     "a": "Right anterior thigh: large blisters with moist, bright red, blanching base (suspected superficial partial-thickness). Parts of the right shin: pale white, non-blanching (suspected deep partial- to full-thickness)."
     },
     {
-     "q": "ประเมิน % TBSA อย่างเป็นระบบ (เช่น rule of palm/chart ตาม local protocol)",
-     "a": "ประเมินได้ประมาณ 12–15% TBSA รวมสองตำแหน่ง; เน้นว่าตัวเลขจริงต้องใช้ chart มาตรฐานของสถาบันยืนยัน ไม่ใช่คาดคะเนด้วยสายตา"
+     "q": "Systematic %TBSA estimation (palmar method / chart per local protocol)",
+     "a": "Estimated approximately 12–15% TBSA across both sites; the definitive figure must be confirmed with the institutional standardized chart rather than visual estimation."
     },
     {
-     "q": "ตรวจ circumferential involvement รอบแขน/ขา",
-     "a": "แผลหน้าแข้งขวาลามรอบเกือบ 3/4 ของเส้นรอบวงขา ยังไม่ครบรอบ แต่ต้อง reassess ซ้ำเพราะบวมอาจเพิ่มขึ้น"
+     "q": "Assessment for circumferential involvement of the limb",
+     "a": "Right shin burn involves nearly three-quarters of the limb circumference; not yet circumferential, but requires serial reassessment as edema progresses."
     },
     {
-     "q": "ตรวจ distal neurovascular ของขาที่ถูกไหม้",
-     "a": "คลำ pulse ปลายเท้าได้ capillary refill ปกติในขณะนี้ ความรู้สึกสัมผัสยังปกติ"
+     "q": "Distal neurovascular assessment of the burned limb",
+     "a": "Pedal pulses palpable; normal capillary refill; sensation currently intact."
     },
     {
-     "q": "ตรวจหน้า คอ มือ อวัยวะเพศ/perineum และข้อพับอย่างจำเพาะ",
-     "a": "ไม่พบแผลไหม้ที่หน้า มือ อวัยวะเพศ หรือข้อพับเข่า/สะโพก (pertinent negative สำคัญที่ช่วยลด priority ของ critical-area referral ในเคสนี้)"
+     "q": "Targeted examination of the face, neck, hands, genitalia/perineum and flexural joints",
+     "a": "No burns of the face, hands, genitalia or knee/hip flexural areas (key pertinent negative lowering the priority of special-area referral in this case)."
     },
     {
-     "q": "ตรวจช่องปาก คอ และเสียงพูด",
-     "a": "ไม่มี soot, ไม่มีเสียงแหบ, เยื่อบุปากปกติ (ช่วยแยกจาก inhalation concern)"
+     "q": "Examination of the oral cavity, throat and voice",
+     "a": "No soot, no hoarseness; normal oral mucosa (helps exclude inhalation injury)."
     },
     {
-     "q": "ตรวจ hydration/mental status",
-     "a": "Alert เต็มที่ mucosa ชื้นปกติ ไม่มี tachycardia รุนแรง"
+     "q": "Hydration and mental status",
+     "a": "Fully alert; moist mucous membranes; no significant tachycardia."
     },
     {
-     "q": "ตรวจหาการบาดเจ็บร่วม (associated trauma)",
-     "a": "ไม่มีร่องรอยกระแทกหรือกระดูกหักที่ขาข้างเดียวกัน"
+     "q": "Assessment for associated trauma",
+     "a": "No evidence of blunt injury or fracture in the affected limb."
     },
     {
-     "q": "ตรวจผิวหนังบริเวณอื่นทั้งตัว",
-     "a": "ไม่พบแผลไหม้จุดอื่นเพิ่มเติม"
+     "q": "Total-body skin examination",
+     "a": "No additional burns."
     }
    ],
    "investigations": [
@@ -5343,13 +5343,13 @@
     "Tetanus prophylaxis ที่ถูกละเลย"
    ],
    "problemList": [
-    "Acute thermal burn ต้นขาและหน้าแข้งขวา ประมาณ 12–15% TBSA แบบ mixed partial- ถึง full-thickness",
-    "Near-circumferential burn บริเวณหน้าแข้งขวา เสี่ยง evolving vascular compromise",
-    "ความจำเป็นในการพิจารณา fluid resuscitation ตามหลักการและ local protocol",
-    "โรคเบาหวานที่อาจกระทบ wound healing",
-    "Tetanus status ที่ยังไม่ทราบ"
+    "Acute thermal (hot oil) burn of the right thigh and shin, approximately 12–15% TBSA, of mixed partial- to full-thickness depth",
+    "Near-circumferential burn of the right lower leg with risk of evolving vascular compromise",
+    "Need for fluid resuscitation per established principles and local protocol",
+    "Comorbid diabetes mellitus potentially impairing wound healing",
+    "Tetanus immunization status unknown"
    ],
-   "problemRepresentation": "ชายอายุ 35 ปี เป็นเบาหวาน มาด้วย acute thermal burn จากน้ำมันร้อนที่ต้นขาและหน้าแข้งขวาประมาณ 40 นาทีก่อน ลักษณะ mixed partial-to-full-thickness ประมาณ 12–15% TBSA ร่วมกับ near-circumferential involvement ของขา โดยไม่มี inhalation, critical-area หรือ associated trauma ชัดเจน จึงต้องประเมิน depth/TBSA อย่างเป็นระบบ พิจารณา fluid resuscitation ตามหลักการ และเฝ้าระวัง circulatory compromise ของขาอย่างต่อเนื่อง",
+   "problemRepresentation": "A 35-year-old man with diabetes mellitus presenting 40 minutes after a hot-oil scald to the right thigh and shin with mixed partial- to full-thickness burns of approximately 12–15% TBSA and near-circumferential involvement of the lower leg, without inhalation injury, special-area involvement or associated trauma, requiring systematic depth and TBSA assessment, fluid resuscitation per established principles and continuous monitoring for limb circulatory compromise.",
    "system1Trap": "แผลไหม้แขนขา ไม่มีที่หน้า ไม่มีควัน ก็แค่ทำแผลไปตามระดับความลึกที่เห็น",
    "system2Trigger": "เมื่อ %TBSA ประเมินได้เข้าใกล้เกณฑ์ที่ต้องพิจารณา fluid หรือมี circumferential/critical-area involvement แม้เพียงส่วนหนึ่ง ต้องหยุดคิดช้าลงและประเมินซ้ำอย่างเป็นระบบก่อนตัดสินใจ disposition",
    "system2Checklist": [
@@ -5452,44 +5452,44 @@
    ],
    "exam": [
     {
-     "q": "Primary survey/ABCDE พร้อมฟังเสียงพูด",
-     "a": "Airway patent ขณะนี้ แต่เสียงแหบชัดเจน (hoarseness); ไม่มี stridor ในขณะตรวจครั้งแรก"
+     "q": "Primary survey (ABCDE) with voice assessment",
+     "a": "Airway currently patent but with marked hoarseness; no stridor on initial examination."
     },
     {
-     "q": "ตรวจใบหน้า จมูก ปาก คอ",
-     "a": "มี soot (เขม่า) รอบรูจมูกและมุมปาก, ขนคิ้ว/ขนจมูกไหม้บางส่วน (singed nasal hair)"
+     "q": "Inspection of the face, nose, mouth and neck",
+     "a": "Soot deposits around the nares and oral commissures; partially singed eyebrows and nasal vibrissae."
     },
     {
-     "q": "ตรวจแผลไหม้บริเวณหน้าและคอ",
-     "a": "มีรอย erythema ตื้นๆ ที่คอด้านหน้าและใต้คาง ยังไม่มี blister ชัดเจน"
+     "q": "Examination of facial and neck burns",
+     "a": "Superficial erythema over the anterior neck and submental region; no blistering."
     },
     {
-     "q": "ตรวจในช่องปาก/oropharynx",
-     "a": "เยื่อบุช่องปากและ posterior pharynx แดงบวมเล็กน้อย มองเห็นได้ไม่ลึกมากด้วยตาเปล่า"
+     "q": "Examination of the oral cavity and oropharynx",
+     "a": "Mild erythema and edema of the oral mucosa and posterior pharyngeal wall; limited depth of visualization without instrumentation."
     },
     {
-     "q": "ฟังปอด",
-     "a": "มี wheeze เล็กน้อยสองข้าง air entry ยังพอสมมาตร"
+     "q": "Chest auscultation",
+     "a": "Mild bilateral wheeze; air entry reasonably symmetrical."
     },
     {
-     "q": "ประเมินเสียงพูดซ้ำห่างกัน 10–15 นาที (serial airway assessment)",
-     "a": "เสียงแหบมากขึ้นเมื่อเทียบกับครั้งก่อน และเริ่มมี stridor เบาๆ ขณะหายใจเข้าลึก — เป็น critical/red-flag finding ที่บ่งชี้ evolving airway edema"
+     "q": "Serial voice and airway reassessment at 10–15 minute intervals",
+     "a": "Progressive hoarseness compared with the previous assessment with new soft inspiratory stridor on deep inspiration: a critical red-flag finding indicating evolving upper-airway edema."
     },
     {
-     "q": "ตรวจแผลไหม้ที่แขนซ้าย",
-     "a": "Partial-thickness burn ขนาดเล็กประมาณ 2% TBSA ไม่มี circumferential involvement"
+     "q": "Examination of the left upper limb burn",
+     "a": "Small partial-thickness burn of approximately 2% TBSA; not circumferential."
     },
     {
-     "q": "ตรวจระดับความรู้สึกตัว/neurologic status",
-     "a": "Alert, ตอบคำถามถูกต้อง ไม่มี focal deficit ในขณะนี้"
+     "q": "Level of consciousness and neurological status",
+     "a": "Alert and oriented; no focal neurological deficit."
     },
     {
-     "q": "ตรวจ pulse oximetry อย่างต่อเนื่อง",
-     "a": "SpO₂ คงอยู่ 96–97% ตลอด (pertinent negative ที่ต้องระวังไม่ให้ทำให้เข้าใจผิดว่า airway ปลอดภัย เพราะ pulse oximetry ไม่สะท้อน CO exposure หรือ airway edema ที่กำลังพัฒนา)"
+     "q": "Continuous pulse oximetry",
+     "a": "SpO₂ stable at 96–97% (a potentially misleading pertinent negative: pulse oximetry does not reflect carbon monoxide exposure or evolving airway edema)."
     },
     {
-     "q": "ตรวจผิวหนังส่วนอื่นทั้งตัว",
-     "a": "ไม่พบแผลไหม้เพิ่มเติมนอกจากแขนซ้ายและรอยแดงที่คอ/ใต้คาง"
+     "q": "Total-body skin examination",
+     "a": "No additional burns apart from the left upper limb and anterior neck/submental erythema."
     }
    ],
    "investigations": [
@@ -5538,13 +5538,13 @@
     "แผลผิวหนังที่แขน (สำคัญแต่ไม่ใช่ลำดับความสำคัญอันดับหนึ่งของเคสนี้)"
    ],
    "problemList": [
-    "Evolving inhalation injury with upper-airway edema (hoarseness ที่แย่ลง, soot, singed nasal hair, stridor เริ่มปรากฏ)",
-    "สงสัย carbon monoxide/toxic smoke exposure จากการอยู่ในควันปิด 8 นาที",
-    "Partial-thickness burn เล็กน้อยที่แขนซ้าย (~2% TBSA) ไม่ใช่ประเด็นเร่งด่วนหลัก",
-    "ความจำเป็นในการประเมิน airway อย่างต่อเนื่อง (serial assessment) แทนการประเมินครั้งเดียว",
-    "ความเสี่ยงจากการสูบบุหรี่เดิมที่อาจกระทบ pulmonary reserve"
+    "Evolving inhalation injury with upper-airway edema (progressive hoarseness, soot, singed nasal vibrissae, emerging stridor)",
+    "Suspected carbon monoxide and toxic smoke exposure after 8 minutes of enclosed-space smoke exposure",
+    "Minor partial-thickness burn of the left upper limb (~2% TBSA), not the principal priority",
+    "Need for serial rather than single-point airway assessment",
+    "Chronic tobacco smoking potentially reducing pulmonary reserve"
    ],
-   "problemRepresentation": "ชายอายุ 50 ปี สูบบุหรี่เรื้อรัง ถูกช่วยออกจากห้องปิดที่มีไฟไหม้และควันหนาแน่นประมาณ 8 นาที มี hoarseness ที่แย่ลง soot รอบจมูก/ปาก และ stridor เริ่มปรากฏเมื่อประเมินซ้ำ ร่วมกับแผลไหม้ผิวหนังเล็กน้อยที่แขนซ้าย โดย SpO₂ ยังปกติ จึงกังวล evolving upper-airway edema จาก inhalation injury ที่ต้องประเมิน airway อย่างเร่งด่วนและต่อเนื่อง มากกว่าประเด็นแผลผิวหนัง",
+   "problemRepresentation": "A 50-year-old male chronic smoker rescued after approximately 8 minutes in an enclosed room with fire and dense smoke, presenting with progressive hoarseness, perioral and perinasal soot and new stridor on serial reassessment, with a minor left upper limb burn and normal SpO₂, raising concern for evolving upper-airway edema from inhalation injury requiring urgent and continuous airway assessment that takes priority over the cutaneous burn.",
    "system1Trap": "SpO₂ ปกติ พูดได้ ไม่มี stridor ตอนนี้ = airway ปลอดภัย ไปดูแผลไหม้ที่แขนต่อดีกว่า",
    "system2Trigger": "เมื่อมีประวัติอยู่ในที่ปิดที่มีควันหนาแน่น ร่วมกับ hoarseness, soot หรือแผลไหม้หน้า/คอ แม้ SpO₂ และการหายใจดูปกติในขณะนั้น ต้องหยุดคิดช้าลงและตั้งสมมติฐานว่า airway edema กำลังพัฒนาอยู่จนกว่าจะพิสูจน์เป็นอย่างอื่นด้วยการประเมินซ้ำ",
    "system2Checklist": [
@@ -5639,40 +5639,40 @@
    ],
    "exam": [
     {
-     "q": "ABCDE/primary survey",
-     "a": "Airway/breathing ปกติ, hemodynamically stable ในขณะนี้; ต้องตรวจ trauma อย่างครบถ้วนตามกลไกการล้มร่วมด้วย"
+     "q": "Primary survey (ABCDE)",
+     "a": "Airway and breathing normal; currently hemodynamically stable; full trauma assessment required given the associated fall."
     },
     {
-     "q": "ตรวจตำแหน่ง entry/exit wound",
-     "a": "แผลไหม้ขนาดเล็กประมาณ 1–2 ซม. ที่ฝ่ามือขวาลักษณะไหม้ลึกเป็นวง และที่ฝ่าเท้าซ้ายลักษณะคล้ายกัน — critical finding คือขนาดผิวเผินเล็กมากเมื่อเทียบกับความปวดกล้ามเนื้อที่รายงาน"
+     "q": "Inspection of entry and exit wounds",
+     "a": "Small (1–2 cm) deep circular burns on the right palm and left sole: critical finding in that the small surface wounds are disproportionate to the reported muscle pain."
     },
     {
-     "q": "ตรวจ cardiac monitoring/ECG",
-     "a": "ขอ ECG และ cardiac monitoring ตาม local electrical-injury protocol เนื่องจากมี LOC และใจสั่นร่วมกับ high-voltage pathway ที่สงสัยผ่านลำตัว"
+     "q": "ECG and cardiac monitoring",
+     "a": "ECG and cardiac monitoring indicated per local electrical-injury protocol given loss of consciousness, palpitations and a suspected high-voltage transthoracic current pathway."
     },
     {
-     "q": "ตรวจกล้ามเนื้อแขนขาที่สงสัยเป็น pathway (บวม ตึง ปวดเมื่อยืดกล้ามเนื้อ)",
-     "a": "แขนขวาบวมตึงกว่าอีกข้างเล็กน้อย ปวดมากขึ้นเมื่อยืด (passive stretch) กล้ามเนื้อ — สัญญาณเริ่มต้นที่ต้องเฝ้าระวัง compartment syndrome"
+     "q": "Examination of limb muscles along the suspected current pathway (swelling, tension, pain on stretch)",
+     "a": "Right upper limb mildly more swollen and tense than the left, with increased pain on passive muscle stretch: early signs requiring surveillance for compartment syndrome."
     },
     {
-     "q": "ตรวจ distal pulse/capillary refill/sensation ของแขนขาที่เกี่ยวข้อง",
-     "a": "คลำ pulse ได้ในขณะนี้ capillary refill ปกติ แต่ความรู้สึกสัมผัสที่มือขวาลดลงเล็กน้อยเทียบกับข้างซ้าย"
+     "q": "Distal pulses, capillary refill and sensation of affected limbs",
+     "a": "Pulses currently palpable with normal capillary refill; mildly reduced sensation in the right hand compared with the left."
     },
     {
-     "q": "ตรวจปัสสาวะ (สี, ปริมาณ)",
-     "a": "ยังไม่ได้ปัสสาวะให้ตรวจ ต้อง monitor ต่อเนื่องเมื่อปัสสาวะได้เพื่อดูสี (สงสัย myoglobinuria)"
+     "q": "Urine assessment (color, volume)",
+     "a": "No urine passed yet; monitor color and output once voiding for suspected myoglobinuria."
     },
     {
-     "q": "ตรวจกระดูกสันหลัง/บริเวณที่ล้ม",
-     "a": "กดเจ็บบริเวณ lumbar spine เล็กน้อย ไม่มี neurologic deficit ชัดเจนในการตรวจเบื้องต้น"
+     "q": "Examination of the spine and fall-impact sites",
+     "a": "Mild lumbar spinal tenderness; no neurological deficit on initial examination."
     },
     {
-     "q": "ตรวจระดับความรู้สึกตัว/neurologic status ปัจจุบัน",
-     "a": "Alert เต็มที่ ตอบคำถามถูกต้อง ไม่มี focal deficit ในขณะนี้ (pertinent negative ที่ไม่ควรทำให้หยุดเฝ้าระวัง cardiac/muscle injury)"
+     "q": "Current level of consciousness and neurological status",
+     "a": "Fully alert and oriented; no focal deficit (pertinent negative that must not stop surveillance for cardiac and muscle injury)."
     },
     {
-     "q": "ตรวจผิวหนังทั้งตัวหาจุด burn อื่นที่อาจถูกมองข้าม",
-     "a": "ไม่พบแผลไหม้เพิ่มเติมนอกจากมือขวาและเท้าซ้าย"
+     "q": "Total-body skin examination for missed burns",
+     "a": "No additional burns apart from the right hand and left foot."
     }
    ],
    "investigations": [
@@ -5721,13 +5721,13 @@
     "การ underestimate ความรุนแรงเพราะผู้ป่วยเองมองว่า \"แผลนิดเดียว\""
    ],
    "problemList": [
-    "Electrical injury สงสัย high-voltage pathway ผ่านลำตัว (entry มือขวา, exit เท้าซ้าย) พร้อม LOC ช่วงแรก",
-    "สงสัย occult deep muscle injury/rhabdomyolysis ที่ surface burn ขนาดเล็กไม่สะท้อนความรุนแรง",
-    "ความเสี่ยง cardiac arrhythmia ที่ต้อง monitor ต่อเนื่อง",
-    "สัญญาณเริ่มต้นของ compartment syndrome ที่แขนขวา ต้อง serial examination",
-    "Associated trauma จากการล้มจากที่สูงร่วมด้วย"
+    "High-voltage electrical injury with suspected transthoracic current pathway (entry right hand, exit left foot) and initial loss of consciousness",
+    "Suspected occult deep muscle injury and rhabdomyolysis not reflected by the small cutaneous burns",
+    "Risk of cardiac arrhythmia requiring continuous monitoring",
+    "Early signs of compartment syndrome of the right upper limb requiring serial examination",
+    "Associated trauma from a fall from height"
    ],
-   "problemRepresentation": "ชายอายุ 32 ปี ถูกไฟฟ้าแรงสูงดูดขณะทำงานประมาณ 1 ชั่วโมงก่อน มี loss of consciousness ช่วงแรกและล้มจากที่สูงร่วมด้วย ตรวจพบแผลไหม้ผิวเผินขนาดเล็กที่มือขวาและเท้าซ้าย แต่มีอาการปวดกล้ามเนื้อและบวมตึงของแขนขวามากกว่าที่คาดจากขนาดแผล จึงสงสัย occult deep tissue injury พร้อมความเสี่ยง cardiac arrhythmia, rhabdomyolysis และ evolving compartment syndrome ที่ต้อง monitor และประเมินซ้ำอย่างใกล้ชิด แม้ surface wound ดูไม่รุนแรง",
+   "problemRepresentation": "A 32-year-old man presenting approximately 1 hour after a high-voltage occupational electrical injury with initial loss of consciousness and a fall from height, with small cutaneous burns of the right hand and left foot but muscle pain and right upper limb swelling disproportionate to the surface wounds, raising concern for occult deep tissue injury with risk of cardiac arrhythmia, rhabdomyolysis and evolving compartment syndrome requiring close monitoring and serial reassessment despite the innocuous-appearing surface wounds.",
    "system1Trap": "แผลไหม้ที่มือกับเท้าเล็กนิดเดียว vitals ก็ปกติ คงเป็น minor burn รอทำแผลแล้วให้กลับได้",
    "system2Trigger": "เมื่อมีประวัติสัมผัสไฟฟ้าแรงสูงร่วมกับ LOC หรือปวดกล้ามเนื้อที่มากกว่าขนาดแผลที่เห็น ต้องหยุดคิดช้าลงและตั้งสมมติฐานว่ามี deep tissue/cardiac injury ที่ซ่อนอยู่ จนกว่าจะพิสูจน์เป็นอย่างอื่นด้วยการตรวจและ monitor ที่เหมาะสม",
    "system2Checklist": [
@@ -5822,40 +5822,40 @@
    ],
    "exam": [
     {
-     "q": "ตรวจลักษณะแผลเป็นที่คอและไหล่",
-     "a": "Hypertrophic scar band ยึดจากใต้คางถึงไหล่ซ้าย ผิวหนังแข็งตึง ไม่มีแผลเปิด ไม่มีหนอง"
+     "q": "Inspection of the neck and shoulder scar",
+     "a": "Hypertrophic scar band extending from the submental region to the left shoulder; firm, tight skin; no open wound or purulence."
     },
     {
-     "q": "ตรวจ range of motion ของคอ (neck extension/lateral rotation)",
-     "a": "Neck extension จำกัดชัดเจน ทำได้เพียงส่วนหนึ่งของ range ปกติ; lateral rotation ไปด้านขวาจำกัดกว่าด้านซ้าย — critical finding ที่บ่งชี้ functional contracture ข้าม joint"
+     "q": "Cervical range of motion (extension, lateral rotation)",
+     "a": "Markedly limited neck extension to a fraction of the normal range; right lateral rotation more restricted than left: critical finding indicating a functional cross-joint contracture."
     },
     {
-     "q": "ตรวจ shoulder range of motion",
-     "a": "Shoulder abduction ซ้ายจำกัดเล็กน้อยจากแรงดึงของแผลเป็นที่ลามถึงไหล่"
+     "q": "Shoulder range of motion",
+     "a": "Mildly limited left shoulder abduction due to scar traction extending to the shoulder."
     },
     {
-     "q": "ตรวจท่าทาง (posture) ขณะนั่ง/ยืน",
-     "a": "คอเอียงไปด้านซ้ายเล็กน้อยเป็นท่าปกติเมื่อพัก (compensatory posture)"
+     "q": "Posture assessment (sitting and standing)",
+     "a": "Mild left head tilt at rest (compensatory posture)."
     },
     {
-     "q": "ตรวจผิวหนัง/แผลเป็นหาสัญญาณผิดปกติ (ulceration, rapid change)",
-     "a": "ไม่มี ulceration หรือลักษณะที่น่าสงสัยมะเร็งผิวหนังในแผลเป็นนี้ (pertinent negative ที่ช่วยแยกจาก Marjolin ulcer concern)"
+     "q": "Inspection of the scar for ulceration or rapid change",
+     "a": "No ulceration or features suspicious for malignancy within the scar (pertinent negative against Marjolin ulcer)."
     },
     {
-     "q": "ตรวจ neurovascular ของแขนซ้าย",
-     "a": "Distal pulse, capillary refill, sensation ปกติ"
+     "q": "Neurovascular examination of the left upper limb",
+     "a": "Normal distal pulses, capillary refill and sensation."
     },
     {
-     "q": "ตรวจกระดูกสันหลัง/แนวลำตัว",
-     "a": "ไม่พบ scoliosis ชัดเจนในการตรวจเบื้องต้น แต่ท่าเอียงคอเรื้อรังอาจส่งผลระยะยาวถ้าไม่ได้แก้ไข"
+     "q": "Spinal alignment",
+     "a": "No overt scoliosis on initial examination; chronic head tilt may cause long-term postural sequelae if uncorrected."
     },
     {
-     "q": "สัมภาษณ์/สังเกตพัฒนาการด้านการเรียน/สังคม",
-     "a": "เด็กเขียนหนังสือได้ช้าลงเพราะท่าคอ ไม่มีรายงานถูกล้อเลียนชัดเจนในขณะนี้แต่ผู้ปกครองกังวลเรื่องนี้"
+     "q": "Assessment of school and social functioning",
+     "a": "Slower handwriting due to neck posture; no current reported teasing, although parents are concerned."
     },
     {
-     "q": "ตรวจการเจริญเติบโตของแผลเป็นเทียบกับการเจริญเติบโตของเด็ก",
-     "a": "แผลเป็นดูตึงมากขึ้นเมื่อเทียบกับสัดส่วนคอ/ไหล่ที่โตขึ้นตามวัย สอดคล้องกับ growth-related worsening ของ contracture"
+     "q": "Assessment of scar tension relative to growth",
+     "a": "Increasing scar tension relative to age-appropriate growth of the neck and shoulder, consistent with growth-related contracture progression."
     }
    ],
    "investigations": [
@@ -5898,13 +5898,13 @@
     "ผลกระทบด้านจิตสังคมของแผลเป็นที่มองเห็นได้ในเด็กวัยเรียน"
    ],
    "problemList": [
-    "Progressive post-burn contracture ของคอและไหล่ซ้าย จำกัด neck extension/rotation และ shoulder abduction",
-    "Growth-related worsening ของ contracture ในเด็กที่ยังเจริญเติบโตอยู่",
-    "ผลกระทบต่อ function ในชีวิตประจำวันและการเรียน (เขียนหนังสือ, กิจกรรม)",
-    "Rehabilitation/splintage ที่ทำไม่สม่ำเสมอในอดีต และอุปสรรคที่ต้องแก้ไข",
-    "ความจำเป็นในการประเมินข้อบ่งชี้ส่งต่อ reconstructive surgery"
+    "Progressive post-burn hypertrophic scar contracture of the neck and left shoulder limiting cervical extension/rotation and shoulder abduction",
+    "Growth-related progression of contracture in a skeletally immature child",
+    "Functional impairment of activities of daily living and schooling (handwriting, play)",
+    "Previously inconsistent rehabilitation and splinting with barriers to be addressed",
+    "Need to evaluate indications for referral for reconstructive surgery"
    ],
-   "problemRepresentation": "เด็กชายอายุ 6 ปี มีแผลเป็นหลังน้ำร้อนลวกที่คอและไหล่ซ้ายเมื่อ 2 ปีก่อน ปัจจุบันมี progressive hypertrophic scar contracture ที่จำกัด neck extension/rotation และ shoulder abduction ชัดเจนขึ้นในช่วง 6–8 เดือนที่ผ่านมา ร่วมกับผลกระทบต่อการเขียนหนังสือและกิจกรรม โดยมีประวัติ rehabilitation/splintage ที่ไม่สม่ำเสมอ จึงสงสัย growth-related functional contracture ที่ต้องประเมิน ROM อย่างเป็นระบบและพิจารณาส่งต่อทีม rehabilitation และ reconstructive surgery เพื่อวางแผนป้องกันการแย่ลงต่อไป",
+   "problemRepresentation": "A 6-year-old boy with a scald burn scar of the neck and left shoulder sustained 2 years ago, now with progressive hypertrophic scar contracture over the past 6–8 months markedly limiting cervical extension/rotation and shoulder abduction and impairing handwriting and play, with a history of inconsistent rehabilitation and splinting, consistent with a growth-related functional contracture requiring systematic range-of-motion assessment and referral to rehabilitation and reconstructive surgery to prevent further deterioration.",
    "system1Trap": "แผลปิดสนิทแล้ว เหลือแค่แผลเป็น ไม่มีอะไรต้องทำเพิ่ม",
    "system2Trigger": "เมื่อแผลเป็นพาดผ่านข้อ (joint) หรือใบหน้า/มือ/คอ ในเด็กที่ยังเจริญเติบโตอยู่ และเริ่มมี function ที่แย่ลง ต้องหยุดคิดช้าลงและประเมินว่านี่คือปัญหา active functional problem ที่ต้องการการดูแลสหสาขา ไม่ใช่ผลลัพธ์สุดท้ายของการรักษา",
    "system2Checklist": [
@@ -6015,44 +6015,44 @@
    ],
    "exam": [
     {
-     "q": "General appearance และการสื่อสาร",
-     "a": "ผู้ป่วยดูสมส่วน สื่อสารเหมาะสม ไม่มีอาการวิตกกังวลเฉียบพลันหรือซึมเศร้าเด่นชัดในการพบครั้งนี้"
+     "q": "General appearance and communication",
+     "a": "Well-proportioned; communicates appropriately; no overt acute anxiety or depressive features during this consultation."
     },
     {
-     "q": "Nasal airway assessment (การหายใจ, การอุดกั้น)",
-     "a": "หายใจทางจมูกทั้งสองข้างโล่งดี ไม่มี septal deviation ที่ทำให้อุดกั้นชัดเจน"
+     "q": "Nasal airway assessment",
+     "a": "Bilateral nasal airflow patent; no clinically obstructive septal deviation."
     },
     {
-     "q": "Nasal skin and soft tissue quality",
-     "a": "ผิวหนังบริเวณจมูกหนาปานกลาง ไม่มีแผลเป็นหรือการอักเสบ"
+     "q": "Nasal skin and soft-tissue envelope quality",
+     "a": "Moderately thick nasal skin; no scarring or inflammation."
     },
     {
-     "q": "Facial proportion/symmetry ทั่วไป",
-     "a": "โครงหน้าสมมาตรพอสมควร ไม่มี craniofacial anomaly ที่เห็นได้ชัด"
+     "q": "Facial proportions and symmetry",
+     "a": "Reasonably symmetrical facial proportions; no apparent craniofacial anomaly."
     },
     {
-     "q": "Nasal septum/tip examination เบื้องต้น",
-     "a": "ไม่มี septal perforation หรือ mass ที่คลำได้"
+     "q": "Screening examination of the nasal septum and tip",
+     "a": "No septal perforation or palpable mass."
     },
     {
-     "q": "Skin/wound healing risk screen (เกี่ยวกับบุหรี่)",
-     "a": "ไม่มีแผลเรื้อรังหรือ delayed healing ที่เห็นในปัจจุบัน แต่ smoking history เป็น modifiable risk factor สำคัญ"
+     "q": "Screening of wound-healing risk (smoking)",
+     "a": "No chronic wounds or delayed healing at present; active smoking is a significant modifiable risk factor."
     },
     {
-     "q": "Vital signs และ cardiopulmonary screen เบื้องต้น",
-     "a": "อยู่ในเกณฑ์ปกติ ไม่มีข้อบ่งชี้ว่าไม่เหมาะกับการดมยาสลบในเบื้องต้น"
+     "q": "Vital signs and cardiopulmonary screen",
+     "a": "Within normal limits; no initial contraindication to general anesthesia."
     },
     {
-     "q": "สังเกตพฤติกรรมระหว่างซักประวัติ (checking mirror, camera, reassurance-seeking)",
-     "a": "ผู้ป่วยขอดูกระจกซ้ำหลายครั้งระหว่างพูดคุยและถามย้ำว่า “หมอว่าจมูกหนูแปลกมากไหม” ซ้ำ ๆ"
+     "q": "Behavioral observation during history (mirror checking, photographing, reassurance-seeking)",
+     "a": "Repeated mirror checking during the consultation and repeated reassurance-seeking about how abnormal her nose appears."
     },
     {
-     "q": "Pertinent negative: ไม่มี red-flag ทางระบบทางเดินหายใจ/การแข็งตัวของเลือด",
-     "a": "ไม่มีเลือดออกง่าย ไม่มีประวัติเลือดกำเดาไหลบ่อยหรือหยุดยาก"
+     "q": "Pertinent negative: bleeding diathesis or airway red flags",
+     "a": "No history suggestive of a bleeding diathesis; no recurrent or prolonged epistaxis."
     },
     {
-     "q": "Pertinent negative: ไม่มีอาการของภาวะซึมเศร้ารุนแรงหรือความคิดทำร้ายตนเองในวันนี้",
-     "a": "ผู้ป่วยปฏิเสธความคิดทำร้ายตนเองและอาการซึมเศร้ารุนแรงเมื่อถูกถามตรง ๆ อย่างสุภาพ"
+     "q": "Pertinent negative: severe depression or suicidal ideation today",
+     "a": "Denies suicidal ideation and severe depressive symptoms on direct, sensitive questioning."
     }
    ],
    "investigations": [
@@ -6102,13 +6102,13 @@
     "การมองข้ามข้อจำกัดทางกายวิภาคของผู้ป่วย ทำให้สื่อสารสัญญาผลลัพธ์เกินจริง"
    ],
    "problemList": [
-    "Aesthetic consultation สำหรับ rhinoplasty โดยมี motivation ที่ผู้ป่วยอธิบายได้ชัดเจนและไม่มีการบังคับจากภายนอก",
-    "สัญญาณที่ควรเฝ้าระวัง possible body dysmorphic disorder (หมกมุ่น เช็คกระจก/ถ่ายรูปซ้ำ คาดหวังว่าชีวิตจะเปลี่ยนทั้งหมด)",
-    "Modifiable medical/anesthetic risk จากการสูบบุหรี่",
-    "ความคาดหวังต่อผลลัพธ์ที่อาจไม่สมจริงเมื่อเทียบกับภาพจากสื่อ",
-    "ความต้องการ informed consent ที่ครบถ้วนก่อนตัดสินใจนัดผ่าตัด"
+    "Aesthetic consultation for rhinoplasty with clearly articulated, self-directed motivation and no external coercion",
+    "Features warranting evaluation for possible body dysmorphic disorder (preoccupation, repetitive mirror checking/photographing, expectation of global life change)",
+    "Modifiable medical and anesthetic risk from active tobacco smoking",
+    "Potentially unrealistic outcome expectations shaped by media imagery",
+    "Need for a comprehensive informed consent process before any surgical scheduling"
    ],
-   "problemRepresentation": "หญิงอายุ 24 ปี สุขภาพแข็งแรง มาปรึกษาเรื่อง rhinoplasty ด้วยตนเองโดยมี motivation ชัดเจน แต่มีพฤติกรรมหมกมุ่นกับรูปลักษณ์และคาดหวังผลลัพธ์สูงเกินจริงร่วมกับสูบบุหรี่ต่อเนื่อง จึงต้องประเมิน possible body dysmorphic disorder, ให้ข้อมูล realistic expectation, จัดการ modifiable risk และวาง informed consent process ก่อนตัดสินใจใด ๆ",
+   "problemRepresentation": "A healthy 24-year-old woman self-referred for rhinoplasty with clearly articulated motivation but with appearance-related preoccupation, unrealistically high outcome expectations and ongoing tobacco smoking, requiring evaluation for possible body dysmorphic disorder, realistic expectation setting, modification of risk factors and a structured informed consent process before any surgical decision.",
    "system1Trap": "ผู้ป่วยพูดรู้เรื่องดี ดูปกติ อยากทำอะไรก็ทำตามที่ขอเลย\" หรือรีบเสนอ/เลือก technique การผ่าตัดให้ทันทีโดยไม่ได้สำรวจ motivation และความคาดหวังก่อน",
    "system2Trigger": "เมื่อผู้ป่วยแสดงพฤติกรรมหมกมุ่นกับรูปลักษณ์ซ้ำ ๆ ระหว่างการสนทนา หรือคาดหวังว่าการผ่าตัดจะเปลี่ยนแปลงชีวิตด้านอื่นทั้งหมด ต้องหยุดคิดช้าลงและประเมิน psychosocial dimension ก่อนพูดถึงรายละเอียดการผ่าตัดต่อ",
    "system2Checklist": [
@@ -6219,40 +6219,40 @@
    ],
    "exam": [
     {
-     "q": "ขออนุญาตก่อนตรวจร่างกายทุกครั้งและอธิบายเหตุผล",
-     "a": "ผู้ป่วยยินดีให้ตรวจเมื่อมีการอธิบายก่อนและรู้สึกว่ามีสิทธิ์ปฏิเสธ/หยุดได้ตลอดเวลา"
+     "q": "Obtaining consent and explaining the rationale before every examination",
+     "a": "Patient agrees to examination when the purpose is explained in advance and feels able to decline or stop at any time."
     },
     {
-     "q": "General appearance และ mental status เบื้องต้น",
-     "a": "Alert, communicate ชัดเจน, ไม่มีอาการวิตกกังวลเฉียบพลันหรือ acute distress ในวันนี้"
+     "q": "General appearance and mental status screen",
+     "a": "Alert; communicates clearly; no acute anxiety or distress."
     },
     {
-     "q": "Vital signs/cardiopulmonary screen เบื้องต้น",
-     "a": "อยู่ในเกณฑ์ปกติ ไม่มีข้อบ่งชี้ว่าไม่เหมาะกับการประเมิน perioperative risk เบื้องต้น"
+     "q": "Vital signs and cardiopulmonary screen",
+     "a": "Within normal limits; no initial contraindication to perioperative risk assessment."
     },
     {
-     "q": "Chest/area ที่เกี่ยวข้องกับการผ่าตัดที่สนใจ (ตรวจเมื่อเหมาะสมและได้รับความยินยอมชัดเจนเท่านั้น)",
-     "a": "ใช้ simulated finding เท่าที่จำเป็นต่อการอภิปรายในคาบนี้ ไม่จำเป็นต้องตรวจแบบล่วงล้ำจริงในคาบ reasoning"
+     "q": "Examination of the chest / area relevant to the requested procedure (only when appropriate and with explicit consent)",
+     "a": "Simulated findings are used only as needed for discussion in this session; an intimate physical examination is not required for this reasoning exercise."
     },
     {
-     "q": "Skin/wound healing risk screen",
-     "a": "ไม่มีแผลเรื้อรังหรือปัญหาการหายของแผลที่ทราบ ไม่สูบบุหรี่ ซึ่งเป็น favorable factor ต่อ wound healing"
+     "q": "Screening of wound-healing risk",
+     "a": "No chronic wounds or known healing problems; non-smoker (favorable factor for wound healing)."
     },
     {
-     "q": "ประเมิน psychosocial readiness ระหว่างการสนทนา (ไม่ใช่การ \"สอบผ่าน\")",
-     "a": "ผู้ป่วยแสดงเป้าหมายที่สม่ำเสมอ เข้าใจ uncertainty ของผลลัพธ์ และมีระบบสนับสนุนทางจิตใจที่ติดตามอยู่"
+     "q": "Assessment of psychosocial readiness during the conversation (not a gatekeeping test)",
+     "a": "Demonstrates consistent goals, understands outcome uncertainty, and has an established psychological support system."
     },
     {
-     "q": "สังเกตปฏิกิริยาเมื่อถูกเรียกชื่อ/สรรพนามผิดโดยไม่ตั้งใจ (teaching point ไม่ใช่การทดสอบ)",
-     "a": "หากเกิดขึ้น ผู้ป่วยจะเงียบลงหรือเกร็งขึ้นเล็กน้อย ซึ่งเป็นสัญญาณว่าต้องขอโทษอย่างสั้นและแก้ไขทันทีโดยไม่ทำให้เป็นเรื่องใหญ่เกินจำเป็น"
+     "q": "Observation of response to inadvertent misnaming or misgendering (teaching point, not a test)",
+     "a": "If it occurs, the patient becomes quieter and visibly tense, signaling the need for a brief apology and immediate correction without undue emphasis."
     },
     {
-     "q": "Pertinent negative: ไม่มีอาการ/สัญญาณ acute self-harm risk หรือ crisis ในวันนี้",
-     "a": "ผู้ป่วยปฏิเสธความคิดทำร้ายตนเองและภาวะวิกฤตทางจิตใจเฉียบพลันเมื่อถูกถามตรง ๆ อย่างสุภาพ"
+     "q": "Pertinent negative: acute self-harm risk or crisis today",
+     "a": "Denies suicidal ideation and acute psychological crisis on direct, sensitive questioning."
     },
     {
-     "q": "Pertinent negative: ไม่มีสัญญาณถูกบังคับ/coercion จากผู้อื่นให้เข้ารับการรักษา",
-     "a": "ผู้ป่วยยืนยันชัดเจนว่าตัดสินใจมาปรึกษาด้วยตนเอง ไม่มีใครบีบบังคับ"
+     "q": "Pertinent negative: coercion by others to seek treatment",
+     "a": "Clearly affirms a self-directed decision to seek consultation without coercion."
     }
    ],
    "investigations": [
@@ -6302,13 +6302,13 @@
     "ความคาดหวังผลลัพธ์ที่ไม่สมจริงต่อการผ่าตัดที่ยังไม่ถูกพูดคุยให้ชัดเจน"
    ],
    "problemList": [
-    "Gender-affirming healthcare consultation ในผู้ป่วย transmasculine ที่ใช้ชื่อปาล์มและสรรพนามเขา โดยมาปรึกษาด้วยความสมัครใจและมีเป้าหมายที่ชัดเจนของตนเอง",
-    "ประวัติ negative healthcare experience เดิม (ถูกเรียกชื่อ/สรรพนามผิด, คำถามล่วงล้ำ) ที่ต้องได้รับการดูแลด้วย cultural humility เพื่อความปลอดภัยในการรักษาต่อเนื่อง",
-    "การใช้ testosterone ภายใต้การดูแลแพทย์ฮอร์โมนที่ต้องประสานงานอย่างเหมาะสมก่อนวางแผนหัตถการ",
-    "Procedure-specific medical/anesthetic risk ที่ยังต้องประเมินตาม local protocol",
-    "ความจำเป็นของ multidisciplinary referral (endocrine/psychiatry/psychology) หากเกินขอบเขตบริการปัจจุบันหรือมีข้อบ่งชี้ทางคลินิก"
+    "Gender-affirming care consultation for a transmasculine patient (name: Palm; pronouns: he/him) presenting voluntarily with clearly defined personal goals",
+    "Prior adverse healthcare experiences (misgendering, intrusive questioning) requiring a culturally humble approach to maintain safe continuity of care",
+    "Ongoing testosterone therapy under endocrine supervision requiring coordination before procedural planning",
+    "Procedure-specific medical and anesthetic risk still to be assessed per local protocol",
+    "Need for multidisciplinary referral (endocrinology, psychiatry, psychology) where beyond the current scope of service or clinically indicated"
    ],
-   "problemRepresentation": "ผู้ป่วยอายุ 29 ปี อัตลักษณ์ transmasculine ใช้ชื่อปาล์มและสรรพนามเขา มาปรึกษาด้วยความสมัครใจเรื่อง masculinizing chest surgery โดยมีเป้าหมายชัดเจนของตนเอง ใช้ testosterone ภายใต้การดูแลแพทย์ มีประวัติ negative healthcare experience เดิมและมีระบบสนับสนุนทางจิตใจที่ติดตามอยู่ จึงต้องใช้ shared decision making ที่เคารพอัตลักษณ์ ประเมิน procedure-specific risk ตามความเกี่ยวข้อง ประสานงานกับทีมดูแลฮอร์โมนเมื่อได้รับความยินยอม และพิจารณา multidisciplinary referral ตามขอบเขตบริการ โดยไม่ pathologize อัตลักษณ์ทางเพศของผู้ป่วย",
+   "problemRepresentation": "A 29-year-old transmasculine patient (Palm, he/him) presenting voluntarily to discuss masculinizing chest surgery with clearly defined personal goals, on supervised testosterone therapy, with prior adverse healthcare experiences and an established psychological support system, requiring identity-affirming shared decision-making, procedure-specific risk assessment, consented coordination with the endocrine team and multidisciplinary referral as appropriate to the scope of service, without pathologizing the patient's gender identity.",
    "system1Trap": "นี่คือ cosmetic request ธรรมดา ถามแค่ต้องการทำอะไรก็พอ\" หรือ \"ต้องให้ผู้ป่วยพิสูจน์อัตลักษณ์ทางเพศตัวเองก่อนจะรับฟัง/รักษา",
    "system2Trigger": "เมื่อผู้ป่วยเปิดเผยประสบการณ์ทางลบในระบบสุขภาพเดิม หรือมีความไม่แน่ใจ/ความทุกข์ใจปรากฏขึ้นระหว่างการสนทนา ต้องหยุดคิดช้าลง เปลี่ยนจากการพูดถึงรายละเอียดหัตถการ ไปสู่การประเมิน safety, ความพร้อม และการประสานงานสหสาขาก่อนดำเนินการต่อ",
    "system2Checklist": [
@@ -6351,7 +6351,7 @@
    "fullTitle": "Aesthetic and sexual-diverse healthcare: Breast reduction consultation for symptomatic macromastia (หญิงอายุ 18 ปี)",
    "level": "Should know",
    "bloom": "Understand / Apply / Analyze",
-   "image": null,
+   "image": "G6-CARD3-portrait.jpg",
    "learningFocus": [
     "ฝึกแยก aesthetic request ออกจาก functional/medical indication ที่ชัดเจน (symptomatic macromastia)",
     "ฝึกประเมิน growth completion และ psychological readiness ในผู้ป่วยอายุน้อยก่อนพิจารณาการผ่าตัด",
@@ -6423,44 +6423,44 @@
    ],
    "exam": [
     {
-     "q": "Vitals/BMI",
-     "a": "อยู่ในเกณฑ์ค่อนไปทางเกินเล็กน้อย ไม่มีความผิดปกติทางระบบ"
+     "q": "Vital signs and BMI",
+     "a": "Within normal limits; BMI in the upper-normal to mildly overweight range; no systemic abnormality."
     },
     {
      "q": "Breast examination",
-     "a": "หน้าอกขนาดใหญ่ทั้งสองข้างใกล้เคียงกัน มี ptosis ระดับปานกลาง ไม่คลำพบก้อนผิดปกติ"
+     "a": "Bilateral, relatively symmetrical macromastia with moderate ptosis; no palpable mass."
     },
     {
-     "q": "ตรวจรอยกดจากสายเสื้อชั้นใน",
-     "a": "พบร่องบุ๋มลึกทั้งสองข้างที่บ่า สอดคล้องกับ functional symptom ที่ให้ประวัติ"
+     "q": "Inspection for bra-strap grooving",
+     "a": "Deep bilateral shoulder grooving from bra straps, consistent with the reported functional symptoms."
     },
     {
-     "q": "ตรวจผิวหนังใต้ราวนม",
-     "a": "พบรอยแดงระคายเคืองเล็กน้อยสอดคล้องกับ intertrigo เรื้อรัง"
+     "q": "Inspection of the inframammary skin",
+     "a": "Mild erythema and irritation consistent with chronic intertrigo."
     },
     {
-     "q": "ตรวจท่าทาง (posture)",
-     "a": "มี postural kyphosis เล็กน้อย ไม่พบ scoliosis ชัดเจน"
+     "q": "Posture assessment",
+     "a": "Mild postural kyphosis; no overt scoliosis."
     },
     {
-     "q": "Nipple-areola sensation",
-     "a": "ปกติทั้งสองข้าง"
+     "q": "Nipple–areola sensation",
+     "a": "Normal bilaterally."
     },
     {
-     "q": "ตรวจ nipple discharge",
-     "a": "ไม่พบ"
+     "q": "Assessment for nipple discharge",
+     "a": "None."
     },
     {
-     "q": "ตรวจต่อมน้ำเหลืองรักแร้",
-     "a": "ปกติ ไม่คลำพบก้อน"
+     "q": "Axillary lymph node examination",
+     "a": "Normal; no palpable lymphadenopathy."
     },
     {
-     "q": "ตรวจระบบทางเดินหายใจ",
-     "a": "ปกติ ไม่มีข้อจำกัดจากน้ำหนักหน้าอก"
+     "q": "Respiratory examination",
+     "a": "Normal; no restriction attributable to breast weight."
     },
     {
-     "q": "Skin striae บริเวณหน้าอก/หลัง",
-     "a": "พบ striae บางส่วนสอดคล้องกับการขยายตัวเร็วของเนื้อเยื่อ"
+     "q": "Inspection for striae of the chest and back",
+     "a": "Scattered striae distensae consistent with rapid tissue expansion."
     }
    ],
    "investigations": [
@@ -6509,14 +6509,14 @@
     "ไม่รับฟังความเห็นที่แตกต่างกันระหว่างสมาชิกครอบครัว"
    ],
    "problemList": [
-    "Symptomatic macromastia ที่มีผลกระทบทางกายภาพชัดเจน (ปวดหลัง/คอ, รอยบุ๋มบ่า, intertrigo)",
-    "ผลกระทบทางจิตใจและสังคมจากภาพลักษณ์ร่างกาย",
-    "แนวโน้มการเจริญเติบโตของหน้าอกค่อนข้าง stable แต่ยังต้องยืนยันเพิ่มเติม",
-    "ไม่พบก้อนผิดปกติหรือ nipple discharge จากการตรวจร่างกาย",
-    "ความเห็นของครอบครัวไม่ตรงกันเรื่องความเหมาะสมของอายุ",
-    "ยังไม่ได้คัดกรอง psychological readiness อย่างเป็นทางการ"
+    "Symptomatic macromastia with significant physical sequelae (chronic back/neck pain, shoulder grooving, inframammary intertrigo)",
+    "Psychosocial impact related to body image",
+    "Breast growth apparently stabilized but requiring confirmation",
+    "No palpable breast mass or nipple discharge on examination",
+    "Family disagreement regarding the appropriateness of surgery at this age",
+    "Psychological readiness not yet formally assessed"
    ],
-   "problemRepresentation": "หญิงไทยอายุ 18 ปี มี symptomatic macromastia ตั้งแต่วัยรุ่นตอนต้น ร่วมกับอาการปวดหลัง/คอเรื้อรัง รอยบุ๋มบ่าจากสายเสื้อชั้นใน และ intertrigo ใต้ราวนม ซึ่งบ่งชี้ functional indication ทางการแพทย์ที่ชัดเจนเกินกว่าความต้องการด้านความสวยงามเพียงอย่างเดียว ตรวจร่างกายไม่พบก้อนผิดปกติ จึงต้องประเมิน growth completion, psychological readiness และให้ informed consent อย่างครบถ้วนก่อนวางแผนการรักษาต่อไป",
+   "problemRepresentation": "An 18-year-old woman with symptomatic macromastia since early adolescence, with chronic back and neck pain, bra-strap shoulder grooving and inframammary intertrigo indicating a clear medical functional indication beyond aesthetic concern alone, and no palpable breast mass, requiring confirmation of growth completion, assessment of psychological readiness and a comprehensive informed consent process before treatment planning.",
    "system1Trap": "อายุ 18 ยังเด็ก คงแค่อยากผ่าตัดตามกระแสความงาม ให้รอโตก่อนค่อยมาคุยใหม่",
    "system2Trigger": "เมื่อพบผู้ป่วยอายุน้อยมาปรึกษาเรื่องขนาดหน้าอก ต้องหยุดคิดแยกก่อนเสมอว่ามี functional indication ทางการแพทย์ที่ชัดเจนหรือไม่ ก่อนใช้อายุเพียงอย่างเดียวเป็นเกณฑ์ตัดสิน",
    "system2Checklist": [

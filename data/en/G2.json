@@ -1,0 +1,157 @@
+{
+ "G2C1": {
+  "exam": [
+   {"q": "Primary survey (ABCDE) and general assessment", "a": "Alert; airway patent; hemodynamically stable."},
+   {"q": "External nasal inspection", "a": "Diffuse swelling and ecchymosis over the nasal dorsum with mild bilateral periorbital ecchymosis; external deviation difficult to assess due to edema."},
+   {"q": "Palpation of the nasal dorsum", "a": "Marked tenderness over the nasal bones; no palpable crepitus."},
+   {"q": "Anterior rhinoscopy / intranasal examination (critical)", "a": "Bilateral boggy, bluish-purple fluctuant swelling of the anterior nasal septum causing bilateral narrowing of the nasal airway."},
+   {"q": "Assessment for active intranasal bleeding", "a": "No active bleeding at the time of examination."},
+   {"q": "Assessment for CSF rhinorrhea (halo sign / per local protocol)", "a": "No clear rhinorrhea and no halo sign."},
+   {"q": "Visual acuity, pupils and extraocular movements (pertinent negative)", "a": "Normal visual acuity; pupils equal and reactive; full extraocular movements without diplopia."},
+   {"q": "Palpation of the orbital rims and zygoma (pertinent negative)", "a": "No step deformity or tenderness at the orbital rims or zygoma."},
+   {"q": "Occlusion and mouth opening (pertinent negative)", "a": "Normal occlusion; full mouth opening without trismus."},
+   {"q": "Mental status / GCS", "a": "GCS 15 throughout assessment."}
+  ],
+  "problemList": [
+   "Suspected bilateral septal hematoma with progressive nasal obstruction",
+   "Nasal bone injury with possible fracture from direct blunt trauma",
+   "Associated orbital/midface injury to be excluded (currently a pertinent negative)",
+   "CSF leak / skull base injury to be excluded (currently a pertinent negative)",
+   "Tetanus immunization status unconfirmed"
+  ],
+  "problemRepresentation": "A 14-year-old boy presenting 4 hours after blunt nasal trauma with progressive bilateral nasal obstruction and bilateral boggy bluish septal swelling on intranasal examination, without visual, extraocular movement or CSF leak abnormalities, consistent with a septal hematoma requiring prompt evaluation and drainage to prevent septal cartilage necrosis."
+ },
+ "G2C2": {
+  "exam": [
+   {"q": "Primary survey (ABCDE) and general assessment", "a": "Alert; airway patent; hemodynamically stable."},
+   {"q": "Visual acuity of each eye (critical)", "a": "Mildly reduced visual acuity in the left eye compared with the right; able to count fingers and read large print."},
+   {"q": "Pupillary examination / RAPD (critical)", "a": "Pupils equal and reactive; no relative afferent pupillary defect."},
+   {"q": "Extraocular movements (critical)", "a": "Marked restriction of left upgaze with pain on attempted elevation, suggestive of inferior rectus / orbital soft-tissue entrapment."},
+   {"q": "Globe inspection (red flag)", "a": "No clinical signs of open globe injury (no irregular pupil or extruded contents); examine without pressure on the globe."},
+   {"q": "Globe position / enophthalmos", "a": "Mild left enophthalmos compared with the right."},
+   {"q": "Periorbital and eyelid inspection", "a": "Marked left periorbital edema and ecchymosis; no full-thickness eyelid laceration."},
+   {"q": "Infraorbital nerve (V2) sensation", "a": "Mild hypoesthesia of the left lower eyelid and cheek."},
+   {"q": "Palpation of the orbital rim (pertinent negative for ZMC fracture)", "a": "No step deformity at the infraorbital rim or zygomatic arch."},
+   {"q": "Occlusion and mouth opening (pertinent negative for ZMC fracture)", "a": "Normal occlusion; full mouth opening; no malar flattening."},
+   {"q": "Intraocular pressure / tense globe (per local protocol)", "a": "No tense proptotic globe to suggest retrobulbar hemorrhage."}
+  ],
+  "problemList": [
+   "Suspected left orbital floor blowout fracture with extraocular muscle entrapment (restricted upgaze and diplopia)",
+   "Mildly reduced visual acuity requiring monitoring for vision-threatening injury",
+   "Left infraorbital (V2) nerve hypoesthesia",
+   "Suspected enophthalmos secondary to increased orbital volume",
+   "No evidence of ZMC fracture or open globe injury (documented pertinent negatives)"
+  ],
+  "problemRepresentation": "A 27-year-old man presenting 3 hours after direct blunt trauma to the left eye from a golf ball, with restricted upgaze, diplopia, mildly reduced visual acuity and infraorbital hypoesthesia, without orbital rim step deformity or malocclusion, consistent with an orbital floor blowout fracture with extraocular muscle entrapment requiring urgent ophthalmological assessment before imaging and referral."
+ },
+ "G2C3": {
+  "exam": [
+   {"q": "Primary survey (ABCDE) and general assessment", "a": "Alert; airway patent; hemodynamically stable."},
+   {"q": "Comparative facial inspection", "a": "Marked right malar swelling and ecchymosis; right malar flattening evident relative to the left as edema subsides."},
+   {"q": "Palpation of the infraorbital rim and zygomatic buttresses (critical)", "a": "Palpable step deformity at the right infraorbital rim and the zygomaticofrontal suture region."},
+   {"q": "Palpation of the zygomatic arch, intraoral and temporal (critical)", "a": "Tenderness with suspected depression of the right zygomatic arch."},
+   {"q": "Mouth opening / trismus assessment (critical)", "a": "Interincisal opening limited to approximately half of normal, with pain on attempted wider opening."},
+   {"q": "Infraorbital nerve (V2) sensation", "a": "Marked hypoesthesia of the right cheek, right upper lip and right nasal ala."},
+   {"q": "Visual acuity, pupils and extraocular movements", "a": "Normal visual acuity bilaterally; pupils normal; near-full extraocular movements with mild limitation only at extreme lateral gaze; no entrapment-pattern restriction."},
+   {"q": "Globe position / enophthalmos", "a": "No clinically apparent enophthalmos."},
+   {"q": "Occlusion and dental examination", "a": "Near-normal occlusion; no mobile teeth or step in the dental arch."},
+   {"q": "Subconjunctival hemorrhage", "a": "Right lateral subconjunctival hemorrhage, commonly associated with ZMC fracture."},
+   {"q": "Intranasal examination (pertinent negative)", "a": "No septal hematoma."}
+  ],
+  "problemList": [
+   "Suspected right zygomaticomaxillary complex (ZMC) fracture: infraorbital rim / zygomatic arch step deformity with malar flattening",
+   "Trismus secondary to suspected zygomatic arch depression impinging on the coronoid process / temporalis",
+   "Right infraorbital (V2) nerve hypoesthesia",
+   "Mild diplopia at extreme gaze requiring monitoring; near-normal extraocular movements (no primary orbital entrapment)",
+   "Normal occlusion (documented pertinent negative against mandibular fracture)"
+  ],
+  "problemRepresentation": "A 35-year-old man presenting 6 hours after a closed-fist assault to the right malar region with malar flattening, a palpable infraorbital rim step, trismus and infraorbital hypoesthesia, with only mild diplopia at extreme gaze and near-normal visual acuity and extraocular movements, consistent with a right ZMC fracture that must be differentiated from isolated orbital injury, requiring imaging and maxillofacial referral."
+ },
+ "G2C4": {
+  "exam": [
+   {"q": "Primary survey with airway assessment (critical)", "a": "Alert; speech muffled; when supine, mild posterior tongue displacement with intermittent noisy breathing, indicating risk of airway compromise from bilateral mandibular instability."},
+   {"q": "Occlusion (critical)", "a": "Marked malocclusion with mild anterior open bite."},
+   {"q": "Bimanual palpation of the entire mandible", "a": "Tenderness with suspected step and mobility at the parasymphysis and both mandibular angles."},
+   {"q": "Intraoral inspection", "a": "Sublingual hematoma of the floor of the mouth; minor gingival laceration at the lower anterior teeth."},
+   {"q": "Dental examination", "a": "Two mobile lower incisors; no avulsed teeth."},
+   {"q": "Inferior alveolar / mental nerve sensation (critical)", "a": "Bilateral hypoesthesia of the lower lip and chin, corresponding to the suspected fracture sites."},
+   {"q": "Tongue mobility / tongue-blade bite test", "a": "Tongue mobile, but patient reports instability when supine."},
+   {"q": "Facial nerve motor examination (pertinent negative)", "a": "Symmetrical smile, brow elevation and eye closure; no facial nerve weakness."},
+   {"q": "Visual acuity and extraocular movements (pertinent negative)", "a": "Normal bilaterally; no diplopia."},
+   {"q": "Cervical spine palpation", "a": "Mild midline cervical tenderness; requires assessment per trauma pathway with spinal precautions."}
+  ],
+  "problemList": [
+   "Suspected bilateral mandibular fracture (parasymphyseal and angle) with malocclusion and two palpable steps, with risk of supine airway obstruction",
+   "Airway risk from posterior tongue displacement requiring priority management",
+   "Dental injury: mobile lower incisors and gingival laceration",
+   "Bilateral inferior alveolar / mental nerve hypoesthesia",
+   "Midline cervical spine tenderness requiring exclusion of cervical spine injury per trauma pathway"
+  ],
+  "problemRepresentation": "A 22-year-old man presenting 2 hours after a motorcycle collision with chin impact, with malocclusion, palpable mobility at the parasymphysis and both mandibular angles, bilateral lower lip and chin hypoesthesia, and posterior tongue displacement when supine, consistent with a bilateral mandibular fracture with risk of airway compromise requiring immediate airway management and positioning before detailed fracture assessment and referral."
+ },
+ "G2C5": {
+  "exam": [
+   {"q": "Primary survey: airway and breathing (critical)", "a": "Airway at risk from blood and blood-stained secretions in the oral cavity; gurgling respirations; requires immediate suction and positioning per local protocol."},
+   {"q": "Circulation and hemorrhage assessment (critical)", "a": "Tachycardic with borderline hypotension; ongoing active bleeding from the nose and mouth, suggestive of significant hemorrhage from midface injury."},
+   {"q": "Cervical spine precautions and palpation", "a": "Midline cervical tenderness; spinal precautions must be maintained throughout assessment."},
+   {"q": "GCS and neurological assessment", "a": "Fluctuating GCS of approximately 12–13; requires serial reassessment and consideration of associated traumatic brain injury."},
+   {"q": "Midface mobility test by an experienced clinician (critical)", "a": "Gentle manipulation of the maxilla demonstrates midface mobility separate from the skull base, suggestive of a high-level Le Fort-type fracture."},
+   {"q": "Global facial inspection", "a": "Marked bilateral facial edema with bilateral periorbital ecchymosis (raccoon eyes)."},
+   {"q": "Oral cavity and occlusion", "a": "Marked malocclusion; blood and dental fragments in the oral cavity."},
+   {"q": "Assessment for CSF leak / Battle sign", "a": "No Battle sign on initial assessment; requires ongoing surveillance."},
+   {"q": "Visual assessment as feasible", "a": "Limited by severe periorbital edema and altered consciousness; reassess once stabilized."},
+   {"q": "Screening of chest, abdomen and extremities", "a": "No obvious deformity on initial screening; high-energy mechanism mandates a complete secondary survey."}
+  ],
+  "problemList": [
+   "Airway compromise from hemorrhage, secretions and midface instability requiring immediate management",
+   "Hemorrhagic shock physiology (tachycardia, borderline hypotension) from ongoing facial bleeding",
+   "Suspected panfacial / Le Fort-pattern fracture with palpable midface mobility",
+   "Fluctuating level of consciousness; traumatic brain injury to be excluded",
+   "Uncleared cervical spine following high-energy mechanism"
+  ],
+  "problemRepresentation": "A 41-year-old unrestrained man after a high-speed motor vehicle collision presenting with airway compromise from intraoral blood and secretions, hemodynamic signs of hemorrhage, fluctuating consciousness and palpable midface mobility, consistent with a panfacial/Le Fort-type fracture with risk of concomitant traumatic brain injury and cervical spine injury, requiring ABCDE resuscitation and hemorrhage control before detailed fracture classification."
+ },
+ "G2C6": {
+  "exam": [
+   {"q": "Primary survey (ABCDE) and general assessment", "a": "Alert; airway patent; hemodynamically stable."},
+   {"q": "Facial nerve motor examination before local anesthesia (critical)", "a": "Symmetrical brow elevation and forceful eye closure (temporal and zygomatic branches intact); marked reduction in right oral commissure elevation on smiling, suggestive of buccal branch injury."},
+   {"q": "Wound inspection", "a": "Irregular 4 cm deep laceration of the right mid-cheek with exposed subcutaneous fat."},
+   {"q": "Wound exploration after appropriate analgesia (without compromising repeat motor assessment)", "a": "Depth extends to subcutaneous fat with suspected involvement of the parotid gland / duct region."},
+   {"q": "Parotid duct assessment (critical)", "a": "Wound lies along the line from the tragus to the midpoint of the upper lip (Stensen duct course); concomitant duct injury must be considered."},
+   {"q": "Assessment for salivary leakage from the wound", "a": "Clear saliva-like fluid seeping from the wound, increasing with gustatory (sialogogue) stimulation."},
+   {"q": "Sensory examination around the wound", "a": "Near-normal sensation with mild hypoesthesia confined to the wound edges."},
+   {"q": "Visual acuity and extraocular movements (pertinent negative)", "a": "Normal bilaterally; no diplopia."},
+   {"q": "Occlusion and mouth opening (pertinent negative)", "a": "Normal occlusion; full mouth opening; no clinical evidence of facial fracture."},
+   {"q": "Assessment for active bleeding / vascular injury", "a": "No active arterial bleeding."}
+  ],
+  "problemList": [
+   "Suspected right facial nerve buccal branch injury (asymmetric smile), to be documented before anesthesia and closure",
+   "Suspected parotid (Stensen) duct injury: wound along the duct course with salivary leakage",
+   "Deep facial laceration with possible parotid gland involvement",
+   "Risk of retained foreign body from sharp-object mechanism",
+   "Tetanus immunization status unconfirmed"
+  ],
+  "problemRepresentation": "A 30-year-old woman presenting 1 hour after a sharp-object injury with a 4 cm deep laceration of the right mid-cheek, asymmetric smile indicating facial nerve buccal branch weakness, and a wound along the parotid duct course with suspected salivary leakage, requiring detailed facial motor documentation before local anesthesia and evaluation for parotid duct injury before wound closure."
+ },
+ "G2C7": {
+  "exam": [
+   {"q": "Primary survey: circulation assessment (critical)", "a": "Tachycardic, hypotensive and pale with delayed capillary refill, consistent with major hemorrhage from a facial/midface source."},
+   {"q": "Airway assessment with blood in the airway (critical)", "a": "Intermittent pooling of blood in the oropharynx with risk of airway compromise concurrent with hemorrhage."},
+   {"q": "Identification of bleeding source", "a": "Bleeding from both nasal cavities and the oral cavity, suggestive of posterior epistaxis associated with midface injury rather than simple anterior septal bleeding."},
+   {"q": "Palpation of the facial skeleton (as feasible during resuscitation)", "a": "Suspected midface instability; detailed assessment deferred until after initial stabilization."},
+   {"q": "Level of consciousness / GCS", "a": "Progressive drowsiness with GCS approximately 13 and a changing trend; requires serial reassessment."},
+   {"q": "Pulse and peripheral perfusion", "a": "Weak, rapid pulse; pale, cool skin with cool peripheries."},
+   {"q": "Eye assessment (limited during resuscitation)", "a": "Detailed assessment not feasible during resuscitation; reassess as soon as possible."},
+   {"q": "Assessment for other hemorrhage sources (chest, abdomen, pelvis, long bones)", "a": "No other obvious source on initial assessment; high-energy mechanism mandates complete evaluation per trauma pathway."},
+   {"q": "Assessment for a simple anterior epistaxis pattern (pertinent negative)", "a": "Not a simple anterior septal bleed amenable to digital compression; ongoing major hemorrhage refractory to standard compression."}
+  ],
+  "problemList": [
+   "Hemorrhagic shock from ongoing major facial, nasal and oral bleeding requiring immediate control",
+   "Risk of airway compromise from blood pooling in the oropharynx",
+   "Suspected severe midface injury as the principal bleeding source, to be assessed after stabilization",
+   "Fluctuating level of consciousness; concomitant traumatic brain injury to be excluded",
+   "Unknown coagulation status and anticoagulant/antiplatelet use potentially affecting hemostasis"
+  ],
+  "problemRepresentation": "A 45-year-old man presenting 20 minutes after a motorcycle collision with a roadside barrier with ongoing major hemorrhage from the nose and mouth, tachycardia, hypotension and declining consciousness, clearly distinct from simple epistaxis, consistent with hemorrhagic shock from severe facial/midface injury requiring immediate hemorrhage control and ABCDE resuscitation before detailed assessment of the injury source."
+ }
+}
