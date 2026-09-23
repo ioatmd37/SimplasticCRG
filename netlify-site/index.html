@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SimPlastic — The Clinical Reasoning Game</title>
+<meta name="description" content="เกมฝึก clinical reasoning ด้านศัลยกรรมตกแต่ง สำหรับผู้เล่น 4–6 คน แบบ multiplayer" />
+<style>
+  :root {
+    --bg: #0b0d12; --surface: #14171f; --surface-2: #1c2029; --ink: #eef1f6; --ink-2: #9aa3b2;
+    --line: #2a2f3b; --accent: #3ddc97; --accent-2: #ffd166;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Noto Sans Thai", sans-serif;
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  header.hero {
+    text-align: center; padding: 56px 20px 40px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent);
+  }
+  .logo { max-width: 420px; width: 100%; height: auto; image-rendering: pixelated; }
+  .tagline { color: var(--ink-2); margin: 8px 0 28px; font-size: 1.05rem; }
+  .room-shot {
+    max-width: 720px; width: 100%; border: 3px solid var(--line); border-radius: 16px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4); image-rendering: pixelated;
+  }
+  section { padding: 40px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.3rem; margin: 0 0 18px; }
+  .roles { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+  .role-card {
+    display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px;
+    padding: 14px 8px; border: 2px solid var(--line); border-radius: 12px; background: var(--surface);
+  }
+  .role-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top center; image-rendering: pixelated; border: 1px solid var(--line); background: var(--surface-2); }
+  .role-card b { font-size: 0.85rem; text-align: center; }
+  ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ul.features li { display: flex; gap: 10px; align-items: baseline; color: var(--ink-2); }
+  ul.features li b { color: var(--ink); }
+  .cta {
+    text-align: center; padding: 44px 20px; margin: 0 -20px; border-radius: 20px;
+    background: var(--surface); border: 2px solid var(--line);
+  }
+  .cta p { color: var(--ink-2); max-width: 520px; margin: 10px auto 20px; }
+  code.block {
+    display: block; text-align: left; max-width: 460px; margin: 0 auto 18px; padding: 14px 16px;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+    font-size: 0.85rem; line-height: 1.7; white-space: pre; overflow-x: auto;
+  }
+  a.repo-link {
+    display: inline-block; padding: 10px 22px; border-radius: 999px; text-decoration: none;
+    background: var(--accent); color: #06110c; font-weight: 700;
+  }
+  footer { text-align: center; padding: 30px 20px 50px; color: var(--ink-2); font-size: 0.8rem; }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <img class="logo" src="assets/logo.webp" alt="SimPlastic — The Clinical Reasoning Game" />
+    <p class="tagline">Plastic Surgery · 34 การ์ด · 4–6 ผู้เล่น · เกมฝึก clinical reasoning แบบ multiplayer</p>
+    <img class="room-shot" src="assets/room-day.webp" alt="ห้องตรวจจำลองในเกม" />
+  </header>
+
+  <div class="wrap">
+    <section>
+      <h2>บทบาทในเกม</h2>
+      <div class="roles">
+        <div class="role-card"><img src="assets/sprites/facilitator-1.png" alt="" /><b>Facilitator</b></div>
+        <div class="role-card"><img src="assets/sprites/patient-1.png" alt="" /><b>Patient</b></div>
+        <div class="role-card"><img src="assets/sprites/doctor-1.png" alt="" /><b>Doctor / Examiner</b></div>
+        <div class="role-card"><img src="assets/sprites/scribe-1.png" alt="" /><b>Scribe</b></div>
+        <div class="role-card"><img src="assets/sprites/bias-1.png" alt="" /><b>Bias monitor</b></div>
+        <div class="role-card"><img src="assets/sprites/observer-1.png" alt="" /><b>Observer</b></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>เกมนี้ฝึกอะไร</h2>
+      <ul class="features">
+        <li>🩺 <div><b>ข้อมูลซ่อนตามบทบาท (hidden information)</b> — Patient ถือข้อมูลประวัติ, Facilitator ถือผล PE/Investigation ทีมต้อง "ถาม" และ "ขอตรวจ" ให้ตรงจุดเพื่อปลดล็อกข้อมูล</div></li>
+        <li>🧠 <div><b>System 1 vs System 2</b> — Bias monitor นำ diagnostic time-out ไล่ checklist และดักจับ cognitive bias ระหว่างทาง</div></li>
+        <li>📋 <div><b>Problem list / Problem representation</b> — Scribe เขียนร่วมกับทีม แล้วเทียบกับ expected PL/PR พร้อมให้คะแนนโดย facilitator</div></li>
+        <li>🌐 <div><b>เอกสารทางคลินิกเป็นภาษาอังกฤษล้วน</b> — ผล PE, Problem list และ Problem representation บังคับเป็น medical English เพื่อฝึกเขียนบันทึกแบบมาตรฐาน</div></li>
+        <li>🎮 <div><b>ธีมย้อนยุค 8-bit</b> — สไปรต์พิกเซล เสียงเอฟเฟกต์และเพลงประกอบสังเคราะห์เองทั้งหมด ไม่มีไฟล์เสียงภายนอก</div></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="cta">
+        <h2 style="margin-bottom:6px">อยากลองเล่น?</h2>
+        <p>หน้านี้เป็นเดโมแบบ static แสดงหน้าตาและกลไกของเกมเท่านั้น เพราะตัวเกมจริงต้องรันเป็น Node.js server (Express + Socket.IO) ที่เก็บสถานะห้องเกมแบบ real-time ซึ่งไม่รองรับบน static hosting รันบนเครื่องของคุณเองได้ดังนี้:</p>
+        <code class="block">git clone git@github.com:ioatmd37/SimplasticCRG.git
+cd SimplasticCRG
+npm install
+npm start
+# เปิด http://localhost:3000</code>
+      </div>
+    </section>
+  </div>
+
+  <footer>เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง รายละเอียดเชิง protocol ต้องตรวจทานกับ local guideline ก่อนใช้สอนจริง</footer>
+</body>
+</html>
