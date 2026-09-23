@@ -8,12 +8,12 @@ const { cards, groups } = require("../data/cards.json");
 const CARD_BY_ID = Object.fromEntries(cards.map((c) => [c.id, c]));
 
 const ROLES = {
-  facilitator: { label: "Facilitator / อาจารย์", required: true },
-  patient: { label: "Patient / ผู้ป่วย-ผู้ปกครอง", required: true },
+  facilitator: { label: "Facilitator", required: true },
+  patient: { label: "Patient", required: true },
   doctor: { label: "Doctor / Examiner", required: true },
-  scribe: { label: "Scribe / ผู้บันทึก", required: true },
+  scribe: { label: "Scribe", required: true },
   bias: { label: "Bias monitor", required: false },
-  observer: { label: "Observer / ผู้สังเกตการณ์", required: false },
+  observer: { label: "Observer", required: false },
 };
 
 // Suggested minutes per phase (45–60 min session in the card bank's "วิธีใช้").
@@ -91,6 +91,7 @@ function createRoom() {
     timeout: { checks: {}, mnm: "", revealed: false },
     debrief: { shown: 0 },
     tickets: {}, // playerId -> { oneLiner, mnm, trigger }
+    feedback: {}, // playerId -> { caseRating, playersRating, systemRating, comment, t }
     chat: [],
     stage: {}, // role -> { t, text, pose }
     touchedAt: Date.now(),
@@ -339,6 +340,22 @@ const actions = {
     room.tickets[p.id] = t;
   },
 
+  submitFeedback(room, p, { caseRating, playersRating, systemRating, comment }) {
+    if (room.phase !== "summary") fail("ให้คะแนนได้เฉพาะหน้าสรุปผล");
+    const stars = (n, label) => {
+      n = Number(n);
+      if (!Number.isInteger(n) || n < 1 || n > 5) fail(`${label} ต้องให้คะแนน 1-5 ดาว`);
+      return n;
+    };
+    room.feedback[p.id] = {
+      caseRating: stars(caseRating, "โจทย์"),
+      playersRating: stars(playersRating, "ผู้เล่น"),
+      systemRating: stars(systemRating, "ระบบเกม"),
+      comment: String(comment || "").trim().slice(0, 500),
+      t: Date.now(),
+    };
+  },
+
   chat(room, p, { text }) {
     text = String(text || "").trim().slice(0, 300);
     if (!text) return;
@@ -360,6 +377,7 @@ const actions = {
       timeout: { checks: {}, mnm: "", revealed: false },
       debrief: { shown: 0 },
       tickets: {},
+      feedback: {},
       stage: {},
     });
     setPhase(room, "case");
@@ -396,6 +414,19 @@ function summaryStats(room, c) {
     checklistTotal: c.system2Checklist.length,
     flags: room.flags.length,
     tickets: Object.keys(room.tickets).length,
+    feedback: feedbackSummary(room),
+  };
+}
+
+function feedbackSummary(room) {
+  const rows = Object.values(room.feedback);
+  const avg = (key) => (rows.length ? Math.round((rows.reduce((s, r) => s + r[key], 0) / rows.length) * 10) / 10 : null);
+  return {
+    count: rows.length,
+    caseAvg: avg("caseRating"),
+    playersAvg: avg("playersRating"),
+    systemAvg: avg("systemRating"),
+    comments: rows.map((r) => r.comment).filter(Boolean),
   };
 }
 
@@ -487,6 +518,7 @@ function viewFor(room, playerId) {
     debriefShown: room.debrief.shown,
     tickets: done || isFac ? room.tickets : me && room.tickets[me.id] ? { [me.id]: room.tickets[me.id] } : {},
     ticketCount: Object.keys(room.tickets).length,
+    feedbackSubmitted: !!(me && room.feedback[me.id]),
     chat: room.chat.slice(-60),
     stats: done && c ? summaryStats(room, c) : null,
     serverNow: Date.now(),

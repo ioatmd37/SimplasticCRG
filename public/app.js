@@ -12,12 +12,18 @@ let clockSkew = 0;
 const ui = {
   groupFilter: 0,
   carouselIndex: 0, // position within the (filtered) case list while browsing on the case-select screen
+  carouselDir: 1, // which way the card most recently moved (1 = forward/next, -1 = back/prev), for the slide-in animation
   pendingSel: null, // question the patient/facilitator is answering
   drafts: {}, // local-only input values keyed by element id
   micFor: null, // id of the field currently being dictated into
   micLang: (() => { try { return localStorage.getItem("crg-mic-lang") || "th-TH"; } catch { return "th-TH"; } })(),
   soundOn: (() => { try { return localStorage.getItem("crg-sound") !== "off"; } catch { return true; } })(),
   animatedRoles: new Set(), // roles whose room-stage sprite has already played its entrance
+  feedbackDismissed: false, // viewer closed the end-of-game satisfaction pop-up without submitting
+  feedbackDraft: { caseRating: 0, playersRating: 0, systemRating: 0 }, // local star picks before submit
+  chatOpen: (() => { try { return localStorage.getItem("crg-chat-open") !== "closed"; } catch { return true; } })(),
+  chatPos: (() => { try { return JSON.parse(localStorage.getItem("crg-chat-pos") || "null"); } catch { return null; } })(), // {x,y} top-left px, null = default corner
+  chatUnread: 0, // messages received while the panel is collapsed
 };
 
 // ---------- 8-bit sound effects (synthesized, no audio files) ----------
@@ -160,6 +166,13 @@ const music = (() => {
 })();
 
 const ROLE_ICON = { facilitator: "🎓", patient: "🛏️", doctor: "🩺", scribe: "📝", bias: "⚖️", observer: "👀" };
+// Small round avatar cropped from each role's own sprite, used everywhere a role is
+// labeled (role cards, chips, captions, guides). ROLE_ICON's emoji stays only as the
+// sprite-load-failure fallback inside the room stage itself, not as a label icon.
+const roleAvatar = (role, size = 20) =>
+  role
+    ? `<img src="game-assets/sprites/${role === "patient" ? "patient-mystery" : role}-1.png" alt="" class="role-avatar" style="width:${size}px;height:${size}px" onerror="this.style.visibility='hidden'" />`
+    : "";
 
 // Virtual exam room: sprite sheets are 1 row x 4 frames (idle A, idle B, talk, action) on a
 // magenta chroma-key background, dropped in public/game-assets/sprites/. Falls back to a
@@ -209,7 +222,7 @@ const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const player = (id) => (S && S.players.find((p) => p.id === id)) || { name: "?", role: null };
 const roleLabel = (r) => (r && S.roles[r] ? S.roles[r].label : "ยังไม่เลือก");
-const roleChip = (r) => (r ? `<span class="tag role-chip" data-role="${r}">${ROLE_ICON[r]} ${esc(roleLabel(r))}</span>` : `<span class="tag">ยังไม่เลือกบทบาท</span>`);
+const roleChip = (r) => (r ? `<span class="tag role-chip" data-role="${r}">${roleAvatar(r, 16)} ${esc(roleLabel(r))}</span>` : `<span class="tag">ยังไม่เลือกบทบาท</span>`);
 const levelTag = (l) => `<span class="tag ${/must/i.test(l) ? "must" : /should/i.test(l) ? "should" : ""}">${esc(l)}</span>`;
 const draft = (id, fallback = "") => (id in ui.drafts ? ui.drafts[id] : fallback);
 
@@ -354,7 +367,11 @@ socket.on("connect", () => {
 socket.on("state", (view) => {
   const prevPhase = S && S.phase;
   const firstStateThisSession = !S;
+  const prevChatLen = S ? S.chat.length : 0;
   S = view;
+  if (!firstStateThisSession && !ui.chatOpen && view.chat.length > prevChatLen && view.chat[view.chat.length - 1].by !== view.me?.id) {
+    ui.chatUnread += view.chat.length - prevChatLen;
+  }
   clockSkew = view.serverNow - Date.now();
   if (view.me) music.stop(); // safety net: never let the opening theme play once seated in a room
   // On a fresh page load resuming an existing room, don't replay the entrance
@@ -377,6 +394,10 @@ function render() {
   const chatBox = document.querySelector(".chat");
   const chatAtBottom = !chatBox || chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 30;
 
+  if (!S || S.phase !== "summary") {
+    ui.feedbackDismissed = false;
+    ui.feedbackDraft = { caseRating: 0, playersRating: 0, systemRating: 0 };
+  }
   app.innerHTML = !S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame();
 
   if (keep) {
@@ -439,29 +460,33 @@ function viewLobby() {
     .map(([r, def]) => {
       const holder = S.players.find((p) => p.role === r);
       const mine = holder && holder.id === me.id;
-      // Minimal by default: icon + title only. The description (and a Ready toggle)
-      // only appears on the card you've picked, and collapses away once you're ready.
-      const showDesc = mine && !me.ready;
-      const pickable = !holder || mine; // a div, not a <button>, so a nested Ready button stays valid HTML
-      return `<div class="role-card ${mine ? "mine" : ""} ${showDesc ? "expanded" : ""} ${pickable ? "" : "locked"}" data-role="${r}"
+      // Always minimal: icon + title only. The description lives in the info box above.
+      const pickable = !holder || mine;
+      return `<div class="role-card ${mine ? "mine" : ""} ${pickable ? "" : "locked"}" data-role="${r}"
         ${pickable && !(mine && me.ready) ? `data-act="pickRole" data-v="${r}"` : ""} title="${esc(ROLE_DESC[r])}">
-        <span class="title">${ROLE_ICON[r]} ${esc(def.label)}</span>
-        ${showDesc ? `<span class="small muted">${esc(ROLE_DESC[r])}</span>` : ""}
+        <span class="title">${roleAvatar(r, 22)} ${esc(def.label)}</span>
         <span class="taken">${
           holder
             ? mine
               ? me.ready
-                ? `<button type="button" class="tag ok ready-badge" data-act="toggleReady" title="กดเพื่อแก้ไขบทบาท">✓ พร้อมแล้ว</button>`
+                ? "✓ พร้อมแล้ว"
                 : "✓ คุณ"
               : "ถูกเลือกโดย " + esc(holder.name)
             : def.required
               ? `<span class="tag must">จำเป็น</span>`
               : `<span class="tag">ไม่บังคับ</span>`
         }</span>
-        ${showDesc ? `<button type="button" class="btn sm primary ready-btn" data-act="toggleReady">✓ พร้อม</button>` : ""}
       </div>`;
     })
     .join("");
+  // Floating caption over the room image (near the floor) instead of a separate box:
+  // your picked role's description, or a prompt before you've picked one.
+  const roomCaption = me.role
+    ? `<b data-role="${me.role}">${roleAvatar(me.role, 18)} ${esc(S.roles[me.role].label)}:</b> ${esc(ROLE_DESC[me.role])}`
+    : "เลือกบทบาทด้านล่างเพื่อดูรายละเอียด";
+  const readyBtn = me.role
+    ? `<button type="button" class="btn sm ${me.ready ? "ghost" : "primary"}" data-act="toggleReady">${me.ready ? "✓ พร้อมแล้ว (กดแก้ไข)" : "✓ พร้อม"}</button>`
+    : "";
   const slots = [];
   for (let i = 0; i < S.limits.max; i++) {
     const p = S.players[i];
@@ -486,13 +511,13 @@ function viewLobby() {
         <button class="btn sm ghost" data-act="leave" style="color:#fff;border-color:rgba(255,255,255,.4)">ออกจากห้อง</button>
       </div>
 
-      ${roomStage(true, ROOM_BG_NIGHT)}
+      ${roomStage(true, ROOM_BG_NIGHT, roomCaption)}
 
       <div class="lobby-grid">
         <div class="join-card">
           <div class="row spread">
             <div><div class="muted small">ขั้นที่ 1 · เลือกบทบาท</div><h2 style="margin:0">เลือกบทบาทของคุณ</h2></div>
-            ${me.role ? `<button class="btn sm ghost" data-act="pickRole" data-v="">ยกเลิกบทบาท</button>` : ""}
+            ${readyBtn}
           </div>
           <p class="muted small">แต่ละบทบาทเลือกได้ 1 คน ต้องมีครบ 4 บทบาทหลัก · คนที่ 5 เป็น Bias monitor และคนที่ 6 เป็น Observer ได้ (ทั้งสองไม่บังคับ)</p>
           <div class="roles">${roleCards}</div>
@@ -524,7 +549,7 @@ function viewLobby() {
 // yet. A role's sprite gets a one-time "pop in" entrance the first time it's seen
 // filled (tracked in ui.animatedRoles), so later re-renders (chat, timers, ...) don't
 // keep replaying it.
-function roomStage(showEmpty = false, bg = ROOM_BG) {
+function roomStage(showEmpty = false, bg = ROOM_BG, caption = null) {
   const cv = S.caseView;
   const sprites = Object.keys(ROOM_POS)
     .map((role) => {
@@ -552,7 +577,8 @@ function roomStage(showEmpty = false, bg = ROOM_BG) {
       </div>`;
     })
     .join("");
-  return `<div class="room-stage" style="background-image:url(${bg})">${sprites}</div>`;
+  const captionHtml = caption ? `<div class="room-caption">${caption}</div>` : "";
+  return `<div class="room-stage" style="background-image:url(${bg})">${sprites}${captionHtml}</div>`;
 }
 
 function viewGame() {
@@ -596,13 +622,49 @@ function viewGame() {
     <div class="stepper">${stepper}</div>
   </div></header>
   <div class="wrap">
-    ${roomStage()}
+    ${roomStage(false, ROOM_BG, S.me.role ? roleGuide() : null)}
     <div class="layout" ${cv ? "" : 'style="grid-template-columns:minmax(0,1fr) 300px"'}>
       ${cv ? `<aside class="case-col">${viewCaseCard(cv)}</aside>` : ""}
-      <main class="stack">${roleGuide()}${main}</main>
+      <main class="stack">${main}</main>
       <aside class="stack">${viewSide()}</aside>
     </div>
     <p class="disclaimer">เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง · รายละเอียด protocol ให้ตรวจทานกับ local guideline</p>
+  </div>
+  ${viewChatWidget()}
+  ${S.phase === "summary" && !S.feedbackSubmitted && !ui.feedbackDismissed ? viewFeedbackModal() : ""}`;
+}
+
+// ---------- End-of-game satisfaction pop-up ----------
+function starRow(id, label) {
+  const v = ui.feedbackDraft[id];
+  const stars = [1, 2, 3, 4, 5]
+    .map(
+      (n) =>
+        `<button type="button" class="star-btn" data-act="fbStar" data-id="${id}" data-v="${n}" aria-label="${n} ดาว">
+          <img src="game-assets/icons/star-${n <= v ? "filled" : "outline"}.png" alt="" />
+        </button>`,
+    )
+    .join("");
+  return `<div class="fb-row"><span class="fb-label">${label}</span><div class="fb-stars">${stars}</div></div>`;
+}
+
+function viewFeedbackModal() {
+  const d = ui.feedbackDraft;
+  const canSubmit = d.caseRating && d.playersRating && d.systemRating;
+  return `<div class="modal-backdrop">
+    <div class="modal panel stack">
+      <div class="row spread"><h2 style="margin:0">ให้คะแนนความพึงพอใจ</h2><button type="button" class="btn sm ghost" data-act="fbSkip" aria-label="ปิด">✕</button></div>
+      <p class="muted small">ช่วยให้คะแนน 1–5 ดาว เพื่อพัฒนาเกมนี้ต่อไป</p>
+      ${starRow("caseRating", "โจทย์ (เคส)")}
+      ${starRow("playersRating", "ผู้เล่น (ทีม)")}
+      ${starRow("systemRating", "ระบบเกม")}
+      <label class="field"><span>ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</span>
+        <textarea id="fb-comment" rows="3" placeholder="เขียนความคิดเห็นของคุณ…">${esc(draft("fb-comment"))}</textarea></label>
+      <div class="row spread">
+        <button type="button" class="btn ghost" data-act="fbSkip">ข้าม</button>
+        <button type="button" class="btn primary" data-act="fbSubmit" ${canSubmit ? "" : "disabled"}>ส่งคะแนน</button>
+      </div>
+    </div>
   </div>`;
 }
 
@@ -622,7 +684,7 @@ function viewCaseCard(cv) {
   </div>`;
 }
 
-// What should *I* be doing in this phase?
+// What should *I* be doing in this phase? — shown as a floating caption over the room-stage image.
 function roleGuide() {
   const r = S.me.role;
   const P = S.powers;
@@ -670,7 +732,7 @@ function roleGuide() {
   if (!text && r === "scribe" && P.bias) text = g.bias;
   if (!text) text = "ร่วมอภิปรายกับทีม — ส่งความเห็นผ่านแชทได้";
   const extra = r === "scribe" && P.bias ? ` <span class="muted small">(มี 4 คน: คุณทำหน้าที่ Bias monitor ด้วย)</span>` : "";
-  return `<div class="guide" data-role="${r}"><b>${ROLE_ICON[r]} บทบาทของคุณตอนนี้:</b> ${esc(text)}${extra}</div>`;
+  return `<b data-role="${r}">${roleAvatar(r, 18)} บทบาทของคุณตอนนี้:</b> ${esc(text)}${extra}`;
 }
 
 // ---------- Phase: case ----------
@@ -690,28 +752,45 @@ function viewCase() {
       <button class="btn sm ${!ui.groupFilter ? "on" : ""}" data-act="groupFilter" data-v="0">ทั้งหมด (${cards.length})</button>
       ${groups.map((g) => `<button class="btn sm ${ui.groupFilter === g.no ? "on" : ""}" data-act="groupFilter" data-v="${g.no}">${g.no}. ${esc(g.name)}</button>`).join("")}
     </div>
-    ${
-      !current
-        ? `<p class="muted">ไม่มีการ์ดในกลุ่มนี้</p>`
-        : `<div class="carousel">
-      <button type="button" class="carousel-nav prev" data-act="carouselNav" data-v="-1" aria-label="การ์ดก่อนหน้า" ${shown.length < 2 ? "disabled" : ""}>‹</button>
-      <div class="carousel-card ${picked ? "picked" : ""}">
-        ${current.image ? `<img src="card-assets/${esc(current.image)}" alt="" />` : `<div class="noimg">🩹</div>`}
-        <div class="carousel-info">
-          <div class="row" style="justify-content:center">${levelTag(current.level)}<span class="tag">G${current.group} · ${esc(groups.find((g) => g.no === current.group)?.name || "")}</span></div>
-          <h3 style="margin:6px 0 0">${esc(current.title)}</h3>
-          <div class="muted small">การ์ดที่ ${ui.carouselIndex + 1} / ${shown.length}</div>
+    ${!current ? `<p class="muted">ไม่มีการ์ดในกลุ่มนี้</p>` : viewCaseCarousel(shown, current, groups, picked)}
+  </div>`;
+}
+
+// The small preview of the previous/next card beside the featured one, plus the dots
+// strip and confirm button below it. Split out from viewCase() only to keep that
+// function's template literal from nesting an inline IIFE.
+function viewCaseCarousel(shown, current, groups, picked) {
+  const n = shown.length;
+  const peek = (offset) => {
+    if (n < 2) return "";
+    // With only 2 cards, prev and next are the same card — show it once, on the side it's headed to.
+    if (n === 2 && offset === -1) return "";
+    const c = shown[(((ui.carouselIndex + offset) % n) + n) % n];
+    return `<button type="button" class="peek-card ${offset < 0 ? "prev" : "next"}" data-act="carouselNav" data-v="${offset}" aria-label="${offset < 0 ? "การ์ดก่อนหน้า" : "การ์ดถัดไป"}: ${esc(c.title)}" title="${esc(c.title)}">
+      ${c.image ? `<img src="card-assets/${esc(c.image)}" alt="" loading="lazy" />` : `<div class="noimg">🩹</div>`}
+    </button>`;
+  };
+  return `<div class="carousel">
+      <button type="button" class="carousel-nav prev" data-act="carouselNav" data-v="-1" aria-label="การ์ดก่อนหน้า" ${n < 2 ? "disabled" : ""}>‹</button>
+      <div class="carousel-track">
+        ${peek(-1)}
+        <div class="carousel-card ${picked ? "picked" : ""} ${ui.carouselDir === 1 ? "dir-next" : "dir-prev"}" data-key="${current.id}">
+          ${current.image ? `<img src="card-assets/${esc(current.image)}" alt="" />` : `<div class="noimg">🩹</div>`}
+          <div class="carousel-info">
+            <div class="row" style="justify-content:center">${levelTag(current.level)}<span class="tag">G${current.group} · ${esc(groups.find((g) => g.no === current.group)?.name || "")}</span></div>
+            <h3>${esc(current.title)}</h3>
+            <div class="carousel-info-sub">การ์ดที่ ${ui.carouselIndex + 1} / ${n}</div>
+          </div>
         </div>
+        ${peek(1)}
       </div>
-      <button type="button" class="carousel-nav next" data-act="carouselNav" data-v="1" aria-label="การ์ดถัดไป" ${shown.length < 2 ? "disabled" : ""}>›</button>
+      <button type="button" class="carousel-nav next" data-act="carouselNav" data-v="1" aria-label="การ์ดถัดไป" ${n < 2 ? "disabled" : ""}>›</button>
     </div>
     <div class="carousel-dots">${shown
       .map((c, i) => `<button type="button" class="dot ${i === ui.carouselIndex ? "on" : ""} ${S.caseId === c.id ? "picked" : ""}" data-act="carouselJump" data-v="${i}" title="${esc(c.title)}"></button>`)
       .join("")}</div>
-    <button class="btn-huge primary" data-act="selectCase" data-v="${current.id}" style="max-width:320px;margin:0 auto">${picked ? "✓ เลือกการ์ดนี้แล้ว" : "เลือกการ์ดนี้ →"}</button>`
-    }
-    ${S.caseId && !picked ? `<p class="small muted" style="text-align:center">เลือกไว้ก่อนหน้า: <b>${esc(cards.find((c) => c.id === S.caseId)?.title || "")}</b></p>` : ""}
-  </div>`;
+    <button class="btn-huge primary" data-act="selectCase" data-v="${current.id}" style="max-width:320px;margin:0 auto">${picked ? "✓ เลือกการ์ดนี้แล้ว" : "เลือกการ์ดนี้ →"}</button>
+    ${S.caseId && !picked ? `<p class="small muted" style="text-align:center">เลือกไว้ก่อนหน้า: <b>${esc(S.catalog.cards.find((c) => c.id === S.caseId)?.title || "")}</b></p>` : ""}`;
 }
 
 // ---------- Phase: stem ----------
@@ -958,6 +1037,7 @@ function viewSummary() {
       ${stat("PL/PR rating", S.plpr.rating ? "★".repeat(S.plpr.rating) : "—", "จาก facilitator")}
       ${stat("S2 checklist", `${st.checklistDone}/${st.checklistTotal}`, "")}
       ${stat("Bias flags", st.flags, "")}
+      ${stat("ความพึงพอใจเฉลี่ย", st.feedback.count ? `${((st.feedback.caseAvg + st.feedback.playersAvg + st.feedback.systemAvg) / 3).toFixed(1)} ★` : "—", `${st.feedback.count}/${S.players.length} คนให้คะแนน`)}
     </div>
   </div>
   <div class="panel"><h3>Exit tickets</h3><ul class="thread">${tickets}</ul></div>
@@ -987,6 +1067,13 @@ function reportMarkdown() {
     return t ? `- **${p.name}**: ${t.oneLiner} | MNM: ${t.mnm} | Trigger: ${t.trigger}` : `- **${p.name}**: (ไม่ได้ส่ง)`;
   }), "");
   L.push("## สถิติ", `- History ${st.historyCovered}/${st.historyTotal}, Exam ${st.examCovered}/${st.examTotal}, Non-priority investigation ${st.lowPriorityChosen}/${st.lowPriorityTotal}`, "");
+  L.push(
+    "## ความพึงพอใจ",
+    `- ผู้ให้คะแนน: ${st.feedback.count}/${S.players.length}`,
+    st.feedback.count ? `- โจทย์: ${st.feedback.caseAvg}★ · ผู้เล่น: ${st.feedback.playersAvg}★ · ระบบเกม: ${st.feedback.systemAvg}★` : "- ยังไม่มีใครให้คะแนน",
+    ...(st.feedback.comments.length ? ["- ข้อเสนอแนะ:", ...st.feedback.comments.map((c) => `  - ${c}`)] : []),
+    "",
+  );
   L.push("> เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง");
   return L.join("\n");
 }
@@ -1000,7 +1087,7 @@ function viewSide() {
   const P = S.powers;
   const inCase = !["case", "summary"].includes(S.phase);
   const players = `<div class="panel players"><h3>ทีม</h3><ul>${S.players
-    .map((p) => `<li class="${p.connected ? "" : "offline"}"><span class="role-dot" data-role="${p.role}"></span><span style="flex:1">${esc(p.name)}${p.id === S.me.id ? " (คุณ)" : ""}</span><span class="small muted">${ROLE_ICON[p.role] || ""}</span></li>`)
+    .map((p) => `<li class="${p.connected ? "" : "offline"}"><span class="role-dot" data-role="${p.role}"></span><span style="flex:1">${esc(p.name)}${p.id === S.me.id ? " (คุณ)" : ""}</span><span class="small muted">${roleAvatar(p.role, 16)}</span></li>`)
     .join("")}</ul></div>`;
   const notes = inCase
     ? `<div class="panel stack"><div class="row spread"><h3 style="margin:0">📝 บันทึกของทีม</h3>${P.scribe ? micBtn("notes") : ""}</div>
@@ -1015,10 +1102,32 @@ function viewSide() {
           : ""}
         ${S.flags.length ? S.flags.slice(-5).reverse().map(flagHtml).join("") : `<p class="muted small">ยังไม่มี</p>`}</div>`
     : "";
-  const chat = `<div class="panel stack"><h3 style="margin:0">💬 แชท</h3>
-    <div class="chat">${S.chat.map((m) => { const p = player(m.by); return `<div><span class="role-dot" data-role="${p.role}"></span> <b>${esc(p.name)}</b>: ${esc(m.text)}</div>`; }).join("") || '<span class="muted small">ยังไม่มีข้อความ</span>'}</div>
-    <div class="row"><input type="text" id="chat" maxlength="300" style="flex:1" placeholder="พิมพ์ข้อความ" value="${esc(draft("chat"))}" />${micBtn("chat")}<button class="btn sm" data-act="chat">ส่ง</button></div></div>`;
-  return players + notes + flags + chat;
+  return players + notes + flags;
+}
+
+// ---------- Floating chat widget: separate from the main layout, collapsible and draggable ----------
+function chatMessages() {
+  return (
+    S.chat.map((m) => { const p = player(m.by); return `<div><span class="role-dot" data-role="${p.role}"></span> <b>${esc(p.name)}</b>: ${esc(m.text)}</div>`; }).join("") ||
+    '<span class="muted small">ยังไม่มีข้อความ</span>'
+  );
+}
+
+function viewChatWidget() {
+  const posStyle = ui.chatPos ? `left:${ui.chatPos.x}px;top:${ui.chatPos.y}px;right:auto;bottom:auto` : "";
+  if (!ui.chatOpen) {
+    return `<button type="button" class="chat-fab" data-act="chatToggle" style="${posStyle}" aria-label="เปิดแชท">
+      💬${ui.chatUnread ? `<span class="chat-badge">${ui.chatUnread > 9 ? "9+" : ui.chatUnread}</span>` : ""}
+    </button>`;
+  }
+  return `<div class="chat-widget" style="${posStyle}">
+    <div class="chat-widget-header" data-act="chatDragHandle">
+      <span>💬 แชท</span>
+      <button type="button" class="chat-widget-close" data-act="chatToggle" aria-label="ย่อแชท">–</button>
+    </div>
+    <div class="chat">${chatMessages()}</div>
+    <div class="row"><input type="text" id="chat" maxlength="300" style="flex:1" placeholder="พิมพ์ข้อความ" value="${esc(draft("chat"))}" />${micBtn("chat")}<button class="btn sm" data-act="chat">ส่ง</button></div>
+  </div>`;
 }
 
 // ---------- Timer ----------
@@ -1113,6 +1222,41 @@ function clearDraft(...ids) {
   ids.forEach((id) => delete ui.drafts[id]);
 }
 
+// ---------- Dragging the floating chat widget (header when open, the button itself when collapsed) ----------
+const chatDrag = { active: null, justDragged: false };
+app.addEventListener("pointerdown", (e) => {
+  const handle = e.target.closest(".chat-widget-header, .chat-fab");
+  if (!handle || e.target.closest(".chat-widget-close")) return;
+  const widget = handle.closest(".chat-widget") || handle;
+  const rect = widget.getBoundingClientRect();
+  chatDrag.active = { widget, startX: e.clientX, startY: e.clientY, origX: rect.left, origY: rect.top, moved: false };
+});
+document.addEventListener("pointermove", (e) => {
+  const d = chatDrag.active;
+  if (!d) return;
+  const dx = e.clientX - d.startX;
+  const dy = e.clientY - d.startY;
+  if (!d.moved && Math.hypot(dx, dy) < 4) return;
+  d.moved = true;
+  const w = d.widget.offsetWidth;
+  const h = d.widget.offsetHeight;
+  const x = Math.max(4, Math.min(window.innerWidth - w - 4, d.origX + dx));
+  const y = Math.max(4, Math.min(window.innerHeight - h - 4, d.origY + dy));
+  Object.assign(d.widget.style, { left: x + "px", top: y + "px", right: "auto", bottom: "auto" });
+  d.finalX = x;
+  d.finalY = y;
+});
+document.addEventListener("pointerup", () => {
+  const d = chatDrag.active;
+  if (!d) return;
+  chatDrag.active = null;
+  if (!d.moved) return;
+  chatDrag.justDragged = true;
+  setTimeout(() => (chatDrag.justDragged = false), 250);
+  ui.chatPos = { x: d.finalX, y: d.finalY };
+  try { localStorage.setItem("crg-chat-pos", JSON.stringify(ui.chatPos)); } catch {}
+});
+
 app.addEventListener("click", async (e) => {
   const el = e.target.closest("[data-act]");
   if (!el || el.disabled) return;
@@ -1123,6 +1267,12 @@ app.addEventListener("click", async (e) => {
   switch (act) {
     case "soundToggle":
       sfx.toggle();
+      return render();
+    case "chatToggle":
+      if (chatDrag.justDragged) return; // don't toggle right after a drag release
+      ui.chatOpen = !ui.chatOpen;
+      if (ui.chatOpen) ui.chatUnread = 0;
+      try { localStorage.setItem("crg-chat-open", ui.chatOpen ? "open" : "closed"); } catch {}
       return render();
     case "create":
     case "join": {
@@ -1185,17 +1335,22 @@ app.addEventListener("click", async (e) => {
       return render();
     case "carouselNav": {
       const n = S.catalog.cards.filter((c) => !ui.groupFilter || c.group === ui.groupFilter).length;
+      ui.carouselDir = Number(v) >= 0 ? 1 : -1;
       ui.carouselIndex = n ? (((ui.carouselIndex + Number(v)) % n) + n) % n : 0;
       return render();
     }
-    case "carouselJump":
-      ui.carouselIndex = Number(v);
+    case "carouselJump": {
+      const target = Number(v);
+      ui.carouselDir = target >= ui.carouselIndex ? 1 : -1;
+      ui.carouselIndex = target;
       return render();
+    }
     case "carouselRandom": {
       const list = S.catalog.cards.filter((c) => !ui.groupFilter || c.group === ui.groupFilter);
       if (!list.length) return;
       let next = ui.carouselIndex;
       if (list.length > 1) while (next === ui.carouselIndex) next = Math.floor(Math.random() * list.length);
+      ui.carouselDir = next >= ui.carouselIndex ? 1 : -1;
       ui.carouselIndex = next;
       sfx.reveal();
       return render();
@@ -1278,6 +1433,21 @@ app.addEventListener("click", async (e) => {
     case "restart":
       if (confirm("เริ่มเคสใหม่กับทีมเดิม? ข้อมูลเคสนี้จะถูกล้าง (ดาวน์โหลดรายงานก่อนถ้าต้องการ)")) send("restart");
       return;
+    case "fbStar":
+      ui.feedbackDraft[el.dataset.id] = Number(v);
+      return render();
+    case "fbSkip":
+      ui.feedbackDismissed = true;
+      return render();
+    case "fbSubmit": {
+      const comment = (document.getElementById("fb-comment") || {}).value || "";
+      if (await send("submitFeedback", { ...ui.feedbackDraft, comment })) {
+        clearDraft("fb-comment");
+        toast("ขอบคุณสำหรับความคิดเห็น!");
+        render();
+      }
+      return;
+    }
   }
 });
 

@@ -53,7 +53,9 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px);
+  background-size: 16px 16px;
   color: var(--ink);
   font: 15px/1.6 "IBM Plex Sans Thai", system-ui, sans-serif;
 }
@@ -69,10 +71,12 @@ p { margin: 0 0 0.6em; }
 
 .wrap { max-width: 1280px; margin: 0 auto; padding: 16px; }
 .panel {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
   padding: 16px;
 }
 .panel + .panel { margin-top: 12px; }
@@ -81,27 +85,37 @@ p { margin: 0 0 0.6em; }
 .stack > * + * { margin-top: 10px; }
 
 .btn {
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  border-radius: 10px;
+  border: 2px solid var(--ink);
+  background: color-mix(in srgb, var(--surface-2) 88%, transparent);
+  border-radius: 6px;
   padding: 8px 14px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.22);
+  transition: transform 0.08s, box-shadow 0.08s;
 }
 .btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(0, 0, 0, 0.22); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
 .btn.ghost { background: transparent; }
 .btn.sm { padding: 4px 10px; font-size: 0.85rem; }
 .btn.danger { color: var(--danger); }
 
 input[type="text"], textarea, select {
   width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 8px 12px;
+  background-color: color-mix(in srgb, var(--surface) 90%, transparent);
+  background-image: url(game-assets/icons/card-blank.png);
+  background-repeat: no-repeat;
+  background-position: right 6px top 6px;
+  background-size: 18px auto;
+  border: 3px solid #6fa8c9; /* the card sprite's own blue trim, so the border reads as part of it */
+  border-radius: 0;
+  box-shadow: inset 0 0 0 2px #000, 2px 2px 0 rgba(0, 0, 0, 0.2);
+  padding: 8px 30px 8px 10px;
+  image-rendering: pixelated;
 }
+textarea { background-position: right 8px top 8px; }
 textarea { resize: vertical; min-height: 70px; }
 input:focus, textarea:focus, select:focus, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 label.field { display: block; font-weight: 500; }
@@ -189,12 +203,6 @@ label.field > span { display: block; margin-bottom: 4px; }
   background: var(--surface-2); color: var(--ink-2); font-size: 2rem;
 }
 .stem { background: var(--surface-2); border-left: 3px solid var(--accent); border-radius: 8px; padding: 10px 12px; }
-
-.guide {
-  border: 1px dashed var(--c, var(--accent)); border-radius: 10px; padding: 10px 12px;
-  background: color-mix(in srgb, var(--c, var(--accent)) 8%, transparent);
-}
-.guide b { color: var(--c, var(--accent)); }
 
 /* Lobby */
 .roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
@@ -314,15 +322,17 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   max-width: 90px; overflow: hidden; text-overflow: ellipsis;
 }
 .bubble {
+  /* Sized to the bubble-cloud sprite's own aspect ratio (242:166) so stretching
+     the image to fit never distorts it — the box grows in width with the text
+     and the height just follows along, tail included in the sprite itself. */
   position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
-  margin-bottom: 4px; max-width: 150px; min-width: 60px;
-  background: #fff; color: #1f2328; font-size: 0.68rem; line-height: 1.3;
-  border-radius: 10px; padding: 5px 8px; text-align: center; box-shadow: var(--shadow);
-  white-space: normal;
-}
-.bubble::after {
-  content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  border: 5px solid transparent; border-top-color: #fff;
+  margin-bottom: 10px; width: max-content; min-width: 100px; max-width: 175px;
+  aspect-ratio: 242 / 166;
+  background: url(game-assets/icons/bubble-cloud.png) center / 100% 100% no-repeat;
+  image-rendering: pixelated;
+  color: #1f2328; font-size: 0.62rem; line-height: 1.2; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 15% 20% 24%; white-space: normal;
 }
 @media (max-width: 760px) {
   .room-stage { aspect-ratio: 1376 / 900; }
@@ -355,8 +365,10 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 }
 .tagline { color: rgba(255, 255, 255, 0.88); font-size: 0.9rem; margin: 10px 0 26px; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
 .join-card {
-  background: var(--surface); border-radius: 20px; padding: 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px; padding: 22px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3); border: 2px solid var(--ink);
 }
 .pin-input {
   width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 0.3em;
@@ -430,7 +442,17 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .brand-version { font-size: 0.68rem; opacity: 0.65; font-weight: 600; margin-left: 4px; }
 
 /* Case-select carousel */
-.carousel { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.carousel { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.carousel-track { display: flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; flex: 1; }
+.peek-card {
+  flex: 0 0 auto; width: 56px; border: 2px solid var(--line); border-radius: 10px; overflow: hidden;
+  padding: 0; cursor: pointer; opacity: 0.55; transform: scale(0.94); filter: grayscale(0.25);
+  transition: opacity 0.15s, transform 0.15s, filter 0.15s; background: var(--surface-2);
+  box-shadow: none;
+}
+.peek-card:hover { opacity: 0.85; transform: scale(0.98); filter: none; border-color: var(--accent); }
+.peek-card img, .peek-card .noimg { width: 100%; aspect-ratio: 687 / 1024; object-fit: cover; display: block; }
+@media (max-width: 480px) { .peek-card { width: 38px; } }
 .carousel-nav {
   flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--line);
   background: var(--surface-2); font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--ink);
@@ -438,13 +460,30 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .carousel-nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
 .carousel-nav:disabled { opacity: 0.3; cursor: not-allowed; }
 .carousel-card {
-  flex: 0 1 280px; text-align: center; border: 3px solid var(--line); border-radius: 16px;
+  position: relative; flex: 0 1 280px; text-align: center; border: 3px solid var(--line); border-radius: 16px;
   overflow: hidden; background: var(--surface-2); transition: border-color 0.2s, box-shadow 0.2s;
 }
 .carousel-card.picked { border-color: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
 .carousel-card img { width: 100%; aspect-ratio: 687 / 1024; object-fit: cover; display: block; }
 .carousel-card .noimg { aspect-ratio: 687 / 1024; display: grid; place-items: center; font-size: 3rem; background: var(--surface-2); }
-.carousel-info { padding: 10px 14px 14px; }
+/* The featured card flows in from the direction you navigated; the peeks fade in
+   alongside it so the whole row feels like one continuous motion. */
+.carousel-card.dir-next { animation: card-flow-next 0.32s cubic-bezier(0.22, 0.8, 0.32, 1) both; }
+.carousel-card.dir-prev { animation: card-flow-prev 0.32s cubic-bezier(0.22, 0.8, 0.32, 1) both; }
+@keyframes card-flow-next { from { transform: translateX(55px) scale(0.9); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes card-flow-prev { from { transform: translateX(-55px) scale(0.9); opacity: 0; } to { transform: none; opacity: 1; } }
+.peek-card { animation: peek-flow-in 0.32s ease-out both; }
+@keyframes peek-flow-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 0.55; transform: scale(0.94); } }
+@media (prefers-reduced-motion: reduce) {
+  .carousel-card.dir-next, .carousel-card.dir-prev, .peek-card { animation: none; }
+}
+.carousel-info {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 12px;
+  background: linear-gradient(to top, rgba(8, 10, 14, 0.92) 0%, rgba(8, 10, 14, 0.75) 55%, transparent 100%);
+  color: #fff; pointer-events: none;
+}
+.carousel-info h3 { margin: 6px 0 0; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); }
+.carousel-info-sub { color: rgba(255, 255, 255, 0.75); font-size: 0.8rem; margin-top: 2px; }
 .carousel-dots { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 480px; margin: 4px auto 0; }
 .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line); background: transparent; padding: 0; cursor: pointer; }
 .dot.on { background: var(--accent); border-color: var(--accent); transform: scale(1.3); }
@@ -454,3 +493,72 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   .carousel-nav { width: 36px; height: 36px; font-size: 1.2rem; }
   .carousel-card { flex-basis: 200px; }
 }
+
+
+/* Floating caption over the room-stage image, near the floor, showing the
+   viewer's picked-role description in the lobby. */
+.room-caption {
+  position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%);
+  z-index: 3; max-width: 92%; width: max-content;
+  background: rgba(10, 12, 16, 0.72); backdrop-filter: blur(3px); color: #fff;
+  font-size: 0.78rem; line-height: 1.35; text-align: center;
+  padding: 6px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+.room-caption b { color: var(--c, #fff); }
+@media (max-width: 480px) { .room-caption { font-size: 0.7rem; max-width: 94%; } }
+
+.role-avatar {
+  border-radius: 50%; object-fit: cover; object-position: top center;
+  vertical-align: middle; image-rendering: pixelated;
+  border: 1px solid var(--c, var(--line)); background: var(--surface-2); flex-shrink: 0;
+}
+
+/* Floating chat widget: detached from the main layout, collapsible and draggable */
+.chat-fab {
+  position: fixed; right: 20px; bottom: 20px; z-index: 40; width: 52px; height: 52px;
+  border-radius: 50%; border: 2px solid var(--line); background: var(--surface);
+  font-size: 1.4rem; line-height: 1; cursor: grab; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  display: grid; place-items: center; touch-action: none;
+}
+.chat-fab:active { cursor: grabbing; }
+.chat-badge {
+  position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 4px;
+  border-radius: 9px; background: var(--danger, #e5484d); color: #fff; font-size: 0.68rem;
+  font-weight: 700; display: grid; place-items: center; border: 1px solid var(--surface);
+}
+.chat-widget {
+  position: fixed; right: 20px; bottom: 20px; z-index: 40; width: 300px; max-width: calc(100vw - 32px);
+  display: flex; flex-direction: column; gap: 8px; padding: 10px;
+  border: 2px solid var(--line); border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+.chat-widget-header {
+  display: flex; align-items: center; justify-content: space-between; cursor: grab;
+  font-weight: 700; touch-action: none; user-select: none;
+}
+.chat-widget-header:active { cursor: grabbing; }
+.chat-widget-close {
+  border: 1px solid var(--line); background: var(--surface-2); border-radius: 6px;
+  width: 22px; height: 22px; line-height: 1; cursor: pointer; font-size: 1rem;
+}
+.chat-widget .chat { max-height: 220px; }
+@media (max-width: 480px) {
+  .chat-fab { right: 14px; bottom: 14px; }
+  .chat-widget { right: 14px; bottom: 14px; width: calc(100vw - 28px); }
+}
+
+/* End-of-game satisfaction pop-up */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 50; display: grid; place-items: center;
+  background: rgba(6, 8, 12, 0.72); backdrop-filter: blur(2px); padding: 16px;
+}
+.modal { width: 100%; max-width: 420px; max-height: 90vh; overflow: auto; }
+.fb-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.fb-label { font-weight: 600; }
+.fb-stars { display: flex; gap: 2px; }
+.star-btn { background: none; border: none; padding: 3px; cursor: pointer; line-height: 0; }
+.star-btn img { width: 26px; height: 26px; image-rendering: pixelated; }
+.star-btn:hover img { filter: brightness(1.3); }
+@media (max-width: 480px) { .star-btn img { width: 22px; height: 22px; } }
