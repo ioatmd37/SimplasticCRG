@@ -7,6 +7,8 @@ const ingest = require("./ingest");
 const { cards, groups } = require("../data/cards.json");
 
 const CARD_BY_ID = Object.fromEntries(cards.map((c) => [c.id, c]));
+// Running number across the whole deck (1–34), shown as "Card No." in the browser tab.
+const CARD_NO = Object.fromEntries(cards.map((c, i) => [c.id, i + 1]));
 
 const ROLES = {
   facilitator: { label: "Facilitator", required: true },
@@ -476,6 +478,7 @@ function viewFor(room, playerId) {
       });
     caseView = {
       id: c.id,
+      no: CARD_NO[c.id],
       title: c.title,
       groupName: c.groupName,
       level: c.level,
@@ -537,7 +540,7 @@ function viewFor(room, playerId) {
           facilitator: isFac,
         }
       : {},
-    catalog: room.phase === "case" ? { groups, cards: cards.map(({ id, group, card, title, level, image }) => ({ id, group, card, title, level, image })) } : null,
+    catalog: room.phase === "case" ? { groups, cards: cards.map(({ id, group, card, title, level, image }) => ({ id, no: CARD_NO[id], group, card, title, level, image })) } : null,
     caseId: room.phase === "case" ? room.caseId : c && c.id,
     caseView,
     questions: room.questions,

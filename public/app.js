@@ -5,6 +5,7 @@ const socket = io();
 const app = document.getElementById("app");
 const SESSION_KEY = "crg-session";
 const APP_VERSION = "0.2.0";
+const APP_TITLE = "💡 SimPlastic - The Clinical Reasoning Game";
 const CREDIT = "Developed by Phachara Longmeewong, MD, FRCST (ThPRS)";
 const DEVELOPER = { name: "Phachara Longmeewong, MD", email: "L_phachara@kkumail.com" };
 const NO_PII_NOTE = `<p class="small pii-note">⚠ ห้ามใส่ชื่อ หรือข้อมูลที่ระบุตัวบุคคล/ผู้ป่วยจริง</p>`;
@@ -413,6 +414,8 @@ function render() {
     ui.feedbackDraft = { caseRating: 0, playersRating: 0, systemRating: 0 };
   }
   app.innerHTML = !S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame();
+  const cardNo = S && (S.caseView?.no ?? S.catalog?.cards.find((c) => c.id === S.caseId)?.no);
+  document.title = cardNo ? `${APP_TITLE} : Card No. ${String(cardNo).padStart(2, "0")}` : APP_TITLE;
 
   if (keep) {
     const el = document.getElementById(keep.id);
