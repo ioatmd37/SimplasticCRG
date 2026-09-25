@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: simplastic-crg
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      # Anonymous research data store (Cloudflare Worker + D1, see cloudflare/).
+      - key: INGEST_URL
+        value: https://simplastic-crg-data.ioatmd37.workers.dev/ingest
+      # Paste the value from cloudflare/.secrets/INGEST_KEY in the Render dashboard.
+      - key: INGEST_KEY
+        sync: false

@@ -92,10 +92,10 @@ p { margin: 0 0 0.6em; }
   cursor: pointer;
   font-weight: 600;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.22);
-  transition: transform 0.08s, box-shadow 0.08s;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.15s ease-out;
 }
-.btn:hover:not(:disabled) { border-color: var(--accent); }
-.btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(0, 0, 0, 0.22); }
+.btn:hover:not(:disabled):not(:active) { border-color: var(--accent); transform: translateY(-1px); box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.22); }
+.btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 0 0 0 rgba(0, 0, 0, 0.22); transition-duration: 0.05s; }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn.primary { background: var(--accent); border-color: var(--ink); color: var(--accent-ink); }
 .btn.ghost { background: transparent; }
@@ -204,23 +204,43 @@ label.field > span { display: block; margin-bottom: 4px; }
 }
 .stem { background: var(--surface-2); border-left: 3px solid var(--accent); border-radius: 8px; padding: 10px 12px; }
 
-/* Lobby */
-.roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
-.role-card {
-  text-align: left; border: 2px solid var(--line); border-radius: var(--radius); padding: 12px;
-  background: var(--surface); cursor: pointer; display: flex; flex-direction: column; gap: 4px;
+/* Lobby — big portrait tiles, like a Street Fighter character-select screen */
+.roles { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.role-card.sf { flex: 1 1 0; min-width: 84px; }
+.role-card.sf {
+  position: relative; aspect-ratio: 3 / 4; border: 3px solid var(--line); border-radius: 10px;
+  overflow: hidden; background: var(--surface-2); cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.22, 0.8, 0.32, 1), border-color 0.15s ease-out, box-shadow 0.15s ease-out;
 }
-.role-card:hover:not(.locked) { border-color: var(--c); }
-.role-card.mine { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--surface)); }
-.role-card.locked { cursor: not-allowed; opacity: 0.75; }
-.role-card .title { font-weight: 600; color: var(--c); }
-.role-card .taken { font-size: 0.8rem; }
-.role-card .ready-btn { align-self: flex-start; margin-top: 2px; }
+.role-card.sf:hover:not(.locked) {
+  transform: scale(1.06) translateY(-3px); border-color: var(--c); z-index: 2;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 55%, transparent), 4px 6px 14px rgba(0, 0, 0, 0.45);
+}
+.role-card.sf.mine {
+  border-color: var(--c);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 70%, transparent), 0 0 18px color-mix(in srgb, var(--c) 45%, transparent);
+}
+.role-card.sf.locked { cursor: not-allowed; }
+.role-card.sf.locked .role-portrait img { filter: grayscale(1) brightness(0.55); }
+.role-portrait { position: absolute; inset: 0; }
+.role-portrait img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  image-rendering: pixelated; transition: filter 0.15s ease-out;
+}
+.role-nameplate {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 6px 8px 7px;
+  background: linear-gradient(to top, rgba(6, 8, 12, 0.95) 0%, rgba(6, 8, 12, 0.8) 60%, transparent 100%);
+  color: #fff; display: flex; flex-direction: column; gap: 1px; text-align: center;
+}
+.role-nameplate .title { font-weight: 700; font-size: 0.82rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+.role-nameplate .taken { font-size: 0.68rem; color: rgba(255, 255, 255, 0.8); }
+.role-ready-badge {
+  position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--ok); color: #06110c; font-weight: 800; font-size: 0.85rem;
+  display: grid; place-items: center; box-shadow: 0 0 0 2px rgba(6, 8, 12, 0.6);
+}
 .ready-badge { cursor: pointer; border: none; }
-@media (prefers-reduced-motion: no-preference) {
-  .role-card.expanded { animation: role-card-expand 0.18s ease-out; }
-}
-@keyframes role-card-expand { from { transform: scaleY(0.94); opacity: 0.7; } to { transform: scaleY(1); opacity: 1; } }
+@media (max-width: 480px) { .role-card.sf { min-width: 76px; } }
 .players li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
 .players li:last-child { border-bottom: 0; }
 .players ul { list-style: none; padding: 0; margin: 0; }
@@ -278,6 +298,8 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 }
 #toast.show { opacity: 1; }
 .disclaimer { font-size: 0.78rem; color: var(--ink-2); margin-top: 16px; }
+.credit { font-size: 0.72rem; color: var(--ink-2); text-align: center; margin: 6px 0 0; letter-spacing: 0.02em; }
+.home-screen .credit { color: rgba(255, 255, 255, 0.55); }
 
 /* Speech to text */
 .btn.mic { flex: 0 0 auto; line-height: 1.2; }
@@ -328,12 +350,29 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
   margin-bottom: 10px; width: max-content; min-width: 100px; max-width: 175px;
   aspect-ratio: 242 / 166;
-  background: url(game-assets/icons/bubble-cloud.png) center / 100% 100% no-repeat;
-  image-rendering: pixelated;
+  isolation: isolate;
   color: #1f2328; font-size: 0.62rem; line-height: 1.2; font-weight: 700;
   display: flex; align-items: center; justify-content: center; text-align: center;
   padding: 15% 20% 24%; white-space: normal;
 }
+.bubble::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: url(game-assets/icons/bubble-cloud.png) center / 100% 100% no-repeat;
+  image-rendering: pixelated;
+}
+/* Characters facing left (doctor, scribe, bias monitor) get the bubble mirrored, so its
+   tail points back toward them; only the sprite is flipped, never the text. */
+.room-sprite[data-facing="left"] .bubble::before { transform: scaleX(-1); }
+/* The sprite's tail sits ~25% in from the bubble's near edge, so slide the bubble until the
+   tail is over the speaker's head. Scribe's is centred instead, so it fits in the gap between the
+   doctor's and the bias monitor's bubbles. */
+.room-sprite[data-facing="right"] .bubble { transform: translateX(-25%); }
+.room-sprite[data-facing="left"] .bubble { transform: translateX(-75%); }
+.room-sprite[data-role="bias"] .bubble { transform: translateX(-58%); }
+.room-sprite[data-role="scribe"] { z-index: 3; }
+.room-sprite[data-role="scribe"] .bubble { transform: translateX(-52%); margin-bottom: 14px; }
+/* The bias monitor's sprite canvas has extra headroom, so it draws ~12% smaller than the rest. */
+.room-sprite[data-role="bias"] .sprite-frame img { scale: 1.13; transform-origin: 50% 100%; }
 @media (max-width: 760px) {
   .room-stage { aspect-ratio: 1376 / 900; }
   .sprite-name { display: none; }
@@ -345,12 +384,14 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 /* Home / opening screen (Kahoot-style: big background, big PIN entry) */
 .home-screen {
   min-height: 100dvh; width: 100%;
-  background-size: cover; background-position: center; background-color: #0b0f14;
+  /* Pinned to the viewport: with a scrolling background, the image is re-fitted every time
+     the page height changes (picking a role, a caption wrapping), which made it jump. */
+  background-size: cover; background-position: center; background-attachment: fixed; background-color: #0b0f14;
   display: flex; align-items: center; justify-content: center;
   padding: 32px 16px; position: relative;
 }
 .home-screen::before {
-  content: ""; position: absolute; inset: 0;
+  content: ""; position: fixed; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(8, 12, 18, 0.55) 0%, rgba(8, 12, 18, 0.82) 65%, rgba(8, 12, 18, 0.94) 100%);
 }
 .home-content { position: relative; z-index: 1; width: 100%; max-width: 440px; text-align: center; }
@@ -456,8 +497,10 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .carousel-nav {
   flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--line);
   background: var(--surface-2); font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--ink);
+  transition: border-color 0.15s ease-out, color 0.15s ease-out, transform 0.12s ease-out;
 }
-.carousel-nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.carousel-nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); transform: scale(1.06); }
+.carousel-nav:active:not(:disabled) { transform: scale(0.94); transition-duration: 0.05s; }
 .carousel-nav:disabled { opacity: 0.3; cursor: not-allowed; }
 .carousel-card {
   position: relative; flex: 0 1 280px; text-align: center; border: 3px solid var(--line); border-radius: 16px;
@@ -485,7 +528,11 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .carousel-info h3 { margin: 6px 0 0; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); }
 .carousel-info-sub { color: rgba(255, 255, 255, 0.75); font-size: 0.8rem; margin-top: 2px; }
 .carousel-dots { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 480px; margin: 4px auto 0; }
-.dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line); background: transparent; padding: 0; cursor: pointer; }
+.dot {
+  width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line); background: transparent; padding: 0; cursor: pointer;
+  transition: transform 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out;
+}
+.dot:hover { transform: scale(1.15); }
 .dot.on { background: var(--accent); border-color: var(--accent); transform: scale(1.3); }
 .dot.picked { border-color: var(--ok); }
 .dot.picked.on { background: var(--ok); border-color: var(--ok); }
@@ -520,7 +567,10 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   border-radius: 50%; border: 2px solid var(--line); background: var(--surface);
   font-size: 1.4rem; line-height: 1; cursor: grab; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
   display: grid; place-items: center; touch-action: none;
+  animation: widget-pop-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
 }
+.chat-fab:hover { transform: translateY(-2px) scale(1.05); box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.35); }
 .chat-fab:active { cursor: grabbing; }
 .chat-badge {
   position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 4px;
@@ -533,6 +583,7 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   border: 2px solid var(--line); border-radius: 12px;
   background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px);
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  animation: widget-pop-in 0.2s ease-out both;
 }
 .chat-widget-header {
   display: flex; align-items: center; justify-content: space-between; cursor: grab;
@@ -542,23 +593,82 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .chat-widget-close {
   border: 1px solid var(--line); background: var(--surface-2); border-radius: 6px;
   width: 22px; height: 22px; line-height: 1; cursor: pointer; font-size: 1rem;
+  transition: border-color 0.15s ease-out, transform 0.12s ease-out;
 }
-.chat-widget .chat { max-height: 220px; }
+.chat-widget-close:hover { border-color: var(--accent); transform: scale(1.08); }
+.chat-widget .chat { max-height: 220px; scroll-behavior: smooth; }
+@keyframes widget-pop-in { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
 @media (max-width: 480px) {
   .chat-fab { right: 14px; bottom: 14px; }
   .chat-widget { right: 14px; bottom: 14px; width: calc(100vw - 28px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-fab, .chat-widget { animation: none; }
 }
 
 /* End-of-game satisfaction pop-up */
 .modal-backdrop {
   position: fixed; inset: 0; z-index: 50; display: grid; place-items: center;
   background: rgba(6, 8, 12, 0.72); backdrop-filter: blur(2px); padding: 16px;
+  animation: modal-fade-in 0.18s ease-out both;
 }
-.modal { width: 100%; max-width: 420px; max-height: 90vh; overflow: auto; }
+.modal { width: 100%; max-width: 420px; max-height: 90vh; overflow: auto; animation: modal-scale-in 0.22s cubic-bezier(0.22, 0.8, 0.32, 1) both; }
+@keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-scale-in { from { opacity: 0; transform: scale(0.92) translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop, .modal { animation: none; }
+}
 .fb-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .fb-label { font-weight: 600; }
 .fb-stars { display: flex; gap: 2px; }
 .star-btn { background: none; border: none; padding: 3px; cursor: pointer; line-height: 0; }
-.star-btn img { width: 26px; height: 26px; image-rendering: pixelated; }
-.star-btn:hover img { filter: brightness(1.3); }
+.star-btn img { width: 26px; height: 26px; image-rendering: pixelated; transition: transform 0.1s ease-out, filter 0.1s ease-out; }
+.star-btn:hover img { filter: brightness(1.3); transform: scale(1.15); }
+.star-btn:active img { transform: scale(0.95); }
 @media (max-width: 480px) { .star-btn img { width: 22px; height: 22px; } }
+
+/* Research-data consent + "no identifying info" note */
+.consent-modal { max-width: 520px; }
+.consent-modal ul { padding-left: 1.2em; margin: 0; }
+.consent-modal li + li { margin-top: 4px; }
+.pii-note { color: var(--warn); margin: 0; }
+.linkish { background: none; border: 0; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; font: inherit; }
+
+/* Certificate: rendered off-screen at A4 landscape (1123x794 CSS px), rasterised to PDF */
+.cert-host { position: fixed; left: -12000px; top: 0; pointer-events: none; }
+.cert {
+  width: 1123px; height: 794px; box-sizing: border-box; padding: 34px;
+  background: #fbf8f1; color: #1d2733; font-family: "IBM Plex Sans Thai", system-ui, sans-serif;
+}
+.cert-frame {
+  position: relative; height: 100%; box-sizing: border-box; padding: 34px 70px 26px;
+  border: 3px solid #1f5c57; outline: 1px solid #c9a24a; outline-offset: -12px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background:
+    radial-gradient(circle at 0 0, #c9a24a33 0 60px, transparent 61px),
+    radial-gradient(circle at 100% 0, #c9a24a33 0 60px, transparent 61px),
+    radial-gradient(circle at 0 100%, #c9a24a33 0 60px, transparent 61px),
+    radial-gradient(circle at 100% 100%, #c9a24a33 0 60px, transparent 61px);
+}
+.cert-logo { height: 92px; image-rendering: pixelated; }
+.cert-kicker { font-family: "Cinzel", serif; font-weight: 700; font-size: 34px; letter-spacing: 0.14em; text-transform: uppercase; color: #1f5c57; margin-top: 10px; }
+.cert-line { font-size: 17px; color: #4a5563; margin-top: 12px; }
+.cert-line.small { font-size: 15px; margin-top: 6px; }
+.cert-name {
+  font-family: "Great Vibes", "IBM Plex Sans Thai", cursive; font-size: 68px; line-height: 1.15; color: #1d2733;
+  margin-top: 6px; padding: 0 40px 4px; border-bottom: 2px solid #c9a24a; min-width: 520px;
+}
+.cert-case { font-size: 23px; font-weight: 700; color: #1f5c57; margin-top: 8px; max-width: 900px; }
+.cert-signs { margin-top: auto; width: 100%; display: flex; align-items: flex-end; justify-content: space-between; }
+.cert-sign { width: 300px; }
+.cert-script { font-family: "Great Vibes", "IBM Plex Sans Thai", cursive; font-size: 36px; line-height: 1.1; color: #22324a; }
+.cert-sign-rule { border-top: 1.5px solid #1d2733; margin: 4px 16px 6px; }
+.cert-sign-name { font-size: 14px; font-weight: 600; }
+.cert-sign-title { font-size: 13px; color: #4a5563; letter-spacing: 0.08em; text-transform: uppercase; }
+.cert-seal {
+  width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center;
+  font-family: "Cinzel", serif; font-weight: 700; font-size: 18px; line-height: 1.1; color: #fbf8f1;
+  background: radial-gradient(circle, #d8b45a 0 58%, #b8913a 59% 63%, #d8b45a 64%);
+  box-shadow: 0 0 0 4px #fbf8f1, 0 0 0 6px #c9a24a;
+}
+.cert-foot { font-size: 11.5px; color: #7a8594; margin-top: 16px; letter-spacing: 0.04em; }

@@ -5,6 +5,10 @@ const socket = io();
 const app = document.getElementById("app");
 const SESSION_KEY = "crg-session";
 const APP_VERSION = "0.2.0";
+const CREDIT = "Developed by Phachara Longmeewong, MD, FRCST (ThPRS)";
+const DEVELOPER = { name: "Phachara Longmeewong, MD", email: "L_phachara@kkumail.com" };
+const NO_PII_NOTE = `<p class="small pii-note">⚠ ห้ามใส่ชื่อ หรือข้อมูลที่ระบุตัวบุคคล/ผู้ป่วยจริง</p>`;
+const creditLine = () => `<p class="credit">${CREDIT}</p>`;
 const brandWordmark = () => `<span class="brand-text" style="font-size:.85rem">SimPlastic <span class="muted" style="font-weight:600">- The Clinical Reasoning Game</span> <span class="brand-version">v${APP_VERSION}</span></span>`;
 
 let S = null; // latest server view
@@ -184,7 +188,7 @@ const ROOM_POS = {
   facilitator: { x: 21, y: 80, facing: "right" },
   patient: { x: 49, y: 76, facing: "right" },
   doctor: { x: 65, y: 84, facing: "left" },
-  scribe: { x: 84, y: 80, facing: "left" },
+  scribe: { x: 77, y: 86, facing: "left" },
   bias: { x: 93, y: 92, facing: "left" },
 };
 function patientSpriteKey(cv) {
@@ -215,6 +219,16 @@ const ROLE_DESC = {
   scribe: "จดบันทึกให้ทีม เขียน Problem list + Problem representation one-liner",
   bias: "จับ anchoring / premature closure ระหว่างเล่น และนำ diagnostic time-out (ถ้ามี 4 คน Scribe ทำหน้าที่นี้แทน)",
   observer: "ดูเกมได้ทุกอย่างเท่ากับทีม (ไม่เห็นข้อมูลลับของผู้ป่วย/facilitator) แต่กดหรือแก้ไขอะไรไม่ได้ เหมาะกับผู้เยี่ยมชม",
+};
+
+// What "Ready" means for each role, shown on the ready toggle and its confirmation.
+const ROLE_READY_LABEL = {
+  facilitator: "พร้อมจะสอนแล้ว",
+  patient: "พร้อมจะให้ถามแล้ว",
+  doctor: "พร้อมจะสืบค้นโรคแล้ว",
+  scribe: "พร้อมจะบันทึกแล้ว",
+  bias: "พร้อมจะจับผิดแล้ว",
+  observer: "พร้อมจะสังเกตแล้ว",
 };
 
 // ---------- helpers ----------
@@ -447,6 +461,7 @@ function viewHome() {
         </ol>
       </details>
       <p class="disclaimer">เอกสารนี้เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง รายละเอียดเชิง protocol ต้องตรวจทานกับ local guideline ก่อนใช้สอนจริง</p>
+      ${creditLine()}
     </div>
   </div>`;
 }
@@ -462,20 +477,21 @@ function viewLobby() {
       const mine = holder && holder.id === me.id;
       // Always minimal: icon + title only. The description lives in the info box above.
       const pickable = !holder || mine;
-      return `<div class="role-card ${mine ? "mine" : ""} ${pickable ? "" : "locked"}" data-role="${r}"
+      const portrait = `game-assets/sprites/${r === "patient" ? "patient-mystery" : r}-portrait.png`;
+      const status = holder
+        ? mine
+          ? me.ready
+            ? `✓ ${esc(ROLE_READY_LABEL[r])}`
+            : "✓ คุณ"
+          : "เลือกแล้วโดย " + esc(holder.name)
+        : def.required
+          ? `<span class="tag must">จำเป็น</span>`
+          : `<span class="tag">ไม่บังคับ</span>`;
+      return `<div class="role-card sf ${mine ? "mine" : ""} ${pickable ? "" : "locked"}" data-role="${r}"
         ${pickable && !(mine && me.ready) ? `data-act="pickRole" data-v="${r}"` : ""} title="${esc(ROLE_DESC[r])}">
-        <span class="title">${roleAvatar(r, 22)} ${esc(def.label)}</span>
-        <span class="taken">${
-          holder
-            ? mine
-              ? me.ready
-                ? "✓ พร้อมแล้ว"
-                : "✓ คุณ"
-              : "ถูกเลือกโดย " + esc(holder.name)
-            : def.required
-              ? `<span class="tag must">จำเป็น</span>`
-              : `<span class="tag">ไม่บังคับ</span>`
-        }</span>
+        <div class="role-portrait"><img src="${portrait}" alt="" onerror="this.style.visibility='hidden'" /></div>
+        ${mine && me.ready ? `<span class="role-ready-badge">✓</span>` : ""}
+        <div class="role-nameplate"><span class="title">${esc(def.label)}</span><span class="taken">${status}</span></div>
       </div>`;
     })
     .join("");
@@ -485,7 +501,7 @@ function viewLobby() {
     ? `<b data-role="${me.role}">${roleAvatar(me.role, 18)} ${esc(S.roles[me.role].label)}:</b> ${esc(ROLE_DESC[me.role])}`
     : "เลือกบทบาทด้านล่างเพื่อดูรายละเอียด";
   const readyBtn = me.role
-    ? `<button type="button" class="btn sm ${me.ready ? "ghost" : "primary"}" data-act="toggleReady">${me.ready ? "✓ พร้อมแล้ว (กดแก้ไข)" : "✓ พร้อม"}</button>`
+    ? `<button type="button" class="btn sm ${me.ready ? "ghost" : "primary"}" data-act="toggleReady">${me.ready ? `✓ ${esc(ROLE_READY_LABEL[me.role])} (กดแก้ไข)` : "✓ พร้อม"}</button>`
     : "";
   const slots = [];
   for (let i = 0; i < S.limits.max; i++) {
@@ -519,7 +535,8 @@ function viewLobby() {
             <div><div class="muted small">ขั้นที่ 1 · เลือกบทบาท</div><h2 style="margin:0">เลือกบทบาทของคุณ</h2></div>
             ${readyBtn}
           </div>
-          <p class="muted small">แต่ละบทบาทเลือกได้ 1 คน ต้องมีครบ 4 บทบาทหลัก · คนที่ 5 เป็น Bias monitor และคนที่ 6 เป็น Observer ได้ (ทั้งสองไม่บังคับ)</p>
+          <p class="muted small">เลือกได้บทบาทละ 1 คน · ต้องมีครบ 4 บทบาทหลัก (Bias monitor และ Observer ไม่บังคับ)</p>
+          ${me.consent === null ? "" : `<p class="small muted">การเก็บข้อมูล: <b>${me.consent ? "ยินยอม" : "ไม่ยินยอม"}</b> · <button type="button" class="linkish" data-act="consentReset">เปลี่ยน</button></p>`}
           <div class="roles">${roleCards}</div>
         </div>
         <div class="stack">
@@ -539,6 +556,29 @@ function viewLobby() {
               : `<p class="muted small">รอ host หรือ Facilitator กดเริ่มเกม</p>`}
           </div>
         </div>
+      </div>
+      ${creditLine()}
+    </div>
+  </div>
+  ${me.consent === null ? viewConsentModal() : ""}`;
+}
+
+// ---------- Research-data consent (asked once per player, in the lobby) ----------
+function viewConsentModal() {
+  return `<div class="modal-backdrop">
+    <div class="modal panel stack consent-modal" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+      <h2 id="consent-title" style="margin:0">การยินยอมให้เก็บข้อมูลเพื่อพัฒนาการเรียนการสอน</h2>
+      <p>เกมนี้ขอเก็บ<b>คะแนนความพึงพอใจ ข้อเสนอแนะ และ exit ticket</b> ของคุณ พร้อมเคสที่เล่น บทบาท และวันที่ เพื่อนำไปปรับปรุงเกมและการสอน clinical reasoning</p>
+      <ul class="small">
+        <li><b>ไม่เก็บชื่อ</b> รหัสห้อง หรือข้อมูลใดที่ระบุตัวคุณได้ กรุณาอย่าพิมพ์ชื่อตัวเองหรือข้อมูลผู้ป่วยจริงลงในช่องข้อความ</li>
+        <li>การยินยอม<b>เป็นไปโดยสมัครใจ</b> ถ้าไม่ยินยอม คุณยังเล่นได้ครบและได้ใบประกาศเหมือนเดิม และไม่มีผลต่อการประเมินใดๆ</li>
+        <li>เนื่องจากข้อมูลไม่ระบุตัวตน หลังส่งแล้วจะ<b>ขอถอนย้อนหลังไม่ได้</b></li>
+        <li>ข้อมูลเข้าถึงได้เฉพาะผู้พัฒนาเท่านั้น</li>
+        <li>ติดต่อสอบถาม: ${esc(DEVELOPER.name)} · <a href="mailto:${esc(DEVELOPER.email)}">${esc(DEVELOPER.email)}</a></li>
+      </ul>
+      <div class="row spread">
+        <button type="button" class="btn ghost" data-act="consent" data-v="no">ไม่ยินยอม</button>
+        <button type="button" class="btn primary" data-act="consent" data-v="yes">ยินยอม</button>
       </div>
     </div>
   </div>`;
@@ -629,9 +669,10 @@ function viewGame() {
       <aside class="stack">${viewSide()}</aside>
     </div>
     <p class="disclaimer">เพื่อการศึกษาจำลองเท่านั้น ไม่ใช่คำแนะนำสำหรับผู้ป่วยจริง · รายละเอียด protocol ให้ตรวจทานกับ local guideline</p>
+    ${creditLine()}
   </div>
   ${viewChatWidget()}
-  ${S.phase === "summary" && !S.feedbackSubmitted && !ui.feedbackDismissed ? viewFeedbackModal() : ""}`;
+  ${S.me.consent === null ? viewConsentModal() : S.phase === "summary" && !S.feedbackSubmitted && !ui.feedbackDismissed ? viewFeedbackModal() : ""}`;
 }
 
 // ---------- End-of-game satisfaction pop-up ----------
@@ -660,6 +701,7 @@ function viewFeedbackModal() {
       ${starRow("systemRating", "ระบบเกม")}
       <label class="field"><span>ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</span>
         <textarea id="fb-comment" rows="3" placeholder="เขียนความคิดเห็นของคุณ…">${esc(draft("fb-comment"))}</textarea></label>
+      ${NO_PII_NOTE}
       <div class="row spread">
         <button type="button" class="btn ghost" data-act="fbSkip">ข้าม</button>
         <button type="button" class="btn primary" data-act="fbSubmit" ${canSubmit ? "" : "disabled"}>ส่งคะแนน</button>
@@ -1002,6 +1044,8 @@ function viewExit() {
     `<label class="field"><span class="row spread">${label} ${micBtn(id)}</span><textarea id="${id}" rows="${id === "t-one" ? 3 : 2}" placeholder="${ph}">${esc(draft(id, v || ""))}</textarea></label>`;
   return `<div class="panel stack">
     <div class="row spread"><h2 style="margin:0">Exit ticket (รายบุคคล)</h2><span class="tag">${S.ticketCount}/${S.players.length} ส่งแล้ว</span></div>
+    ${NO_PII_NOTE}
+    <p class="small muted">ส่ง exit ticket เพื่อรับใบประกาศ (certificate) ตอนจบเกม</p>
     ${f("t-one", "1. One-liner สุดท้ายของคุณ (medical English)", "Final problem representation in medical English", mine && mine.oneLiner)}
     <div id="warn-t-one">${enWarn("t-one", draft("t-one", mine && mine.oneLiner))}</div>
     ${f("t-mnm", "2. Must-not-miss ที่สำคัญที่สุด 1 ข้อ", "", mine && mine.mnm)}
@@ -1028,7 +1072,10 @@ function viewSummary() {
   const table = (rows, a, b) => `<table class="grid"><tbody>${rows.map((r) => `<tr class="${r.revealed ? "chosen" : ""}"><td style="width:40%">${esc(r[a])}</td><td>${esc(r[b])}</td></tr>`).join("")}</tbody></table>`;
   return `<div class="panel stack">
     <div class="row spread"><h2 style="margin:0">สรุปผลเคส</h2>
-      <div class="row"><button class="btn" data-act="download">⬇ ดาวน์โหลดรายงาน (.md)</button>
+      <div class="row">${S.tickets[S.me.id]
+        ? `<button class="btn primary" data-act="certificate">🏅 ดาวน์โหลดใบประกาศ (PDF)</button>`
+        : `<span class="small muted" title="ใบประกาศออกให้ผู้ที่ส่ง exit ticket">ไม่ได้ส่ง exit ticket จึงไม่มีใบประกาศ</span>`}
+      <button class="btn" data-act="download">⬇ ดาวน์โหลดรายงาน (.md)</button>
       ${S.powers.control ? `<button class="btn primary" data-act="restart">เล่นเคสใหม่</button>` : ""}</div></div>
     <div class="stats">
       ${stat("ซักประวัติครอบคลุม", pct(st.historyCovered, st.historyTotal) + "%", `${st.historyCovered}/${st.historyTotal} ข้อ · ${st.questionsAsked} คำถาม`)}
@@ -1047,6 +1094,93 @@ function viewSummary() {
     <details><summary>Expected PL/PR</summary><ol class="small">${cv.expected.problemList.map((x) => `<li>${esc(x)}</li>`).join("")}</ol><div class="stem small">${esc(cv.expected.problemRepresentation)}</div></details>
     <details><summary>System 1 / 2 และ Must-not-miss</summary><p class="small"><b>Trap:</b> ${esc(cv.s1s2.trap)}<br><b>Trigger:</b> ${esc(cv.s1s2.trigger)}</p><ol class="small">${cv.s1s2.mustNotMiss.map((x) => `<li>${esc(x)}</li>`).join("")}</ol></details>
   </div>`;
+}
+
+// ---------- Certificate (PDF, built entirely in the browser: the name never leaves this device) ----------
+const loadScript = (src) =>
+  new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve();
+    const el = Object.assign(document.createElement("script"), { src, onload: resolve, onerror: () => reject(new Error("load " + src)) });
+    document.head.appendChild(el);
+  });
+
+async function loadCertificateAssets() {
+  if (!document.getElementById("cert-fonts")) {
+    const link = Object.assign(document.createElement("link"), {
+      id: "cert-fonts",
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&display=swap",
+    });
+    document.head.appendChild(link);
+    await new Promise((r) => { link.onload = r; link.onerror = r; });
+  }
+  await Promise.all([
+    loadScript("vendor/html2canvas.min.js"),
+    loadScript("vendor/jspdf.umd.min.js"),
+    document.fonts.load('700 40px "Cinzel"'),
+    document.fonts.load('60px "Great Vibes"'),
+    document.fonts.load('600 20px "IBM Plex Sans Thai"'),
+  ]);
+}
+
+function certificateHtml({ name, caseTitle, role, date, facilitator }) {
+  return `<div class="cert">
+    <div class="cert-frame">
+      <img class="cert-logo" src="game-assets/logo.webp" alt="" />
+      <div class="cert-kicker">Certificate of Participation</div>
+      <div class="cert-line">This is to certify that</div>
+      <div class="cert-name">${esc(name)}</div>
+      <div class="cert-line">has completed the clinical reasoning simulation</div>
+      <div class="cert-case">${esc(caseTitle)}</div>
+      <div class="cert-line small">as <b>${esc(role)}</b> · ${esc(date)}</div>
+      <div class="cert-signs">
+        <div class="cert-sign">
+          <div class="cert-script">${esc(facilitator || "—")}</div>
+          <div class="cert-sign-rule"></div>
+          <div class="cert-sign-name">${esc(facilitator || "")}</div>
+          <div class="cert-sign-title">Facilitator</div>
+        </div>
+        <div class="cert-seal">SP<br />CRG</div>
+        <div class="cert-sign">
+          <div class="cert-script">Phachara Longmeewong</div>
+          <div class="cert-sign-rule"></div>
+          <div class="cert-sign-name">${esc(DEVELOPER.name)}</div>
+          <div class="cert-sign-title">Developer</div>
+        </div>
+      </div>
+      <div class="cert-foot">SimPlastic — The Clinical Reasoning Game · Plastic Surgery · Educational simulation only</div>
+    </div>
+  </div>`;
+}
+
+async function downloadCertificate() {
+  toast("กำลังสร้างใบประกาศ…");
+  await loadCertificateAssets();
+  const facilitator = S.players.find((p) => p.role === "facilitator");
+  const data = {
+    name: S.me.name,
+    caseTitle: S.caseView.title,
+    role: S.roles[S.me.role]?.label || "",
+    date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
+    facilitator: facilitator && facilitator.name,
+  };
+  const host = document.createElement("div");
+  host.className = "cert-host";
+  host.innerHTML = certificateHtml(data);
+  document.body.appendChild(host);
+  try {
+    await Promise.all([...host.querySelectorAll("img")].map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
+    const canvas = await window.html2canvas(host.firstElementChild, { scale: 2, backgroundColor: "#fbf8f1", useCORS: true, logging: false });
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+    pdf.setProperties({ title: `SimPlastic certificate — ${data.caseTitle}`, author: DEVELOPER.name });
+    pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, 297, 210);
+    const safe = data.name.replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "") || "player";
+    pdf.save(`SimPlastic-certificate-${safe}.pdf`);
+    sfx.coin();
+  } finally {
+    host.remove();
+  }
 }
 
 function reportMarkdown() {
@@ -1436,6 +1570,21 @@ app.addEventListener("click", async (e) => {
     case "fbStar":
       ui.feedbackDraft[el.dataset.id] = Number(v);
       return render();
+    case "consent":
+      return send("setConsent", { agree: v === "yes" });
+    case "consentReset":
+      return send("setConsent", { agree: null });
+    case "certificate":
+      el.disabled = true;
+      try {
+        await downloadCertificate();
+      } catch (err) {
+        console.error(err);
+        toast("สร้างใบประกาศไม่สำเร็จ ลองใหม่อีกครั้ง");
+      } finally {
+        el.disabled = false;
+      }
+      return;
     case "fbSkip":
       ui.feedbackDismissed = true;
       return render();

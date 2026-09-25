@@ -56,13 +56,16 @@ def process(key):
     im = chroma_key(Image.open(src_path))
     w, h = im.size
     step = w // N_FRAMES
-    # Inset each slice slightly so a stray pixel (e.g. a sparkle effect) from the
-    # neighboring frame can't bleed across an imprecise column boundary.
-    inset = max(2, int(step * 0.025))
-    cells = [
-        im.crop((i * step + (inset if i > 0 else 0), 0, (i + 1) * step - (inset if i < N_FRAMES - 1 else 0), h))
-        for i in range(N_FRAMES)
-    ]
+    # Cut each boundary at the emptiest column near the even split, so a frame whose
+    # prop (a waving hand, a card) crosses the even line isn't sliced in half.
+    occ = [sum(1 for y in range(h) if im.getpixel((x, y))[3] > 0) for x in range(w)]
+    cuts = [0]
+    for k in range(1, N_FRAMES):
+        centre = step * k
+        lo, hi = max(1, centre - step // 5), min(w - 1, centre + step // 5)
+        cuts.append(min(range(lo, hi), key=lambda x: (occ[x], abs(x - centre))))
+    cuts.append(w)
+    cells = [im.crop((cuts[i], 0, cuts[i + 1], h)) for i in range(N_FRAMES)]
 
     # Tight bbox per cell (non-transparent pixels only), then a shared canvas
     # sized to the widest/tallest frame so all 4 share one footprint and baseline.

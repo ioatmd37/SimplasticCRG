@@ -3,6 +3,7 @@
 // each player receives a view filtered so hidden card content never leaks.
 
 const crypto = require("crypto");
+const ingest = require("./ingest");
 const { cards, groups } = require("../data/cards.json");
 
 const CARD_BY_ID = Object.fromEntries(cards.map((c) => [c.id, c]));
@@ -14,6 +15,16 @@ const ROLES = {
   scribe: { label: "Scribe", required: true },
   bias: { label: "Bias monitor", required: false },
   observer: { label: "Observer", required: false },
+};
+
+// What "Ready" means for each role, shown as a speech bubble in the lobby.
+const READY_LINE = {
+  facilitator: "✅ พร้อมจะสอนแล้ว!",
+  patient: "✅ พร้อมจะให้ถามแล้ว!",
+  doctor: "✅ พร้อมจะสืบค้นโรคแล้ว!",
+  scribe: "✅ พร้อมจะบันทึกแล้ว!",
+  bias: "✅ พร้อมจะจับผิดแล้ว!",
+  observer: "✅ พร้อมจะสังเกตแล้ว!",
 };
 
 // Suggested minutes per phase (45–60 min session in the card bank's "วิธีใช้").
@@ -92,6 +103,7 @@ function createRoom() {
     debrief: { shown: 0 },
     tickets: {}, // playerId -> { oneLiner, mnm, trigger }
     feedback: {}, // playerId -> { caseRating, playersRating, systemRating, comment, t }
+    responseIds: {}, // playerId -> random UUID for this game's anonymous research row
     chat: [],
     stage: {}, // role -> { t, text, pose }
     touchedAt: Date.now(),
@@ -137,7 +149,7 @@ function addPlayer(room, name) {
   const ps = Object.values(room.players);
   if (ps.length >= MAX_PLAYERS) fail(`ห้องเต็มแล้ว (${MAX_PLAYERS} คน)`);
   if (ps.some((p) => p.name === name)) fail("ชื่อนี้มีในห้องแล้ว");
-  const player = { id: crypto.randomUUID(), name, role: null, ready: false, connected: true, joinedAt: Date.now() };
+  const player = { id: crypto.randomUUID(), name, role: null, ready: false, consent: null, connected: true, joinedAt: Date.now() };
   room.players[player.id] = player;
   if (!room.hostId) room.hostId = player.id;
   return player;
@@ -173,7 +185,12 @@ const actions = {
     if (room.phase !== "lobby") fail("ใช้ได้เฉพาะในล็อบบี้");
     if (!p.role) fail("เลือกบทบาทก่อน");
     p.ready = !p.ready;
-    if (p.ready) stage(room, p.role, "✅ พร้อมแล้ว!", "act");
+    if (p.ready) stage(room, p.role, READY_LINE[p.role], "act");
+  },
+
+  setConsent(room, p, { agree }) {
+    // null re-opens the question; only affects what's sent from now on.
+    p.consent = agree === true ? true : agree === false ? false : null;
   },
 
   kick(room, p, { playerId }) {
@@ -338,6 +355,7 @@ const actions = {
     if (!t.oneLiner || !t.mnm || !t.trigger) fail("กรอกให้ครบทั้ง 3 ข้อ");
     requireEnglish(t.oneLiner, "One-liner (problem representation)");
     room.tickets[p.id] = t;
+    report(room, p, { ticket: { oneLiner: t.oneLiner, mnm: t.mnm, trigger: t.trigger } });
   },
 
   submitFeedback(room, p, { caseRating, playersRating, systemRating, comment }) {
@@ -354,6 +372,8 @@ const actions = {
       comment: String(comment || "").trim().slice(0, 500),
       t: Date.now(),
     };
+    const { t, ...fb } = room.feedback[p.id];
+    report(room, p, { feedback: fb });
   },
 
   chat(room, p, { text }) {
@@ -378,11 +398,20 @@ const actions = {
       debrief: { shown: 0 },
       tickets: {},
       feedback: {},
+      responseIds: {},
       stage: {},
     });
     setPhase(room, "case");
   },
 };
+
+// Anonymous research data, only for players who consented. The row id is random per
+// player per game, so nothing links it back to a name or room.
+function report(room, p, part) {
+  if (p.consent !== true || !room.caseId) return;
+  room.responseIds[p.id] ??= crypto.randomUUID();
+  ingest.send({ id: room.responseIds[p.id], caseId: room.caseId, role: p.role, ...part });
+}
 
 function act(room, playerId, type, payload = {}) {
   const p = room.players[playerId];
@@ -493,7 +522,10 @@ function viewFor(room, playerId) {
     roles: ROLES,
     biases: BIASES,
     limits: { min: MIN_PLAYERS, max: MAX_PLAYERS },
-    players: Object.values(room.players).sort((a, b) => a.joinedAt - b.joinedAt),
+    // Other players' consent choices stay private.
+    players: Object.values(room.players)
+      .sort((a, b) => a.joinedAt - b.joinedAt)
+      .map(({ consent, ...rest }) => rest),
     lobbyProblems: room.phase === "lobby" ? lobbyReady(room) : [],
     powers: me
       ? {

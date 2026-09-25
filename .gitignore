@@ -3,3 +3,6 @@ node_modules/
 .claude/
 *.log
 assets-incoming/
+cloudflare/.wrangler/
+cloudflare/.dev.vars
+cloudflare/.secrets/

@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "simplastic-crg-data",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-23",
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "simplastic-crg",
+      "database_id": "1a182261-f54f-4f5b-97ea-79f642807ea6",
+      "migrations_dir": "./migrations"
+    }
+  ]
+  // Secrets (set with `wrangler secret put`, never in this file):
+  //   INGEST_KEY      shared with the game server; the only thing allowed to write
+  //   ADMIN_PASSWORD  HTTP Basic password for /admin (any username)
+}

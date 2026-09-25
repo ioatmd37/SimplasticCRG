@@ -1,0 +1,15 @@
+{
+  "name": "simplastic-crg-data",
+  "version": "1.0.0",
+  "description": "Anonymous research data store (Cloudflare Worker + D1) for SimPlastic CRG",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate": "wrangler d1 migrations apply simplastic-crg --remote"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "wrangler": "^4.140.0"
+  },
+  "private": true
+}
