@@ -6,6 +6,19 @@ const app = document.getElementById("app");
 const SESSION_KEY = "crg-session";
 const APP_VERSION = "0.2.0";
 const APP_TITLE = "💡 SimPlastic - The Clinical Reasoning Game";
+// Browser tab: "game : disease group > current phase" (never the case title, which names the diagnosis).
+function tabTitle() {
+  if (!S || !S.me) return APP_TITLE;
+  const phase = S.phases.find((p) => p.id === S.phase)?.label || "";
+  const picked = S.catalog?.cards.find((c) => c.id === S.caseId);
+  const group = S.caseView?.groupName || (picked && S.catalog.groups.find((g) => g.no === picked.group)?.name);
+  return `${APP_TITLE} : ${group ? `${group} > ` : ""}${phase}`;
+}
+// Entrance animations are CSS, and every render rebuilds the DOM, so without this they would replay on
+// every state update. A key animates the first render it appears in, and again after it has gone away.
+const entered = new Set();
+const enter = (key) => (entered.has(key) ? "" : (entered.add(key), " enter"));
+const cardNoLabel = (no) => `Card No. ${String(no).padStart(2, "0")}`;
 const CREDIT = "Developed by Phachara Longmeewong, MD, FRCST (ThPRS)";
 const DEVELOPER = { name: "Phachara Longmeewong, MD", email: "L_phachara@kkumail.com" };
 const NO_PII_NOTE = `<p class="small pii-note">⚠ ห้ามใส่ชื่อ หรือข้อมูลที่ระบุตัวบุคคล/ผู้ป่วยจริง</p>`;
@@ -26,7 +39,7 @@ const ui = {
   animatedRoles: new Set(), // roles whose room-stage sprite has already played its entrance
   feedbackDismissed: false, // viewer closed the end-of-game satisfaction pop-up without submitting
   feedbackDraft: { caseRating: 0, playersRating: 0, systemRating: 0 }, // local star picks before submit
-  chatOpen: (() => { try { return localStorage.getItem("crg-chat-open") !== "closed"; } catch { return true; } })(),
+  chatOpen: (() => { try { return localStorage.getItem("crg-chat-open") === "open"; } catch { return false; } })(), // starts as the small button
   chatPos: (() => { try { return JSON.parse(localStorage.getItem("crg-chat-pos") || "null"); } catch { return null; } })(), // {x,y} top-left px, null = default corner
   chatUnread: 0, // messages received while the panel is collapsed
 };
@@ -193,7 +206,8 @@ const ROOM_POS = {
   bias: { x: 93, y: 92, facing: "left" },
 };
 function patientSpriteKey(cv) {
-  const s = `${cv.stem || ""} ${cv.title || ""}`;
+  // Stem only: learners don't get the title, and everyone must see the same patient.
+  const s = cv.stem || "";
   if (/ทารก|แรกเกิด|neonat/i.test(s)) return "baby";
   const m = s.match(/อายุ\s*(\d+)\s*(ปี|วัน|เดือน|สัปดาห์)/);
   if (m && m[2] !== "ปี") return "baby";
@@ -409,13 +423,14 @@ function render() {
   const chatBox = document.querySelector(".chat");
   const chatAtBottom = !chatBox || chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 30;
 
+  if (!S || S.phase !== "case") ui.lastCarouselCard = null;
   if (!S || S.phase !== "summary") {
     ui.feedbackDismissed = false;
     ui.feedbackDraft = { caseRating: 0, playersRating: 0, systemRating: 0 };
   }
   app.innerHTML = !S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame();
-  const cardNo = S && (S.caseView?.no ?? S.catalog?.cards.find((c) => c.id === S.caseId)?.no);
-  document.title = cardNo ? `${APP_TITLE} : Card No. ${String(cardNo).padStart(2, "0")}` : APP_TITLE;
+  for (const k of [...entered]) if (!app.querySelector(`[data-enter="${k}"]`)) entered.delete(k);
+  document.title = tabTitle();
 
   if (keep) {
     const el = document.getElementById(keep.id);
@@ -482,11 +497,7 @@ function viewLobby() {
       const pickable = !holder || mine;
       const portrait = `game-assets/sprites/${r === "patient" ? "patient-mystery" : r}-portrait.png`;
       const status = holder
-        ? mine
-          ? me.ready
-            ? `✓ ${esc(ROLE_READY_LABEL[r])}`
-            : "✓ คุณ"
-          : "เลือกแล้วโดย " + esc(holder.name)
+        ? `<span class="${mine ? "tile-me" : "tile-player"}">${esc(holder.name)}</span>`
         : def.required
           ? `<span class="tag must">จำเป็น</span>`
           : `<span class="tag">ไม่บังคับ</span>`;
@@ -568,7 +579,7 @@ function viewLobby() {
 
 // ---------- Research-data consent (asked once per player, in the lobby) ----------
 function viewConsentModal() {
-  return `<div class="modal-backdrop">
+  return `<div class="modal-backdrop${enter("consent")}" data-enter="consent">
     <div class="modal panel stack consent-modal" role="dialog" aria-modal="true" aria-labelledby="consent-title">
       <h2 id="consent-title" style="margin:0">การยินยอมให้เก็บข้อมูลเพื่อพัฒนาการเรียนการสอน</h2>
       <p>เกมนี้ขอเก็บ<b>คะแนนความพึงพอใจ ข้อเสนอแนะ และ exit ticket</b> ของคุณ พร้อมเคสที่เล่น บทบาท และวันที่ เพื่อนำไปปรับปรุงเกมและการสอน clinical reasoning</p>
@@ -657,7 +668,7 @@ function viewGame() {
     <div class="row spread">
       <div class="row">
         <img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb" style="width:34px;height:34px" />
-        <div>${cv ? `<b>${esc(cv.title)}</b>` : brandWordmark()}
+        <div>${brandWordmark()}
         <div class="muted small">ห้อง <span class="code">${esc(S.code)}</span> · ${roleChip(S.me.role)}</div></div>
       </div>
       <div class="row">${soundToggleBtn()}${speechOK ? `<button class="btn sm ghost" data-act="micLang" title="ภาษาที่ใช้ถอดเสียง">🎙 ${ui.micLang === "th-TH" ? "ไทย" : "EN"}</button>` : ""}<span class="timer muted small" id="timer"></span>${nav}</div>
@@ -695,7 +706,7 @@ function starRow(id, label) {
 function viewFeedbackModal() {
   const d = ui.feedbackDraft;
   const canSubmit = d.caseRating && d.playersRating && d.systemRating;
-  return `<div class="modal-backdrop">
+  return `<div class="modal-backdrop${enter("feedback")}" data-enter="feedback">
     <div class="modal panel stack">
       <div class="row spread"><h2 style="margin:0">ให้คะแนนความพึงพอใจ</h2><button type="button" class="btn sm ghost" data-act="fbSkip" aria-label="ปิด">✕</button></div>
       <p class="muted small">ช่วยให้คะแนน 1–5 ดาว เพื่อพัฒนาเกมนี้ต่อไป</p>
@@ -721,9 +732,9 @@ function nextLabel() {
 
 function viewCaseCard(cv) {
   return `<div class="panel case-card stack">
-    ${cv.image ? `<img src="card-assets/${esc(cv.image)}" alt="ภาพประกอบเคส ${esc(cv.title)}" />` : `<div class="noimg">🩹</div>`}
+    ${cv.image ? `<img src="card-assets/${esc(cv.image)}" alt="ภาพประกอบเคส ${esc(cv.title || cardNoLabel(cv.no))}" />` : `<div class="noimg">🩹</div>`}
     <div class="row">${levelTag(cv.level)}<span class="tag">${esc(cv.groupName)}</span></div>
-    <h3 style="margin:0">${esc(cv.title)}</h3>
+    <h3 style="margin:0">${cv.title ? `${esc(cv.title)} <span class="muted small">· ${cardNoLabel(cv.no)}</span>` : cardNoLabel(cv.no)}</h3>
     <div class="stem pre small">${esc(cv.stem)}</div>
     ${cv.learningFocus ? `<details><summary class="small">Learning focus</summary><ul class="small">${cv.learningFocus.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></details>` : ""}
   </div>`;
@@ -806,6 +817,9 @@ function viewCase() {
 // function's template literal from nesting an inline IIFE.
 function viewCaseCarousel(shown, current, groups, picked) {
   const n = shown.length;
+  // Slide only when the card actually changed, not on every unrelated re-render.
+  const flow = ui.lastCarouselCard !== current.id;
+  ui.lastCarouselCard = current.id;
   const peek = (offset) => {
     if (n < 2) return "";
     // With only 2 cards, prev and next are the same card — show it once, on the side it's headed to.
@@ -817,9 +831,9 @@ function viewCaseCarousel(shown, current, groups, picked) {
   };
   return `<div class="carousel">
       <button type="button" class="carousel-nav prev" data-act="carouselNav" data-v="-1" aria-label="การ์ดก่อนหน้า" ${n < 2 ? "disabled" : ""}>‹</button>
-      <div class="carousel-track">
+      <div class="carousel-track${flow ? " flow" : ""}">
         ${peek(-1)}
-        <div class="carousel-card ${picked ? "picked" : ""} ${ui.carouselDir === 1 ? "dir-next" : "dir-prev"}" data-key="${current.id}">
+        <div class="carousel-card ${picked ? "picked" : ""} ${flow ? (ui.carouselDir === 1 ? "dir-next" : "dir-prev") : ""}" data-key="${current.id}">
           ${current.image ? `<img src="card-assets/${esc(current.image)}" alt="" />` : `<div class="noimg">🩹</div>`}
           <div class="carousel-info">
             <div class="row" style="justify-content:center">${levelTag(current.level)}<span class="tag">G${current.group} · ${esc(groups.find((g) => g.no === current.group)?.name || "")}</span></div>
@@ -1251,13 +1265,20 @@ function chatMessages() {
 }
 
 function viewChatWidget() {
-  const posStyle = ui.chatPos ? `left:${ui.chatPos.x}px;top:${ui.chatPos.y}px;right:auto;bottom:auto` : "";
+  // A position saved in a bigger window can be off-screen in this one, so keep it inside.
+  const boxW = ui.chatOpen ? Math.min(300, innerWidth - 32) : 52;
+  const boxH = ui.chatOpen ? 260 : 52;
+  const pos = ui.chatPos && {
+    x: Math.max(4, Math.min(innerWidth - boxW - 4, ui.chatPos.x)),
+    y: Math.max(4, Math.min(innerHeight - boxH - 4, ui.chatPos.y)),
+  };
+  const posStyle = pos ? `left:${pos.x}px;top:${pos.y}px;right:auto;bottom:auto` : "";
   if (!ui.chatOpen) {
-    return `<button type="button" class="chat-fab" data-act="chatToggle" style="${posStyle}" aria-label="เปิดแชท">
+    return `<button type="button" class="chat-fab${enter("chat-fab")}" data-enter="chat-fab" data-act="chatToggle" style="${posStyle}" aria-label="เปิดแชท">
       💬${ui.chatUnread ? `<span class="chat-badge">${ui.chatUnread > 9 ? "9+" : ui.chatUnread}</span>` : ""}
     </button>`;
   }
-  return `<div class="chat-widget" style="${posStyle}">
+  return `<div class="chat-widget${enter("chat-widget")}" data-enter="chat-widget" style="${posStyle}">
     <div class="chat-widget-header" data-act="chatDragHandle">
       <span>💬 แชท</span>
       <button type="button" class="chat-widget-close" data-act="chatToggle" aria-label="ย่อแชท">–</button>
@@ -1291,8 +1312,11 @@ function poseRoom() {
         frame.classList.add("pop");
       }
     }
-    if (recent && ev.text) {
-      bubble.textContent = ev.text.length > 60 ? ev.text.slice(0, 57) + "…" : ev.text;
+    // In the lobby a ready player's "พร้อม…แล้ว!" line stays up; newer chatter still shows briefly over it.
+    const holder = S.phase === "lobby" && S.players.find((p) => p.role === role);
+    const text = recent && ev.text ? ev.text : holder && holder.ready ? `✅ ${ROLE_READY_LABEL[role]}!` : "";
+    if (text) {
+      bubble.textContent = text.length > 60 ? text.slice(0, 57) + "…" : text;
       bubble.hidden = false;
     } else {
       bubble.hidden = true;
@@ -1358,6 +1382,10 @@ function take(id) {
 function clearDraft(...ids) {
   ids.forEach((id) => delete ui.drafts[id]);
 }
+
+window.addEventListener("resize", () => {
+  if (ui.chatPos && S && S.me && S.phase !== "lobby") render();
+});
 
 // ---------- Dragging the floating chat widget (header when open, the button itself when collapsed) ----------
 const chatDrag = { active: null, justDragged: false };

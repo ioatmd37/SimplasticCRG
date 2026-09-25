@@ -31,17 +31,17 @@ const READY_LINE = {
 
 // Suggested minutes per phase (45–60 min session in the card bank's "วิธีใช้").
 const PHASES = [
-  { id: "lobby", label: "เข้าห้อง & เลือกบทบาท", minutes: 0 },
-  { id: "case", label: "เลือกการ์ดเคส", minutes: 2 },
+  { id: "lobby", label: "Lobby", minutes: 0 },
+  { id: "case", label: "Case selection", minutes: 2 },
   { id: "stem", label: "Opening stem", minutes: 3 },
-  { id: "history", label: "ซักประวัติ", minutes: 12 },
-  { id: "exam", label: "ตรวจร่างกาย", minutes: 10 },
+  { id: "history", label: "History taking", minutes: 12 },
+  { id: "exam", label: "Physical examination", minutes: 10 },
   { id: "investigations", label: "Investigation", minutes: 6 },
   { id: "plpr", label: "Problem list / PR", minutes: 7 },
   { id: "timeout", label: "Diagnostic time-out (S1/S2)", minutes: 5 },
   { id: "debrief", label: "Faculty debrief", minutes: 10 },
   { id: "exit", label: "Exit ticket", minutes: 3 },
-  { id: "summary", label: "สรุปผล", minutes: 0 },
+  { id: "summary", label: "Summary", minutes: 0 },
 ];
 const PHASE_IDS = PHASES.map((p) => p.id);
 
@@ -479,7 +479,8 @@ function viewFor(room, playerId) {
     caseView = {
       id: c.id,
       no: CARD_NO[c.id],
-      title: c.title,
+      // The title names the diagnosis, so learners only see it once the debrief starts.
+      title: isFac || past("debrief") ? c.title : null,
       groupName: c.groupName,
       level: c.level,
       bloom: c.bloom,

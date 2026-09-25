@@ -74,6 +74,9 @@ test("5-player full flow with hidden information", async () => {
   assert.equal(doc.last.caseView.history.length, 0, "doctor sees no history rows yet");
   assert.equal(pat.last.caseView.history.length, card.history.length, "patient holds the info card");
   assert.equal(doc.last.caseView.expected, null);
+  assert.equal(doc.last.caseView.title, null, "diagnosis title hidden from learners");
+  assert.equal(fac.last.caseView.title, card.title, "facilitator sees the title");
+  assert.equal(doc.last.caseView.no, 1);
 
   await fac.act("advance", { to: "next" }); // history
   assert.equal((await pat.act("ask", { text: "x" })).ok, false, "patient cannot ask");
@@ -127,6 +130,7 @@ test("5-player full flow with hidden information", async () => {
   assert.equal(doc.last.caseView.s1s2.trap, card.system1Trap);
 
   await fac.act("advance", { to: "next" }); // debrief
+  assert.equal(doc.last.caseView.title, card.title, "title revealed at debrief");
   assert.equal(doc.last.caseView.debrief[0].a, null);
   await fac.act("debriefNext");
   assert.equal(doc.last.caseView.debrief[0].a, card.debrief[0].a);
