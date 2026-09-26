@@ -151,9 +151,14 @@ label.field > span { display: block; margin-bottom: 4px; }
   border: 2px solid #000; box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45); image-rendering: pixelated;
 }
 .brand-text {
-  font-family: ui-monospace, "Courier New", monospace; font-weight: 800; letter-spacing: 0.02em;
-  text-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.5);
+  display: inline-flex; flex-direction: column; line-height: 1.05;
+  font-family: "Pixelify Sans", ui-monospace, "Courier New", monospace; letter-spacing: 0.02em;
 }
+/* Big pixel-font title in the top bars; Pixelify Sans stays legible at this size (unlike a 5px-grid arcade font). */
+.brand-name { font-size: 1.75rem; font-weight: 700; color: var(--accent); text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45); }
+.brand-sub { font-size: 1rem; font-weight: 500; opacity: 0.92; margin-top: 1px; }
+.topbar .code { font-family: "Pixelify Sans", ui-monospace, monospace; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; }
+@media (max-width: 480px) { .brand-name { font-size: 1.45rem; } .brand-sub { font-size: 0.85rem; } }
 .divider { display: flex; align-items: center; gap: 10px; color: var(--ink-2); margin: 16px 0; font-size: 0.85rem; }
 .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .howto ol { padding-left: 1.2em; margin: 0; }
@@ -389,6 +394,12 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .room-sprite[data-facing="right"] .bubble { transform: translateX(-25%); }
 .room-sprite[data-facing="left"] .bubble { transform: translateX(-75%); }
 .room-sprite[data-role="bias"] .bubble { transform: translateX(-58%); }
+/* The facilitator hosts the table: a bigger, bolder bubble so their calls read from across the room. */
+.room-sprite[data-role="facilitator"] .bubble {
+  font-size: 1.05rem; font-weight: 800; line-height: 1.25; letter-spacing: 0.01em;
+  min-width: 150px; max-width: 250px; padding: 15% 18% 26%;
+}
+@media (max-width: 760px) { .room-sprite[data-role="facilitator"] .bubble { font-size: 0.9rem; min-width: 130px; max-width: 200px; } }
 .room-sprite[data-role="scribe"] { z-index: 3; }
 .room-sprite[data-role="scribe"] .bubble { transform: translateX(-52%); margin-bottom: 14px; }
 /* The bias monitor's sprite canvas has extra headroom, so it draws ~12% smaller than the rest. */
@@ -524,7 +535,7 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   filter: drop-shadow(0 0 6px rgba(255, 214, 102, 0.55));
 }
 
-.brand-version { font-size: 0.75rem; opacity: 0.65; font-weight: 600; margin-left: 4px; }
+.brand-version { font-size: 0.8rem; opacity: 0.7; font-weight: 500; margin-left: 4px; }
 
 /* Case-select carousel */
 .carousel { display: flex; align-items: center; justify-content: center; gap: 4px; }
@@ -774,3 +785,37 @@ details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 }
 @media (max-width: 640px) { .gm-path { columns: 1; } }
 @media (prefers-reduced-motion: reduce) { .genesis-backdrop.enter, .genesis-backdrop.enter .genesis { animation: none; } }
+
+/* Think-aloud reminder + explainer, SNAPPS teaching card */
+.think-modal { max-width: 480px; }
+.think-modal ul, .think-roles { padding-left: 1.2em; margin: 0; }
+.think-modal li + li, .think-roles li + li { margin-top: 4px; }
+.think-example { border-left: 3px solid var(--accent); padding: 4px 10px; margin: 0; background: var(--surface-2); border-radius: 0 8px 8px 0; }
+.think-card { margin-top: 12px; }
+.think-head { display: flex; width: 100%; justify-content: space-between; align-items: center; background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+.think-head + .stack { margin-top: 8px; }
+.think-roles b { color: var(--c, var(--ink)); }
+.snapps { border: 2px solid var(--line); border-radius: 10px; padding: 10px 12px; background: var(--surface-2); }
+.snapps-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.snapps-steps li { display: flex; gap: 8px; align-items: flex-start; }
+.snapps-key {
+  flex: 0 0 auto; width: 26px; height: 26px; border-radius: 6px; display: grid; place-items: center;
+  font-weight: 800; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--ink);
+}
+.snapps-tip { margin: 8px 0 0; padding: 6px 10px; border-left: 3px solid var(--warn); background: var(--warn-soft); border-radius: 0 8px 8px 0; }
+.guide { border: 1px dashed var(--c, var(--accent)); border-radius: 10px; padding: 10px 12px; background: color-mix(in srgb, var(--c, var(--accent)) 8%, transparent); }
+.guide b { color: var(--c, var(--accent)); }
+
+/* Top bar: a small utility strip (sound, language | timer), then the brand row with a big bulb, then the stepper. */
+.tb-main { display: flex; align-items: center; gap: 4px; }
+.tb-ctl { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.tb-ctl .btn { padding: 2px 10px; }
+.tb-title { flex: 0 1 auto; min-width: 0; }
+.tb-nav { margin: 6px 0 2px; }
+.tb-nav .row { justify-content: flex-end; }
+.tb-bulb { height: 52px; width: auto; max-width: none; object-fit: contain; flex: 0 0 auto; }
+.lobby-sound .btn { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); color: #fff; }
+@media (max-width: 480px) {
+  .tb-bulb { height: 40px; }
+  .tb-nav .row { justify-content: space-between; }
+}

@@ -19,6 +19,20 @@ const ROLES = {
   observer: { label: "Observer", required: false },
 };
 
+// The facilitator is the host of the table, so their speech bubbles are short, commanding lines.
+const HOST_LINE = {
+  case: "มาเลือกเคสกันเลย!",
+  stem: "อ่านโจทย์ให้ดี แล้วตั้งสมมติฐานไว้ก่อน!",
+  history: "เริ่มซักประวัติ! ถามให้ตรงจุดนะ",
+  exam: "ถึงเวลาตรวจร่างกาย ขอให้เจาะจง!",
+  investigations: "จะสั่งตรวจอะไร? เลือกเฉพาะที่เปลี่ยนแผน!",
+  plpr: "ช่วยกันสรุปปัญหา แล้วเขียนให้ชัด!",
+  timeout: "หยุดก่อน! คิดทบทวนอีกรอบก่อนสรุป",
+  debrief: "มาถอดบทเรียนกัน!",
+  exit: "ปิดท้าย! เขียนสิ่งที่ได้เรียนรู้ของคุณ",
+  summary: "จบเคส! ทุกคนเยี่ยมมาก",
+};
+
 // What "Ready" means for each role, shown as a speech bubble in the lobby.
 const READY_LINE = {
   facilitator: "✅ พร้อมจะสอนแล้ว!",
@@ -228,7 +242,7 @@ const actions = {
     if (!target || target === "lobby") fail("ไปขั้นนั้นไม่ได้");
     if (room.phase === "case" && to !== "back" && !room.caseId) fail("ยังไม่ได้เลือกการ์ด");
     setPhase(room, target);
-    stage(room, "facilitator", "▶ " + PHASES.find((x) => x.id === target).label, "act");
+    stage(room, "facilitator", HOST_LINE[target], "act");
   },
 
   ask(room, p, { text, kind }) {
@@ -251,7 +265,7 @@ const actions = {
     if (noInfo) {
       q.status = "noinfo";
       q.rowIdx = null;
-      stage(room, owner, q.kind === "history" ? "ไม่แน่ใจเหมือนกัน…" : "No further finding", "talk");
+      stage(room, owner, q.kind === "history" ? "ไม่แน่ใจเหมือนกัน…" : "ไม่พบอะไรเพิ่มจากการตรวจนี้", "talk");
       return;
     }
     rowIdx = Number(rowIdx);
@@ -260,7 +274,7 @@ const actions = {
     q.rowIdx = rowIdx;
     const list = room.revealed[q.kind];
     if (!list.includes(rowIdx)) list.push(rowIdx);
-    stage(room, owner, q.kind === "history" ? rows[rowIdx].a : "✨ " + rows[rowIdx].q, q.kind === "history" ? "talk" : "act");
+    stage(room, owner, q.kind === "history" ? rows[rowIdx].a : "ผลตรวจมาแล้ว! " + rows[rowIdx].q, q.kind === "history" ? "talk" : "act");
   },
 
   toggleInvest(room, p, { idx, reason }) {
@@ -340,7 +354,7 @@ const actions = {
     if (room.phase !== "timeout") fail("ไม่ใช่ขั้น time-out");
     if (p.role !== "facilitator") fail("เฉพาะ facilitator");
     room.timeout.revealed = true;
-    stage(room, "facilitator", "🔓 เฉลย System 1 / System 2", "act");
+    stage(room, "facilitator", "เฉลย! ดูซิว่าเราหลงกับดักตรงไหน", "act");
   },
 
   debriefNext(room, p) {

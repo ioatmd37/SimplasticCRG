@@ -32,7 +32,7 @@ const CREDIT = "Developed by Phachara Longmeewong, MD, FRCST (ThPRS)";
 const DEVELOPER = { name: "Phachara Longmeewong, MD", email: "L_phachara@kkumail.com" };
 const NO_PII_NOTE = `<p class="small pii-note">⚠ ห้ามใส่ชื่อ หรือข้อมูลที่ระบุตัวบุคคล/ผู้ป่วยจริง</p>`;
 const creditLine = () => `<p class="credit"><button type="button" class="credit-btn" data-act="genesisOpen" title="ดูว่าเกมนี้สร้างขึ้นมาอย่างไร">${CREDIT}</button></p>`;
-const brandWordmark = () => `<span class="brand-text" style="font-size:.85rem">SimPlastic <span class="muted" style="font-weight:600">- The Clinical Reasoning Game</span> <span class="brand-version">v${APP_VERSION}</span></span>`;
+const brandWordmark = () => `<span class="brand-text"><span class="brand-name">SimPlastic</span><span class="brand-sub">The Clinical Reasoning Game <span class="brand-version">v${APP_VERSION}</span></span></span>`;
 
 let S = null; // latest server view
 let clockSkew = 0;
@@ -46,6 +46,10 @@ const ui = {
   micLang: (() => { try { return localStorage.getItem("crg-mic-lang") || "th-TH"; } catch { return "th-TH"; } })(),
   soundOn: (() => { try { return localStorage.getItem("crg-sound") !== "off"; } catch { return true; } })(),
   animatedRoles: new Set(), // roles whose room-stage sprite has already played its entrance
+  thinkOpen: false, // the think-aloud explainer, shown the first time the mic is pressed
+  pendingMic: null, // field to start dictating into once the explainer is dismissed
+  thinkCardOpen: (() => { try { return localStorage.getItem("crg-think-card-seen") !== "1"; } catch { return true; } })(),
+  thinkCardMarked: false,
   genesisOpen: false, // the "how this game was built" map, opened from the credit line
   feedbackDismissed: false, // viewer closed the end-of-game satisfaction pop-up without submitting
   feedbackDraft: { caseRating: 0, playersRating: 0, systemRating: 0 }, // local star picks before submit
@@ -439,10 +443,11 @@ function render() {
     ui.feedbackDismissed = false;
     ui.feedbackDraft = { caseRating: 0, playersRating: 0, systemRating: 0 };
   }
-  app.innerHTML = (!S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame()) + (ui.genesisOpen ? viewGenesis() : "");
+  app.innerHTML = (!S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame()) + (ui.thinkOpen ? viewThinkAloudModal() : "") + (ui.genesisOpen ? viewGenesis() : "");
   if (genesisScroll) document.querySelector(".genesis").scrollTop = genesisScroll;
   for (const k of [...entered]) if (!app.querySelector(`[data-enter="${k}"]`)) entered.delete(k);
   document.title = tabTitle();
+  fitTopbar();
 
   if (keep) {
     const el = document.getElementById(keep.id);
@@ -548,12 +553,11 @@ function viewLobby() {
   const canStart = !S.lobbyProblems.length;
   return `
   <div class="home-screen lobby-screen" style="background-image:url(game-assets/room-night.webp)">
-    <div class="home-sound-toggle">${soundToggleBtn()}</div>
     <div class="lobby-content">
       <div class="row spread lobby-top">
-        <div class="row"><img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb" />
+        <div class="row"><img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb tb-bulb" />
           <span style="color:#fff">${brandWordmark()}</span><span class="code-chip">${esc(S.code)}</span></div>
-        <button class="btn sm ghost" data-act="leave" style="color:#fff;border-color:rgba(255,255,255,.4)">ออกจากห้อง</button>
+        <div class="row"><span class="lobby-sound">${soundToggleBtn()}</span><button class="btn sm ghost" data-act="leave" style="color:#fff;border-color:rgba(255,255,255,.4)">ออกจากห้อง</button></div>
       </div>
 
       ${roomStage(true, ROOM_BG_NIGHT, roomCaption)}
@@ -590,6 +594,82 @@ function viewLobby() {
     </div>
   </div>
   ${me.consent === null ? viewConsentModal() : ""}`;
+}
+
+// ---------- Think aloud: explainer on first mic press, and a reminder card at the opening stem ----------
+const THINK_KEY = "crg-think-mic-seen";
+const thinkAloudSeen = () => {
+  try { return localStorage.getItem(THINK_KEY) === "1"; } catch { return true; }
+};
+function closeThinkAloud() {
+  try { localStorage.setItem(THINK_KEY, "1"); } catch {}
+  ui.thinkOpen = false;
+  const field = ui.pendingMic;
+  ui.pendingMic = null;
+  render();
+  if (field) startMic(field);
+}
+
+const THINK_EXAMPLE = "ผมสงสัย [โรค A] เพราะ [เบาะแสที่เห็น] เลยขอถามว่า [คำถาม] เพื่อแยกจาก [โรค B]";
+
+function viewThinkAloudModal() {
+  return `<div class="modal-backdrop${enter("think")}" data-enter="think">
+    <div class="modal panel stack think-modal" role="dialog" aria-modal="true" aria-labelledby="think-title">
+      <h2 id="think-title" style="margin:0">🗣 Think aloud — พูดความคิดออกมาดังๆ</h2>
+      <p>พูดสิ่งที่กำลังคิดตอนที่คิด ไม่ต้องรอให้สรุปเสร็จ เพื่อให้ทีมเห็นเหตุผลของคุณและช่วยกันจับ bias ได้ทัน</p>
+      <ul class="small">
+        <li><b>ก่อนถามหรือขอตรวจ:</b> บอกว่าสงสัยอะไร และอยากยืนยันหรือแยกโรคอะไร</li>
+        <li><b>หลังได้คำตอบ:</b> บอกว่าสมมติฐานแรงขึ้นหรืออ่อนลง เพราะอะไร</li>
+        <li><b>ตอนไม่แน่ใจ:</b> พูดตรงๆ ว่า “ยังไม่แน่ใจ เพราะ…”</li>
+      </ul>
+      <p class="think-example small"><b>รูปประโยค:</b> <i>${esc(THINK_EXAMPLE)}</i></p>
+      <p class="muted small">ปุ่มไมค์แค่แปลงเสียงเป็นข้อความให้ ส่วนการพูดให้ทีมได้ยินในห้องคือตัวหลัก</p>
+      <button type="button" class="btn primary" data-act="thinkAloudOk">เข้าใจแล้ว</button>
+    </div>
+  </div>`;
+}
+
+function viewThinkAloudCard() {
+  if (!ui.thinkCardMarked) {
+    ui.thinkCardMarked = true; // from the next game on it starts collapsed
+    try { localStorage.setItem("crg-think-card-seen", "1"); } catch {}
+  }
+  const open = ui.thinkCardOpen;
+  return `<div class="panel think-card">
+    <button type="button" class="think-head" data-act="thinkToggle" aria-expanded="${open}">
+      <b>🗣 Think aloud ตลอดเกม</b><span class="muted small">${open ? "ซ่อน ▴" : "ดู ▾"}</span>
+    </button>
+    ${open ? `<div class="stack">
+      <p class="small" style="margin:0">พูดเหตุผลออกมาดังๆ ให้ทีมได้ยิน แล้วช่วยกันจับ bias ได้ทัน</p>
+      <ul class="small think-roles">
+        <li><b data-role="doctor">Doctor:</b> พูดสมมติฐานก่อนถามทุกครั้ง</li>
+        <li><b data-role="scribe">Scribe:</b> จดสิ่งที่ได้ยิน</li>
+        <li><b data-role="bias">Bias monitor:</b> ฟังหา anchoring และ premature closure</li>
+        <li><b data-role="facilitator">Facilitator:</b> ชวนให้พูดเมื่อเงียบ</li>
+      </ul>
+      <p class="think-example small"><b>รูปประโยค:</b> <i>${esc(THINK_EXAMPLE)}</i></p>
+    </div>` : ""}
+  </div>`;
+}
+
+// ---------- SNAPPS: a learner-led case presentation, used to structure the faculty debrief ----------
+const SNAPPS_STEPS = [
+  ["S", "Summarize", "สรุปประวัติและการตรวจสั้นๆ 1–2 ประโยค โดยใช้ problem representation ของทีม"],
+  ["N", "Narrow", "ตีกรอบ differential ให้เหลือ 2–3 โรคที่เป็นไปได้มากที่สุด"],
+  ["A", "Analyze", "เปรียบเทียบโรคเหล่านั้น: ข้อมูลไหนสนับสนุนหรือค้านแต่ละโรค"],
+  ["P", "Probe", "ถามอาจารย์ในสิ่งที่ยังไม่แน่ใจ โดยผู้เรียนเป็นฝ่ายถาม"],
+  ["P", "Plan", "เสนอแผน investigation และการจัดการ"],
+  ["S", "Select", "เลือก 1 หัวข้อที่จะไปอ่านต่อด้วยตนเอง"],
+];
+
+function viewSnapps() {
+  const fac = S.powers.facilitator;
+  return `<div class="snapps">
+    <div class="row spread"><h3 style="margin:0">สอนด้วย SNAPPS</h3><span class="muted small">Wolpaw et al., Acad Med 2003</span></div>
+    <p class="small" style="margin:4px 0 8px">ให้ผู้เรียน (Doctor หรือทั้งทีม) นำเสนอเคสตามลำดับ 6 ขั้น อาจารย์ฟังจนจบก่อน แล้วจึงตอบข้อสงสัยและเทียบกับเฉลย</p>
+    <ol class="snapps-steps">${SNAPPS_STEPS.map(([k, name, text]) => `<li><span class="snapps-key" aria-hidden="true">${k}</span><div><b>${name}</b><div class="small">${esc(text)}</div></div></li>`).join("")}</ol>
+    ${fac ? `<p class="small snapps-tip"><b>อาจารย์:</b> อย่าเพิ่งแก้ระหว่างที่ผู้เรียนนำเสนอ ตั้งคำถามที่ขั้น Probe แล้วค่อยเปิดคำถาม debrief ด้านล่างเพื่อเทียบเหตุผลกับเฉลย</p>` : ""}
+  </div>`;
 }
 
 // ---------- Genesis map: how this game was built (opened from the "Developed by" credit) ----------
@@ -720,14 +800,16 @@ function viewGame() {
 
   return `
   <header class="topbar"><div class="wrap">
-    <div class="row spread">
-      <div class="row">
-        <img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb" style="width:34px;height:34px" />
-        <div>${brandWordmark()}
-        <div class="muted small">ห้อง <span class="code">${esc(S.code)}</span> · ${roleChip(S.me.role)}</div></div>
+    <div class="tb-main">
+      <img src="game-assets/icons/bulb.png" alt="SP-CRG" class="brand-bulb tb-bulb" />
+      <div class="tb-title">${brandWordmark()}
+        <div class="muted small">ห้องตรวจหมายเลข <span class="code">${esc(S.code)}</span> · ${roleChip(S.me.role)}</div></div>
+      <div class="tb-ctl">
+        <span class="timer muted small" id="timer"></span>
+        <div class="row">${soundToggleBtn()}${speechOK ? `<button class="btn sm ghost" data-act="micLang" title="ภาษาที่ใช้ถอดเสียง">🎙 ${ui.micLang === "th-TH" ? "ไทย" : "EN"}</button>` : ""}</div>
       </div>
-      <div class="row">${soundToggleBtn()}${speechOK ? `<button class="btn sm ghost" data-act="micLang" title="ภาษาที่ใช้ถอดเสียง">🎙 ${ui.micLang === "th-TH" ? "ไทย" : "EN"}</button>` : ""}<span class="timer muted small" id="timer"></span>${nav}</div>
     </div>
+    ${nav ? `<div class="tb-nav">${nav}</div>` : ""}
     <div class="stepper">${stepper}</div>
   </div></header>
   <div class="wrap">
@@ -778,6 +860,16 @@ function viewFeedbackModal() {
     </div>
   </div>`;
 }
+
+// Only the phase buttons and the step bar stay pinned while scrolling; the utility strip and the brand
+// row scroll away. The sticky offset is measured because the rows wrap differently at each width.
+function fitTopbar() {
+  const tb = document.querySelector(".topbar");
+  const main = tb && tb.querySelector(".tb-main");
+  if (!main) return;
+  tb.style.top = -Math.max(0, main.getBoundingClientRect().bottom - tb.getBoundingClientRect().top) + "px";
+}
+window.addEventListener("resize", fitTopbar);
 
 function nextLabel() {
   const i = S.phases.findIndex((p) => p.id === S.phase);
@@ -915,7 +1007,8 @@ function viewStem() {
     <div class="stem pre">${esc(cv.stem)}</div>
     <p class="muted small">ข้อมูลอื่นทั้งหมดถูกซ่อนไว้ ทีมต้อง “ถาม” และ “ขอตรวจ” เพื่อปลดล็อก</p>
     ${S.powers.scribe ? `<p class="small">💡 Scribe: จด hypothesis เริ่มต้นของทีมในบันทึกด้านขวา</p>` : ""}
-  </div>`;
+  </div>
+  ${viewThinkAloudCard()}`;
 }
 
 // ---------- Phase: history / exam ----------
@@ -1104,6 +1197,7 @@ function viewDebrief() {
   return `<div class="panel stack">
     <div class="row spread"><h2 style="margin:0">Faculty debrief — Management reasoning</h2>
     ${P.facilitator && S.debriefShown < rows.length ? `<button class="btn primary" data-act="debriefNext">เปิดคำถามถัดไป (${S.debriefShown + 1}/${rows.length})</button>` : ""}</div>
+    ${viewSnapps()}
     <ul class="rows">${list}</ul>
     ${S.caseView.facultyNote ? `<div class="guide small" data-role="facilitator"><b>หมายเหตุอาจารย์:</b> ${esc(S.caseView.facultyNote)}</div>` : ""}
   </div>`;
@@ -1371,7 +1465,8 @@ function poseRoom() {
     const holder = S.phase === "lobby" && S.players.find((p) => p.role === role);
     const text = recent && ev.text ? ev.text : holder && holder.ready ? `✅ ${ROLE_READY_LABEL[role]}!` : "";
     if (text) {
-      bubble.textContent = text.length > 60 ? text.slice(0, 57) + "…" : text;
+      const max = role === "facilitator" ? 90 : 60;
+      bubble.textContent = text.length > max ? text.slice(0, max - 3) + "…" : text;
       bubble.hidden = false;
     } else {
       bubble.hidden = true;
@@ -1421,7 +1516,8 @@ app.addEventListener("change", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && ui.genesisOpen) {
+  if (e.key === "Escape" && ui.thinkOpen) closeThinkAloud();
+  else if (e.key === "Escape" && ui.genesisOpen) {
     ui.genesisOpen = false;
     render();
   }
@@ -1537,8 +1633,19 @@ app.addEventListener("click", async (e) => {
         stopMic();
         return;
       }
+      if (!thinkAloudSeen()) {
+        ui.pendingMic = v; // explain think-aloud first; the mic starts when they tap "เข้าใจแล้ว"
+        ui.thinkOpen = true;
+        return render();
+      }
       startMic(v);
       return;
+    case "thinkAloudOk":
+      closeThinkAloud();
+      return;
+    case "thinkToggle":
+      ui.thinkCardOpen = !ui.thinkCardOpen;
+      return render();
     case "micLang":
       ui.micLang = ui.micLang === "th-TH" ? "en-US" : "th-TH";
       try {

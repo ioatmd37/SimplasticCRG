@@ -30,13 +30,20 @@
   }
   section { padding: 40px 0; border-top: 1px solid var(--line); }
   h2 { font-size: 1.3rem; margin: 0 0 18px; }
-  .roles { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+  /* One row at every width: the cards share the row and shrink (avatar, padding, text) as it narrows. */
+  .roles { display: flex; flex-wrap: nowrap; gap: clamp(4px, 1.6vw, 18px); justify-content: center; }
   .role-card {
-    display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px;
-    padding: 14px 8px; border: 2px solid var(--line); border-radius: 12px; background: var(--surface);
+    flex: 1 1 0; min-width: 0; max-width: 130px;
+    display: flex; flex-direction: column; align-items: center; gap: clamp(4px, 1vw, 8px);
+    padding: clamp(6px, 1.6vw, 14px) clamp(2px, 0.8vw, 8px); border: 2px solid var(--line); border-radius: 12px; background: var(--surface);
   }
-  .role-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: top center; image-rendering: pixelated; border: 1px solid var(--line); background: var(--surface-2); }
-  .role-card b { font-size: 0.85rem; text-align: center; }
+  .role-card img { width: 100%; max-width: 56px; aspect-ratio: 1; height: auto; border-radius: 50%; object-fit: cover; object-position: top center; image-rendering: pixelated; border: 1px solid var(--line); background: var(--surface-2); }
+  .role-card b { font-size: clamp(0.62rem, 1.9vw, 0.85rem); text-align: center; hyphens: manual; line-height: 1.25; }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 12px; }
+    .roles { gap: 3px; }
+    .role-card { padding: 6px 1px; border-width: 1px; border-radius: 10px; }
+  }
   ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
   ul.features li { display: flex; gap: 10px; align-items: baseline; color: var(--ink-2); }
   ul.features li b { color: var(--ink); }
@@ -63,9 +70,9 @@
     <section>
       <h2>บทบาทในเกม</h2>
       <div class="roles">
-        <div class="role-card"><img src="assets/sprites/facilitator-1.png" alt="" /><b>Facilitator</b></div>
+        <div class="role-card"><img src="assets/sprites/facilitator-1.png" alt="" /><b>Facili&shy;tator</b></div>
         <div class="role-card"><img src="assets/sprites/patient-1.png" alt="" /><b>Patient</b></div>
-        <div class="role-card"><img src="assets/sprites/doctor-1.png" alt="" /><b>Doctor / Examiner</b></div>
+        <div class="role-card"><img src="assets/sprites/doctor-1.png" alt="" /><b>Doctor / Exam&shy;iner</b></div>
         <div class="role-card"><img src="assets/sprites/scribe-1.png" alt="" /><b>Scribe</b></div>
         <div class="role-card"><img src="assets/sprites/bias-1.png" alt="" /><b>Bias monitor</b></div>
         <div class="role-card"><img src="assets/sprites/observer-1.png" alt="" /><b>Observer</b></div>
