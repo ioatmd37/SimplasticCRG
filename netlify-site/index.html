@@ -45,12 +45,7 @@
     background: var(--surface); border: 2px solid var(--line);
   }
   .cta p { color: var(--ink-2); max-width: 520px; margin: 10px auto 20px; }
-  code.block {
-    display: block; text-align: left; max-width: 460px; margin: 0 auto 18px; padding: 14px 16px;
-    background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
-    font-size: 0.85rem; line-height: 1.7; white-space: pre; overflow-x: auto;
-  }
-  a.repo-link {
+  a.play-link {
     display: inline-block; padding: 10px 22px; border-radius: 999px; text-decoration: none;
     background: var(--accent); color: #06110c; font-weight: 700;
   }
@@ -91,12 +86,8 @@
     <section>
       <div class="cta">
         <h2 style="margin-bottom:6px">อยากลองเล่น?</h2>
-        <p>หน้านี้เป็นเดโมแบบ static แสดงหน้าตาและกลไกของเกมเท่านั้น เพราะตัวเกมจริงต้องรันเป็น Node.js server (Express + Socket.IO) ที่เก็บสถานะห้องเกมแบบ real-time ซึ่งไม่รองรับบน static hosting รันบนเครื่องของคุณเองได้ดังนี้:</p>
-        <code class="block">git clone git@github.com:ioatmd37/SimplasticCRG.git
-cd SimplasticCRG
-npm install
-npm start
-# เปิด http://localhost:3000</code>
+        <p>เกมนี้เล่นได้ฟรีบนเว็บ สร้างห้องแล้วส่งรหัส 4 ตัวอักษรให้เพื่อนอีก 3–5 คนเข้าร่วม (ต้องมีอย่างน้อย 4 คน) เปิดครั้งแรกอาจรอเซิร์ฟเวอร์ตื่นราว 30 วินาที</p>
+        <a class="play-link" href="https://simplastic.onrender.com" rel="noopener">▶ เล่นเกม</a>
       </div>
     </section>
   </div>

@@ -5,6 +5,15 @@ const socket = io();
 const app = document.getElementById("app");
 const SESSION_KEY = "crg-session";
 const APP_VERSION = "0.2.0";
+// Twinkling pixel sparkles around the logo: [left %, top %, size px, delay s, duration s, colour].
+const LOGO_STARS = [
+  [3, 10, 22, 0, 2.2, "#ffe27a"], [95, 6, 20, 0.7, 2.6, "#ffffff"], [-2, 62, 17, 1.3, 2.0, "#8ff0c0"],
+  [99, 58, 25, 0.3, 2.4, "#ffe27a"], [22, -6, 17, 1.0, 1.9, "#ffffff"], [74, -8, 22, 1.7, 2.3, "#8ff0c0"],
+  [10, 100, 20, 0.5, 2.5, "#ffffff"], [88, 98, 17, 1.5, 2.1, "#ffe27a"], [48, 104, 14, 0.9, 1.8, "#8ff0c0"],
+  [50, -10, 14, 0.2, 2.0, "#ffe27a"],
+];
+const logoStars = () =>
+  LOGO_STARS.map(([x, y, s, d, t, c]) => `<span class="twinkle" aria-hidden="true" style="left:${x}%;top:${y}%;width:${s}px;height:${s}px;color:${c};animation-delay:${d}s;animation-duration:${t}s"></span>`).join("");
 const APP_TITLE = "💡 SimPlastic - The Clinical Reasoning Game";
 // Browser tab: "game : disease group > current phase" (never the case title, which names the diagnosis).
 function tabTitle() {
@@ -22,7 +31,7 @@ const cardNoLabel = (no) => `Card No. ${String(no).padStart(2, "0")}`;
 const CREDIT = "Developed by Phachara Longmeewong, MD, FRCST (ThPRS)";
 const DEVELOPER = { name: "Phachara Longmeewong, MD", email: "L_phachara@kkumail.com" };
 const NO_PII_NOTE = `<p class="small pii-note">⚠ ห้ามใส่ชื่อ หรือข้อมูลที่ระบุตัวบุคคล/ผู้ป่วยจริง</p>`;
-const creditLine = () => `<p class="credit">${CREDIT}</p>`;
+const creditLine = () => `<p class="credit"><button type="button" class="credit-btn" data-act="genesisOpen" title="ดูว่าเกมนี้สร้างขึ้นมาอย่างไร">${CREDIT}</button></p>`;
 const brandWordmark = () => `<span class="brand-text" style="font-size:.85rem">SimPlastic <span class="muted" style="font-weight:600">- The Clinical Reasoning Game</span> <span class="brand-version">v${APP_VERSION}</span></span>`;
 
 let S = null; // latest server view
@@ -37,6 +46,7 @@ const ui = {
   micLang: (() => { try { return localStorage.getItem("crg-mic-lang") || "th-TH"; } catch { return "th-TH"; } })(),
   soundOn: (() => { try { return localStorage.getItem("crg-sound") !== "off"; } catch { return true; } })(),
   animatedRoles: new Set(), // roles whose room-stage sprite has already played its entrance
+  genesisOpen: false, // the "how this game was built" map, opened from the credit line
   feedbackDismissed: false, // viewer closed the end-of-game satisfaction pop-up without submitting
   feedbackDraft: { caseRating: 0, playersRating: 0, systemRating: 0 }, // local star picks before submit
   chatOpen: (() => { try { return localStorage.getItem("crg-chat-open") === "open"; } catch { return false; } })(), // starts as the small button
@@ -420,6 +430,7 @@ function render() {
   const active = document.activeElement;
   // The focused field keeps what the user is typing, even if a broadcast carries an older value.
   const keep = active && active.id ? { id: active.id, s: active.selectionStart, e: active.selectionEnd, v: active.value } : null;
+  const genesisScroll = document.querySelector(".genesis")?.scrollTop || 0;
   const chatBox = document.querySelector(".chat");
   const chatAtBottom = !chatBox || chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 30;
 
@@ -428,7 +439,8 @@ function render() {
     ui.feedbackDismissed = false;
     ui.feedbackDraft = { caseRating: 0, playersRating: 0, systemRating: 0 };
   }
-  app.innerHTML = !S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame();
+  app.innerHTML = (!S || !S.me ? viewHome() : S.phase === "lobby" ? viewLobby() : viewGame()) + (ui.genesisOpen ? viewGenesis() : "");
+  if (genesisScroll) document.querySelector(".genesis").scrollTop = genesisScroll;
   for (const k of [...entered]) if (!app.querySelector(`[data-enter="${k}"]`)) entered.delete(k);
   document.title = tabTitle();
 
@@ -455,7 +467,10 @@ function viewHome() {
   <div class="home-screen" style="background-image:url(game-assets/room-night.webp)">
     <div class="home-sound-toggle">${soundToggleBtn()}</div>
     <div class="home-content">
-      <img src="game-assets/logo.webp" alt="SimPlastic — The Clinical Reasoning Game" class="logo-image" />
+      <div class="logo-wrap">
+        <img src="game-assets/logo.webp" alt="SimPlastic — The Clinical Reasoning Game" class="logo-image" />
+        ${logoStars()}
+      </div>
       <p class="tagline">Plastic Surgery · 34 การ์ด · 4–6 ผู้เล่น</p>
 
       <div class="join-card stack">
@@ -575,6 +590,46 @@ function viewLobby() {
     </div>
   </div>
   ${me.consent === null ? viewConsentModal() : ""}`;
+}
+
+// ---------- Genesis map: how this game was built (opened from the "Developed by" credit) ----------
+const GENESIS_STEPS = [
+  ["📚", "ออกแบบเนื้อหา", "ตั้งต้นจากคลังการ์ด 34 ใบ (6 กลุ่มโรคศัลยกรรมตกแต่ง) เขียนเป็น Markdown ตามเทมเพลตเดียวกัน แล้วแปลงเป็นข้อมูลเกมด้วยสคริปต์", ["Markdown", "Python"]],
+  ["🎲", "ออกแบบกติกา", "6 บทบาท ข้อมูลลับตามบทบาท และ 10 ขั้นตอนตั้งแต่เลือกการ์ดจนถึงสรุปผล มี Bias monitor คอยจับ cognitive bias และช่วง System 1/2 time-out", ["Game design", "Clinical reasoning"]],
+  ["⚙️", "เครื่องยนต์มัลติเพลเยอร์", "เซิร์ฟเวอร์ตัดสินสถานะทั้งหมด แล้วส่งมุมมองที่กรองแล้วให้แต่ละบทบาท ข้อมูลลับจึงไม่รั่วไปถึงผู้เล่นคนอื่น", ["Node.js", "Express", "Socket.IO"]],
+  ["🖥️", "หน้าจอเกม", "เว็บแอปแบบ Vanilla JavaScript ไม่ใช้เฟรมเวิร์ก รองรับมือถือ และโหมดสว่าง/มืด", ["JavaScript", "HTML", "CSS"]],
+  ["🎨", "โลกพิกเซล", "ตัวละคร ห้องตรวจ (กลางวัน/กลางคืน) และโลโก้ สร้างด้วย AI แล้วประมวลผลด้วยสคริปต์: ตัดพื้นหลัง หั่นเฟรมอนิเมชัน จัดแนว และลบลายน้ำ", ["Gemini (AI image)", "Python", "Pillow"]],
+  ["🔊", "เสียงและการพูด", "เสียงเอฟเฟกต์และเพลงประกอบแบบ 8-bit สังเคราะห์สดโดยไม่มีไฟล์เสียง และพูดเข้าไมค์เพื่อพิมพ์ข้อความได้", ["Web Audio API", "Web Speech API"]],
+  ["🩺", "กฎ medical English", "ผลตรวจร่างกาย, Problem list และ Problem representation ของทั้ง 34 ใบเป็นภาษาอังกฤษทางการแพทย์ ระบบตรวจทั้งข้อมูลการ์ดและข้อความที่ผู้เล่นพิมพ์", ["Data overlay", "Server validation"]],
+  ["✅", "ทดสอบ", "เล่นจริงผ่านเบราว์เซอร์ทุกขั้นตอน และมีเทสต์อัตโนมัติที่ใช้ผู้เล่นจำลองเชื่อม Socket.IO จริงเล่นครบทั้งเคส", ["node:test", "Browser playthrough"]],
+  ["🏅", "ข้อมูลและใบประกาศ", "ขอความยินยอมก่อนเก็บ ส่งเฉพาะความพึงพอใจกับ exit ticket แบบไม่ระบุตัวตนไปเก็บ และสร้างใบประกาศ PDF ในเครื่องผู้เล่นเอง", ["Cloudflare Workers", "D1", "jsPDF"]],
+  ["🚀", "เผยแพร่", "เก็บโค้ดบน GitHub รันเกมบน Render ทำหน้าแนะนำบน Netlify และเก็บข้อมูลบน Cloudflare", ["GitHub", "Render", "Netlify", "Cloudflare"]],
+];
+
+function viewGenesis() {
+  const stats = [["34", "การ์ด"], ["6", "บทบาท"], ["10", "ขั้นตอนในเกม"], ["4,000+", "บรรทัดโค้ด"], ["6", "วัน"]];
+  const steps = GENESIS_STEPS.map(
+    ([icon, title, text, tools], i) => `<li class="gm-step">
+      <span class="gm-node" aria-hidden="true">${i + 1}</span>
+      <div class="gm-card">
+        <h3><span aria-hidden="true">${icon}</span> ${esc(title)}</h3>
+        <p>${esc(text)}</p>
+        <div class="gm-tools">${tools.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      </div>
+    </li>`,
+  ).join("");
+  return `<div class="genesis-backdrop${enter("genesis")}" data-enter="genesis" data-act="genesisBackdrop">
+    <div class="genesis panel" role="dialog" aria-modal="true" aria-labelledby="gm-title">
+      <div class="row spread"><div><div class="muted small">GENESIS MAP</div><h2 id="gm-title" style="margin:0">เกมนี้ถูกสร้างขึ้นมาอย่างไร</h2></div>
+        <button type="button" class="btn sm ghost" data-act="genesisClose" aria-label="ปิด">✕</button></div>
+      <div class="gm-stats">${stats.map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>
+      <div class="gm-flag start">🚩 START · ไอเดียและคลังการ์ด</div>
+      <ol class="gm-path">${steps}</ol>
+      <div class="gm-flag goal">🏁 GOAL · เกมพร้อมเล่น</div>
+      <p class="gm-ai small"><b>สร้างร่วมกับ AI:</b> ใช้ Claude Code (Anthropic) เป็นคู่คิดเขียนโค้ด ผู้พัฒนาเป็นผู้กำหนดโจทย์และตัดสินใจ ส่วน AI ช่วยลงมือเขียน ทดสอบ และปรับแก้ตามคำสั่งทีละขั้น</p>
+      <p class="muted small" style="text-align:center;margin:0">${CREDIT}</p>
+    </div>
+  </div>`;
 }
 
 // ---------- Research-data consent (asked once per player, in the lobby) ----------
@@ -1365,6 +1420,13 @@ app.addEventListener("change", (e) => {
   if (e.target.id === "flag-bias") ui.drafts["flag-bias"] = e.target.value;
 });
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && ui.genesisOpen) {
+    ui.genesisOpen = false;
+    render();
+  }
+});
+
 app.addEventListener("keydown", (e) => {
   if (e.key !== "Enter" || e.shiftKey || e.isComposing) return;
   const id = e.target.id;
@@ -1616,6 +1678,16 @@ app.addEventListener("click", async (e) => {
         el.disabled = false;
       }
       return;
+    case "genesisOpen":
+      ui.genesisOpen = true;
+      return render();
+    case "genesisClose":
+      ui.genesisOpen = false;
+      return render();
+    case "genesisBackdrop":
+      if (e.target !== el) return; // clicks inside the map bubble up to the backdrop
+      ui.genesisOpen = false;
+      return render();
     case "fbSkip":
       ui.feedbackDismissed = true;
       return render();
