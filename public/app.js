@@ -14,7 +14,7 @@ const LOGO_STARS = [
 ];
 const logoStars = () =>
   LOGO_STARS.map(([x, y, s, d, t, c]) => `<span class="twinkle" aria-hidden="true" style="left:${x}%;top:${y}%;width:${s}px;height:${s}px;color:${c};animation-delay:${d}s;animation-duration:${t}s"></span>`).join("");
-const APP_TITLE = "💡 SimPlastic - The Clinical Reasoning Game";
+const APP_TITLE = "SimPlastic - The Clinical Reasoning Game";
 // Browser tab: "game : disease group > current phase" (never the case title, which names the diagnosis).
 function tabTitle() {
   if (!S || !S.me) return APP_TITLE;
